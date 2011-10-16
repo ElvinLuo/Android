@@ -1,0 +1,3197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GroupServerList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <groupServers>
+    <ServerList>
+      <groupName>CHE-RC01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELBOT01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDS01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDSAPC01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISRCA01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIAPACRC01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIEURC01 </serverName>
+          <travelServer>CHELTVMEUR01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBINARC01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHHTL01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHHTL03 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMAPC01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMEUR01 </serverName>
+          <travelServer>CHELTVMEUR01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMNA01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTL01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTL03 </serverName>
+          <travelServer>CHELTVMEUR01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLAPC01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBAPC01 </serverName>
+          <travelServer>CHELTVMAPC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBEUR01 </serverName>
+          <travelServer>CHELTVMEUR01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBHTL01 </serverName>
+          <travelServer>CHELTVHHTL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBHTL03 </serverName>
+          <travelServer>CHELTVHHTL03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBMHT01 </serverName>
+          <travelServer>CHELTVHHTL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBNA01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSHT01 </serverName>
+          <travelServer>CHELTVHHTL01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CHE-HF01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSAPCHF01 </serverName>
+          <travelServer>CHELTVMAPCHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDSHF01 </serverName>
+          <travelServer>CHELTVMNAHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIAPCHF01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIEUHF01 </serverName>
+          <travelServer>CHELTVMEURHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBINAHF01 </serverName>
+          <travelServer>CHELTVMNAHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHHTLHF01 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMAPCHF01 </serverName>
+          <travelServer>CHELTVMAPCHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMEURHF01 </serverName>
+          <travelServer>CHELTVMEURHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMNAHF01 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLAPCHF01 </serverName>
+          <travelServer>CHELTVMAPCHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBAPCHF01 </serverName>
+          <travelServer>CHELTVMAPCHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBEURHF01 </serverName>
+          <travelServer>CHELTVMEURHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBHTLHF01 </serverName>
+          <travelServer>CHELTVHHTLHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBNAHF01 </serverName>
+          <travelServer>CHELTVMNAHF01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA8</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA801 </serverName>
+          <travelServer>CHELLITVMQA801 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA801 </serverName>
+          <travelServer>CHELLITVMQA801 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA801 </serverName>
+          <travelServer>CHELLITVMQA801 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA801 </serverName>
+          <travelServer>CHELLITVMQA801 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CCTLAT01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBCRM65 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM66 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM67 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM68 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>,DEFAULT</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBEUR04 </serverName>
+          <travelServer>CHELTVMEUR02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ADS01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELSRVADS011 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSRVADS012 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSRVADS02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBADS01 </serverName>
+          <travelServer>CHELTVMADS01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBADS02 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>AIR</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>AIRSOA-PERF</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVAPERF01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPERF01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPERF01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>BGB</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBEUR03 </serverName>
+          <travelServer>CHELTVMEUR01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>BUILD</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELBLDWEB01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT06 </serverName>
+          <travelServer>CHELTVMPMP48 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT07 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT08 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT11 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT12 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT13 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT14 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT15 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CCT</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFILCRM01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIVRCRM01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIVRCRM02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIVRCRM03 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIVRCRM04 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIVRCRM05 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIVRCRM06 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM03 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM04 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM05 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM06 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCRM07 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM01 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM03 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM04 </serverName>
+          <travelServer>CHELTVMNA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM05 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM06 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM07 </serverName>
+          <travelServer>CHE-TVMAMR01,CHE-TVMAMR02,CHE-TVMAMR03,CHE-TVMAMR04,CHE-TVMAMR05,CHE-TVMAMR06,CHE-TVMAMR07,CHE-TVMAMR08,CHE-TVMAMR09,CHE-TVMAMR10,CHE-TVMAMR11,CHE-TVMAMR12,CHE-TVMAMR13,CHE-TVMAMR14,CHE-TVMAMR15,CHE-TVMAMR16,CHE-TVMAMR17,CHE-TVMAMR18 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM08 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM09 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM10 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM11 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM12 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM13 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM14 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM15 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM16 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM17 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM18 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM19 </serverName>
+          <travelServer>CHE-TVMAMR01,CHE-TVMAMR02,CHE-TVMAMR03,CHE-TVMAMR04,CHE-TVMAMR05,CHE-TVMAMR06,CHE-TVMAMR07,CHE-TVMAMR08,CHE-TVMAMR09,CHE-TVMAMR10,CHE-TVMAMR11,CHE-TVMAMR12,CHE-TVMAMR13,CHE-TVMAMR14,CHE-TVMAMR15,CHE-TVMAMR16,CHE-TVMAMR17,CHE-TVMAMR18 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM20 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM21 </serverName>
+          <travelServer>BLTVMPMP36 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM22 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM50 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM51 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM52 </serverName>
+          <travelServer>CHE-TVMAMR01,CHE-TVMAMR02,CHE-TVMAMR03,CHE-TVMAMR04,CHE-TVMAMR05,CHE-TVMAMR06,CHE-TVMAMR07,CHE-TVMAMR08,CHE-TVMAMR09,CHE-TVMAMR10,CHE-TVMAMR11,CHE-TVMAMR12,CHE-TVMAMR13,CHE-TVMAMR14,CHE-TVMAMR15,CHE-TVMAMR16,CHE-TVMAMR17,CHE-TVMAMR18 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM53 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM54 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCRM55 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02, CHELTVMPRF2-03 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CHELWBTESTR10</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CHELWBTESTR11</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA1</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA101 </serverName>
+          <travelServer>CHELLITVMQA101 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA101 </serverName>
+          <travelServer>CHELLITVMQA101 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA101 </serverName>
+          <travelServer>CHELLITVMQA101 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA101 </serverName>
+          <travelServer>CHELLITVMQA101 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA2</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA201 </serverName>
+          <travelServer>CHELLITVMQA201 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA201 </serverName>
+          <travelServer>CHELLITVMQA201 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA201 </serverName>
+          <travelServer>CHELLITVMQA201 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA201 </serverName>
+          <travelServer>CHELLITVMQA201 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA3</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA301 </serverName>
+          <travelServer>CHELLITVMQA301 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIFDSQA302 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIFDSQA303 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA301 </serverName>
+          <travelServer>CHELLITVMQA301 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA302 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA301 </serverName>
+          <travelServer>CHELLITVMQA301 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA302 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA301 </serverName>
+          <travelServer>CHELLITVMQA301 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA4</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA401 </serverName>
+          <travelServer>CHELLITVMQA401 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIFDSQA402 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA401 </serverName>
+          <travelServer>CHELLITVMQA401 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA402 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA401 </serverName>
+          <travelServer>CHELLITVMQA401 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA401 </serverName>
+          <travelServer>CHELLITVMQA401 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA5</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA501 </serverName>
+          <travelServer>CHELLITVMQA501 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA501 </serverName>
+          <travelServer>CHELLITVMQA501 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA501 </serverName>
+          <travelServer>CHELLITVMQA501 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA501 </serverName>
+          <travelServer>CHELLITVMQA501 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA6</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA601 </serverName>
+          <travelServer>CHELLITVMQA601 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA601 </serverName>
+          <travelServer>CHELLITVMQA601 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA601 </serverName>
+          <travelServer>CHELLITVMQA601 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA601 </serverName>
+          <travelServer>CHELLITVMQA601 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-QA7</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSQA701 </serverName>
+          <travelServer>CHELLITVMQA701 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISQA701 </serverName>
+          <travelServer>CHELLITVMQA701 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMQA701 </serverName>
+          <travelServer>CHELLITVMQA701 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBQA701 </serverName>
+          <travelServer>CHELLITVMQA701 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>COVERITY</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELMAKCOV01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKCOV02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CX01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBCX01 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CX02</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBCX02 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CX03</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CX04</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CX05</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CX06</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CX07</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CX08</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBCX08 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>CX09</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>CX10</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>DAILY</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBDLYAP01 </serverName>
+          <travelServer>CHELTVMSTB-03,CHELTVMSTB-04 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBDLYEU02 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBDLYEU03 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBDLYNA01 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBDLYNA02 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>DBADEV</groupName>
+      <servers>
+        <Server>
+          <serverName>BLSQLDEV01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLH01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLH02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLH03 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLH06 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLH07 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLH09 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLL26 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLL27 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLL28 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLL29 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM10 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM15 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM18 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM19 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM20 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM25 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLDBA05 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLDBA06 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLDEV01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>DEVIPU</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLH04 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EADW</groupName>
+      <servers>
+        <Server>
+          <serverName>BLSQLDMO02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDMOHF02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDMORDV01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDMORDV02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDMORDV03 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDMORTST01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDMORTST02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLSQLDS01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLUTLBUS02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLWEBDMO01 </serverName>
+          <travelServer>BLTVMNAHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>BLWEBDMOHF01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>DLUTLBUS02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>EBSTST02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ES-PMP01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP01 </serverName>
+          <travelServer>CHELTVMPMP01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP01 </serverName>
+          <travelServer>CHELTVMPMP01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP01 </serverName>
+          <travelServer>CHELTVMPMP01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESENG01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDS1H01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP27 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP27 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESENG02</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELUTLPMP48 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP48 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESENGINTEGRATION</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMSTRMM05 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESITE</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBLOC02 </serverName>
+          <travelServer>CHELTVMNAHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBLOCHF01 </serverName>
+          <travelServer>CHELTVMSTB-01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESS-STABLE</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR22 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR06</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR06 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR11</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR11 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR12</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR12 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR14</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMESTR14 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBESTR14 </serverName>
+          <travelServer>CHELTVMESTR15 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR17</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR17 </serverName>
+          <travelServer>CHELTVMPMP45 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR18</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR18 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR19</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMESTR22 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBESTR19 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR21</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMESTR15 </serverName>
+          <travelServer>CHELTVMESTR15 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBESTR21 </serverName>
+          <travelServer>CHELTVMESTR15 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR23</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR23 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR24</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR24 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR25</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR25 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR27</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR27 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR28</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR28 </serverName>
+          <travelServer>CHELTVMESTR21 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR29</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR29 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR30</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR30 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR31</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR31 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR32</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR32 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR35</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR35 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP60 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR36</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR36 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR37</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR37 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR38</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR38 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR39</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR39 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR40</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR40 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR41</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR41 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR42</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR42 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR43</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR43 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR44</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR44 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR45</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR45 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR46</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR46 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ESTR47</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR47 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-AVAIL</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMESTR17 </serverName>
+          <travelServer>CHELTVMESTR17 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMESTR21 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMESTR23 </serverName>
+          <travelServer>CHELTVMESTR23 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP02 </serverName>
+          <travelServer>NSTVMUNICODESTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP09 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-PERF1</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELARCMV2TVM2 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELARCMV2TVM3 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELARCMV3WEB1 </serverName>
+          <travelServer>CHELFRA64TEST01,CHELFRA64TEST02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELARCMV3WEB2 </serverName>
+          <travelServer>CHELFRA64TEST01,CHELFRA64TEST02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELARCMV3WEB3 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDSPRF1-01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFRA64TEST01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFRA64TEST02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF1-01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF1-02 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF1-03 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELPLWEBSTR02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF1-01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF1-02 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF1-03 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF1-04 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF1-01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF1-02 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF1-03 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVXPRF1-01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-01 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-02 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-03 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-04 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-05 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-06 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-07 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-08 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF1-09 </serverName>
+          <travelServer>CHELTVMPRF1-01,CHELTVMPRF1-02,CHELTVMPRF1-03 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-PERF2</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPRF2-01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISPRF01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISPRF02 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISRCS01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF2-01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF2-02 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF2-03 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF2-01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF2-02 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF2-03 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF2-04 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF2-01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF2-02 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF2-03 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVXPRF2-01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-01 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-02 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-03 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-04 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-05 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-06 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-07 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-08 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF2-09 </serverName>
+          <travelServer>CHELTVMPRF2-01,CHELTVMPRF2-02,CHELTVMPRF2-03 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-PERF3</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPRF3-01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF3-01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF3-01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF3-01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVXPRF3-01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF3-01 </serverName>
+          <travelServer>CHELTVMPRF3-01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-PERF4</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-PERF5</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPRF5-01 </serverName>
+          <travelServer>CHELTVMPRF5-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF5-01 </serverName>
+          <travelServer>CHELTVMPRF5-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF5-01 </serverName>
+          <travelServer>CHELTVMPRF5-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF5-01 </serverName>
+          <travelServer>CHELTVMPRF5-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVXPRF5-01 </serverName>
+          <travelServer>CHELTVMPRF5-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF5-01 </serverName>
+          <travelServer>CHELTVMPRF5-01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWE-PERF6</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPRF6-01 </serverName>
+          <travelServer>CHELTVMPRF6-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIPRF6-01 </serverName>
+          <travelServer>CHELTVMPRF6-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHPRF6-01 </serverName>
+          <travelServer>CHELTVMPRF6-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRF6-01 </serverName>
+          <travelServer>CHELTVMPRF6-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVXPRF6-01 </serverName>
+          <travelServer>CHELTVMPRF6-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPRF6-01 </serverName>
+          <travelServer>CHELTVMPRF6-01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWS-FNT</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>EWS-PMP01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMEWS01 </serverName>
+          <travelServer>CHELTVMEWS01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBEWS01 </serverName>
+          <travelServer>CHELTVMEWS01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWS-PMP02</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMEWS02 </serverName>
+          <travelServer>CHELTVMEWS02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBEWS02 </serverName>
+          <travelServer>CHELTVMEWS02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWS-PMP22</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELSQLPMP22 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPMP22 </serverName>
+          <travelServer>CHELTVMPMP22 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP22 </serverName>
+          <travelServer>CHELTVMPMP22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>EWS-PMP54</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP54 </serverName>
+          <travelServer>CHELTVMPMP54 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP54 </serverName>
+          <travelServer>CHELTVMPMP54 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>FASTBUILDS</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIAUTQA301 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>FTIPU</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLH05 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>GLOBAL</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELEVO08 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT16 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT17 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT18 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT19 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>GPT-PMP08</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP08 </serverName>
+          <travelServer>CHELTVMPMP08 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP08 </serverName>
+          <travelServer>CHELTVMPMP08 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP08 </serverName>
+          <travelServer>CHELTVMPMP08 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>GPT-PMP49</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP49 </serverName>
+          <travelServer>CHELTVMPMP49 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP49 </serverName>
+          <travelServer>CHELTVMPMP49 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP49 </serverName>
+          <travelServer>CHELTVMPMP49 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>GUS</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELSQLNTR01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHNTR01 </serverName>
+          <travelServer>CHELTVHNTR01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBNTR01 </serverName>
+          <travelServer>CHELTVHNTR01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>HAPROJECT</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLM22 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>HRIS</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELHRRPTSVC02 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>INTEGRATION</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELBOTINT-01 </serverName>
+          <travelServer>CHELTVMINT-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIFDSINT01 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIFDSINT02 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISINT01 </serverName>
+          <travelServer>CHELLILISINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISINT02 </serverName>
+          <travelServer>CHELLILISINT02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHINT01 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHINT02 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHINT03 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHINT04 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWBMINT01 </serverName>
+          <travelServer>CHELTVMINT-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWBMINT03 </serverName>
+          <travelServer>CHELTVMINT-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWBOINT02 </serverName>
+          <travelServer>CHELTVMINT-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWBOINT03 </serverName>
+          <travelServer>CHELTVMINT-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELORDINT01 </serverName>
+          <travelServer>CHELTVOINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOWSINT01 </serverName>
+          <travelServer>CHELTVOINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMINT-01 </serverName>
+          <travelServer>CHELTVMINT-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMINT-02 </serverName>
+          <travelServer>CHELTVMINT-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMINT-03 </serverName>
+          <travelServer>CHELTVMINT-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMINT-04 </serverName>
+          <travelServer>CHELTVMINT-04 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVOINT01 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVOINT02 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTL1HINT01 </serverName>
+          <travelServer>CHELTVOINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLINT-01 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLINT-02 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLINT-03 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLINT-04 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBINT-01 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBINT-02 </serverName>
+          <travelServer>NSTVMINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBINT-03 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBINT-04 </serverName>
+          <travelServer>NSTVMUNICODEINT01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>INTIPU</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLM11 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM12 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM13 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT03 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT04 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT05 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT06 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT07 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT08 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT09 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT10 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLINT11 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-ATL</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELHASQL08 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL12 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIFDSATL01 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISATL01 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISATL02 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMATL01 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBATL01 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBESTR13 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBESTR60 </serverName>
+          <travelServer>CHELLITVMATL01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-AVAIL</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLISQLOPA01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLOPB01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMINT01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMINT02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWBMINT02 </serverName>
+          <travelServer>CHELTVMINT-03 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-BUILD</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELMAKRTT09 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT10 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELMAKRTT43 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LIS-EHF</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLIFDSEHF01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISEHF01 </serverName>
+          <travelServer>CHELLITVMEHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISQLEHF01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVMEHF01 </serverName>
+          <travelServer>CHELLITVMEHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBEHF01 </serverName>
+          <travelServer>CHELLITVMEHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBEHF02 </serverName>
+          <travelServer>CHELLITVMEHF01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LOYALTY01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMCITI01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTRMM05 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LSS-CERT</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLSSSQLCTF01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLSSTMCTF03 </serverName>
+          <travelServer>CHELLSSTMCTF03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLSSWBCTF03 </serverName>
+          <travelServer>CHELLSSTMCTF03 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LSS-MONTREAL</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLSSTVH01 </serverName>
+          <travelServer>CHELLSSTVH01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLSSTVH02 </serverName>
+          <travelServer>CHELLSSTVH02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLSSWEB01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLSSWEB02 </serverName>
+          <travelServer>CHELLSSTVH02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLLSS02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLLSS04 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LSS03</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLSSTVH03 </serverName>
+          <travelServer>CHELLSSTVH03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLSSWEB05 </serverName>
+          <travelServer>CHELLSSTVH03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLLSS03 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LTY-PMP60</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP60 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>LTY-PMP61</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP61 </serverName>
+          <travelServer>CHELTVMPMP61 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP61 </serverName>
+          <travelServer>CHELTVMPMP61 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>MAIN01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSAPCM01 </serverName>
+          <travelServer>CHELTVMAPCM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDSM01 </serverName>
+          <travelServer>CHELTVMNAM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISM01 </serverName>
+          <travelServer>CHELLILISM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHHTLM01 </serverName>
+          <travelServer>CHELTVHHTLM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMAPCM01 </serverName>
+          <travelServer>CHELTVMAPCM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMEURM01 </serverName>
+          <travelServer>CHELTVMEURM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMNAM01 </serverName>
+          <travelServer>CHELTVMNAM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLAPCM01 </serverName>
+          <travelServer>CHELTVMAPCM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBAPCM01 </serverName>
+          <travelServer>CHELTVMAPCM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBEURM01 </serverName>
+          <travelServer>CHELTVMEURM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBHTLM01 </serverName>
+          <travelServer>CHELTVHHTLM01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBNAM01 </serverName>
+          <travelServer>CHELTVMNAM01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>MARCHSQLDB</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>MMFNT</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>OMS-PERF02</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELSQLES06 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTRES02 </serverName>
+          <travelServer>CHELTVMSTRES02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTRES02 </serverName>
+          <travelServer>CHELTVMSTRES02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>OMS-PMP30</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP30 </serverName>
+          <travelServer>CHELTVMPMP30 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP30 </serverName>
+          <travelServer>CHELTVMPMP30 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP30 </serverName>
+          <travelServer>CHELTVMPMP30 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>OMS-PMP55</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP55 </serverName>
+          <travelServer>CHELTVMPMP55 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP55 </serverName>
+          <travelServer>CHELTVMPMP55 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP55 </serverName>
+          <travelServer>CHELTVMPMP55 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>OMS-PMP58</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP58 </serverName>
+          <travelServer>CHELTVMPMP58 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP58 </serverName>
+          <travelServer>CHELTVMPMP58 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP58 </serverName>
+          <travelServer>CHELTVMPMP58 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ONEH</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLH08 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELJVHSTR01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLES01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLES02 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLSTR106B </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ONEHSTR01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELHRMSTR01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIANSTR01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLSTR106A </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHSTR106 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTR106 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTR106A </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PERF-FTIPU</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLM16 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PERF-INTIPU</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLM14 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PERF-INTIPU2</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLM17 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PMP03</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP03 </serverName>
+          <travelServer>CHELTVMPMP03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP03 </serverName>
+          <travelServer>CHELTVMESTR22 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PMP50</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP50 </serverName>
+          <travelServer>CHELTVMPMP50 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP50 </serverName>
+          <travelServer>CHELTVMPMP50 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP50 </serverName>
+          <travelServer>CHELTVMPMP50 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PMP56</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP56 </serverName>
+          <travelServer>CHELTVMPMP56 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP56 </serverName>
+          <travelServer>CHELTVMPMP56 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP56 </serverName>
+          <travelServer>CHELTVMPMP56 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PMP57</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMP57 </serverName>
+          <travelServer>CHELTVMPMP57 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLPMP57 </serverName>
+          <travelServer>CHELTVMPMP57 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP57 </serverName>
+          <travelServer>CHELTVMPMP57 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PMPRE01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMPRE01 </serverName>
+          <travelServer>CHELTVMESTR17 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PMPRE02</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELTVMPMPRE02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMPRE02 </serverName>
+          <travelServer>CHELTVMPMPRE02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>POD2-HOTELSEARCH-A</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR15 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>POD2-HOTELSEARCH-B</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR16 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>POD3-HOTELINFOSITE-A</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR34 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>POD3-HOTELINFOSITE-B</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR09 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>POD4-HOTELSOA-B</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELWEBESTR26 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>RAP01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELSQLRAP01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMESTR20 </serverName>
+          <travelServer>CHELTVMESTR20 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBESTR20 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROEHF</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELROTVMHF01 </serverName>
+          <travelServer>CHELROTVMHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELROWEBHF01 </serverName>
+          <travelServer>CHELROTVMHF01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROEPMP42</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPMP42 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISPMP42 </serverName>
+          <travelServer>CHELTVMPMP42 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPMP42 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP42 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROEPMP43</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPMP43 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISPMP43 </serverName>
+          <travelServer>CHELLITVMPMP43 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPMP43 </serverName>
+          <travelServer>CHELTVMPMP43 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP43 </serverName>
+          <travelServer>CHELTVMPMP43 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROEPMP44</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLISPMP44 </serverName>
+          <travelServer>CHELLISPMP44 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPMP44 </serverName>
+          <travelServer>CHELTVMPMP44 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP44 </serverName>
+          <travelServer>CHELTVMPMP44 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROEPMP45</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELLISPMP45 </serverName>
+          <travelServer>CHELLISPMP45 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPMP45 </serverName>
+          <travelServer>CHELTVMPMP45 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBPMP45 </serverName>
+          <travelServer>CHELTVMPMP45 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROERC</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELROTVMRC01 </serverName>
+          <travelServer>CHELROTVMRC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELROWEBRC01 </serverName>
+          <travelServer>CHELROTVMRC01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>ROGER</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELSQLNTRHF01 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHNTRHF01 </serverName>
+          <travelServer>CHELTVHNTRHF01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBNTRHF01 </serverName>
+          <travelServer>CHELTVHNTRHF01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>SPLIT-TIX-FARMA</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELAIRTVMFG01 </serverName>
+          <travelServer>CHELAIRTVMFG01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>SPLIT-TIX-FARMB</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELAIRTVMFH01 </serverName>
+          <travelServer>CHELAIRTVMFH01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STABLE</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSSTB-01 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDSSTB-02 </serverName>
+          <travelServer>NSTVMUNICODESTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISSTB01 </serverName>
+          <travelServer>CHELLILISSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISSTB02 </serverName>
+          <travelServer>CHELLILISSTB02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHSTB01 </serverName>
+          <travelServer>CHELLITVHSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHSTB02 </serverName>
+          <travelServer>CHELLITVHSTB02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHSTB03 </serverName>
+          <travelServer>CHELLITVHSTB03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLITVHSTB04 </serverName>
+          <travelServer>CHELLITVHSTB04 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBSTB01 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBSTB02 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLIWEBSTB03 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELORDSTB01 </serverName>
+          <travelServer>CHELTVOSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOWSSTB01 </serverName>
+          <travelServer>CHELTVOSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELROUTLSTB01 </serverName>
+          <travelServer>Unknown </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPMP27 </serverName>
+          <travelServer>CHELTVMPMP27 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTB-01 </serverName>
+          <travelServer>CHELTVMSTB-01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTB-02 </serverName>
+          <travelServer>CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTB-03 </serverName>
+          <travelServer>CHELTVMSTB-03 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTB-04 </serverName>
+          <travelServer>CHELTVMSTB-04 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVOSTB01 </serverName>
+          <travelServer>CHELTVOSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTL1HSTB01 </serverName>
+          <travelServer>CHELTVMPMP27 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLSTB-01 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELUTLSTB-03 </serverName>
+          <travelServer>NSTVMUNICODESTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTB-01 </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTB-03 </serverName>
+          <travelServer>NSTVMUNICODESTB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTBESTR </serverName>
+          <travelServer>NSTVMSTB01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STABLEIPU</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELIPUSQLM21 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM23 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELIPUSQLM24 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STEVEJ</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELHASQL05 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL06 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL07 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL09 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL10 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL11 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELHASQL13 </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STRESS</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDSPRFE2E01 </serverName>
+          <travelServer>CHELTVMPRFE2E01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELH2BSTRMM01 </serverName>
+          <travelServer>CHELTVMPRFE2E01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLISPRFE2E01 </serverName>
+          <travelServer>CHELTVMSTB-01,CHELTVMSTB-02 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMPRFE2E01 </serverName>
+          <travelServer>CHELTVMPRFE2E01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVOPRFE2E01 </serverName>
+          <travelServer>CHELTVOPRFE2E01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STRESS-M</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELEBASESTR04 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBISTREB01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLSTR111A </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLSTR111B </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHSTR102 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTR102 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMSTR105 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTR102A </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTR102B </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTR105A </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTR105B </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STRESS-Q</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELEBSSTREB01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELEBSSTREB02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELEBSSTREBST </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBISTREBST </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLSTR101A </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLSTR101B </serverName>
+          <travelServer>- </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSTR103A </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STT01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELCARFDSFA01 </serverName>
+          <travelServer>CHELCARTVMFA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARTVMFA01 </serverName>
+          <travelServer>CHELCARTVMFA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARWEBFA01 </serverName>
+          <travelServer>CHELCARTVMFA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMCAR01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCAR01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STT02</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELCARFDSFB01 </serverName>
+          <travelServer>CHELCARTVMFB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARTVMFB01 </serverName>
+          <travelServer>CHELCARTVMFB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARWEBFB01 </serverName>
+          <travelServer>CHELCARTVMFB01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMCAR03 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCAR03 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STT03</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELBFSUTL17 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARFDSFC01 </serverName>
+          <travelServer>CHELCARTVMFC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARTVMFC01 </serverName>
+          <travelServer>CHELCARTVMFC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARWEBFC01 </serverName>
+          <travelServer>CHELCARTVMFC01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMCAR04 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCAR04 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STT04</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELCARFDSFD01 </serverName>
+          <travelServer>CHELCARTVMFD01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARTVMFD01 </serverName>
+          <travelServer>CHELCARTVMFD01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARWEBFD01 </serverName>
+          <travelServer>CHELCARTVMFD01 </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>STTSTABLE</groupName>
+      <servers />
+    </ServerList>
+    <ServerList>
+      <groupName>STTSTRESS01</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELCARFDSSA01 </serverName>
+          <travelServer>CHELCARTVMSA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARTVMSA01 </serverName>
+          <travelServer>CHELCARTVMSA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELCARWEBSA01 </serverName>
+          <travelServer>CHELCARTVMSA01 </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELSQLCAR02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMCAR02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBCAR02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>TEMPFARM</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELFDS02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELFDSAPC02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELLILISRCB01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHHTL02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVHHTL04 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMAPC02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMEUR02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELTVMNA02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBMHT02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBSHT02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>VMWAREPOC</groupName>
+      <servers>
+        <Server>
+          <serverName>CHELVSH1155 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELVSH1156 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELVSH1157 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBENG01 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBENG02 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBENG03 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELWEBENG04 </serverName>
+          <travelServer>SERVER OFFLINE </travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PPE</groupName>
+      <servers>
+        <Server>
+          <serverName>All</serverName>
+          <travelServer>All</travelServer>
+        </Server>
+        <Server>
+          <serverName>60011</serverName>
+          <travelServer>DNSQCAPPE01</travelServer>
+        </Server>
+        <Server>
+          <serverName>60012</serverName>
+          <travelServer>DNSQCAPPE02</travelServer>
+        </Server>
+        <Server>
+          <serverName>60013</serverName>
+          <travelServer>DNSQCAPPE03</travelServer>
+        </Server>
+        <Server>
+          <serverName>60014</serverName>
+          <travelServer>DNSQCBPPE04</travelServer>
+        </Server>
+        <Server>
+          <serverName>60015</serverName>
+          <travelServer>DNSQCBPPE05</travelServer>
+        </Server>
+        <Server>
+          <serverName>60016</serverName>
+          <travelServer>DNSQCBPPE06</travelServer>
+        </Server>
+        <Server>
+          <serverName>60021</serverName>
+          <travelServer>DNSQLPPE01</travelServer>
+        </Server>
+        <Server>
+          <serverName>60022</serverName>
+          <travelServer>DNSQLPPE02</travelServer>
+        </Server>
+        <Server>
+          <serverName>60023</serverName>
+          <travelServer>DNSQLPPE03</travelServer>
+        </Server>
+        <Server>
+          <serverName>60024</serverName>
+          <travelServer>DNSQLPPE04</travelServer>
+        </Server>
+        <Server>
+          <serverName>36005</serverName>
+          <travelServer>DNSQLJDB01</travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+  </groupServers>
+</GroupServerList>
