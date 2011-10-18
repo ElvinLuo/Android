@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using mshtml;
-using SHDocVw;
+using System.Windows.Forms;
 
 namespace DatabaseSelector
 {
@@ -10,6 +10,13 @@ namespace DatabaseSelector
         public static readonly GroupList instance = new GroupList();
         public string defaultGroup;
         public List<string> groups;
+        public event EventHandler Updated;
+
+        protected virtual void OnUpdated(EventArgs e)
+        {
+            if (Updated != null)
+                Updated(this, e);
+        }
 
         public GroupList()
         {
@@ -39,18 +46,6 @@ namespace DatabaseSelector
         {
             Serializer.CreateInstance().SerializeToXML(this, this.GetType(), "Groups.xml");
         }
-
-        //public void UpdateGroup(string groupName, Group newGroup)
-        //{
-        //    for (int i = 0; i < groups.Count; i++)
-        //    {
-        //        if (groups[i].groupName.Equals(groupName))
-        //        {
-        //            groups[i].servers = newGroup.servers;
-        //            break;
-        //        }
-        //    }
-        //}
 
         public void GetGroups()
         {
@@ -87,29 +82,32 @@ namespace DatabaseSelector
 
         public void GetGroupsFromWeb()
         {
-            InternetExplorer IE = new InternetExplorer();
-            object Empty = 0;
-            object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
+            System.Threading.Thread.Sleep(5000);
+            OnUpdated(EventArgs.Empty);
 
-            IE.Visible = false;
-            IE.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
+            //InternetExplorer IE = new InternetExplorer();
+            //object Empty = 0;
+            //object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
 
-            while (IE.Busy)
-            {
-                System.Threading.Thread.Sleep(1000);
-            }
+            //IE.Visible = false;
+            //IE.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
 
-            IHTMLDocument3 document = (IHTMLDocument3)IE.Document;
-            HTMLSelectElement selGroups = (HTMLSelectElement)document.getElementById("group");
-            groups = new List<string>();
-            groups.Add("PPE");
-            for (int i = 0; i < selGroups.length; i++)
-            {
-                HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
-                if (option.text != null && !option.text.Equals(""))
-                    groups.Add(option.text);
-            }
-            IE.Quit();
+            //while (IE.Busy)
+            //{
+            //    System.Threading.Thread.Sleep(1000);
+            //}
+
+            //IHTMLDocument3 document = (IHTMLDocument3)IE.Document;
+            //HTMLSelectElement selGroups = (HTMLSelectElement)document.getElementById("group");
+            //groups = new List<string>();
+            //groups.Add("PPE");
+            //for (int i = 0; i < selGroups.length; i++)
+            //{
+            //    HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
+            //    if (option.text != null && !option.text.Equals(""))
+            //        groups.Add(option.text);
+            //}
+            //IE.Quit();
         }
 
     }

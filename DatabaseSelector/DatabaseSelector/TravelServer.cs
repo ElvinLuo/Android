@@ -40,6 +40,13 @@ namespace DatabaseSelector
     {
         public string MachineName;
         public List<DatabaseItem> Databases;
+        public event EventHandler Updated;
+
+        protected virtual void OnUpdated(EventArgs e)
+        {
+            if (Updated != null)
+                Updated(this, e);
+        }
 
         public TravelServer()
         {
@@ -62,7 +69,6 @@ namespace DatabaseSelector
                 if (tsl == null)
                 {
                     tsl = TravelServerList.CreateInstance();
-                    //tsl = new TravelServerList();
                     TravelServer newTravelServer = new TravelServer(MachineName);
                     newTravelServer.GetDatabasesFromRegistry();
                     tsl.travelServers.Add(newTravelServer);
@@ -82,18 +88,12 @@ namespace DatabaseSelector
                     tsl.travelServers.Add(newTravelServer);
                     tsl.SaveListToXml();
                 }
-                //if (tsl.GetTravelServer(MachineName).Databases.Count == 0)
-                //{
-                //    tsl.GetTravelServer(MachineName).GetDatabasesFromRegistry();
-                //    tsl.SaveListToXml();
-                //}
             }
             else
             {
                 try
                 {
                     tsl = TravelServerList.CreateInstance();
-                    //tsl = new TravelServerList();
                     TravelServer newTravelServer = new TravelServer(MachineName);
                     newTravelServer.GetDatabasesFromRegistry();
                     tsl.travelServers.Add(newTravelServer);
@@ -110,50 +110,51 @@ namespace DatabaseSelector
 
         public void GetDatabasesFromRegistry()
         {
-            TXTReader txtReader = TXTReader.CreateInstance();
-            Dictionary<string, int> pairs = txtReader.GetServerPortPair();
-            if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
-            {
-                XLSReader xlsReader = XLSReader.CreateInstance();
-                Databases = xlsReader.GetTravelServerFromXLS(MachineName).Databases;
-            }
-            else
-            {
-                Databases = new List<DatabaseItem>();
+            System.Threading.Thread.Sleep(5000);
+            OnUpdated(EventArgs.Empty);
 
-                RegistryKey expDsnKey;
-                RegistryKey expDsnSubKey;
+            //TXTReader txtReader = TXTReader.CreateInstance();
+            //Dictionary<string, int> pairs = txtReader.GetServerPortPair();
+            //if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
+            //{
+            //    XLSReader xlsReader = XLSReader.CreateInstance();
+            //    Databases = xlsReader.GetTravelServerFromXLS(MachineName).Databases;
+            //}
+            //else
+            //{
+            //    Databases = new List<DatabaseItem>();
 
-                try
-                {
-                    expDsnKey = RegistryKey.OpenRemoteBaseKey(
-                        RegistryHive.LocalMachine, MachineName.Trim()).OpenSubKey(
-                        "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
-                }
-                catch (IOException e)
-                {
-                    Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
-                    return;
-                }
+            //    RegistryKey expDsnKey;
+            //    RegistryKey expDsnSubKey;
 
-                foreach (string subKeyName in expDsnKey.GetSubKeyNames())
-                {
-                    expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
-                    string[] items = expDsnSubKey.GetValueNames();
-                    bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
-                    DatabaseItem databaseItem = new DatabaseItem(
-                        subKeyName,
-                        matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
-                        matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
-                        matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
-                        matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
-                        matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
-                    //DatabaseItem databaseItem = new DatabaseItem();
-                    Databases.Add(databaseItem);
-                }
+            //    try
+            //    {
+            //        expDsnKey = RegistryKey.OpenRemoteBaseKey(
+            //            RegistryHive.LocalMachine, MachineName.Trim()).OpenSubKey(
+            //            "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
+            //    }
+            //    catch (IOException e)
+            //    {
+            //        Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
+            //        return;
+            //    }
 
-                expDsnKey.Close();
-            }
+            //    foreach (string subKeyName in expDsnKey.GetSubKeyNames())
+            //    {
+            //        expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
+            //        string[] items = expDsnSubKey.GetValueNames();
+            //        bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
+            //        DatabaseItem databaseItem = new DatabaseItem(
+            //            subKeyName,
+            //            matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
+            //            matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
+            //            matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
+            //            matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
+            //            matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
+            //        Databases.Add(databaseItem);
+            //    }
+            //    expDsnKey.Close();
+            //}
         }
 
         public bool[] Match(string[] first, string[] second)
