@@ -79,9 +79,6 @@ namespace DatabaseSelector
 
         public void GetServersFromWeb()
         {
-            System.Threading.Thread.Sleep(5000);
-            OnUpdated(EventArgs.Empty);
-
             //if (!groupName.Equals("PPE"))
             //{
             //    InternetExplorer IE = new InternetExplorer();
@@ -130,6 +127,7 @@ namespace DatabaseSelector
             //        servers.Add(new Server(txtReader.GetPortByServerName(server).ToString(), server));
             //    }
             //}
+            OnUpdated(EventArgs.Empty);
         }
     }
 

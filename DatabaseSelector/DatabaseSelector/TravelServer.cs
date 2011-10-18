@@ -110,9 +110,6 @@ namespace DatabaseSelector
 
         public void GetDatabasesFromRegistry()
         {
-            System.Threading.Thread.Sleep(5000);
-            OnUpdated(EventArgs.Empty);
-
             //TXTReader txtReader = TXTReader.CreateInstance();
             //Dictionary<string, int> pairs = txtReader.GetServerPortPair();
             //if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
@@ -155,6 +152,7 @@ namespace DatabaseSelector
             //    }
             //    expDsnKey.Close();
             //}
+            OnUpdated(EventArgs.Empty);
         }
 
         public bool[] Match(string[] first, string[] second)

@@ -82,9 +82,6 @@ namespace DatabaseSelector
 
         public void GetGroupsFromWeb()
         {
-            System.Threading.Thread.Sleep(5000);
-            OnUpdated(EventArgs.Empty);
-
             //InternetExplorer IE = new InternetExplorer();
             //object Empty = 0;
             //object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
@@ -108,6 +105,7 @@ namespace DatabaseSelector
             //        groups.Add(option.text);
             //}
             //IE.Quit();
+            OnUpdated(EventArgs.Empty);
         }
 
     }

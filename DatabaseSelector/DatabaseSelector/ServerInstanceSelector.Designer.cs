@@ -61,6 +61,7 @@ namespace DatabaseSelector
             this.lblTravelServer = new System.Windows.Forms.Label();
             this.tbTravelServer = new System.Windows.Forms.TextBox();
             this.lblContact = new System.Windows.Forms.Label();
+            this.bgwUpdate = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -337,6 +338,12 @@ namespace DatabaseSelector
             this.lblContact.TabIndex = 33;
             this.lblContact.Text = "(Any suggestion, email v-elluo@expedia.com)";
             // 
+            // bgwUpdate
+            // 
+            this.bgwUpdate.WorkerSupportsCancellation = true;
+            this.bgwUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwUpdate_DoWork);
+            this.bgwUpdate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwUpdate_RunWorkerCompleted);
+            // 
             // ServerInstanceSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -416,6 +423,7 @@ namespace DatabaseSelector
         private GroupList groupList;
         private ServerList serverList;
         private TravelServer travelServer;
+        private string trigger;
         private Index index;
         public int version;
 
@@ -427,6 +435,7 @@ namespace DatabaseSelector
         object objectExplorerService;
         object connectionObject;
         bool needRefresh;
+        private System.ComponentModel.BackgroundWorker bgwUpdate;
 
     }
 }

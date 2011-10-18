@@ -312,99 +312,96 @@ namespace DatabaseSelector
 
         private void ReloadGroupListView(object sender, EventArgs e)
         {
-            //lvGroups.Items.Clear();
-            //System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
-            //if (groupList.groups != null)
-            //{
-            //    if (groupList.groups.Count != 0)
-            //    {
-            //        for (int i = 0; i < groupList.groups.Count; i++)
-            //        {
-            //            ListViewItem lviDatabase = new ListViewItem(new string[] { groupList.groups[i] });
-            //            lvicGroup.Add(lviDatabase);
-            //        }
-            //    }
-            //    else
-            //    { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
-            //    if (lvGroups.Items.Count != 0)
-            //    {
-            //        if (index.currentSelectedGroup >= lvGroups.Items.Count)
-            //        {
-            //            index.currentSelectedGroup = 7;
-            //        }
-            //        lvGroups.Items[index.currentSelectedGroup].Selected = true;
-            //        lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
-            //        lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
-            //    }
-            //}
-            EnableAllButtons();
+            lvGroups.Items.Clear();
+            System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
+            if (groupList.groups != null)
+            {
+                if (groupList.groups.Count != 0)
+                {
+                    for (int i = 0; i < groupList.groups.Count; i++)
+                    {
+                        ListViewItem lviDatabase = new ListViewItem(new string[] { groupList.groups[i] });
+                        lvicGroup.Add(lviDatabase);
+                    }
+                }
+                else
+                { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
+                if (lvGroups.Items.Count != 0)
+                {
+                    if (index.currentSelectedGroup >= lvGroups.Items.Count)
+                    {
+                        index.currentSelectedGroup = 7;
+                    }
+                    lvGroups.Items[index.currentSelectedGroup].Selected = true;
+                    lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
+                    lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
+                }
+            }
         }
 
         private void ReloadServerListView(object sender, EventArgs e)
         {
-            //lvServers.Items.Clear();
-            //System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
-            //if (serverList.servers != null)
-            //{
-            //    if (serverList.servers.Count != 0)
-            //    {
-            //        for (int i = 0; i < serverList.servers.Count; i++)
-            //        {
-            //            ListViewItem lviServer = new ListViewItem(new string[] { serverList.servers[i].serverName, serverList.servers[i].travelServer });
-            //            lvic.Add(lviServer);
-            //        }
-            //    }
-            //    else
-            //    { lvic.Add(new ListViewItem(new string[] { "No server found", "Try to click 'Reload servers'" })); }
-            //    if (lvServers.Items.Count != 0)
-            //    {
-            //        if (index.currentSelectedServer >= lvServers.Items.Count)
-            //        {
-            //            index.currentSelectedServer = 0;
-            //        }
-            //        lvServers.Items[index.currentSelectedServer].Selected = true;
-            //        lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
-            //        lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
-            //    }
-            //}
-            EnableAllButtons();
+            lvServers.Items.Clear();
+            System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
+            if (serverList.servers != null)
+            {
+                if (serverList.servers.Count != 0)
+                {
+                    for (int i = 0; i < serverList.servers.Count; i++)
+                    {
+                        ListViewItem lviServer = new ListViewItem(new string[] { serverList.servers[i].serverName, serverList.servers[i].travelServer });
+                        lvic.Add(lviServer);
+                    }
+                }
+                else
+                { lvic.Add(new ListViewItem(new string[] { "No server found", "Try to click 'Reload servers'" })); }
+                if (lvServers.Items.Count != 0)
+                {
+                    if (index.currentSelectedServer >= lvServers.Items.Count)
+                    {
+                        index.currentSelectedServer = 0;
+                    }
+                    lvServers.Items[index.currentSelectedServer].Selected = true;
+                    lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
+                    lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
+                }
+            }
         }
 
         private void ReloadDatabaseListView(object sender, EventArgs e)
         {
-            //lvDatabases.Items.Clear();
-            //System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvDatabases);
-            //if (travelServer.Databases != null)
-            //{
-            //    if (travelServer.Databases.Count != 0)
-            //    {
-            //        foreach (DatabaseItem database in travelServer.Databases)
-            //        {
-            //            ListViewItem lviDatabase = new ListViewItem(new string[] { database.DatabaseName, database.Server, database.Database, "SQL Server Authentication", database.UserName, database.UserAuth });
-            //            lvic.Add(lviDatabase);
-            //        }
-            //    }
-            //    else
-            //    { lvic.Add(new ListViewItem(new string[] { "No database found", "Try to click 'Reload databases'", "", "", "", "" })); }
-            //    if (lvDatabases.Items.Count != 0)
-            //    {
-            //        if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
-            //        {
-            //            index.currentSelectedDatabase = 0;
-            //        }
-            //        lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
-            //        lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
-            //        lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
-            //    }
-            //}
-            EnableAllButtons();
+            lvDatabases.Items.Clear();
+            System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvDatabases);
+            if (travelServer.Databases != null)
+            {
+                if (travelServer.Databases.Count != 0)
+                {
+                    foreach (DatabaseItem database in travelServer.Databases)
+                    {
+                        ListViewItem lviDatabase = new ListViewItem(new string[] { database.DatabaseName, database.Server, database.Database, "SQL Server Authentication", database.UserName, database.UserAuth });
+                        lvic.Add(lviDatabase);
+                    }
+                }
+                else
+                { lvic.Add(new ListViewItem(new string[] { "No database found", "Try to click 'Reload databases'", "", "", "", "" })); }
+                if (lvDatabases.Items.Count != 0)
+                {
+                    if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
+                    {
+                        index.currentSelectedDatabase = 0;
+                    }
+                    lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
+                    lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
+                    lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
+                }
+            }
         }
 
         private void ServerInstanceSelector_Load(object sender, EventArgs e)
         {
-            this.groupList.Updated += new EventHandler(this.ReloadGroupListView);
-            this.serverList.Updated += new EventHandler(this.ReloadServerListView);
-            this.travelServer.Updated += new EventHandler(this.ReloadDatabaseListView);
+            //this.groupList.Updated += new EventHandler(this.ReloadGroupListView);
+            //this.serverList.Updated += new EventHandler(this.ReloadServerListView);
+            //this.travelServer.Updated += new EventHandler(this.ReloadDatabaseListView);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -551,29 +548,23 @@ namespace DatabaseSelector
 
         private void btnReloadGroups_Click(object sender, EventArgs e)
         {
+            trigger = "btnReloadGroups";
             DisableAllButtons();
-            Thread updateThread = new Thread(new ThreadStart(groupList.GetGroupsFromWeb));
-            updateThread.Start();
-            //groupList.GetGroupsFromWeb();
-            //ReloadGroupListView();
+            bgwUpdate.RunWorkerAsync();
         }
 
         private void btnReloadServers_Click(object sender, EventArgs e)
         {
+            trigger = "btnReloadServers";
             DisableAllButtons();
-            Thread updateThread = new Thread(new ThreadStart(serverList.GetServersFromWeb));
-            updateThread.Start();
-            //serverList.GetServersFromWeb();
-            //ReloadServerListView();
+            bgwUpdate.RunWorkerAsync();
         }
 
         private void btnReloadDatabases_Click(object sender, EventArgs e)
         {
+            trigger = "btnReloadDatabases";
             DisableAllButtons();
-            Thread updateThread = new Thread(new ThreadStart(travelServer.GetDatabasesFromRegistry));
-            updateThread.Start();
-            //travelServer.GetDatabasesFromRegistry();
-            //ReloadDatabaseListView();
+            bgwUpdate.RunWorkerAsync();
         }
 
         private void DisableAllButtons()
@@ -628,6 +619,29 @@ namespace DatabaseSelector
                 }
             }
             return len;
+        }
+
+        private void bgwUpdate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (trigger.Equals("btnReloadGroups"))
+                groupList.GetGroupsFromWeb();
+            else if (trigger.Equals("btnReloadServers"))
+                serverList.GetServersFromWeb();
+            else if (trigger.Equals("btnReloadDatabases"))
+                travelServer.GetDatabasesFromRegistry();
+        }
+
+        private void bgwUpdate_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (trigger.Equals("btnReloadGroups"))
+                ReloadGroupListView(this, EventArgs.Empty);
+            else if (trigger.Equals("btnReloadServers"))
+                ReloadServerListView(this, EventArgs.Empty);
+            else if (trigger.Equals("btnReloadDatabases"))
+                ReloadDatabaseListView(this, EventArgs.Empty);
+            trigger = null;
+            EnableAllButtons();
         }
 
     }
