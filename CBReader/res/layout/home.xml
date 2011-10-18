@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/LinearLayout01"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical">
+	<LinearLayout android:id="@+id/topLinearLayout"
+		android:layout_width="fill_parent" android:orientation="horizontal"
+		android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+		<Button android:text="Refresh" android:id="@+id/btnRefresh"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_gravity="left"></Button>
+		<TextView android:textAppearance="?android:attr/textAppearanceLarge"
+			android:id="@+id/activityLabel" android:layout_height="wrap_content"
+			android:text="xxxxxxxx" android:layout_width="wrap_content"
+			android:layout_weight="2" android:layout_gravity="center"></TextView>
+		<Button android:text="Comment" android:id="@+id/btnComment"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_gravity="right"></Button>
+	</LinearLayout>
+	<ListView android:id="@+id/listView" android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+	</ListView>
+</LinearLayout>

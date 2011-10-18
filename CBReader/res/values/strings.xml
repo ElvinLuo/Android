@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">CBReader</string>
+	<string name="home_banner">This is home screen</string>
+	<string name="cnbeta_url">http://m.cnbeta.com/</string>
+</resources>
