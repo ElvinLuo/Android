@@ -1,8 +1,8 @@
 ﻿using System;
-using SHDocVw;
-using mshtml;
-using Microsoft.Win32;
 using System.IO;
+using Microsoft.Win32;
+using mshtml;
+using SHDocVw;
 
 namespace DatabaseSelector
 {
@@ -80,9 +80,6 @@ namespace DatabaseSelector
             HTMLTableCell dbServerName = (HTMLTableCell)targetCell.nextSibling.nextSibling.nextSibling.nextSibling;
             string targetDBServerName = dbServerName.innerText;
             Console.WriteLine("database server: {0}", targetDBServerName);
-
-            //PrintDBNames(targetDBServerName);
-
             IE.Quit();
 
             return targetDBServerName;

@@ -10,7 +10,6 @@ using Microsoft.SqlServer.Management.Smo.RegSvrEnum;
 using Microsoft.SqlServer.Management.UI.VSIntegration;
 using Microsoft.SqlServer.Management.UI.VSIntegration.Editors;
 using Microsoft.SqlServer.Management.UI.VSIntegration.ObjectExplorer;
-using System.Threading;
 
 namespace DatabaseSelector
 {
@@ -19,14 +18,10 @@ namespace DatabaseSelector
         public ServerInstanceSelector()
         {
             InitializeComponent();
-            //IE = new InternetExplorer();
             index = Index.CreateInstance();
-            //index.GetIndexFromXml();
 
-            //lvGroups.Columns.Add("Groups", -2, HorizontalAlignment.Left);
             lvGroups.FullRowSelect = true;
             groupList = GroupList.instance;
-            //groupList = new GroupList();
             groupList.GetGroups();
             ReloadGroupListView(this, EventArgs.Empty);
 
@@ -43,7 +38,6 @@ namespace DatabaseSelector
             lvDatabases.Columns.Add("Authentication", -2, HorizontalAlignment.Left);
             lvDatabases.Columns.Add("User name", -2, HorizontalAlignment.Left);
             lvDatabases.Columns.Add("Password", -2, HorizontalAlignment.Left);
-            //lvDatabases.Select();
             lvDatabases.FullRowSelect = true;
             travelServer = new TravelServer();
             travelServer.GetDatabases();
@@ -55,8 +49,6 @@ namespace DatabaseSelector
         void ServerInstanceSelector_FormClosing(object sender, FormClosingEventArgs e)
         {
             index.SaveIndexToXml();
-            //if (IE != null)
-            //    IE.Quit();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -67,7 +59,6 @@ namespace DatabaseSelector
         void lvDatabases_DoubleClick(object sender, System.EventArgs e)
         {
             ConnectToServer();
-            //throw new System.NotImplementedException();
         }
 
         private void ConnectToServer()
@@ -302,7 +293,6 @@ namespace DatabaseSelector
                 object sfiObject = scriptFactoryType.GetField("instance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
                 MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
                 methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
-                //methodCreateNewScript.Invoke(sfiObject, new object[] { strFullPath, connection, sqlConnection });
             }
             else if (version == 2005)
             {
@@ -316,27 +306,25 @@ namespace DatabaseSelector
             System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
             if (groupList.groups != null)
             {
-                if (groupList.groups.Count != 0)
+                for (int i = 0; i < groupList.groups.Count; i++)
                 {
-                    for (int i = 0; i < groupList.groups.Count; i++)
-                    {
-                        ListViewItem lviDatabase = new ListViewItem(new string[] { groupList.groups[i] });
-                        lvicGroup.Add(lviDatabase);
-                    }
-                }
-                else
-                { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
-                if (lvGroups.Items.Count != 0)
-                {
-                    if (index.currentSelectedGroup >= lvGroups.Items.Count)
-                    {
-                        index.currentSelectedGroup = 7;
-                    }
-                    lvGroups.Items[index.currentSelectedGroup].Selected = true;
-                    lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
-                    lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
+                    ListViewItem lviDatabase = new ListViewItem(new string[] { groupList.groups[i] });
+                    lvicGroup.Add(lviDatabase);
                 }
             }
+            else
+            { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
+            if (lvGroups.Items.Count != 0)
+            {
+                if (index.currentSelectedGroup >= lvGroups.Items.Count)
+                {
+                    index.currentSelectedGroup = 7;
+                }
+                lvGroups.Items[index.currentSelectedGroup].Selected = true;
+                lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
+                lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
+            }
+            lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
 
         private void ReloadServerListView(object sender, EventArgs e)
@@ -345,27 +333,25 @@ namespace DatabaseSelector
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
             if (serverList.servers != null)
             {
-                if (serverList.servers.Count != 0)
+                for (int i = 0; i < serverList.servers.Count; i++)
                 {
-                    for (int i = 0; i < serverList.servers.Count; i++)
-                    {
-                        ListViewItem lviServer = new ListViewItem(new string[] { serverList.servers[i].serverName, serverList.servers[i].travelServer });
-                        lvic.Add(lviServer);
-                    }
-                }
-                else
-                { lvic.Add(new ListViewItem(new string[] { "No server found", "Try to click 'Reload servers'" })); }
-                if (lvServers.Items.Count != 0)
-                {
-                    if (index.currentSelectedServer >= lvServers.Items.Count)
-                    {
-                        index.currentSelectedServer = 0;
-                    }
-                    lvServers.Items[index.currentSelectedServer].Selected = true;
-                    lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
-                    lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
+                    ListViewItem lviServer = new ListViewItem(new string[] { serverList.servers[i].serverName, serverList.servers[i].travelServer });
+                    lvic.Add(lviServer);
                 }
             }
+            else
+            { lvic.Add(new ListViewItem(new string[] { "No server found", "Try to click 'Reload servers'" })); }
+            if (lvServers.Items.Count != 0)
+            {
+                if (index.currentSelectedServer >= lvServers.Items.Count)
+                {
+                    index.currentSelectedServer = 0;
+                }
+                lvServers.Items[index.currentSelectedServer].Selected = true;
+                lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
+                lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
+            }
+            lblServersUpdateDate.Text = "Updated at: " + serverList.updateDate;
         }
 
         private void ReloadDatabaseListView(object sender, EventArgs e)
@@ -374,34 +360,29 @@ namespace DatabaseSelector
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvDatabases);
             if (travelServer.Databases != null)
             {
-                if (travelServer.Databases.Count != 0)
+                foreach (DatabaseItem database in travelServer.Databases)
                 {
-                    foreach (DatabaseItem database in travelServer.Databases)
-                    {
-                        ListViewItem lviDatabase = new ListViewItem(new string[] { database.DatabaseName, database.Server, database.Database, "SQL Server Authentication", database.UserName, database.UserAuth });
-                        lvic.Add(lviDatabase);
-                    }
-                }
-                else
-                { lvic.Add(new ListViewItem(new string[] { "No database found", "Try to click 'Reload databases'", "", "", "", "" })); }
-                if (lvDatabases.Items.Count != 0)
-                {
-                    if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
-                    {
-                        index.currentSelectedDatabase = 0;
-                    }
-                    lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
-                    lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
-                    lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
+                    ListViewItem lviDatabase = new ListViewItem(new string[] { database.DatabaseName, database.Server, database.Database, "SQL Server Authentication", database.UserName, database.UserAuth });
+                    lvic.Add(lviDatabase);
                 }
             }
+            else
+            { lvic.Add(new ListViewItem(new string[] { "No database found", "Try to click 'Reload databases'", "", "", "", "" })); }
+            if (lvDatabases.Items.Count != 0)
+            {
+                if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
+                {
+                    index.currentSelectedDatabase = 0;
+                }
+                lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
+                lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
+                lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
+            }
+            lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
         }
 
         private void ServerInstanceSelector_Load(object sender, EventArgs e)
         {
-            //this.groupList.Updated += new EventHandler(this.ReloadGroupListView);
-            //this.serverList.Updated += new EventHandler(this.ReloadServerListView);
-            //this.travelServer.Updated += new EventHandler(this.ReloadDatabaseListView);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -532,16 +513,28 @@ namespace DatabaseSelector
 
         private void btnSaveServers_Click(object sender, EventArgs e)
         {
-            GroupServerList gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), "Servers.xml") as GroupServerList);
-            gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
+            GroupServerList gsl;
+            if (File.Exists(Serializer.CreateInstance().applicationFolder + "Servers.xml"))
+            {
+                gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), "Servers.xml") as GroupServerList);
+                gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
+            }
+            else
+            { gsl = GroupServerList.CreateInstance(); }
             gsl.groupServers.Add(serverList);
             gsl.SaveListToXML();
         }
 
         private void btnDatabases_Click(object sender, EventArgs e)
         {
-            TravelServerList tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList);
-            tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
+            TravelServerList tsl;
+            if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
+            {
+                tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList);
+                tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
+            }
+            else
+            { tsl = TravelServerList.CreateInstance(); }
             tsl.travelServers.Add(travelServer);
             tsl.SaveListToXml();
         }

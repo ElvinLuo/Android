@@ -39,6 +39,7 @@ namespace DatabaseSelector
     public class TravelServer
     {
         public string MachineName;
+        public DateTime updateDate;
         public List<DatabaseItem> Databases;
         public event EventHandler Updated;
 
@@ -62,97 +63,71 @@ namespace DatabaseSelector
 
         public void GetDatabases()
         {
-            TravelServerList tsl;
-            if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
+            try
             {
-                tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList);
+                TravelServerList tsl = null;
+                updateDate = DateTime.MinValue;
+                Databases = null;
+                if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
+                { tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList); }
                 if (tsl == null)
+                { tsl = TravelServerList.CreateInstance(); }
+                if (tsl.GetTravelServer(MachineName) != null && tsl.GetTravelServer(MachineName).Databases.Count != 0)
                 {
-                    tsl = TravelServerList.CreateInstance();
-                    TravelServer newTravelServer = new TravelServer(MachineName);
-                    newTravelServer.GetDatabasesFromRegistry();
-                    tsl.travelServers.Add(newTravelServer);
-                    tsl.SaveListToXml();
-                }
-                if (tsl.GetTravelServer(MachineName) == null)
-                {
-                    TravelServer newTravelServer = new TravelServer(MachineName);
-                    newTravelServer.GetDatabasesFromRegistry();
-                    tsl.travelServers.Add(newTravelServer);
-                    tsl.SaveListToXml();
-                }
-                if (tsl.GetTravelServer(MachineName).Databases == null)
-                {
-                    TravelServer newTravelServer = new TravelServer(MachineName);
-                    newTravelServer.GetDatabasesFromRegistry();
-                    tsl.travelServers.Add(newTravelServer);
-                    tsl.SaveListToXml();
+                    updateDate = tsl.GetTravelServer(MachineName).updateDate;
+                    Databases = tsl.GetTravelServer(MachineName).Databases;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                try
-                {
-                    tsl = TravelServerList.CreateInstance();
-                    TravelServer newTravelServer = new TravelServer(MachineName);
-                    newTravelServer.GetDatabasesFromRegistry();
-                    tsl.travelServers.Add(newTravelServer);
-                    tsl.SaveListToXml();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    return;
-                }
+                Console.WriteLine(ex.Message);
+                return;
             }
-            this.Databases = tsl.GetTravelServer(MachineName).Databases;
         }
 
         public void GetDatabasesFromRegistry()
         {
-            //TXTReader txtReader = TXTReader.CreateInstance();
-            //Dictionary<string, int> pairs = txtReader.GetServerPortPair();
-            //if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
-            //{
-            //    XLSReader xlsReader = XLSReader.CreateInstance();
-            //    Databases = xlsReader.GetTravelServerFromXLS(MachineName).Databases;
-            //}
-            //else
-            //{
-            //    Databases = new List<DatabaseItem>();
-
-            //    RegistryKey expDsnKey;
-            //    RegistryKey expDsnSubKey;
-
-            //    try
-            //    {
-            //        expDsnKey = RegistryKey.OpenRemoteBaseKey(
-            //            RegistryHive.LocalMachine, MachineName.Trim()).OpenSubKey(
-            //            "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
-            //    }
-            //    catch (IOException e)
-            //    {
-            //        Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
-            //        return;
-            //    }
-
-            //    foreach (string subKeyName in expDsnKey.GetSubKeyNames())
-            //    {
-            //        expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
-            //        string[] items = expDsnSubKey.GetValueNames();
-            //        bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
-            //        DatabaseItem databaseItem = new DatabaseItem(
-            //            subKeyName,
-            //            matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
-            //            matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
-            //            matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
-            //            matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
-            //            matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
-            //        Databases.Add(databaseItem);
-            //    }
-            //    expDsnKey.Close();
-            //}
-            OnUpdated(EventArgs.Empty);
+            try
+            {
+                TXTReader txtReader = TXTReader.CreateInstance();
+                Dictionary<string, int> pairs = txtReader.GetServerPortPair();
+                if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
+                {
+                    XLSReader xlsReader = XLSReader.CreateInstance();
+                    Databases = xlsReader.GetTravelServerFromXLS(MachineName).Databases;
+                }
+                else
+                {
+                    Databases = new List<DatabaseItem>();
+                    RegistryKey expDsnKey;
+                    RegistryKey expDsnSubKey;
+                    expDsnKey = RegistryKey.OpenRemoteBaseKey(
+                        RegistryHive.LocalMachine, MachineName.Trim()).OpenSubKey(
+                        "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
+                    foreach (string subKeyName in expDsnKey.GetSubKeyNames())
+                    {
+                        expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
+                        string[] items = expDsnSubKey.GetValueNames();
+                        bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
+                        DatabaseItem databaseItem = new DatabaseItem(
+                            subKeyName,
+                            matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
+                            matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
+                            matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
+                            matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
+                            matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
+                        Databases.Add(databaseItem);
+                    }
+                    expDsnKey.Close();
+                }
+                updateDate = DateTime.Now;
+                OnUpdated(EventArgs.Empty);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
+                return;
+            }
         }
 
         public bool[] Match(string[] first, string[] second)

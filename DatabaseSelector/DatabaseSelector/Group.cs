@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
+using mshtml;
+using SHDocVw;
 
 namespace DatabaseSelector
 {
@@ -9,6 +10,7 @@ namespace DatabaseSelector
     {
         public static readonly GroupList instance = new GroupList();
         public string defaultGroup;
+        public DateTime updateDate;
         public List<string> groups;
         public event EventHandler Updated;
 
@@ -51,8 +53,11 @@ namespace DatabaseSelector
         {
             if (File.Exists(Serializer.CreateInstance().applicationFolder + "Groups.xml"))
             {
-                List<string> groupList = new List<string>();
-                groupList = (Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Groups.xml") as GroupList).groups;
+                GroupList gl = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Groups.xml") as GroupList;
+                List<string> groupList = gl.groups;
+                defaultGroup = gl.defaultGroup;
+                updateDate = gl.updateDate;
+
                 if (groupList.Count == 0)
                 {
                     GetGroupsFromWeb();
@@ -82,29 +87,30 @@ namespace DatabaseSelector
 
         public void GetGroupsFromWeb()
         {
-            //InternetExplorer IE = new InternetExplorer();
-            //object Empty = 0;
-            //object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
+            InternetExplorer IE = new InternetExplorer();
+            object Empty = 0;
+            object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
 
-            //IE.Visible = false;
-            //IE.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
+            IE.Visible = false;
+            IE.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
 
-            //while (IE.Busy)
-            //{
-            //    System.Threading.Thread.Sleep(1000);
-            //}
+            while (IE.Busy)
+            {
+                System.Threading.Thread.Sleep(1000);
+            }
 
-            //IHTMLDocument3 document = (IHTMLDocument3)IE.Document;
-            //HTMLSelectElement selGroups = (HTMLSelectElement)document.getElementById("group");
-            //groups = new List<string>();
-            //groups.Add("PPE");
-            //for (int i = 0; i < selGroups.length; i++)
-            //{
-            //    HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
-            //    if (option.text != null && !option.text.Equals(""))
-            //        groups.Add(option.text);
-            //}
-            //IE.Quit();
+            IHTMLDocument3 document = (IHTMLDocument3)IE.Document;
+            HTMLSelectElement selGroups = (HTMLSelectElement)document.getElementById("group");
+            groups = new List<string>();
+            groups.Add("PPE");
+            for (int i = 0; i < selGroups.length; i++)
+            {
+                HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
+                if (option.text != null && !option.text.Equals(""))
+                    groups.Add(option.text);
+            }
+            IE.Quit();
+            updateDate = DateTime.Now;
             OnUpdated(EventArgs.Empty);
         }
 
