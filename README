@@ -2,5 +2,5 @@ How to update code from GitHub
 git pull git@github.com:ElvinLuo/Projects.git
 
 How to commit changes to GitHub
-git commit -a
+git commit -a -m "Committed"
 git push
