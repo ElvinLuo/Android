@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 
@@ -146,8 +147,9 @@ namespace DatabaseSelector
             file = fileName;
         }
 
-        public TravelServer GetTravelServerFromXLS(string machineName)
+        public TravelServer GetTravelServerFromXLSAndChangeProgressBar(string machineName, ProgressBar pgb)
         {
+            int max = pgb.Maximum;
             int i = 2;
             System.Array myvalues;
             TravelServer travelServer = new TravelServer(machineName);
@@ -164,6 +166,7 @@ namespace DatabaseSelector
             Microsoft.Office.Interop.Excel.Worksheet worksheet = (Microsoft.Office.Interop.Excel.Worksheet)sheets.get_Item(1);
 
             Microsoft.Office.Interop.Excel.Range range = worksheet.get_Range("A" + i.ToString(), "B" + i.ToString());
+            pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = worksheet.Rows.Row; });
             while (!range.Text.Equals(""))
             {
                 myvalues = (System.Array)range.Cells.Value2;
@@ -177,10 +180,12 @@ namespace DatabaseSelector
                 }
                 i++;
                 range = worksheet.get_Range("A" + i.ToString(), "B" + i.ToString());
+                pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
             }
 
             theWorkbook.Close(Microsoft.Office.Interop.Excel.XlSaveAction.xlDoNotSaveChanges, Type.Missing, Type.Missing);
             ExcelObj.Quit();
+            pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
             return travelServer;
         }
     }

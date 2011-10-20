@@ -59,14 +59,10 @@ namespace DatabaseSelector
                 updateDate = gl.updateDate;
 
                 if (groupList.Count == 0)
-                {
-                    GetGroupsFromWeb();
-                    SaveListToXML();
-                }
+                { GetGroupsFromWebAndSaveToXML(); }
                 groups = new List<string>();
                 if (!groupList[0].Equals("PPE"))
                 {
-
                     groups.Add("PPE");
                     foreach (string item in groupList)
                         groups.Add(item);
@@ -79,39 +75,55 @@ namespace DatabaseSelector
                 }
             }
             else
-            {
-                GetGroupsFromWeb();
-                SaveListToXML();
-            }
+            { GetGroupsFromWebAndSaveToXML(); }
         }
 
-        public void GetGroupsFromWeb()
+        public void GetGroupsFromWebAndSaveToXML()
         {
-            InternetExplorer IE = new InternetExplorer();
-            object Empty = 0;
-            object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
+            InternetExplorer ie = new InternetExplorer();
+            GetGroupsFromWeb(ie);
+            ie.Quit();
+            SaveListToXML();
+        }
 
-            IE.Visible = false;
-            IE.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
-
-            while (IE.Busy)
+        public void GetGroupsFromWeb(InternetExplorer ie)
+        {
+            try
             {
-                System.Threading.Thread.Sleep(1000);
-            }
+                groups = new List<string>();
+                groups.Add("PPE");
 
-            IHTMLDocument3 document = (IHTMLDocument3)IE.Document;
-            HTMLSelectElement selGroups = (HTMLSelectElement)document.getElementById("group");
-            groups = new List<string>();
-            groups.Add("PPE");
-            for (int i = 0; i < selGroups.length; i++)
-            {
-                HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
-                if (option.text != null && !option.text.Equals(""))
-                    groups.Add(option.text);
+                object Empty = 0;
+                object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
+
+                ie.Visible = false;
+                ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
+
+                while (ie.Busy)
+                { System.Threading.Thread.Sleep(1000); }
+
+                IHTMLDocument3 document = (IHTMLDocument3)ie.Document;
+                if (document != null)
+                {
+                    HTMLSelectElement selGroups = (HTMLSelectElement)document.getElementById("group");
+                    if (selGroups != null)
+                    {
+                        for (int i = 0; i < selGroups.length; i++)
+                        {
+                            HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
+                            if (option.text != null && !option.text.Equals(""))
+                            { groups.Add(option.text); }
+                        }
+                    }
+                }
             }
-            IE.Quit();
-            updateDate = DateTime.Now;
-            OnUpdated(EventArgs.Empty);
+            catch (Exception e)
+            { Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message); }
+            finally
+            {
+                updateDate = DateTime.Now;
+                OnUpdated(EventArgs.Empty);
+            }
         }
 
     }

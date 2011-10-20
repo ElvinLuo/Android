@@ -9,3 +9,14 @@ D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsAp
 D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.BrowserControllerForm.resources
 D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\Interop.SHDocVw.dll
 D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.csproj.ResolveComReference.cache
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\Interop.SHDocVw.dll
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.csproj.ResolveComReference.cache
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.exe
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.pdb
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.pdb
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.BrowserControllerForm.resources
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.Properties.Resources.resources
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Projects\GitHub\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\GenerateResource.write.1.tlog

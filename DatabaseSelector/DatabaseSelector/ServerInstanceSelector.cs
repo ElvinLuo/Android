@@ -10,6 +10,7 @@ using Microsoft.SqlServer.Management.Smo.RegSvrEnum;
 using Microsoft.SqlServer.Management.UI.VSIntegration;
 using Microsoft.SqlServer.Management.UI.VSIntegration.Editors;
 using Microsoft.SqlServer.Management.UI.VSIntegration.ObjectExplorer;
+using SHDocVw;
 
 namespace DatabaseSelector
 {
@@ -551,6 +552,7 @@ namespace DatabaseSelector
         {
             trigger = "btnReloadServers";
             DisableAllButtons();
+            pgbReloadServers.Visible = true;
             bgwUpdate.RunWorkerAsync();
         }
 
@@ -558,6 +560,7 @@ namespace DatabaseSelector
         {
             trigger = "btnReloadDatabases";
             DisableAllButtons();
+            pgbReloadDatabases.Visible = true;
             bgwUpdate.RunWorkerAsync();
         }
 
@@ -617,23 +620,57 @@ namespace DatabaseSelector
 
         private void bgwUpdate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (trigger.Equals("btnReloadGroups"))
-                groupList.GetGroupsFromWeb();
-            else if (trigger.Equals("btnReloadServers"))
-                serverList.GetServersFromWeb();
-            else if (trigger.Equals("btnReloadDatabases"))
-                travelServer.GetDatabasesFromRegistry();
+            if (trigger.Equals("btnReloadDatabases"))
+            { travelServer.GetDatabasesFromRegistryAndChangeProgressBar(pgbReloadDatabases); }
+            else if (trigger.Equals("btnReloadServers") && serverList.groupName.Equals("PPE"))
+            { serverList.GetServersFromFile(pgbReloadServers); }
+            else
+            {
+                InternetExplorer ie = new InternetExplorer();
+                ie.ProgressChange += new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
+
+                if (trigger.Equals("btnReloadGroups"))
+                { groupList.GetGroupsFromWeb(ie); }
+                else if (trigger.Equals("btnReloadServers"))
+                { serverList.GetServersFromWeb(ie); }
+
+                ie.ProgressChange -= new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
+                ie.Quit();
+            }
+        }
+
+        void ie_ProgressChange(int Progress, int ProgressMax)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                ProgressBar pgb = null;
+                if (trigger.Equals("btnReloadGroups"))
+                { pgb = pgbReloadGroups; }
+                else if (trigger.Equals("btnReloadServers"))
+                { pgb = pgbReloadServers; }
+                if (pgbReloadGroups.Minimum <= Progress && Progress <= pgbReloadGroups.Maximum)
+                { pgb.Value = Progress; }
+            });
         }
 
         private void bgwUpdate_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             Button btn = sender as Button;
             if (trigger.Equals("btnReloadGroups"))
+            {
                 ReloadGroupListView(this, EventArgs.Empty);
+                pgbReloadGroups.Visible = false;
+            }
             else if (trigger.Equals("btnReloadServers"))
+            {
                 ReloadServerListView(this, EventArgs.Empty);
+                pgbReloadServers.Visible = false;
+            }
             else if (trigger.Equals("btnReloadDatabases"))
+            {
                 ReloadDatabaseListView(this, EventArgs.Empty);
+                pgbReloadDatabases.Visible = false;
+            }
             trigger = null;
             EnableAllButtons();
         }

@@ -99,8 +99,7 @@ namespace DatabaseSelector
             }
             catch (IOException e)
             {
-                Console.WriteLine("{0}: {1}",
-                    e.GetType().Name, e.Message);
+                Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
                 return;
             }
 

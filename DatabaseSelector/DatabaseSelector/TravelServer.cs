@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using Microsoft.Win32;
 
@@ -85,7 +86,7 @@ namespace DatabaseSelector
             }
         }
 
-        public void GetDatabasesFromRegistry()
+        public void GetDatabasesFromRegistryAndChangeProgressBar(ProgressBar pgb)
         {
             try
             {
@@ -94,39 +95,52 @@ namespace DatabaseSelector
                 if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
                 {
                     XLSReader xlsReader = XLSReader.CreateInstance();
-                    Databases = xlsReader.GetTravelServerFromXLS(MachineName).Databases;
+                    Databases = xlsReader.GetTravelServerFromXLSAndChangeProgressBar(MachineName, pgb).Databases;
                 }
                 else
                 {
+                    int max = pgb.Maximum;
                     Databases = new List<DatabaseItem>();
                     RegistryKey expDsnKey;
                     RegistryKey expDsnSubKey;
                     expDsnKey = RegistryKey.OpenRemoteBaseKey(
                         RegistryHive.LocalMachine, MachineName.Trim()).OpenSubKey(
                         "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
-                    foreach (string subKeyName in expDsnKey.GetSubKeyNames())
+                    if (expDsnKey != null)
                     {
-                        expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
-                        string[] items = expDsnSubKey.GetValueNames();
-                        bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
-                        DatabaseItem databaseItem = new DatabaseItem(
-                            subKeyName,
-                            matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
-                            matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
-                            matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
-                            matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
-                            matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
-                        Databases.Add(databaseItem);
+                        pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = expDsnKey.ValueCount; });
+                        foreach (string subKeyName in expDsnKey.GetSubKeyNames())
+                        {
+                            expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
+                            if (expDsnSubKey != null)
+                            {
+                                string[] items = expDsnSubKey.GetValueNames();
+                                bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
+                                DatabaseItem databaseItem = new DatabaseItem(
+                                    subKeyName,
+                                    matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
+                                    matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
+                                    matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
+                                    matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
+                                    matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
+                                Databases.Add(databaseItem);
+                                pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                            }
+                        }
                     }
                     expDsnKey.Close();
+                    pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
                 }
-                updateDate = DateTime.Now;
-                OnUpdated(EventArgs.Empty);
             }
             catch (IOException e)
             {
                 Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
                 return;
+            }
+            finally
+            {
+                updateDate = DateTime.Now;
+                OnUpdated(EventArgs.Empty);
             }
         }
 

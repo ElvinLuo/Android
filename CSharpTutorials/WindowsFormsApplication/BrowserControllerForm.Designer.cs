@@ -1,4 +1,5 @@
-﻿namespace WindowsFormsApplication
+﻿using SHDocVw;
+namespace WindowsFormsApplication
 {
     partial class BrowserControllerForm
     {
@@ -45,6 +46,7 @@
             // pgbBrowser
             // 
             this.pgbBrowser.Location = new System.Drawing.Point(95, 12);
+            this.pgbBrowser.Maximum = 10000;
             this.pgbBrowser.Name = "pgbBrowser";
             this.pgbBrowser.Size = new System.Drawing.Size(185, 23);
             this.pgbBrowser.TabIndex = 1;
@@ -58,6 +60,8 @@
             this.Controls.Add(this.btnStartBrowser);
             this.Name = "BrowserControllerForm";
             this.Text = "Windows Form";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BrowserControllerForm_FormClosed);
+            this.Load += new System.EventHandler(this.BrowserControllerForm_Load);
             this.ResumeLayout(false);
 
         }
@@ -66,5 +70,6 @@
 
         private System.Windows.Forms.Button btnStartBrowser;
         private System.Windows.Forms.ProgressBar pgbBrowser;
+        InternetExplorer ie;
     }
 }
