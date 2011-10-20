@@ -1,0 +1,11 @@
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.Properties.Resources.resources
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Projects\CSharpTutorials\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.exe
+D:\Projects\CSharpTutorials\WindowsFormsApplication\bin\Debug\WindowsFormsApplication.pdb
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.exe
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.pdb
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.BrowserControllerForm.resources
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\Interop.SHDocVw.dll
+D:\Projects\CSharpTutorials\WindowsFormsApplication\obj\x86\Debug\WindowsFormsApplication.csproj.ResolveComReference.cache
