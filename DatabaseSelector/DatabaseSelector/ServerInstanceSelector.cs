@@ -566,22 +566,28 @@ namespace DatabaseSelector
 
         private void DisableAllButtons()
         {
-            this.btnReloadDatabases.Enabled = false;
-            this.btnReloadGroups.Enabled = false;
-            this.btnReloadServers.Enabled = false;
-            this.btnSaveDatabases.Enabled = false;
-            this.btnSaveGroups.Enabled = false;
-            this.btnSaveServers.Enabled = false;
+            btnReloadDatabases.Enabled = false;
+            btnReloadGroups.Enabled = false;
+            btnReloadServers.Enabled = false;
+            btnSaveDatabases.Enabled = false;
+            btnSaveGroups.Enabled = false;
+            btnSaveServers.Enabled = false;
+            lvGroups.Enabled = false;
+            lvServers.Enabled = false;
+            lvDatabases.Enabled = false;
         }
 
         private void EnableAllButtons()
         {
-            this.btnReloadDatabases.Enabled = true;
-            this.btnReloadGroups.Enabled = true;
-            this.btnReloadServers.Enabled = true;
-            this.btnSaveDatabases.Enabled = true;
-            this.btnSaveGroups.Enabled = true;
-            this.btnSaveServers.Enabled = true;
+            btnReloadDatabases.Enabled = true;
+            btnReloadGroups.Enabled = true;
+            btnReloadServers.Enabled = true;
+            btnSaveDatabases.Enabled = true;
+            btnSaveGroups.Enabled = true;
+            btnSaveServers.Enabled = true;
+            lvGroups.Enabled = true;
+            lvServers.Enabled = true;
+            lvDatabases.Enabled = true;
         }
 
         public int GetMatchingLength(char[] string1, char[] string2)
