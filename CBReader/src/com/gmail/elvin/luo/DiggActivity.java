@@ -9,7 +9,7 @@ public class DiggActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		TextView textview = new TextView(this);
-		textview.setText("This is the digg tab");
+		textview.setText("");
 		setContentView(textview);
 	}
 }
