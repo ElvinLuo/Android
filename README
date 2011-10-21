@@ -3,4 +3,4 @@ git pull git@github.com:ElvinLuo/Projects.git
 
 How to commit changes to GitHub
 git commit -a -m "Committed"
-git push
+git push git@github.com:ElvinLuo/Projects.git
