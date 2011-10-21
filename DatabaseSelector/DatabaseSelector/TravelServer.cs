@@ -127,8 +127,8 @@ namespace DatabaseSelector
                                 pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
                             }
                         }
+                        expDsnKey.Close();
                     }
-                    expDsnKey.Close();
                     pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
                 }
             }

@@ -305,7 +305,7 @@ namespace DatabaseSelector
         {
             lvGroups.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
-            if (groupList.groups != null)
+            if (groupList.groups != null && groupList.groups.Count != 0)
             {
                 for (int i = 0; i < groupList.groups.Count; i++)
                 {
@@ -332,7 +332,7 @@ namespace DatabaseSelector
         {
             lvServers.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
-            if (serverList.servers != null)
+            if (serverList.servers != null && serverList.servers.Count != 0)
             {
                 for (int i = 0; i < serverList.servers.Count; i++)
                 {
@@ -359,7 +359,7 @@ namespace DatabaseSelector
         {
             lvDatabases.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvDatabases);
-            if (travelServer.Databases != null)
+            if (travelServer.Databases != null && travelServer.Databases.Count != 0)
             {
                 foreach (DatabaseItem database in travelServer.Databases)
                 {
@@ -378,6 +378,7 @@ namespace DatabaseSelector
                 lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
                 lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
                 lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
+                lvDatabases.Focus();
             }
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
         }
