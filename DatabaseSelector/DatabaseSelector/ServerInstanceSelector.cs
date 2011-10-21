@@ -378,7 +378,7 @@ namespace DatabaseSelector
                 lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
                 lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
                 lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
-                lvDatabases.Focus();
+                //lvDatabases.Focus();
             }
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
         }
@@ -680,6 +680,12 @@ namespace DatabaseSelector
             }
             trigger = null;
             EnableAllButtons();
+        }
+
+        private void ServerInstanceSelector_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            { this.Close(); }
         }
 
     }
