@@ -42,5 +42,14 @@ namespace WindowsFormsApplication
             ie.ProgressChange -= new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
             ie.Quit();
         }
+
+        private void BrowserControllerForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
     }
 }

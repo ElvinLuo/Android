@@ -35,9 +35,9 @@ namespace WindowsFormsApplication
             // 
             // btnStartBrowser
             // 
-            this.btnStartBrowser.Location = new System.Drawing.Point(13, 13);
+            this.btnStartBrowser.Location = new System.Drawing.Point(13, 12);
             this.btnStartBrowser.Name = "btnStartBrowser";
-            this.btnStartBrowser.Size = new System.Drawing.Size(75, 23);
+            this.btnStartBrowser.Size = new System.Drawing.Size(75, 21);
             this.btnStartBrowser.TabIndex = 0;
             this.btnStartBrowser.Text = "Start";
             this.btnStartBrowser.UseVisualStyleBackColor = true;
@@ -45,23 +45,25 @@ namespace WindowsFormsApplication
             // 
             // pgbBrowser
             // 
-            this.pgbBrowser.Location = new System.Drawing.Point(95, 12);
+            this.pgbBrowser.Location = new System.Drawing.Point(95, 11);
             this.pgbBrowser.Maximum = 10000;
             this.pgbBrowser.Name = "pgbBrowser";
-            this.pgbBrowser.Size = new System.Drawing.Size(185, 23);
+            this.pgbBrowser.Size = new System.Drawing.Size(185, 21);
             this.pgbBrowser.TabIndex = 1;
             // 
             // BrowserControllerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 49);
+            this.ClientSize = new System.Drawing.Size(292, 45);
             this.Controls.Add(this.pgbBrowser);
             this.Controls.Add(this.btnStartBrowser);
+            this.KeyPreview = true;
             this.Name = "BrowserControllerForm";
             this.Text = "Windows Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BrowserControllerForm_FormClosed);
             this.Load += new System.EventHandler(this.BrowserControllerForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BrowserControllerForm_KeyUp);
             this.ResumeLayout(false);
 
         }
