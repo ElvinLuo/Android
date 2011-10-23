@@ -66,11 +66,16 @@ namespace DatabaseSelector
             this.pgbReloadGroups = new System.Windows.Forms.ProgressBar();
             this.pgbReloadServers = new System.Windows.Forms.ProgressBar();
             this.pgbReloadDatabases = new System.Windows.Forms.ProgressBar();
+            this.tbGroupFilter = new System.Windows.Forms.TextBox();
+            this.tbWebServerFilter = new System.Windows.Forms.TextBox();
+            this.tbTravelServerFilter = new System.Windows.Forms.TextBox();
+            this.tbDatabaseFilter = new System.Windows.Forms.TextBox();
+            this.cbAutoOpenEditer = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(280, 467);
+            this.btnConnect.Location = new System.Drawing.Point(280, 484);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 21);
             this.btnConnect.TabIndex = 2;
@@ -80,7 +85,7 @@ namespace DatabaseSelector
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(355, 467);
+            this.btnCancel.Location = new System.Drawing.Point(355, 484);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 21);
             this.btnCancel.TabIndex = 3;
@@ -90,9 +95,9 @@ namespace DatabaseSelector
             // 
             // lvDatabases
             // 
-            this.lvDatabases.Location = new System.Drawing.Point(465, 39);
+            this.lvDatabases.Location = new System.Drawing.Point(465, 57);
             this.lvDatabases.Name = "lvDatabases";
-            this.lvDatabases.Size = new System.Drawing.Size(701, 450);
+            this.lvDatabases.Size = new System.Drawing.Size(701, 448);
             this.lvDatabases.TabIndex = 8;
             this.lvDatabases.UseCompatibleStateImageBehavior = false;
             this.lvDatabases.View = System.Windows.Forms.View.Details;
@@ -194,9 +199,9 @@ namespace DatabaseSelector
             // 
             // lvServers
             // 
-            this.lvServers.Location = new System.Drawing.Point(202, 39);
+            this.lvServers.Location = new System.Drawing.Point(202, 57);
             this.lvServers.Name = "lvServers";
-            this.lvServers.Size = new System.Drawing.Size(263, 273);
+            this.lvServers.Size = new System.Drawing.Size(263, 255);
             this.lvServers.TabIndex = 19;
             this.lvServers.Tag = "";
             this.lvServers.UseCompatibleStateImageBehavior = false;
@@ -207,9 +212,9 @@ namespace DatabaseSelector
             // 
             this.lvGroups.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Groups});
-            this.lvGroups.Location = new System.Drawing.Point(0, 39);
+            this.lvGroups.Location = new System.Drawing.Point(0, 57);
             this.lvGroups.Name = "lvGroups";
-            this.lvGroups.Size = new System.Drawing.Size(202, 450);
+            this.lvGroups.Size = new System.Drawing.Size(202, 448);
             this.lvGroups.TabIndex = 20;
             this.lvGroups.UseCompatibleStateImageBehavior = false;
             this.lvGroups.View = System.Windows.Forms.View.Details;
@@ -402,11 +407,59 @@ namespace DatabaseSelector
             this.pgbReloadDatabases.TabIndex = 39;
             this.pgbReloadDatabases.Visible = false;
             // 
+            // tbGroupFilter
+            // 
+            this.tbGroupFilter.Location = new System.Drawing.Point(0, 36);
+            this.tbGroupFilter.Name = "tbGroupFilter";
+            this.tbGroupFilter.Size = new System.Drawing.Size(202, 21);
+            this.tbGroupFilter.TabIndex = 40;
+            this.tbGroupFilter.TextChanged += new System.EventHandler(this.tbGroupFilter_TextChanged);
+            // 
+            // tbWebServerFilter
+            // 
+            this.tbWebServerFilter.Location = new System.Drawing.Point(202, 36);
+            this.tbWebServerFilter.Name = "tbWebServerFilter";
+            this.tbWebServerFilter.Size = new System.Drawing.Size(101, 21);
+            this.tbWebServerFilter.TabIndex = 41;
+            this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
+            // 
+            // tbTravelServerFilter
+            // 
+            this.tbTravelServerFilter.Location = new System.Drawing.Point(303, 36);
+            this.tbTravelServerFilter.Name = "tbTravelServerFilter";
+            this.tbTravelServerFilter.Size = new System.Drawing.Size(101, 21);
+            this.tbTravelServerFilter.TabIndex = 42;
+            this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
+            // 
+            // tbDatabaseFilter
+            // 
+            this.tbDatabaseFilter.Location = new System.Drawing.Point(465, 36);
+            this.tbDatabaseFilter.Name = "tbDatabaseFilter";
+            this.tbDatabaseFilter.Size = new System.Drawing.Size(202, 21);
+            this.tbDatabaseFilter.TabIndex = 43;
+            this.tbDatabaseFilter.TextChanged += new System.EventHandler(this.tbDatabaseFilter_TextChanged);
+            // 
+            // cbAutoOpenEditer
+            // 
+            this.cbAutoOpenEditer.AutoSize = true;
+            this.cbAutoOpenEditer.Location = new System.Drawing.Point(263, 468);
+            this.cbAutoOpenEditer.Name = "cbAutoOpenEditer";
+            this.cbAutoOpenEditer.Size = new System.Drawing.Size(162, 16);
+            this.cbAutoOpenEditer.TabIndex = 44;
+            this.cbAutoOpenEditer.Text = "Open a new Query Editer";
+            this.cbAutoOpenEditer.UseVisualStyleBackColor = true;
+            this.cbAutoOpenEditer.CheckedChanged += new System.EventHandler(this.cbAutoOpenEditer_CheckedChanged);
+            // 
             // ServerInstanceSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 488);
+            this.ClientSize = new System.Drawing.Size(1167, 506);
+            this.Controls.Add(this.cbAutoOpenEditer);
+            this.Controls.Add(this.tbDatabaseFilter);
+            this.Controls.Add(this.tbTravelServerFilter);
+            this.Controls.Add(this.tbWebServerFilter);
+            this.Controls.Add(this.tbGroupFilter);
             this.Controls.Add(this.pgbReloadDatabases);
             this.Controls.Add(this.pgbReloadServers);
             this.Controls.Add(this.pgbReloadGroups);
@@ -508,6 +561,11 @@ namespace DatabaseSelector
         private ProgressBar pgbReloadGroups;
         private ProgressBar pgbReloadServers;
         private ProgressBar pgbReloadDatabases;
+        private TextBox tbGroupFilter;
+        private TextBox tbWebServerFilter;
+        private TextBox tbTravelServerFilter;
+        private TextBox tbDatabaseFilter;
+        private CheckBox cbAutoOpenEditer;
 
     }
 }

@@ -7,6 +7,7 @@ namespace DatabaseSelector
         private static Index instance;
         private string fileName = "Index.xml";
 
+        public bool automaticallyOpenEditer;
         public int previousSelectedGroup;
         public int currentSelectedGroup;
         public int previousSelectedServer;
