@@ -99,7 +99,8 @@ namespace DatabaseSelector
                 }
                 else
                 {
-                    int max = pgb.Maximum;
+                    int max = 0;
+                    if (pgb != null) max = pgb.Maximum;
                     Databases = new List<DatabaseItem>();
                     RegistryKey expDsnKey;
                     RegistryKey expDsnSubKey;
@@ -108,7 +109,7 @@ namespace DatabaseSelector
                         "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
                     if (expDsnKey != null)
                     {
-                        pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = expDsnKey.ValueCount; });
+                        if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = expDsnKey.ValueCount; });
                         foreach (string subKeyName in expDsnKey.GetSubKeyNames())
                         {
                             expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
@@ -124,12 +125,12 @@ namespace DatabaseSelector
                                     matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
                                     matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
                                 Databases.Add(databaseItem);
-                                pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                                if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
                             }
                         }
                         expDsnKey.Close();
                     }
-                    pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
+                    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
                 }
             }
             catch (IOException e)

@@ -309,7 +309,7 @@ namespace DatabaseSelector
             this.btnSaveDatabases.TabIndex = 26;
             this.btnSaveDatabases.Text = "Save databases";
             this.btnSaveDatabases.UseVisualStyleBackColor = true;
-            this.btnSaveDatabases.Click += new System.EventHandler(this.btnDatabases_Click);
+            this.btnSaveDatabases.Click += new System.EventHandler(this.btnSaveDatabases_Click);
             // 
             // lblGroup
             // 
@@ -438,7 +438,6 @@ namespace DatabaseSelector
             this.tbGroupFilter.Name = "tbGroupFilter";
             this.tbGroupFilter.Size = new System.Drawing.Size(202, 20);
             this.tbGroupFilter.TabIndex = 40;
-            this.tbGroupFilter.TextChanged += new System.EventHandler(this.tbGroupFilter_TextChanged);
             // 
             // tbWebServerFilter
             // 
@@ -446,7 +445,6 @@ namespace DatabaseSelector
             this.tbWebServerFilter.Name = "tbWebServerFilter";
             this.tbWebServerFilter.Size = new System.Drawing.Size(131, 20);
             this.tbWebServerFilter.TabIndex = 41;
-            this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
             // 
             // tbTravelServerFilter
             // 
@@ -454,7 +452,6 @@ namespace DatabaseSelector
             this.tbTravelServerFilter.Name = "tbTravelServerFilter";
             this.tbTravelServerFilter.Size = new System.Drawing.Size(131, 20);
             this.tbTravelServerFilter.TabIndex = 42;
-            this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
             // 
             // tbDatabaseFilter
             // 
@@ -462,7 +459,6 @@ namespace DatabaseSelector
             this.tbDatabaseFilter.Name = "tbDatabaseFilter";
             this.tbDatabaseFilter.Size = new System.Drawing.Size(263, 20);
             this.tbDatabaseFilter.TabIndex = 43;
-            this.tbDatabaseFilter.TextChanged += new System.EventHandler(this.tbDatabaseFilter_TextChanged);
             // 
             // cbAutoOpenEditer
             // 

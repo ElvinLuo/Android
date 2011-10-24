@@ -20,6 +20,10 @@ namespace DatabaseSelector
         {
             InitializeComponent();
             index = Index.CreateInstance();
+            tbGroupFilter.Text = index.groupFilter;
+            tbWebServerFilter.Text = index.webServerFilter;
+            tbTravelServerFilter.Text = index.travelServerFilter;
+            tbDatabaseFilter.Text = index.databaseFilter;
             cbAutoOpenEditer.Checked = index.automaticallyOpenEditer;
 
             groupList = GroupList.instance;
@@ -27,13 +31,7 @@ namespace DatabaseSelector
             travelServer = new TravelServer();
 
             groupList.GetGroups();
-            ReloadGroupListView(index.groupFilter);
-
-            //serverList.GetServers();
-            //ReloadServerListView(index.webServerFilter, index.travelServerFilter);
-
-            //travelServer.GetDatabases();
-            //ReloadDatabaseListView(index.databaseFilter);
+            ReloadGroupListView(tbGroupFilter.Text);
         }
 
         void ServerInstanceSelector_FormClosing(object sender, FormClosingEventArgs e)
@@ -323,10 +321,10 @@ namespace DatabaseSelector
             {
                 if (index.currentSelectedGroup >= lvGroups.Items.Count)
                 { index.currentSelectedGroup = 0; }
-                lvGroups.Items[index.currentSelectedGroup].Selected = true;
-                lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
-                lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
+                //lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
+                //lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
                 groupList.selectedGroup = lvGroups.Items[index.currentSelectedGroup].SubItems[0].Text;
+                lvGroups.Items[index.currentSelectedGroup].Selected = true;
             }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
@@ -354,8 +352,8 @@ namespace DatabaseSelector
                 if (index.currentSelectedServer >= lvServers.Items.Count)
                 { index.currentSelectedServer = 0; }
                 lvServers.Items[index.currentSelectedServer].Selected = true;
-                lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
-                lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
+                //lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
+                //lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
             }
             lblServersUpdateDate.Text = "Updated at: " + serverList.updateDate;
         }
@@ -363,7 +361,6 @@ namespace DatabaseSelector
         private void ReloadDatabaseListView(string filter)
         {
             lvDatabases.Items.Clear();
-
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvDatabases);
             if (travelServer.Databases != null && travelServer.Databases.Count != 0)
             {
@@ -383,8 +380,8 @@ namespace DatabaseSelector
                 if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
                 { index.currentSelectedDatabase = 0; }
                 lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
-                lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
-                lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
+                //lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
+                //lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
                 //lvDatabases.Focus();
             }
 
@@ -400,6 +397,10 @@ namespace DatabaseSelector
 
         private void ServerInstanceSelector_Load(object sender, EventArgs e)
         {
+            this.tbGroupFilter.TextChanged += new System.EventHandler(this.tbGroupFilter_TextChanged);
+            this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
+            this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
+            this.tbDatabaseFilter.TextChanged += new System.EventHandler(this.tbDatabaseFilter_TextChanged);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -534,11 +535,14 @@ namespace DatabaseSelector
 
         private void btnSaveGroups_Click(object sender, EventArgs e)
         {
+            DisableAllButtons();
             groupList.SaveListToXML();
+            EnableAllButtons();
         }
 
         private void btnSaveServers_Click(object sender, EventArgs e)
         {
+            DisableAllButtons();
             GroupServerList gsl;
             if (File.Exists(Serializer.CreateInstance().applicationFolder + "Servers.xml"))
             {
@@ -549,10 +553,12 @@ namespace DatabaseSelector
             { gsl = GroupServerList.CreateInstance(); }
             gsl.groupServers.Add(serverList);
             gsl.SaveListToXML();
+            EnableAllButtons();
         }
 
-        private void btnDatabases_Click(object sender, EventArgs e)
+        private void btnSaveDatabases_Click(object sender, EventArgs e)
         {
+            DisableAllButtons();
             TravelServerList tsl;
             if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
             {
@@ -563,6 +569,7 @@ namespace DatabaseSelector
             { tsl = TravelServerList.CreateInstance(); }
             tsl.travelServers.Add(travelServer);
             tsl.SaveListToXml();
+            EnableAllButtons();
         }
 
         private void btnReloadGroups_Click(object sender, EventArgs e)
@@ -597,6 +604,10 @@ namespace DatabaseSelector
             btnSaveDatabases.Enabled = false;
             btnSaveGroups.Enabled = false;
             btnSaveServers.Enabled = false;
+            btnReloadAll.Enabled = false;
+            btnClearAllSearchText.Enabled = false;
+            btnConnect.Enabled = false;
+
             lvGroups.Enabled = false;
             lvServers.Enabled = false;
             lvDatabases.Enabled = false;
@@ -610,6 +621,10 @@ namespace DatabaseSelector
             btnSaveDatabases.Enabled = true;
             btnSaveGroups.Enabled = true;
             btnSaveServers.Enabled = true;
+            btnReloadAll.Enabled = true;
+            btnClearAllSearchText.Enabled = true;
+            btnConnect.Enabled = true;
+
             lvGroups.Enabled = true;
             lvServers.Enabled = true;
             lvDatabases.Enabled = true;
@@ -734,7 +749,30 @@ namespace DatabaseSelector
 
         private void btnReloadAll_Click(object sender, EventArgs e)
         {
-
+            DisableAllButtons();
+            pgbReloadAllAndSave.Visible = true;
+            InternetExplorer ie = new InternetExplorer();
+            groupList.GetGroupsFromWebAndSaveToXML();
+            pgbReloadAllAndSave.Maximum = groupList.groups.Count;
+            foreach (string group in groupList.groups)
+            {
+                if (group.ToUpper().Equals("PPE"))
+                { serverList.GetServersFromFile(null); }
+                else
+                { serverList.GetServersFromWeb(ie); }
+                btnSaveServers_Click(sender, e);
+                foreach (Server serverPair in serverList.servers)
+                {
+                    travelServer.MachineName = serverPair.travelServer;
+                    travelServer.GetDatabasesFromRegistryAndChangeProgressBar(null);
+                    btnSaveDatabases_Click(sender, e);
+                }
+                pgbReloadAllAndSave.PerformStep();
+            }
+            ie.Quit();
+            pgbReloadAllAndSave.Visible = false;
+            EnableAllButtons();
+            ReloadGroupListView(tbGroupFilter.Text);
         }
 
         private void btnClearAllSearchText_Click(object sender, EventArgs e)

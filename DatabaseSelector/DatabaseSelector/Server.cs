@@ -57,22 +57,23 @@ namespace DatabaseSelector
 
         public void GetServersFromFile(ProgressBar pgb)
         {
-            int max = pgb.Maximum;
+            int max = 0;
+            if (pgb != null) max = pgb.Maximum;
 
             servers = new List<Server>();
             servers.Add(new Server("All", "All"));
             TXTReader txtReader = TXTReader.CreateInstance();
             Dictionary<string, int> pairs = txtReader.GetServerPortPair();
-            pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = pairs.Count; });
+            if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = pairs.Count; });
             foreach (string server in pairs.Keys)
             {
                 servers.Add(new Server(txtReader.GetPortByServerName(server).ToString(), server));
-                pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
             }
             updateDate = DateTime.Now;
             OnUpdated(EventArgs.Empty);
 
-            pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
+            if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
         }
 
         public void GetServersFromWeb(InternetExplorer ie)
