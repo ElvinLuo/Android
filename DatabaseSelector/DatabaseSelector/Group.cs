@@ -9,7 +9,7 @@ namespace DatabaseSelector
     public class GroupList
     {
         public static readonly GroupList instance = new GroupList();
-        public string defaultGroup;
+        public string selectedGroup;
         public DateTime updateDate;
         public List<string> groups;
         public event EventHandler Updated;
@@ -22,12 +22,12 @@ namespace DatabaseSelector
 
         public GroupList()
         {
-            defaultGroup = "CHE-RC01";
+            selectedGroup = "CHE-RC01";
         }
 
         public GroupList(string defaultGroup)
         {
-            this.defaultGroup = defaultGroup;
+            this.selectedGroup = defaultGroup;
         }
 
         public int FindGroup(string groupName)
@@ -55,7 +55,7 @@ namespace DatabaseSelector
             {
                 GroupList gl = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Groups.xml") as GroupList;
                 List<string> groupList = gl.groups;
-                defaultGroup = gl.defaultGroup;
+                selectedGroup = gl.selectedGroup;
                 updateDate = gl.updateDate;
 
                 if (groupList.Count == 0)
@@ -94,7 +94,7 @@ namespace DatabaseSelector
                 groups.Add("PPE");
 
                 object Empty = 0;
-                object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
+                object URL = Index.CreateInstance().temcurl;
 
                 ie.Visible = false;
                 ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);

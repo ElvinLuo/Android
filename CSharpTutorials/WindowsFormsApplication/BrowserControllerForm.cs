@@ -9,6 +9,7 @@ namespace WindowsFormsApplication
         public BrowserControllerForm()
         {
             InitializeComponent();
+            button1.Focus();
         }
 
         private void btnStartBrowser_Click(object sender, EventArgs e)
@@ -49,6 +50,21 @@ namespace WindowsFormsApplication
             {
                 this.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            textBox1.Text = openFileDialog1.FileName;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
         }
 
     }

@@ -8,6 +8,15 @@ namespace DatabaseSelector
         private string fileName = "Index.xml";
 
         public bool automaticallyOpenEditer;
+        public string temcurl;
+        public string xlsFile;
+        public string txtFile;
+
+        public string groupFilter;
+        public string webServerFilter;
+        public string travelServerFilter;
+        public string databaseFilter;
+
         public int previousSelectedGroup;
         public int currentSelectedGroup;
         public int previousSelectedServer;

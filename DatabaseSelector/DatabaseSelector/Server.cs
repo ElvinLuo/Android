@@ -82,7 +82,7 @@ namespace DatabaseSelector
                 try
                 {
                     object Empty = 0;
-                    object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi?query=ON&group=" + groupName;
+                    object URL = Index.CreateInstance().temcurl + "?query=ON&group=" + groupName;
 
                     ie.Visible = false;
                     ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);

@@ -82,7 +82,7 @@ namespace DatabaseSelector
 
     class TXTReader
     {
-        string file = Serializer.CreateInstance().applicationFolder + "WingatePortMappingsForRTT_PPE.txt";
+        string file = Index.CreateInstance().txtFile;
         private static TXTReader instance;
         Dictionary<string, int> serverPortPairs;
 
@@ -129,7 +129,7 @@ namespace DatabaseSelector
 
     class XLSReader
     {
-        string file = Serializer.CreateInstance().applicationFolder + "PPE_DSN_List.xls";
+        string file = Index.CreateInstance().xlsFile;
 
         private static XLSReader instance;
 

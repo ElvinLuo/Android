@@ -73,3 +73,4 @@ D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.
 D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.pdb
 C:\Program Files\DatabaseSelectorSetup\DatabaseSelector.dll
 C:\Program Files\DatabaseSelectorSetup\DatabaseSelector.pdb
+D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.Options.resources

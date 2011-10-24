@@ -22,34 +22,27 @@ namespace DatabaseSelector
             index = Index.CreateInstance();
             cbAutoOpenEditer.Checked = index.automaticallyOpenEditer;
 
-            lvGroups.FullRowSelect = true;
             groupList = GroupList.instance;
-            groupList.GetGroups();
-            ReloadGroupListView(tbGroupFilter.Text);
-
-            lvServers.Columns.Add("Web server", -2, HorizontalAlignment.Left);
-            lvServers.Columns.Add("Travel server", -2, HorizontalAlignment.Left);
-            lvServers.FullRowSelect = true;
-            serverList = new ServerList(GroupList.instance.defaultGroup);
-            serverList.GetServers();
-            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
-
-            lvDatabases.Columns.Add("Database", -2, HorizontalAlignment.Left);
-            lvDatabases.Columns.Add("Server", -2, HorizontalAlignment.Left);
-            lvDatabases.Columns.Add("Instance", -2, HorizontalAlignment.Left);
-            lvDatabases.Columns.Add("Authentication", -2, HorizontalAlignment.Left);
-            lvDatabases.Columns.Add("User name", -2, HorizontalAlignment.Left);
-            lvDatabases.Columns.Add("Password", -2, HorizontalAlignment.Left);
-            lvDatabases.FullRowSelect = true;
+            serverList = new ServerList();
             travelServer = new TravelServer();
-            travelServer.GetDatabases();
-            ReloadDatabaseListView(tbDatabaseFilter.Text);
 
-            btnConnect.Focus();
+            groupList.GetGroups();
+            ReloadGroupListView(index.groupFilter);
+
+            //serverList.GetServers();
+            //ReloadServerListView(index.webServerFilter, index.travelServerFilter);
+
+            //travelServer.GetDatabases();
+            //ReloadDatabaseListView(index.databaseFilter);
         }
 
         void ServerInstanceSelector_FormClosing(object sender, FormClosingEventArgs e)
         {
+            index.groupFilter = tbGroupFilter.Text;
+            index.webServerFilter = tbWebServerFilter.Text;
+            index.travelServerFilter = tbTravelServerFilter.Text;
+            index.databaseFilter = tbDatabaseFilter.Text;
+            index.automaticallyOpenEditer = cbAutoOpenEditer.Checked;
             index.SaveIndexToXml();
         }
 
@@ -60,7 +53,8 @@ namespace DatabaseSelector
 
         void lvDatabases_DoubleClick(object sender, System.EventArgs e)
         {
-            ConnectToServer();
+            if (!tbDatabase.Text.Equals("No database found"))
+            { ConnectToServer(); }
         }
 
         private void ConnectToServer()
@@ -250,57 +244,62 @@ namespace DatabaseSelector
 
         void CreateNewScript()
         {
-            if (needRefresh && version == 2005)
+            try
             {
-                databaseObjectNode.Collapse();
-                needRefresh = false;
-                ServiceCache.GetObjectExplorer().ConnectToServer(connection);
-                SelectAndExpandDatabasesNode();
-                return;
-            }
-            string strFullPath = Serializer.CreateInstance().applicationFolder + "SQLFile.sql";
-            if (version == 2008)
-            {
-                connection = new UIConnectionInfo();
-                connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
-                connection.ServerName = travelServer.Databases[lvDatabases.SelectedIndices[0]].Server;
-                connection.AuthenticationType = cbConnectionType.SelectedIndex;
-                connection.UserName = tbUserName.Text;
-                if (connection.AuthenticationType == 1)
+                if (needRefresh && version == 2005)
                 {
-                    connection.Password = tbPassword.Text;
+                    databaseObjectNode.Collapse();
+                    needRefresh = false;
+                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
+                    SelectAndExpandDatabasesNode();
+                    return;
+                }
+                string strFullPath = Serializer.CreateInstance().applicationFolder + "SQLFile.sql";
+                if (version == 2008)
+                {
+                    connection = new UIConnectionInfo();
+                    connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
+                    connection.ServerName = travelServer.Databases[lvDatabases.SelectedIndices[0]].Server;
+                    connection.AuthenticationType = cbConnectionType.SelectedIndex;
+                    connection.UserName = tbUserName.Text;
+                    if (connection.AuthenticationType == 1)
+                    {
+                        connection.Password = tbPassword.Text;
+                    }
+                }
+                SqlConnection sqlConnection = new SqlConnection(string.Format("Data Source=({0});Initial Catalog={1}{2}",
+                    connection.ServerName, databaseInstanceNode.Text,
+                    (connection.AuthenticationType == 0 ? ";Integrated Security=SSPI" : string.Format(";User Id={0};password={1}", connection.UserName, connection.Password))));
+
+                //Show the connection information in the Text Editor
+                using (StreamWriter streamWriter = new StreamWriter(strFullPath))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("/*****************************************************************************");
+                    sb.AppendLine("--This Query Editer window is opened by Database Selector automatically");
+                    sb.AppendLine("--Server		:" + connection.ServerName);
+                    sb.AppendLine("--Database	    :" + sqlConnection.Database);
+                    sb.AppendLine("--Authentication:" + cbConnectionType.Text);
+                    sb.AppendLine("--UserName	    :" + tbUserName.Text);
+                    sb.AppendLine("*****************************************************************************/");
+                    sb.Append("USE " + sqlConnection.Database);
+                    streamWriter.Write(sb.ToString());
+                }
+                if (version == 2008)
+                {
+                    Assembly asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/SQLEditors.dll");
+                    Type scriptFactoryType = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.Editors.ScriptFactory");
+                    object sfiObject = scriptFactoryType.GetField("instance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
+                    MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
+                    methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
+                }
+                else if (version == 2005)
+                {
+                    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
                 }
             }
-            SqlConnection sqlConnection = new SqlConnection(string.Format("Data Source=({0});Initial Catalog={1}{2}",
-                connection.ServerName, databaseInstanceNode.Text,
-                (connection.AuthenticationType == 0 ? ";Integrated Security=SSPI" : string.Format(";User Id={0};password={1}", connection.UserName, connection.Password))));
-
-            //Show the connection information in the Text Editor
-            using (StreamWriter streamWriter = new StreamWriter(strFullPath))
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("/*****************************************************************************");
-                sb.AppendLine("--This Query Editer window is opened by Database Selector automatically");
-                sb.AppendLine("--Server		:" + connection.ServerName);
-                sb.AppendLine("--Database	    :" + sqlConnection.Database);
-                sb.AppendLine("--Authentication:" + cbConnectionType.Text);
-                sb.AppendLine("--UserName	    :" + tbUserName.Text);
-                sb.AppendLine("*****************************************************************************/");
-                sb.Append("USE " + sqlConnection.Database);
-                streamWriter.Write(sb.ToString());
-            }
-            if (version == 2008)
-            {
-                Assembly asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/SQLEditors.dll");
-                Type scriptFactoryType = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.Editors.ScriptFactory");
-                object sfiObject = scriptFactoryType.GetField("instance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
-                MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
-                methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
-            }
-            else if (version == 2005)
-            {
-                ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
-            }
+            catch (Exception e)
+            { Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message); }
         }
 
         private void ReloadGroupListView(string filter)
@@ -323,10 +322,11 @@ namespace DatabaseSelector
             if (lvGroups.Items.Count != 0)
             {
                 if (index.currentSelectedGroup >= lvGroups.Items.Count)
-                { index.currentSelectedGroup = 7; }
+                { index.currentSelectedGroup = 0; }
                 lvGroups.Items[index.currentSelectedGroup].Selected = true;
                 lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
                 lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
+                groupList.selectedGroup = lvGroups.Items[index.currentSelectedGroup].SubItems[0].Text;
             }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
@@ -363,6 +363,7 @@ namespace DatabaseSelector
         private void ReloadDatabaseListView(string filter)
         {
             lvDatabases.Items.Clear();
+
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvDatabases);
             if (travelServer.Databases != null && travelServer.Databases.Count != 0)
             {
@@ -386,6 +387,14 @@ namespace DatabaseSelector
                 lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
                 //lvDatabases.Focus();
             }
+
+            foreach (ColumnHeader ch in lvDatabases.Columns)
+            {
+                ch.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                if (ch.Width < 80)
+                { ch.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize); }
+            }
+
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
         }
 
@@ -436,7 +445,9 @@ namespace DatabaseSelector
                 }
 
                 tbGroup.Text = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
-                serverList.groupName = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
+                groupList.selectedGroup = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
+
+                serverList.groupName = groupList.selectedGroup;
                 serverList.GetServers();
                 ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
             }
@@ -470,6 +481,7 @@ namespace DatabaseSelector
                     tbTravelServer.Text = lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text;
                     travelServer.MachineName = lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text;
                 }
+
                 travelServer.GetDatabases();
                 ReloadDatabaseListView(tbDatabaseFilter.Text);
             }
@@ -497,7 +509,13 @@ namespace DatabaseSelector
                 tbDatabase.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[0].Text;
                 tbInstance.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[2].Text;
 
-                if (lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text.Equals("PPE"))
+                if (tbDatabase.Text.Equals("No database found"))
+                { btnConnect.Enabled = false; }
+                else
+                { btnConnect.Enabled = true; }
+
+                //if (lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text.Equals("PPE"))
+                if (serverList.groupName.Equals("PPE"))
                 {
                     cbConnectionType.SelectedIndex = 1;
                     tbUserName.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[4].Text;
@@ -714,9 +732,23 @@ namespace DatabaseSelector
             ReloadDatabaseListView(tbDatabaseFilter.Text);
         }
 
-        private void cbAutoOpenEditer_CheckedChanged(object sender, EventArgs e)
+        private void btnReloadAll_Click(object sender, EventArgs e)
         {
-            index.automaticallyOpenEditer = cbAutoOpenEditer.Checked;
+
+        }
+
+        private void btnClearAllSearchText_Click(object sender, EventArgs e)
+        {
+            tbGroupFilter.Text = "";
+            tbWebServerFilter.Text = "";
+            tbTravelServerFilter.Text = "";
+            tbDatabaseFilter.Text = "";
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            Options options = new Options();
+            options.ShowDialog();
         }
 
     }
