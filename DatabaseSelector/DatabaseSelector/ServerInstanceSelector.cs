@@ -338,6 +338,8 @@ namespace DatabaseSelector
                 groupList.selectedGroup = lvGroups.Items[index.currentSelectedGroup].SubItems[0].Text;
                 lvGroups.Items[index.currentSelectedGroup].Selected = true;
             }
+            foreach (ColumnHeader ch in lvGroups.Columns)
+            { ch.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent); }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
 
@@ -396,14 +398,12 @@ namespace DatabaseSelector
                 //lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
                 //lvDatabases.Focus();
             }
-
             foreach (ColumnHeader ch in lvDatabases.Columns)
             {
                 ch.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
                 if (ch.Width < 80)
                 { ch.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize); }
             }
-
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
         }
 
