@@ -7,7 +7,6 @@ namespace DatabaseSelector
         private static Index instance;
         private string fileName = "Index.xml";
 
-        public bool automaticallyOpenEditer;
         public string temcurl;
         public string xlsFile;
         public string txtFile;
@@ -16,6 +15,8 @@ namespace DatabaseSelector
         public string webServerFilter;
         public string travelServerFilter;
         public string databaseFilter;
+
+        public bool automaticallyOpenEditer;
 
         public int previousSelectedGroup;
         public int currentSelectedGroup;

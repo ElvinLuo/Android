@@ -74,19 +74,19 @@ namespace DatabaseSelector
                         groups.Add(item);
                 }
             }
-            else
-            { GetGroupsFromWebAndSaveToXML(); }
+            //else
+            //{ GetGroupsFromWebAndSaveToXML(); }
         }
 
         public void GetGroupsFromWebAndSaveToXML()
         {
             InternetExplorer ie = new InternetExplorer();
-            GetGroupsFromWeb(ie);
+            GetGroupsFromWeb(ie, false);
             ie.Quit();
             SaveListToXML();
         }
 
-        public void GetGroupsFromWeb(InternetExplorer ie)
+        public void GetGroupsFromWeb(InternetExplorer ie, bool visible)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace DatabaseSelector
                 object Empty = 0;
                 object URL = Index.CreateInstance().temcurl;
 
-                ie.Visible = false;
+                ie.Visible = visible;
                 ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
 
                 while (ie.Busy)

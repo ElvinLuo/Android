@@ -125,7 +125,14 @@ namespace DatabaseSelector
                                     matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
                                     matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
                                 Databases.Add(databaseItem);
-                                if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                                if (pgb != null)
+                                {
+                                    pgb.Invoke((MethodInvoker)delegate
+                                        {
+                                            pgb.PerformStep();
+                                            GlobalOperator.SetProgressBarText(pgb, "Reloading databases of " + MachineName);
+                                        });
+                                }
                             }
                         }
                         expDsnKey.Close();

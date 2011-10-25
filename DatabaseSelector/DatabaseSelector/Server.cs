@@ -76,7 +76,7 @@ namespace DatabaseSelector
             if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
         }
 
-        public void GetServersFromWeb(InternetExplorer ie)
+        public void GetServersFromWeb(InternetExplorer ie, bool visible)
         {
             if (!groupName.Equals("PPE"))
             {
@@ -85,7 +85,7 @@ namespace DatabaseSelector
                     object Empty = 0;
                     object URL = Index.CreateInstance().temcurl + "?query=ON&group=" + groupName;
 
-                    ie.Visible = false;
+                    ie.Visible = visible;
                     ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
 
                     System.Threading.Thread.Sleep(5000);
@@ -110,7 +110,8 @@ namespace DatabaseSelector
                                     if (serverCell != null && serverCell.innerText != null && !serverCell.innerText.Equals("") &&
                                         travelServerCell != null && travelServerCell.innerText != null && !travelServerCell.innerText.Equals(""))
                                     {
-                                        servers.Add(new Server(serverCell.innerText, travelServerCell.innerText));
+                                        foreach (string singleTravelServer in travelServerCell.innerText.Split(new char[] { ',' }))
+                                        { servers.Add(new Server(serverCell.innerText, singleTravelServer)); }
                                     }
                                 }
                             }

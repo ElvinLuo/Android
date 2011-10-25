@@ -11,6 +11,7 @@ using Microsoft.SqlServer.Management.UI.VSIntegration;
 using Microsoft.SqlServer.Management.UI.VSIntegration.Editors;
 using Microsoft.SqlServer.Management.UI.VSIntegration.ObjectExplorer;
 using SHDocVw;
+using System.Threading;
 
 namespace DatabaseSelector
 {
@@ -25,6 +26,16 @@ namespace DatabaseSelector
             tbTravelServerFilter.Text = index.travelServerFilter;
             tbDatabaseFilter.Text = index.databaseFilter;
             cbAutoOpenEditer.Checked = index.automaticallyOpenEditer;
+
+            ut = UpdateThread.CreateInstance();
+            ut.uiVisiable = true;
+            if (ut.inProgress)
+            {
+                btnReloadAll.Enabled = false;
+                pgbReloadAllAndSave.Visible = true;
+                pgbReloadAllAndSave.Maximum = ut.maxValue;
+                pgbReloadAllAndSave.Value = ut.currentValue;
+            }
 
             groupList = GroupList.instance;
             serverList = new ServerList();
@@ -42,6 +53,7 @@ namespace DatabaseSelector
             index.databaseFilter = tbDatabaseFilter.Text;
             index.automaticallyOpenEditer = cbAutoOpenEditer.Checked;
             index.SaveIndexToXml();
+            ut.uiVisiable = false;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -676,9 +688,9 @@ namespace DatabaseSelector
                 ie.ProgressChange += new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
 
                 if (trigger.Equals("btnReloadGroups"))
-                { groupList.GetGroupsFromWeb(ie); }
+                { groupList.GetGroupsFromWeb(ie, false); }
                 else if (trigger.Equals("btnReloadServers"))
-                { serverList.GetServersFromWeb(ie); }
+                { serverList.GetServersFromWeb(ie, false); }
 
                 ie.ProgressChange -= new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
                 ie.Quit();
@@ -690,12 +702,22 @@ namespace DatabaseSelector
             this.Invoke((MethodInvoker)delegate
             {
                 ProgressBar pgb = null;
+                string text = null;
                 if (trigger.Equals("btnReloadGroups"))
-                { pgb = pgbReloadGroups; }
+                {
+                    pgb = pgbReloadGroups;
+                    text = "Reloading groups";
+                }
                 else if (trigger.Equals("btnReloadServers"))
-                { pgb = pgbReloadServers; }
+                {
+                    pgb = pgbReloadServers;
+                    text = "Reloading server pairs of " + groupList.selectedGroup;
+                }
                 if (pgbReloadGroups.Minimum <= Progress && Progress <= pgbReloadGroups.Maximum)
-                { pgb.Value = Progress; }
+                {
+                    pgb.Value = Progress;
+                    GlobalOperator.SetProgressBarText(pgb, text);
+                }
             });
         }
 
@@ -749,30 +771,9 @@ namespace DatabaseSelector
 
         private void btnReloadAll_Click(object sender, EventArgs e)
         {
-            DisableAllButtons();
-            pgbReloadAllAndSave.Visible = true;
-            InternetExplorer ie = new InternetExplorer();
-            groupList.GetGroupsFromWebAndSaveToXML();
-            pgbReloadAllAndSave.Maximum = groupList.groups.Count;
-            foreach (string group in groupList.groups)
-            {
-                if (group.ToUpper().Equals("PPE"))
-                { serverList.GetServersFromFile(null); }
-                else
-                { serverList.GetServersFromWeb(ie); }
-                btnSaveServers_Click(sender, e);
-                foreach (Server serverPair in serverList.servers)
-                {
-                    travelServer.MachineName = serverPair.travelServer;
-                    travelServer.GetDatabasesFromRegistryAndChangeProgressBar(null);
-                    btnSaveDatabases_Click(sender, e);
-                }
-                pgbReloadAllAndSave.PerformStep();
-            }
-            ie.Quit();
-            pgbReloadAllAndSave.Visible = false;
-            EnableAllButtons();
-            ReloadGroupListView(tbGroupFilter.Text);
+            ut.button = btnReloadAll;
+            ut.progressBar = pgbReloadAllAndSave;
+            ut.thread.Start();
         }
 
         private void btnClearAllSearchText_Click(object sender, EventArgs e)

@@ -181,7 +181,14 @@ namespace DatabaseSelector
                 }
                 i++;
                 range = worksheet.get_Range("A" + i.ToString(), "B" + i.ToString());
-                if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                if (pgb != null)
+                {
+                    pgb.Invoke((MethodInvoker)delegate
+                    {
+                        pgb.PerformStep();
+                        GlobalOperator.SetProgressBarText(pgb, "Reloading databases of " + machineName);
+                    });
+                }
             }
 
             theWorkbook.Close(Microsoft.Office.Interop.Excel.XlSaveAction.xlDoNotSaveChanges, Type.Missing, Type.Missing);

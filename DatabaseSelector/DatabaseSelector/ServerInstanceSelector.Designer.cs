@@ -33,6 +33,12 @@ namespace DatabaseSelector
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lvDatabases = new System.Windows.Forms.ListView();
+            this.HeaderDatabase = new System.Windows.Forms.ColumnHeader();
+            this.HeaderServer = new System.Windows.Forms.ColumnHeader();
+            this.HeaderInstance = new System.Windows.Forms.ColumnHeader();
+            this.HeaderAuthentication = new System.Windows.Forms.ColumnHeader();
+            this.HeaderUsername = new System.Windows.Forms.ColumnHeader();
+            this.HeaderPassword = new System.Windows.Forms.ColumnHeader();
             this.lblAuthentication = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -44,6 +50,8 @@ namespace DatabaseSelector
             this.lblInstance = new System.Windows.Forms.Label();
             this.tbInstance = new System.Windows.Forms.TextBox();
             this.lvServers = new System.Windows.Forms.ListView();
+            this.HeaderWebServer = new System.Windows.Forms.ColumnHeader();
+            this.HeaderTravelServer = new System.Windows.Forms.ColumnHeader();
             this.lvGroups = new System.Windows.Forms.ListView();
             this.HeaderGroups = new System.Windows.Forms.ColumnHeader();
             this.btnReloadGroups = new System.Windows.Forms.Button();
@@ -75,14 +83,6 @@ namespace DatabaseSelector
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnClearAllSearchText = new System.Windows.Forms.Button();
             this.pgbReloadAllAndSave = new System.Windows.Forms.ProgressBar();
-            this.HeaderWebServer = new System.Windows.Forms.ColumnHeader();
-            this.HeaderTravelServer = new System.Windows.Forms.ColumnHeader();
-            this.HeaderDatabase = new System.Windows.Forms.ColumnHeader();
-            this.HeaderServer = new System.Windows.Forms.ColumnHeader();
-            this.HeaderInstance = new System.Windows.Forms.ColumnHeader();
-            this.HeaderAuthentication = new System.Windows.Forms.ColumnHeader();
-            this.HeaderUsername = new System.Windows.Forms.ColumnHeader();
-            this.HeaderPassword = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -123,6 +123,31 @@ namespace DatabaseSelector
             this.lvDatabases.View = System.Windows.Forms.View.Details;
             this.lvDatabases.SelectedIndexChanged += new System.EventHandler(this.lvDatabases_SelectedIndexChanged);
             this.lvDatabases.DoubleClick += new System.EventHandler(this.lvDatabases_DoubleClick);
+            // 
+            // HeaderDatabase
+            // 
+            this.HeaderDatabase.Text = "Database";
+            // 
+            // HeaderServer
+            // 
+            this.HeaderServer.Text = "Server";
+            // 
+            // HeaderInstance
+            // 
+            this.HeaderInstance.Text = "Instance";
+            // 
+            // HeaderAuthentication
+            // 
+            this.HeaderAuthentication.Text = "Authentication";
+            this.HeaderAuthentication.Width = 80;
+            // 
+            // HeaderUsername
+            // 
+            this.HeaderUsername.Text = "User name";
+            // 
+            // HeaderPassword
+            // 
+            this.HeaderPassword.Text = "Password";
             // 
             // lblAuthentication
             // 
@@ -231,6 +256,16 @@ namespace DatabaseSelector
             this.lvServers.UseCompatibleStateImageBehavior = false;
             this.lvServers.View = System.Windows.Forms.View.Details;
             this.lvServers.SelectedIndexChanged += new System.EventHandler(this.lvServers_SelectedIndexChanged);
+            // 
+            // HeaderWebServer
+            // 
+            this.HeaderWebServer.Text = "Web server";
+            this.HeaderWebServer.Width = 129;
+            // 
+            // HeaderTravelServer
+            // 
+            this.HeaderTravelServer.Text = "Travel server";
+            this.HeaderTravelServer.Width = 130;
             // 
             // lvGroups
             // 
@@ -366,7 +401,7 @@ namespace DatabaseSelector
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.ForeColor = System.Drawing.Color.Red;
-            this.lblContact.Location = new System.Drawing.Point(728, 23);
+            this.lblContact.Location = new System.Drawing.Point(742, 23);
             this.lblContact.Name = "lblContact";
             this.lblContact.Size = new System.Drawing.Size(254, 13);
             this.lblContact.TabIndex = 33;
@@ -411,6 +446,7 @@ namespace DatabaseSelector
             this.pgbReloadGroups.Maximum = 10000;
             this.pgbReloadGroups.Name = "pgbReloadGroups";
             this.pgbReloadGroups.Size = new System.Drawing.Size(202, 16);
+            this.pgbReloadGroups.Step = 1;
             this.pgbReloadGroups.TabIndex = 37;
             this.pgbReloadGroups.Visible = false;
             // 
@@ -420,6 +456,7 @@ namespace DatabaseSelector
             this.pgbReloadServers.Maximum = 10000;
             this.pgbReloadServers.Name = "pgbReloadServers";
             this.pgbReloadServers.Size = new System.Drawing.Size(263, 16);
+            this.pgbReloadServers.Step = 1;
             this.pgbReloadServers.TabIndex = 38;
             this.pgbReloadServers.Visible = false;
             // 
@@ -429,6 +466,7 @@ namespace DatabaseSelector
             this.pgbReloadDatabases.Maximum = 10000;
             this.pgbReloadDatabases.Name = "pgbReloadDatabases";
             this.pgbReloadDatabases.Size = new System.Drawing.Size(263, 16);
+            this.pgbReloadDatabases.Step = 1;
             this.pgbReloadDatabases.TabIndex = 39;
             this.pgbReloadDatabases.Visible = false;
             // 
@@ -475,9 +513,9 @@ namespace DatabaseSelector
             this.btnReloadAll.ForeColor = System.Drawing.Color.Red;
             this.btnReloadAll.Location = new System.Drawing.Point(727, 0);
             this.btnReloadAll.Name = "btnReloadAll";
-            this.btnReloadAll.Size = new System.Drawing.Size(254, 23);
+            this.btnReloadAll.Size = new System.Drawing.Size(282, 23);
             this.btnReloadAll.TabIndex = 45;
-            this.btnReloadAll.Text = "Reload all and save, it may cost several minutes";
+            this.btnReloadAll.Text = "Reload all lists and save, it may cost several minutes";
             this.btnReloadAll.UseVisualStyleBackColor = true;
             this.btnReloadAll.Click += new System.EventHandler(this.btnReloadAll_Click);
             // 
@@ -505,44 +543,10 @@ namespace DatabaseSelector
             // 
             this.pgbReloadAllAndSave.Location = new System.Drawing.Point(728, 23);
             this.pgbReloadAllAndSave.Name = "pgbReloadAllAndSave";
-            this.pgbReloadAllAndSave.Size = new System.Drawing.Size(254, 16);
+            this.pgbReloadAllAndSave.Size = new System.Drawing.Size(282, 16);
+            this.pgbReloadAllAndSave.Step = 1;
             this.pgbReloadAllAndSave.TabIndex = 48;
             this.pgbReloadAllAndSave.Visible = false;
-            // 
-            // HeaderWebServer
-            // 
-            this.HeaderWebServer.Text = "Web server";
-            this.HeaderWebServer.Width = 129;
-            // 
-            // HeaderTravelServer
-            // 
-            this.HeaderTravelServer.Text = "Travel server";
-            this.HeaderTravelServer.Width = 130;
-            // 
-            // HeaderDatabase
-            // 
-            this.HeaderDatabase.Text = "Database";
-            // 
-            // HeaderServer
-            // 
-            this.HeaderServer.Text = "Server";
-            // 
-            // HeaderInstance
-            // 
-            this.HeaderInstance.Text = "Instance";
-            // 
-            // HeaderAuthentication
-            // 
-            this.HeaderAuthentication.Text = "Authentication";
-            this.HeaderAuthentication.Width = 80;
-            // 
-            // HeaderUsername
-            // 
-            this.HeaderUsername.Text = "User name";
-            // 
-            // HeaderPassword
-            // 
-            this.HeaderPassword.Text = "Password";
             // 
             // ServerInstanceSelector
             // 
@@ -640,6 +644,7 @@ namespace DatabaseSelector
         private GroupList groupList;
         private ServerList serverList;
         private TravelServer travelServer;
+        private UpdateThread ut;
         private string trigger;
         private Index index;
         public int version;

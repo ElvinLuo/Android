@@ -15,7 +15,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <Optimize>false</Optimize>
-    <OutputPath>C:\Program Files\DatabaseSelectorSetup\</OutputPath>
+    <OutputPath>C:\Program Files %28x86%29\DatabaseSelectorSetup\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
@@ -80,6 +80,7 @@
     <Compile Include="Connect.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GlobalOperator.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Index.cs" />
     <Compile Include="Options.cs">
