@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SHDocVw;
+using System.Drawing;
 
 namespace WindowsFormsApplication
 {
@@ -15,7 +16,7 @@ namespace WindowsFormsApplication
         private void btnStartBrowser_Click(object sender, EventArgs e)
         {
             object Empty = 0;
-            object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
+            object URL = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi?group=INTEGRATION&query=ON&serverlookup=ON&sites=ON&alternate_service=";
 
             ie.Visible = true;
             ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
@@ -28,6 +29,8 @@ namespace WindowsFormsApplication
                 if (pgbBrowser.Minimum <= Progress && Progress <= pgbBrowser.Maximum)
                 {
                     pgbBrowser.Value = Progress;
+                    SetProgressBarText(pgbBrowser, "Loading", Color.Red,
+                        new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
                 }
             });
         }
@@ -65,6 +68,21 @@ namespace WindowsFormsApplication
         private void button2_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
+        }
+
+        private void SetProgressBarText(ProgressBar Target, string Text, Color TextColor, Font TextFont)
+        {
+            if (Target == null) { throw new ArgumentException("Null Target"); }
+            if (string.IsNullOrEmpty(Text))
+            {
+                int percent = (int)(((double)(Target.Value - Target.Minimum) / (double)(Target.Maximum - Target.Minimum)) * 100);
+                Text = percent.ToString() + "%";
+            }
+            using (Graphics gr = Target.CreateGraphics())
+            {
+                gr.DrawString(Text, TextFont, new SolidBrush(TextColor),
+                    new PointF(Target.Width / 2 - (gr.MeasureString(Text, TextFont).Width / 2.0F), Target.Height / 2 - (gr.MeasureString(Text, TextFont).Height / 2.0F)));
+            }
         }
 
     }

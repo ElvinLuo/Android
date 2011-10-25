@@ -39,6 +39,7 @@ namespace WindowsFormsApplication
             // 
             // btnStartBrowser
             // 
+            this.btnStartBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStartBrowser.Location = new System.Drawing.Point(13, 13);
             this.btnStartBrowser.Name = "btnStartBrowser";
             this.btnStartBrowser.Size = new System.Drawing.Size(75, 23);
@@ -53,6 +54,7 @@ namespace WindowsFormsApplication
             this.pgbBrowser.Maximum = 10000;
             this.pgbBrowser.Name = "pgbBrowser";
             this.pgbBrowser.Size = new System.Drawing.Size(195, 23);
+            this.pgbBrowser.Step = 1;
             this.pgbBrowser.TabIndex = 1;
             // 
             // openFileDialog1
