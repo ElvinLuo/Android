@@ -67,7 +67,7 @@ namespace DatabaseSelector
         public void ReloadGroupServerDatabaseListAndSaveToXML()
         {
             inProgress = true;
-            int stopCount = 0;  //To be removed.
+            //int stopCount = 0;  //To be removed.
 
             if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = false; });
             if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = true; });
@@ -88,7 +88,7 @@ namespace DatabaseSelector
 
             foreach (string group in groupList.groups)
             {
-                stopCount += 1; //To be removed.
+                //stopCount += 1; //To be removed.
                 if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.PerformStep(); }); }
                 if (progressBar != null) currentValue = progressBar.Value;
 
@@ -128,7 +128,7 @@ namespace DatabaseSelector
                     tsl.SaveListToXml();
                 }
 
-                if (stopCount == 3) break;  //To be removed.
+                //if (stopCount == 3) break;  //To be removed.
             }
             ie.Quit();
             if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = false; });
