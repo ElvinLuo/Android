@@ -135,8 +135,8 @@ namespace DatabaseSelector
                 //Prepare the tree to expand
                 SelectAndExpandDatabasesNode();
             }
-            catch (Exception ex)
-            { Console.WriteLine(ex.Message); }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
             finally
             { this.Close(); }
         }
@@ -308,8 +308,8 @@ namespace DatabaseSelector
                     ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
                 }
             }
-            catch (Exception e)
-            { Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message); }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
 
         private void ReloadGroupListView(string filter)
@@ -413,6 +413,14 @@ namespace DatabaseSelector
             this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
             this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
             this.tbDatabaseFilter.TextChanged += new System.EventHandler(this.tbDatabaseFilter_TextChanged);
+            ut.Updated += new EventHandler(ut_Updated);
+        }
+
+        void ut_Updated(object sender, EventArgs e)
+        {
+            pgbReloadAllAndSave.Visible = true;
+            pgbReloadAllAndSave.Value = ut.currentValue;
+            GlobalOperator.SetProgressBarText(pgbReloadAllAndSave, ut.processState);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -771,9 +779,10 @@ namespace DatabaseSelector
 
         private void btnReloadAll_Click(object sender, EventArgs e)
         {
+            btnReloadAll.Enabled = false;
             ut.button = btnReloadAll;
             ut.progressBar = pgbReloadAllAndSave;
-            ut.thread.Start();
+            ut.CreateNewThread().Start();
         }
 
         private void btnClearAllSearchText_Click(object sender, EventArgs e)

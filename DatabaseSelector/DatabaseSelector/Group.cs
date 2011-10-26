@@ -117,8 +117,8 @@ namespace DatabaseSelector
                     }
                 }
             }
-            catch (Exception e)
-            { Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message); }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
             finally
             {
                 updateDate = DateTime.Now;

@@ -34,9 +34,18 @@ namespace DatabaseSelector
         public bool inProgress;
         public int maxValue;
         public int currentValue;
+        public string processState;
         public Button button;
         public ProgressBar progressBar;
         public Thread thread;
+
+        public event EventHandler Updated;
+
+        protected virtual void OnUpdated(EventArgs e)
+        {
+            if (Updated != null)
+                Updated(this, e);
+        }
 
         public static UpdateThread CreateInstance()
         {
@@ -55,22 +64,23 @@ namespace DatabaseSelector
             currentValue = 0;
             button = null;
             progressBar = null;
-            thread = new Thread(new ThreadStart(ReloadGroupServerDatabaseListAndSaveToXML));
+            thread = null;
         }
 
-        public UpdateThread(Button btn, ProgressBar pgb)
+        public Thread CreateNewThread()
         {
-            button = btn;
-            progressBar = pgb;
+            thread = new Thread(new ThreadStart(ReloadGroupServerDatabaseListAndSaveToXML));
+            return thread;
         }
 
         public void ReloadGroupServerDatabaseListAndSaveToXML()
         {
             inProgress = true;
             //int stopCount = 0;  //To be removed.
+            OnUpdated(EventArgs.Empty);
 
-            if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = false; });
-            if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = true; });
+            //if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = false; });
+            //if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = true; });
 
             GroupList groupList = GroupList.instance;
             GroupServerList gsl;
@@ -80,19 +90,25 @@ namespace DatabaseSelector
 
             InternetExplorer ie = new InternetExplorer();
             //GlobalOperator.SetProgressBarText(progressBar, "Reloading groups");
+            processState = "Reloading groups";
+            OnUpdated(EventArgs.Empty);
             groupList.GetGroupsFromWeb(ie, true);
             groupList.SaveListToXML();
 
             maxValue = groupList.groups.Count;
-            if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.Maximum = groupList.groups.Count; }); }
+            OnUpdated(EventArgs.Empty);
+            //if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.Maximum = groupList.groups.Count; }); }
 
             foreach (string group in groupList.groups)
             {
+                if (group.ToUpper().Equals("PPE")) continue;    //To be removed.
                 //stopCount += 1; //To be removed.
-                if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.PerformStep(); }); }
-                if (progressBar != null) currentValue = progressBar.Value;
+                //if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.PerformStep(); }); }
+                //if (progressBar != null) currentValue = progressBar.Value;
+                //GlobalOperator.SetProgressBarText(progressBar, "Reloading server pairs of " + group);
+                currentValue++;
+                OnUpdated(EventArgs.Empty);
 
-                GlobalOperator.SetProgressBarText(progressBar, "Reloading server pairs of " + group);
                 //Get server pairs from files or web site
                 serverList.groupName = group;
                 if (group.ToUpper().Equals("PPE"))
@@ -113,6 +129,7 @@ namespace DatabaseSelector
                 foreach (Server serverPair in serverList.servers)
                 {
                     //GlobalOperator.SetProgressBarText(progressBar, "Reloading databases of " + serverPair.travelServer);
+                    OnUpdated(EventArgs.Empty);
                     //Get databases from registry
                     travelServer.MachineName = serverPair.travelServer;
                     travelServer.GetDatabasesFromRegistryAndChangeProgressBar(null);
@@ -131,8 +148,8 @@ namespace DatabaseSelector
                 //if (stopCount == 3) break;  //To be removed.
             }
             ie.Quit();
-            if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = false; });
-            if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = true; });
+            //if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = false; });
+            //if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = true; });
             inProgress = false;
         }
 

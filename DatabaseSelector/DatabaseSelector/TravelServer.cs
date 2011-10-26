@@ -79,11 +79,8 @@ namespace DatabaseSelector
                     Databases = tsl.GetTravelServer(MachineName).Databases;
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return;
-            }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
 
         public void GetDatabasesFromRegistryAndChangeProgressBar(ProgressBar pgb)
@@ -140,11 +137,8 @@ namespace DatabaseSelector
                     if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = max; });
                 }
             }
-            catch (IOException e)
-            {
-                Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
-                return;
-            }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
             finally
             {
                 updateDate = DateTime.Now;

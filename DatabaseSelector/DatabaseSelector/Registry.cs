@@ -96,20 +96,16 @@ namespace DatabaseSelector
                 expDsnKey = RegistryKey.OpenRemoteBaseKey(
                     RegistryHive.LocalMachine, remoteName).OpenSubKey(
                     "SOFTWARE\\Expedia\\shared\\Database\\ExpDsn");
+                foreach (string subKeyName in expDsnKey.GetSubKeyNames())
+                {
+                    expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
+                    Console.WriteLine("{0}: {1}", subKeyName, expDsnSubKey.GetValue("Server"));
+                }
+                if (expDsnKey != null)
+                    expDsnKey.Close();
             }
-            catch (IOException e)
-            {
-                Console.WriteLine("{0}: {1}", e.GetType().Name, e.Message);
-                return;
-            }
-
-            foreach (string subKeyName in expDsnKey.GetSubKeyNames())
-            {
-                expDsnSubKey = expDsnKey.OpenSubKey(subKeyName);
-                Console.WriteLine("{0}: {1}", subKeyName, expDsnSubKey.GetValue("Server"));
-            }
-
-            expDsnKey.Close();
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
     }
 }

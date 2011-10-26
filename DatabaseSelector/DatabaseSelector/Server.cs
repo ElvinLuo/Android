@@ -48,11 +48,8 @@ namespace DatabaseSelector
                     servers = gsl.GetServerList(groupName).servers;
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return;
-            }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
 
         public void GetServersFromFile(ProgressBar pgb)
@@ -118,8 +115,8 @@ namespace DatabaseSelector
                         }
                     }
                 }
-                catch (Exception ex)
-                { Console.WriteLine(ex.StackTrace); }
+                catch (Exception exception)
+                { Console.WriteLine(exception.Message); }
                 finally
                 {
                     updateDate = DateTime.Now;

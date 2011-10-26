@@ -50,8 +50,8 @@ namespace DatabaseSelector
                     }
                 }
             }
-            catch (Exception ex)
-            { Console.WriteLine(ex.Message); }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
 
         public void SerializeToXML(object instance, Type type, string file)
@@ -64,10 +64,8 @@ namespace DatabaseSelector
                 text.Flush();
                 text.Close();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
 
         public object DeserializeFromXML(Type type, string file)
