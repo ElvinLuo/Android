@@ -30,13 +30,7 @@ namespace DatabaseSelector
     {
         private static UpdateThread instance;
 
-        public bool uiVisiable;
         public bool inProgress;
-        public int maxValue;
-        public int currentValue;
-        public string processState;
-        public Button button;
-        public ProgressBar progressBar;
         public Thread thread;
 
         public event EventHandler Updated;
@@ -58,12 +52,7 @@ namespace DatabaseSelector
 
         public UpdateThread()
         {
-            uiVisiable = false;
             inProgress = false;
-            maxValue = 100;
-            currentValue = 0;
-            button = null;
-            progressBar = null;
             thread = null;
         }
 
@@ -79,78 +68,62 @@ namespace DatabaseSelector
             //int stopCount = 0;  //To be removed.
             OnUpdated(EventArgs.Empty);
 
-            //if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = false; });
-            //if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = true; });
+            System.Threading.Thread.Sleep(10000);
 
-            GroupList groupList = GroupList.instance;
-            GroupServerList gsl;
-            ServerList serverList = new ServerList();
-            TravelServerList tsl;
-            TravelServer travelServer = new TravelServer();
+            //GroupList groupList = GroupList.instance;
+            //GroupServerList gsl;
+            //ServerList serverList = new ServerList();
+            //TravelServerList tsl;
+            //TravelServer travelServer = new TravelServer();
 
-            InternetExplorer ie = new InternetExplorer();
-            //GlobalOperator.SetProgressBarText(progressBar, "Reloading groups");
-            processState = "Reloading groups";
-            OnUpdated(EventArgs.Empty);
-            groupList.GetGroupsFromWeb(ie, true);
-            groupList.SaveListToXML();
+            //InternetExplorer ie = new InternetExplorer();
+            //groupList.GetGroupsFromWeb(ie, true);
+            //groupList.SaveListToXML();
 
-            maxValue = groupList.groups.Count;
-            OnUpdated(EventArgs.Empty);
-            //if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.Maximum = groupList.groups.Count; }); }
+            //foreach (string group in groupList.groups)
+            //{
+            //    if (group.ToUpper().Equals("PPE")) continue;    //To be removed.
+            //    //stopCount += 1; //To be removed.
 
-            foreach (string group in groupList.groups)
-            {
-                if (group.ToUpper().Equals("PPE")) continue;    //To be removed.
-                //stopCount += 1; //To be removed.
-                //if (uiVisiable && progressBar != null) { progressBar.Invoke((MethodInvoker)delegate { progressBar.PerformStep(); }); }
-                //if (progressBar != null) currentValue = progressBar.Value;
-                //GlobalOperator.SetProgressBarText(progressBar, "Reloading server pairs of " + group);
-                currentValue++;
-                OnUpdated(EventArgs.Empty);
+            //    //Get server pairs from files or web site
+            //    serverList.groupName = group;
+            //    if (group.ToUpper().Equals("PPE"))
+            //    { serverList.GetServersFromFile(null); }
+            //    else
+            //    { serverList.GetServersFromWeb(ie, true); }
+            //    //Save server pairs to XML file
+            //    if (File.Exists(Serializer.CreateInstance().applicationFolder + "Servers.xml"))
+            //    {
+            //        gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), "Servers.xml") as GroupServerList);
+            //        gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
+            //    }
+            //    else
+            //    { gsl = GroupServerList.CreateInstance(); }
+            //    gsl.groupServers.Add(serverList);
+            //    gsl.SaveListToXML();
 
-                //Get server pairs from files or web site
-                serverList.groupName = group;
-                if (group.ToUpper().Equals("PPE"))
-                { serverList.GetServersFromFile(null); }
-                else
-                { serverList.GetServersFromWeb(ie, true); }
-                //Save server pairs to XML file
-                if (File.Exists(Serializer.CreateInstance().applicationFolder + "Servers.xml"))
-                {
-                    gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), "Servers.xml") as GroupServerList);
-                    gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
-                }
-                else
-                { gsl = GroupServerList.CreateInstance(); }
-                gsl.groupServers.Add(serverList);
-                gsl.SaveListToXML();
+            //    foreach (Server serverPair in serverList.servers)
+            //    {
+            //        //Get databases from registry
+            //        travelServer.MachineName = serverPair.travelServer;
+            //        travelServer.GetDatabasesFromRegistryAndChangeProgressBar(null);
+            //        //Save databases to XML file
+            //        if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
+            //        {
+            //            tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList);
+            //            tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
+            //        }
+            //        else
+            //        { tsl = TravelServerList.CreateInstance(); }
+            //        tsl.travelServers.Add(travelServer);
+            //        tsl.SaveListToXml();
+            //    }
 
-                foreach (Server serverPair in serverList.servers)
-                {
-                    //GlobalOperator.SetProgressBarText(progressBar, "Reloading databases of " + serverPair.travelServer);
-                    OnUpdated(EventArgs.Empty);
-                    //Get databases from registry
-                    travelServer.MachineName = serverPair.travelServer;
-                    travelServer.GetDatabasesFromRegistryAndChangeProgressBar(null);
-                    //Save databases to XML file
-                    if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
-                    {
-                        tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList);
-                        tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
-                    }
-                    else
-                    { tsl = TravelServerList.CreateInstance(); }
-                    tsl.travelServers.Add(travelServer);
-                    tsl.SaveListToXml();
-                }
-
-                //if (stopCount == 3) break;  //To be removed.
-            }
-            ie.Quit();
-            //if (uiVisiable && progressBar != null) progressBar.Invoke((MethodInvoker)delegate { progressBar.Visible = false; });
-            //if (uiVisiable && button != null) button.Invoke((MethodInvoker)delegate { button.Enabled = true; });
+            //    //if (stopCount == 3) break;  //To be removed.
+            //}
+            //ie.Quit();
             inProgress = false;
+            OnUpdated(EventArgs.Empty);
         }
 
     }

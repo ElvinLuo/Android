@@ -28,13 +28,10 @@ namespace DatabaseSelector
             cbAutoOpenEditer.Checked = index.automaticallyOpenEditer;
 
             ut = UpdateThread.CreateInstance();
-            ut.uiVisiable = true;
             if (ut.inProgress)
             {
                 btnReloadAll.Enabled = false;
-                pgbReloadAllAndSave.Visible = true;
-                pgbReloadAllAndSave.Maximum = ut.maxValue;
-                pgbReloadAllAndSave.Value = ut.currentValue;
+                //pgbReloadAllAndSave.Visible = true;
             }
 
             groupList = GroupList.instance;
@@ -53,7 +50,6 @@ namespace DatabaseSelector
             index.databaseFilter = tbDatabaseFilter.Text;
             index.automaticallyOpenEditer = cbAutoOpenEditer.Checked;
             index.SaveIndexToXml();
-            ut.uiVisiable = false;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -418,9 +414,13 @@ namespace DatabaseSelector
 
         void ut_Updated(object sender, EventArgs e)
         {
-            pgbReloadAllAndSave.Visible = true;
-            pgbReloadAllAndSave.Value = ut.currentValue;
-            GlobalOperator.SetProgressBarText(pgbReloadAllAndSave, ut.processState);
+            if (IsHandleCreated)
+            {
+                //if (ut.inProgress)
+                //{ btnReloadAll.Invoke((MethodInvoker)delegate { btnReloadAll.Enabled = false; }); }
+                //else
+                //{ btnReloadAll.Invoke((MethodInvoker)delegate { btnReloadAll.Enabled = true; }); }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -779,9 +779,6 @@ namespace DatabaseSelector
 
         private void btnReloadAll_Click(object sender, EventArgs e)
         {
-            btnReloadAll.Enabled = false;
-            ut.button = btnReloadAll;
-            ut.progressBar = pgbReloadAllAndSave;
             ut.CreateNewThread().Start();
         }
 
