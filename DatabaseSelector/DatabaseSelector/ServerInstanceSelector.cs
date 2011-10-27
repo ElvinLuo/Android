@@ -29,10 +29,7 @@ namespace DatabaseSelector
 
             ut = UpdateThread.CreateInstance();
             if (ut.inProgress)
-            {
-                btnReloadAll.Enabled = false;
-                //pgbReloadAllAndSave.Visible = true;
-            }
+            { btnReloadAll.Enabled = false; }
 
             groupList = GroupList.instance;
             serverList = new ServerList();
@@ -145,6 +142,7 @@ namespace DatabaseSelector
             {
                 tree.AfterExpand += new TreeViewEventHandler(tree_AfterConnectionNodeExpand);
                 tree.SelectedNode.Expand();
+                System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
             }
         }
 
@@ -158,6 +156,7 @@ namespace DatabaseSelector
                 {
                     tree.SelectedNode = databaseObjectNode;
                     databaseObjectNode.Expand();
+                    System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
                     SelectAndExpandInstanceNode();
                     break;
                 }
@@ -195,6 +194,9 @@ namespace DatabaseSelector
             databaseInstanceNode = databaseObjectNode.Nodes[index];
             tree.SelectedNode = databaseInstanceNode;
             databaseInstanceNode.Expand();
+            System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
+            if (cbAutoOpenEditer.Checked)
+            { CreateNewScript(); }
             SelectAndExpandTablesNode();
         }
 
@@ -218,6 +220,7 @@ namespace DatabaseSelector
                     //tree.SelectedNode = tableNode;
                     tree.AfterExpand += new TreeViewEventHandler(tree_AfterTablesNodeExpand);
                     tableNode.Expand();
+                    System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
                     break;
                 }
             }
@@ -244,8 +247,8 @@ namespace DatabaseSelector
         void tree_AfterTablesNodeExpand(object sender, TreeViewEventArgs e)
         {
             tree.AfterExpand -= new TreeViewEventHandler(tree_AfterTablesNodeExpand);
-            if (cbAutoOpenEditer.Checked)
-            { CreateNewScript(); }
+            //if (cbAutoOpenEditer.Checked)
+            //{ CreateNewScript(); }
         }
 
         void CreateNewScript()
@@ -414,12 +417,12 @@ namespace DatabaseSelector
 
         void ut_Updated(object sender, EventArgs e)
         {
-            if (IsHandleCreated)
+            if (btnReloadAll.IsHandleCreated)
             {
-                //if (ut.inProgress)
-                //{ btnReloadAll.Invoke((MethodInvoker)delegate { btnReloadAll.Enabled = false; }); }
-                //else
-                //{ btnReloadAll.Invoke((MethodInvoker)delegate { btnReloadAll.Enabled = true; }); }
+                if (ut.inProgress)
+                { btnReloadAll.Invoke((MethodInvoker)delegate { btnReloadAll.Enabled = false; }); }
+                else
+                { btnReloadAll.Invoke((MethodInvoker)delegate { btnReloadAll.Enabled = true; }); }
             }
         }
 

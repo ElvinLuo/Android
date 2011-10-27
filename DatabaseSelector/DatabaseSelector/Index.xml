@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <temcurl>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</temcurl>
+  <xlsFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</xlsFile>
+  <txtFile>C:\Program Files (x86)\DatabaseSelectorSetup\WingatePortMappingsForRTT_PPE.txt</txtFile>
+  <groupFilter />
+  <webServerFilter />
+  <travelServerFilter />
+  <databaseFilter />
+  <automaticallyOpenEditer>false</automaticallyOpenEditer>
   <previousSelectedGroup>0</previousSelectedGroup>
   <currentSelectedGroup>0</currentSelectedGroup>
   <previousSelectedServer>0</previousSelectedServer>

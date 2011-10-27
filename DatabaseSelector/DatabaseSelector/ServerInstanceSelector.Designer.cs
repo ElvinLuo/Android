@@ -442,30 +442,30 @@ namespace DatabaseSelector
             // 
             // pgbReloadGroups
             // 
-            this.pgbReloadGroups.Location = new System.Drawing.Point(0, 23);
+            this.pgbReloadGroups.Location = new System.Drawing.Point(0, 0);
             this.pgbReloadGroups.Maximum = 10000;
             this.pgbReloadGroups.Name = "pgbReloadGroups";
-            this.pgbReloadGroups.Size = new System.Drawing.Size(202, 16);
+            this.pgbReloadGroups.Size = new System.Drawing.Size(202, 23);
             this.pgbReloadGroups.Step = 1;
             this.pgbReloadGroups.TabIndex = 37;
             this.pgbReloadGroups.Visible = false;
             // 
             // pgbReloadServers
             // 
-            this.pgbReloadServers.Location = new System.Drawing.Point(202, 23);
+            this.pgbReloadServers.Location = new System.Drawing.Point(202, 0);
             this.pgbReloadServers.Maximum = 10000;
             this.pgbReloadServers.Name = "pgbReloadServers";
-            this.pgbReloadServers.Size = new System.Drawing.Size(263, 16);
+            this.pgbReloadServers.Size = new System.Drawing.Size(263, 23);
             this.pgbReloadServers.Step = 1;
             this.pgbReloadServers.TabIndex = 38;
             this.pgbReloadServers.Visible = false;
             // 
             // pgbReloadDatabases
             // 
-            this.pgbReloadDatabases.Location = new System.Drawing.Point(465, 23);
+            this.pgbReloadDatabases.Location = new System.Drawing.Point(465, 0);
             this.pgbReloadDatabases.Maximum = 10000;
             this.pgbReloadDatabases.Name = "pgbReloadDatabases";
-            this.pgbReloadDatabases.Size = new System.Drawing.Size(263, 16);
+            this.pgbReloadDatabases.Size = new System.Drawing.Size(263, 23);
             this.pgbReloadDatabases.Step = 1;
             this.pgbReloadDatabases.TabIndex = 39;
             this.pgbReloadDatabases.Visible = false;
@@ -543,7 +543,7 @@ namespace DatabaseSelector
             // 
             this.pgbReloadAllAndSave.Location = new System.Drawing.Point(728, 23);
             this.pgbReloadAllAndSave.Name = "pgbReloadAllAndSave";
-            this.pgbReloadAllAndSave.Size = new System.Drawing.Size(282, 16);
+            this.pgbReloadAllAndSave.Size = new System.Drawing.Size(282, 23);
             this.pgbReloadAllAndSave.Step = 1;
             this.pgbReloadAllAndSave.TabIndex = 48;
             this.pgbReloadAllAndSave.Visible = false;
