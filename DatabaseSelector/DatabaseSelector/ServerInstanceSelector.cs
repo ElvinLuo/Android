@@ -70,12 +70,12 @@ namespace DatabaseSelector
                     connectionObject = System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo"));
                     Type type = asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo");
                     type.GetProperty("ServerType").SetValue(connectionObject, new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907"), null);
-                    type.GetProperty("ServerName").SetValue(connectionObject, travelServer.Databases[lvDatabases.SelectedIndices[0]].Server, null);
-                    type.GetProperty("AuthenticationType").SetValue(connectionObject, cbConnectionType.SelectedIndex, null);
-                    type.GetProperty("UserName").SetValue(connectionObject, tbUserName.Text, null);
-                    if (cbConnectionType.SelectedIndex == 1)
+                    type.GetProperty("ServerName").SetValue(connectionObject, targetServer, null);
+                    type.GetProperty("AuthenticationType").SetValue(connectionObject, targetAuthenticationIndex, null);
+                    type.GetProperty("UserName").SetValue(connectionObject, targetUsername, null);
+                    if (targetAuthenticationIndex == 1)
                     {
-                        type.GetProperty("Password").SetValue(connectionObject, tbPassword.Text, null);
+                        type.GetProperty("Password").SetValue(connectionObject, targetPassword, null);
                     }
                     asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/Microsoft.SqlServer.SqlTools.VSIntegration.dll");
                     type = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.ServiceCache");
@@ -91,12 +91,12 @@ namespace DatabaseSelector
                 {
                     connection = new UIConnectionInfo();
                     connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
-                    connection.ServerName = travelServer.Databases[lvDatabases.SelectedIndices[0]].Server;
-                    connection.AuthenticationType = cbConnectionType.SelectedIndex;
-                    connection.UserName = tbUserName.Text;
+                    connection.ServerName = targetServer;
+                    connection.AuthenticationType = targetAuthenticationIndex;
+                    connection.UserName = targetUsername;
                     if (connection.AuthenticationType == 1)
                     {
-                        connection.Password = tbPassword.Text;
+                        connection.Password = targetPassword;
                     }
                     ServiceCache.GetObjectExplorer().ConnectToServer(connection);
                     objectExplorerService = ServiceCache.GetObjectExplorer();
@@ -108,9 +108,9 @@ namespace DatabaseSelector
                 if (version == 2008)
                 {
                     Assembly asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/Microsoft.SqlServer.ConnectionInfo.dll");
-                    object sqlConnectionInfoObject = cbConnectionType.SelectedIndex == 0 ?
-                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { travelServer.Databases[lvDatabases.SelectedIndices[0]].Server }) :
-                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { travelServer.Databases[lvDatabases.SelectedIndices[0]].Server, tbUserName.Text, tbPassword.Text }); ;
+                    object sqlConnectionInfoObject = targetAuthenticationIndex == 0 ?
+                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer }) :
+                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer, targetUsername, targetPassword }); ;
                     object hierarchyObject = methodGetHierarchy.Invoke(objectExplorerService, new object[] { sqlConnectionInfoObject, null });
                     object rootObject = hierarchyObject.GetType().GetProperty("Root").GetValue(hierarchyObject, null);
                     object treeViewObject = rootObject.GetType().GetProperty("TreeView").GetValue(rootObject, null);
@@ -118,9 +118,9 @@ namespace DatabaseSelector
                 }
                 else if (version == 2005)
                 {
-                    SqlConnectionInfo sqlConnectionInfo = cbConnectionType.SelectedIndex == 0 ?
-                    new SqlConnectionInfo(travelServer.Databases[lvDatabases.SelectedIndices[0]].Server) :
-                    new SqlConnectionInfo(travelServer.Databases[lvDatabases.SelectedIndices[0]].Server, tbUserName.Text, tbPassword.Text);
+                    SqlConnectionInfo sqlConnectionInfo = targetAuthenticationIndex == 0 ?
+                    new SqlConnectionInfo(targetServer) :
+                    new SqlConnectionInfo(targetServer, targetUsername, targetPassword);
                     hierarchy = (IExplorerHierarchy)methodGetHierarchy.Invoke(objectExplorerService, new object[] { sqlConnectionInfo });
                     tree = hierarchy.Root.TreeView;
                     needRefresh = true;
@@ -142,7 +142,7 @@ namespace DatabaseSelector
             {
                 tree.AfterExpand += new TreeViewEventHandler(tree_AfterConnectionNodeExpand);
                 tree.SelectedNode.Expand();
-                System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
+                //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
             }
         }
 
@@ -156,7 +156,7 @@ namespace DatabaseSelector
                 {
                     tree.SelectedNode = databaseObjectNode;
                     databaseObjectNode.Expand();
-                    System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
+                    //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
                     SelectAndExpandInstanceNode();
                     break;
                 }
@@ -179,12 +179,12 @@ namespace DatabaseSelector
             for (int i = 0; i < databaseObjectNode.Nodes.Count; i++)
             {
                 databaseInstanceNode = databaseObjectNode.Nodes[i];
-                if (databaseInstanceNode.Text.ToLower().Equals(tbDatabase.Text.ToLower()))
+                if (databaseInstanceNode.Text.ToLower().Equals(targetDatabase.ToLower()))
                 {
                     index = i;
                     break;
                 }
-                int currentMatching = GetMatchingLength(databaseInstanceNode.Text.ToLower().ToCharArray(), tbInstance.Text.ToLower().ToCharArray());
+                int currentMatching = GetMatchingLength(databaseInstanceNode.Text.ToLower().ToCharArray(), targetInstance.ToLower().ToCharArray());
                 if (currentMatching > maxMatching)
                 {
                     index = i;
@@ -194,9 +194,7 @@ namespace DatabaseSelector
             databaseInstanceNode = databaseObjectNode.Nodes[index];
             tree.SelectedNode = databaseInstanceNode;
             databaseInstanceNode.Expand();
-            System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
-            if (cbAutoOpenEditer.Checked)
-            { CreateNewScript(); }
+            //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
             SelectAndExpandTablesNode();
         }
 
@@ -220,7 +218,7 @@ namespace DatabaseSelector
                     //tree.SelectedNode = tableNode;
                     tree.AfterExpand += new TreeViewEventHandler(tree_AfterTablesNodeExpand);
                     tableNode.Expand();
-                    System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
+                    //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
                     break;
                 }
             }
@@ -247,8 +245,8 @@ namespace DatabaseSelector
         void tree_AfterTablesNodeExpand(object sender, TreeViewEventArgs e)
         {
             tree.AfterExpand -= new TreeViewEventHandler(tree_AfterTablesNodeExpand);
-            //if (cbAutoOpenEditer.Checked)
-            //{ CreateNewScript(); }
+            if (cbAutoOpenEditer.Checked)
+            { CreateNewScript(); }
         }
 
         void CreateNewScript()
@@ -268,12 +266,12 @@ namespace DatabaseSelector
                 {
                     connection = new UIConnectionInfo();
                     connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
-                    connection.ServerName = travelServer.Databases[lvDatabases.SelectedIndices[0]].Server;
-                    connection.AuthenticationType = cbConnectionType.SelectedIndex;
-                    connection.UserName = tbUserName.Text;
+                    connection.ServerName = targetServer;
+                    connection.AuthenticationType = targetAuthenticationIndex;
+                    connection.UserName = targetUsername;
                     if (connection.AuthenticationType == 1)
                     {
-                        connection.Password = tbPassword.Text;
+                        connection.Password = targetPassword;
                     }
                 }
                 SqlConnection sqlConnection = new SqlConnection(string.Format("Data Source=({0});Initial Catalog={1}{2}",
@@ -288,8 +286,8 @@ namespace DatabaseSelector
                     sb.AppendLine("--This Query Editer window is opened by Database Selector automatically");
                     sb.AppendLine("--Server		:" + connection.ServerName);
                     sb.AppendLine("--Database	    :" + sqlConnection.Database);
-                    sb.AppendLine("--Authentication:" + cbConnectionType.Text);
-                    sb.AppendLine("--UserName	    :" + tbUserName.Text);
+                    sb.AppendLine("--Authentication:" + targetAuthentication);
+                    sb.AppendLine("--UserName	    :" + targetUsername);
                     sb.AppendLine("*****************************************************************************/");
                     sb.Append("USE " + sqlConnection.Database);
                     streamWriter.Write(sb.ToString());
@@ -447,6 +445,10 @@ namespace DatabaseSelector
                 tbUserName.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[4].Text;
                 tbPassword.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[5].Text;
             }
+            targetAuthentication = cbConnectionType.Text;
+            targetAuthenticationIndex = cbConnectionType.SelectedIndex;
+            targetUsername = tbUserName.Text;
+            targetPassword = tbPassword.Text;
         }
 
         private void lvGroups_SelectedIndexChanged(object sender, EventArgs e)
@@ -533,6 +535,10 @@ namespace DatabaseSelector
                 tbDatabase.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[0].Text;
                 tbInstance.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[2].Text;
 
+                targetDatabase = tbDatabase.Text;
+                targetServer = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[1].Text;
+                targetInstance = tbInstance.Text;
+
                 if (tbDatabase.Text.Equals("No database found"))
                 { btnConnect.Enabled = false; }
                 else
@@ -553,6 +559,10 @@ namespace DatabaseSelector
                     tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
                     tbPassword.Text = "";
                 }
+                targetAuthentication = cbConnectionType.Text;
+                targetAuthenticationIndex = cbConnectionType.SelectedIndex;
+                targetUsername = tbUserName.Text;
+                targetPassword = tbPassword.Text;
             }
         }
 

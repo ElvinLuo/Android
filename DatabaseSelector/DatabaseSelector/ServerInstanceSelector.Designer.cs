@@ -515,7 +515,7 @@ namespace DatabaseSelector
             this.btnReloadAll.Name = "btnReloadAll";
             this.btnReloadAll.Size = new System.Drawing.Size(282, 23);
             this.btnReloadAll.TabIndex = 45;
-            this.btnReloadAll.Text = "Reload all lists and save, it may cost several minutes";
+            this.btnReloadAll.Text = "Reload all lists and save, it may cost several hours";
             this.btnReloadAll.UseVisualStyleBackColor = true;
             this.btnReloadAll.Click += new System.EventHandler(this.btnReloadAll_Click);
             // 
@@ -640,6 +640,14 @@ namespace DatabaseSelector
         private System.Windows.Forms.TextBox tbTravelServer;
         private System.Windows.Forms.ColumnHeader HeaderGroups;
         private System.Windows.Forms.Label lblContact;
+
+        private string targetDatabase;
+        private string targetInstance;
+        private string targetServer;
+        private string targetAuthentication;
+        private int targetAuthenticationIndex;
+        private string targetUsername;
+        private string targetPassword;
 
         private GroupList groupList;
         private ServerList serverList;
