@@ -1,0 +1,21 @@
+PreProd Wingate Port Mappings
+	
+
+PreProd SQL Instance		Wingate Port
+
+DNSQCAPPE01.dn.expeso.com	60011
+DNSQCAPPE02.dn.expeso.com	60012
+DNSQCAPPE03.dn.expeso.com	60013
+DNSQCBPPE04.dn.expeso.com	60014
+DNSQCBPPE05.dn.expeso.com	60015
+DNSQCBPPE06.dn.expeso.com	60016
+DNSQLPPE01.dn.expeso.com	60021
+DNSQLPPE02.dn.expeso.com	60022
+DNSQLPPE03.dn.expeso.com	60023
+DNSQLPPE04.dn.expeso.com	60024
+DNSQLJDB01.dn.expeso.com	36005            
+
+
+Query Analyzer connection string:	CHC-APPWG01.idx.expedmz.com,<Wingate port number>	
+SQL Login:				expdev
+pwd:					Update8!
