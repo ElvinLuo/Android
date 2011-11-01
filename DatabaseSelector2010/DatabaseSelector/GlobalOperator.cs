@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using SHDocVw;
-using System.Threading;
 
 namespace DatabaseSelector
 {
@@ -76,13 +76,15 @@ namespace DatabaseSelector
             InternetExplorer ie = new InternetExplorer();
             groupList.GetGroupsFromWeb(ie, false);
             groupList.SaveListToXML();
+            groupList.groups.Add("PPE");
 
             foreach (string group in groupList.groups)
             {
                 //Get server pairs from files or web site
                 serverList.groupName = group;
-                if (group.ToUpper().Equals("PPE"))
-                { serverList.GetServersFromFile(null); }
+                if (group.ToUpper().Equals("ALL")) continue;
+                else if (group.ToUpper().Equals("PPE"))
+                { serverList.GetServersFromFile(group, null); }
                 else
                 { serverList.GetServersFromWeb(ie, false); }
                 //Save server pairs to XML file
@@ -98,6 +100,9 @@ namespace DatabaseSelector
 
                 foreach (Server serverPair in serverList.servers)
                 {
+                    //No need to save databases for 'ALL Servers'
+                    if (serverPair.travelServer.Equals("ALL Servers")) continue;
+
                     //Get databases from registry
                     travelServer.MachineName = serverPair.travelServer;
                     travelServer.GetDatabasesFromRegistryAndChangeProgressBar(null);

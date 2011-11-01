@@ -52,20 +52,30 @@ namespace DatabaseSelector
             { Console.WriteLine(exception.Message); }
         }
 
-        public void GetServersFromFile(ProgressBar pgb)
+        public void GetServersFromFile(string groupName, ProgressBar pgb)
         {
             int max = 0;
             if (pgb != null) max = pgb.Maximum;
 
             servers = new List<Server>();
-            servers.Add(new Server("All", "All"));
-            TXTReader txtReader = TXTReader.CreateInstance();
-            Dictionary<string, int> pairs = txtReader.GetServerPortPair();
-            if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = pairs.Count; });
-            foreach (string server in pairs.Keys)
+            if (groupName.ToUpper().Equals("ALL"))
             {
-                servers.Add(new Server(txtReader.GetPortByServerName(server).ToString(), server));
-                if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                return;
+                //    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = 1; });
+                //    servers.Add(new Server("ALL", "ALL"));
+                //    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+            }
+            else if (groupName.ToUpper().Equals("PPE"))
+            {
+                servers.Add(new Server("ALL Ports", "ALL Servers"));
+                TXTReader txtReader = TXTReader.CreateInstance();
+                Dictionary<string, int> pairs = txtReader.GetServerPortPair();
+                if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = pairs.Count; });
+                foreach (string server in pairs.Keys)
+                {
+                    servers.Add(new Server(txtReader.GetPortByServerName(server).ToString(), server));
+                    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
+                }
             }
             updateDate = DateTime.Now;
             OnUpdated(EventArgs.Empty);
@@ -75,7 +85,7 @@ namespace DatabaseSelector
 
         public void GetServersFromWeb(InternetExplorer ie, bool visible)
         {
-            if (!groupName.Equals("PPE"))
+            if (!groupName.Equals("PPE") && !groupName.Equals("ALL"))
             {
                 try
                 {

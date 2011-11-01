@@ -54,25 +54,20 @@ namespace DatabaseSelector
             if (File.Exists(Serializer.CreateInstance().applicationFolder + "Groups.xml"))
             {
                 GroupList gl = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Groups.xml") as GroupList;
-                List<string> groupList = gl.groups;
+                groups = gl.groups;
                 selectedGroup = gl.selectedGroup;
                 updateDate = gl.updateDate;
 
-                if (groupList.Count == 0)
-                { GetGroupsFromWebAndSaveToXML(); }
-                groups = new List<string>();
-                if (!groupList[0].Equals("PPE"))
-                {
-                    groups.Add("PPE");
-                    foreach (string item in groupList)
-                        groups.Add(item);
-                    SaveListToXML();
-                }
-                else
-                {
-                    foreach (string item in groupList)
-                        groups.Add(item);
-                }
+                //List<string> groupList = gl.groups;
+                //if (groupList.Count == 0)
+                //{ GetGroupsFromWebAndSaveToXML(); }
+                //groups = new List<string>();
+                //if (!groupList.Contains("ALL"))
+                //{ groups.Add("ALL"); }
+                //if (!groupList.Contains("PPE"))
+                //{ groups.Add("PPE"); }
+                //foreach (string item in groupList)
+                //    groups.Add(item);
             }
             //else
             //{ GetGroupsFromWebAndSaveToXML(); }
@@ -91,7 +86,8 @@ namespace DatabaseSelector
             try
             {
                 groups = new List<string>();
-                groups.Add("PPE");
+                //groups.Add("ALL");
+                //groups.Add("PPE");
 
                 object Empty = 0;
                 object URL = Index.CreateInstance().temcurl;

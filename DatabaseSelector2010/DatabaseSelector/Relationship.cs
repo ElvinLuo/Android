@@ -23,13 +23,40 @@ namespace DatabaseSelector
 
         public TravelServer GetTravelServer(string machineName)
         {
-            TravelServer result = null;
-            foreach (TravelServer travelServer in travelServers)
+            TravelServer result = new TravelServer(machineName);
+            result.updateDate = System.DateTime.Now;
+            result.Databases = new List<DatabaseItem>();
+
+            if (machineName.ToUpper().Equals("ALL"))
             {
-                if (travelServer.MachineName.Equals(machineName))
+                foreach (TravelServer travelServer in travelServers)
                 {
-                    result = travelServer;
-                    break;
+                    foreach (DatabaseItem di in travelServer.Databases)
+                    { result.Databases.Add(di); }
+                }
+            }
+            else if (machineName.Equals("ALL Servers"))
+            {
+                TXTReader txtReader = TXTReader.CreateInstance();
+                Dictionary<string, int> pairs = txtReader.GetServerPortPair();
+                foreach (TravelServer travelServer in travelServers)
+                {
+                    if (pairs.ContainsKey(travelServer.MachineName))
+                    {
+                        foreach (DatabaseItem di in travelServer.Databases)
+                        { result.Databases.Add(di); }
+                    }
+                }
+            }
+            else
+            {
+                foreach (TravelServer travelServer in travelServers)
+                {
+                    if (travelServer.MachineName.Equals(machineName))
+                    {
+                        result = travelServer;
+                        break;
+                    }
                 }
             }
             return result;
@@ -68,13 +95,30 @@ namespace DatabaseSelector
 
         public ServerList GetServerList(string groupName)
         {
-            ServerList result = null;
-            foreach (ServerList groupServer in groupServers)
+            ServerList result = new ServerList();
+            result.groupName = "ALL";
+            result.updateDate = System.DateTime.Now;
+            result.servers = new List<Server>();
+
+            if (groupName.ToUpper().Equals("ALL"))
             {
-                if (groupServer.groupName.Equals(groupName))
+                foreach (ServerList groupServer in groupServers)
                 {
-                    result = groupServer;
-                    break;
+                    if (groupServer.updateDate < result.updateDate)
+                    { result.updateDate = groupServer.updateDate; }
+                    foreach (Server server in groupServer.servers)
+                    { result.servers.Add(server); }
+                }
+            }
+            else
+            {
+                foreach (ServerList groupServer in groupServers)
+                {
+                    if (groupServer.groupName.Equals(groupName))
+                    {
+                        result = groupServer;
+                        break;
+                    }
                 }
             }
             return result;

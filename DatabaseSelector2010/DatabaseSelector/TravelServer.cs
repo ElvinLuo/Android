@@ -89,7 +89,8 @@ namespace DatabaseSelector
             {
                 TXTReader txtReader = TXTReader.CreateInstance();
                 Dictionary<string, int> pairs = txtReader.GetServerPortPair();
-                if (MachineName.Equals("All") || pairs.ContainsKey(MachineName))
+                if (MachineName.Equals("ALL")) return;
+                else if (MachineName.Equals("ALL Servers") || pairs.ContainsKey(MachineName))
                 {
                     XLSReader xlsReader = XLSReader.CreateInstance();
                     Databases = xlsReader.GetTravelServerFromXLSAndChangeProgressBar(MachineName, pgb).Databases;

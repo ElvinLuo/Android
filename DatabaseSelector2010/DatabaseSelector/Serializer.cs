@@ -169,7 +169,7 @@ namespace DatabaseSelector
             while (!range.Text.Equals(""))
             {
                 myvalues = (System.Array)range.Cells.Value2;
-                if (machineName.Equals("All") || myvalues.GetValue(1, 1).ToString().Equals(machineName))
+                if (machineName.Equals("ALL Servers") || myvalues.GetValue(1, 1).ToString().Equals(machineName))
                 {
                     DatabaseItem databaseItem = new DatabaseItem(myvalues.GetValue(1, 2).ToString(),
                         myvalues.GetValue(1, 2).ToString(), "PPE database", "CHC-APPWG01.idx.expedmz.com," +

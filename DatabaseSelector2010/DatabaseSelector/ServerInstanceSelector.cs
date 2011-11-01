@@ -11,7 +11,6 @@ using Microsoft.SqlServer.Management.UI.VSIntegration;
 using Microsoft.SqlServer.Management.UI.VSIntegration.Editors;
 using Microsoft.SqlServer.Management.UI.VSIntegration.ObjectExplorer;
 using SHDocVw;
-using System.Threading;
 
 namespace DatabaseSelector
 {
@@ -313,6 +312,8 @@ namespace DatabaseSelector
         {
             lvGroups.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
+            lvicGroup.Add(new ListViewItem(new string[] { "ALL" }));
+            lvicGroup.Add(new ListViewItem(new string[] { "PPE" }));
             if (groupList.groups != null && groupList.groups.Count != 0)
             {
                 for (int i = 0; i < groupList.groups.Count; i++)
@@ -324,8 +325,8 @@ namespace DatabaseSelector
                     }
                 }
             }
-            if (lvGroups.Items.Count == 0)
-            { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
+            //if (lvGroups.Items.Count == 0)
+            //{ lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
             if (lvGroups.Items.Count != 0)
             {
                 if (index.currentSelectedGroup >= lvGroups.Items.Count)
@@ -335,8 +336,6 @@ namespace DatabaseSelector
                 groupList.selectedGroup = lvGroups.Items[index.currentSelectedGroup].SubItems[0].Text;
                 lvGroups.Items[index.currentSelectedGroup].Selected = true;
             }
-            foreach (ColumnHeader ch in lvGroups.Columns)
-            { ch.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent); }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
 
@@ -344,6 +343,8 @@ namespace DatabaseSelector
         {
             lvServers.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
+            if (serverList.groupName.ToUpper().Equals("ALL"))
+            { lvic.Add(new ListViewItem(new string[] { "ALL", "ALL" })); }
             if (serverList.servers != null && serverList.servers.Count != 0)
             {
                 for (int i = 0; i < serverList.servers.Count; i++)
@@ -367,6 +368,16 @@ namespace DatabaseSelector
                 //lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
             }
             lblServersUpdateDate.Text = "Updated at: " + serverList.updateDate;
+            if (groupList.selectedGroup.ToUpper().Equals("ALL") || groupList.selectedGroup.Contains("No group found"))
+            {
+                btnReloadServers.Enabled = false;
+                btnSaveServers.Enabled = false;
+            }
+            else
+            {
+                btnReloadServers.Enabled = true;
+                btnSaveServers.Enabled = true;
+            }
         }
 
         private void ReloadDatabaseListView(string filter)
@@ -402,6 +413,18 @@ namespace DatabaseSelector
                 { ch.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize); }
             }
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
+            if (travelServer.MachineName.ToUpper().Equals("ALL") ||
+                travelServer.MachineName.Equals("ALL Servers") ||
+                lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text.Contains("No server found"))
+            {
+                btnReloadDatabases.Enabled = false;
+                btnSaveDatabases.Enabled = false;
+            }
+            else
+            {
+                btnReloadDatabases.Enabled = true;
+                btnSaveDatabases.Enabled = true;
+            }
         }
 
         private void ServerInstanceSelector_Load(object sender, EventArgs e)
@@ -470,7 +493,7 @@ namespace DatabaseSelector
                     lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
                 }
 
-                tbGroup.Text = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
+                //tbGroup.Text = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
                 groupList.selectedGroup = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
 
                 serverList.groupName = groupList.selectedGroup;
@@ -507,6 +530,7 @@ namespace DatabaseSelector
                     tbTravelServer.Text = lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text;
                     travelServer.MachineName = lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text;
                 }
+                tbGroup.Text = serverList.groupName;
 
                 travelServer.GetDatabases();
                 ReloadDatabaseListView(tbDatabaseFilter.Text);
@@ -591,6 +615,7 @@ namespace DatabaseSelector
 
         private void btnSaveDatabases_Click(object sender, EventArgs e)
         {
+            if (travelServer.MachineName.Equals("ALL Servers")) return;
             DisableAllButtons();
             TravelServerList tsl;
             if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
@@ -648,12 +673,20 @@ namespace DatabaseSelector
 
         private void EnableAllButtons()
         {
-            btnReloadDatabases.Enabled = true;
             btnReloadGroups.Enabled = true;
-            btnReloadServers.Enabled = true;
-            btnSaveDatabases.Enabled = true;
             btnSaveGroups.Enabled = true;
-            btnSaveServers.Enabled = true;
+            if (!groupList.selectedGroup.ToUpper().Equals("ALL") && !groupList.selectedGroup.Contains("No group found"))
+            {
+                btnReloadServers.Enabled = true;
+                btnSaveServers.Enabled = true;
+            }
+            if (!travelServer.MachineName.ToUpper().Equals("ALL") &&
+                !travelServer.MachineName.Equals("ALL Servers") &&
+                !lvServers.Items[index.currentSelectedServer].SubItems[0].Text.Contains("No server found"))
+            {
+                btnReloadDatabases.Enabled = true;
+                btnSaveDatabases.Enabled = true;
+            }
             btnReloadAll.Enabled = true;
             btnClearAllSearchText.Enabled = true;
             btnConnect.Enabled = true;
@@ -702,7 +735,7 @@ namespace DatabaseSelector
             if (trigger.Equals("btnReloadDatabases"))
             { travelServer.GetDatabasesFromRegistryAndChangeProgressBar(pgbReloadDatabases); }
             else if (trigger.Equals("btnReloadServers") && serverList.groupName.Equals("PPE"))
-            { serverList.GetServersFromFile(pgbReloadServers); }
+            { serverList.GetServersFromFile(serverList.groupName, pgbReloadServers); }
             else
             {
                 InternetExplorer ie = new InternetExplorer();

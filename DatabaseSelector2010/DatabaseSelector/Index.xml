@@ -8,10 +8,10 @@
   <travelServerFilter />
   <databaseFilter />
   <automaticallyOpenEditer>false</automaticallyOpenEditer>
-  <previousSelectedGroup>0</previousSelectedGroup>
-  <currentSelectedGroup>0</currentSelectedGroup>
-  <previousSelectedServer>0</previousSelectedServer>
-  <currentSelectedServer>0</currentSelectedServer>
+  <previousSelectedGroup>1</previousSelectedGroup>
+  <currentSelectedGroup>1</currentSelectedGroup>
+  <previousSelectedServer>10</previousSelectedServer>
+  <currentSelectedServer>11</currentSelectedServer>
   <previousSelectedDatabase>0</previousSelectedDatabase>
   <currentSelectedDatabase>0</currentSelectedDatabase>
 </Index>
