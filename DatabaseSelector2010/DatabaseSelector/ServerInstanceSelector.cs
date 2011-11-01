@@ -252,14 +252,14 @@ namespace DatabaseSelector
         {
             try
             {
-                if (needRefresh && version == 2005)
-                {
-                    databaseObjectNode.Collapse();
-                    needRefresh = false;
-                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
-                    SelectAndExpandDatabasesNode();
-                    return;
-                }
+                //if (needRefresh && version == 2005)
+                //{
+                //    databaseObjectNode.Collapse();
+                //    needRefresh = false;
+                //    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
+                //    SelectAndExpandDatabasesNode();
+                //    return;
+                //}
                 string strFullPath = Serializer.CreateInstance().applicationFolder + "SQLFile.sql";
                 if (version == 2008)
                 {
@@ -299,10 +299,10 @@ namespace DatabaseSelector
                     MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
                     methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
                 }
-                else if (version == 2005)
-                {
-                    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
-                }
+                //else if (version == 2005)
+                //{
+                //    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
+                //}
             }
             catch (Exception exception)
             { Console.WriteLine(exception.Message); }
