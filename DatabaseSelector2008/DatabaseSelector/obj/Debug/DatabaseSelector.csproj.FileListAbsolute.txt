@@ -74,6 +74,12 @@ D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.
 C:\Program Files\DatabaseSelectorSetup\DatabaseSelector.dll
 C:\Program Files\DatabaseSelectorSetup\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.Options.resources
+D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\bin\DatabaseSelector.dll
+D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\bin\DatabaseSelector.pdb
+D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\bin\Microsoft.SqlServer.RegSvrEnum.dll
+D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\bin\Microsoft.SqlServer.SqlTools.VSIntegration.dll
+D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\bin\SqlWorkbench.Interfaces.dll
+D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\bin\Interop.SHDocVw.dll
 D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\obj\Debug\Interop.SHDocVw.dll
 D:\Projects\GitHub\DatabaseSelector2008\DatabaseSelector\obj\Debug\DatabaseSelector.csproj.ResolveComReference.cache
