@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GroupList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <selectedGroup>PMPRE02</selectedGroup>
-  <updateDate>2011-10-26T22:06:42.8594854-07:00</updateDate>
+  <selectedGroup>ALL</selectedGroup>
+  <updateDate>2011-11-01T01:08:54.9529851-07:00</updateDate>
   <groups>
-    <string>PPE</string>
     <string>,DEFAULT</string>
     <string>,EXPEDIABASE</string>
     <string>,WEB</string>

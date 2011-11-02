@@ -9,9 +9,9 @@
   <databaseFilter />
   <automaticallyOpenEditer>false</automaticallyOpenEditer>
   <previousSelectedGroup>0</previousSelectedGroup>
-  <currentSelectedGroup>0</currentSelectedGroup>
-  <previousSelectedServer>0</previousSelectedServer>
-  <currentSelectedServer>0</currentSelectedServer>
+  <currentSelectedGroup>1</currentSelectedGroup>
+  <previousSelectedServer>6</previousSelectedServer>
+  <currentSelectedServer>2</currentSelectedServer>
   <previousSelectedDatabase>0</previousSelectedDatabase>
-  <currentSelectedDatabase>0</currentSelectedDatabase>
+  <currentSelectedDatabase>3</currentSelectedDatabase>
 </Index>

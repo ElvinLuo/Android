@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GroupList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <selectedGroup>ALL</selectedGroup>
-  <updateDate>2011-10-31T09:18:16.3669487-07:00</updateDate>
+  <updateDate>2011-11-01T01:08:54.9529851-07:00</updateDate>
   <groups>
     <string>,DEFAULT</string>
     <string>,EXPEDIABASE</string>

@@ -2,62 +2,8 @@
 <GroupServerList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <groupServers>
     <ServerList>
-      <groupName>PPE</groupName>
-      <updateDate>2011-10-26T22:06:42.9688576-07:00</updateDate>
-      <servers>
-        <Server>
-          <serverName>All</serverName>
-          <travelServer>All</travelServer>
-        </Server>
-        <Server>
-          <serverName>60011</serverName>
-          <travelServer>DNSQCAPPE01</travelServer>
-        </Server>
-        <Server>
-          <serverName>60012</serverName>
-          <travelServer>DNSQCAPPE02</travelServer>
-        </Server>
-        <Server>
-          <serverName>60013</serverName>
-          <travelServer>DNSQCAPPE03</travelServer>
-        </Server>
-        <Server>
-          <serverName>60014</serverName>
-          <travelServer>DNSQCBPPE04</travelServer>
-        </Server>
-        <Server>
-          <serverName>60015</serverName>
-          <travelServer>DNSQCBPPE05</travelServer>
-        </Server>
-        <Server>
-          <serverName>60016</serverName>
-          <travelServer>DNSQCBPPE06</travelServer>
-        </Server>
-        <Server>
-          <serverName>60021</serverName>
-          <travelServer>DNSQLPPE01</travelServer>
-        </Server>
-        <Server>
-          <serverName>60022</serverName>
-          <travelServer>DNSQLPPE02</travelServer>
-        </Server>
-        <Server>
-          <serverName>60023</serverName>
-          <travelServer>DNSQLPPE03</travelServer>
-        </Server>
-        <Server>
-          <serverName>60024</serverName>
-          <travelServer>DNSQLPPE04</travelServer>
-        </Server>
-        <Server>
-          <serverName>36005</serverName>
-          <travelServer>DNSQLJDB01</travelServer>
-        </Server>
-      </servers>
-    </ServerList>
-    <ServerList>
       <groupName>,DEFAULT</groupName>
-      <updateDate>2011-10-26T22:07:49.3734076-07:00</updateDate>
+      <updateDate>2011-11-01T01:09:00.9372069-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELEVO08 </serverName>
@@ -67,7 +13,7 @@
     </ServerList>
     <ServerList>
       <groupName>,EXPEDIABASE</groupName>
-      <updateDate>2011-10-26T22:08:03.0605572-07:00</updateDate>
+      <updateDate>2011-11-01T01:09:15.6399555-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELEVO08 </serverName>
@@ -77,7 +23,7 @@
     </ServerList>
     <ServerList>
       <groupName>,WEB</groupName>
-      <updateDate>2011-10-26T22:08:15.216496-07:00</updateDate>
+      <updateDate>2011-11-01T01:09:27.3740301-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBPRF6-01 </serverName>
@@ -87,7 +33,7 @@
     </ServerList>
     <ServerList>
       <groupName>ADS01</groupName>
-      <updateDate>2011-10-26T22:08:23.7162784-07:00</updateDate>
+      <updateDate>2011-11-01T01:09:47.7797577-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELSRVADS011 </serverName>
@@ -117,7 +63,7 @@
     </ServerList>
     <ServerList>
       <groupName>AIR</groupName>
-      <updateDate>2011-10-26T22:11:10.8526246-07:00</updateDate>
+      <updateDate>2011-11-01T01:12:35.9785767-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELAIRE3J33 </serverName>
@@ -303,7 +249,7 @@
     </ServerList>
     <ServerList>
       <groupName>AIRSOA-PERF</groupName>
-      <updateDate>2011-10-26T22:19:05.2623544-07:00</updateDate>
+      <updateDate>2011-11-01T01:18:36.7974645-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVAPERF01 </serverName>
@@ -329,7 +275,7 @@
     </ServerList>
     <ServerList>
       <groupName>BGB</groupName>
-      <updateDate>2011-10-26T22:19:26.5899334-07:00</updateDate>
+      <updateDate>2011-11-01T01:18:51.3595917-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBEUR03 </serverName>
@@ -343,7 +289,7 @@
     </ServerList>
     <ServerList>
       <groupName>BUILD</groupName>
-      <updateDate>2011-10-26T22:20:00.8390566-07:00</updateDate>
+      <updateDate>2011-11-01T01:19:18.3432759-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELBLDWEB01 </serverName>
@@ -389,7 +335,7 @@
     </ServerList>
     <ServerList>
       <groupName>CCT</groupName>
-      <updateDate>2011-10-26T22:22:22.0073176-07:00</updateDate>
+      <updateDate>2011-11-01T01:21:43.4176869-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFILCRM01 </serverName>
@@ -563,7 +509,7 @@
     </ServerList>
     <ServerList>
       <groupName>CCT-OPM</groupName>
-      <updateDate>2011-10-26T22:29:11.5593328-07:00</updateDate>
+      <updateDate>2011-11-01T01:28:51.1254873-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCRM69 </serverName>
@@ -573,7 +519,7 @@
     </ServerList>
     <ServerList>
       <groupName>CCT-PMP02</groupName>
-      <updateDate>2011-10-26T22:29:23.3246566-07:00</updateDate>
+      <updateDate>2011-11-01T01:29:05.3751225-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCRM66 </serverName>
@@ -583,7 +529,7 @@
     </ServerList>
     <ServerList>
       <groupName>CCT-PMP03</groupName>
-      <updateDate>2011-10-26T22:29:36.5430682-07:00</updateDate>
+      <updateDate>2011-11-01T01:29:10.5156159-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCRM65 </serverName>
@@ -597,7 +543,7 @@
     </ServerList>
     <ServerList>
       <groupName>CCT-PMP04</groupName>
-      <updateDate>2011-10-26T22:29:42.3085456-07:00</updateDate>
+      <updateDate>2011-11-01T01:29:16.1248473-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCRM65 </serverName>
@@ -611,7 +557,7 @@
     </ServerList>
     <ServerList>
       <groupName>CCT-UTIL02</groupName>
-      <updateDate>2011-10-26T22:29:48.1052722-07:00</updateDate>
+      <updateDate>2011-11-01T01:29:21.3747129-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCRM68 </serverName>
@@ -625,7 +571,7 @@
     </ServerList>
     <ServerList>
       <groupName>CHE-HF01</groupName>
-      <updateDate>2011-10-26T22:30:19.4950936-07:00</updateDate>
+      <updateDate>2011-11-01T01:29:55.6394607-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSAPCHF01 </serverName>
@@ -633,18 +579,6 @@
         </Server>
         <Server>
           <serverName>CHELFDSHF01 </serverName>
-          <travelServer>CHELTVMNAHF01</travelServer>
-        </Server>
-        <Server>
-          <serverName>CHELOBIAPCHF01 </serverName>
-          <travelServer>CHELTVMEURHF01</travelServer>
-        </Server>
-        <Server>
-          <serverName>CHELOBIEUHF01 </serverName>
-          <travelServer>CHELTVMEURHF01</travelServer>
-        </Server>
-        <Server>
-          <serverName>CHELOBINAHF01 </serverName>
           <travelServer>CHELTVMNAHF01</travelServer>
         </Server>
         <Server>
@@ -695,7 +629,7 @@
     </ServerList>
     <ServerList>
       <groupName>CHE-RC01</groupName>
-      <updateDate>2011-10-26T22:33:07.8657832-07:00</updateDate>
+      <updateDate>2011-11-01T01:33:18.6811377-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELBOT01 </serverName>
@@ -719,7 +653,7 @@
         </Server>
         <Server>
           <serverName>CHELTVMNA01 </serverName>
-          <travelServer>CHELTVMNA01</travelServer>
+          <travelServer>Unknown</travelServer>
         </Server>
         <Server>
           <serverName>CHELUTL01 </serverName>
@@ -749,7 +683,7 @@
     </ServerList>
     <ServerList>
       <groupName>COVERITY</groupName>
-      <updateDate>2011-10-26T22:34:37.441615-07:00</updateDate>
+      <updateDate>2011-11-01T01:35:01.1316399-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELMAKCOV01 </serverName>
@@ -763,7 +697,7 @@
     </ServerList>
     <ServerList>
       <groupName>CPT</groupName>
-      <updateDate>2011-10-26T22:35:14.8781566-07:00</updateDate>
+      <updateDate>2011-11-01T01:35:32.8339533-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELMAKCOV01 </serverName>
@@ -777,7 +711,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX01</groupName>
-      <updateDate>2011-10-26T22:35:41.5180996-07:00</updateDate>
+      <updateDate>2011-11-01T01:35:52.5521985-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX01 </serverName>
@@ -787,7 +721,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX02</groupName>
-      <updateDate>2011-10-26T22:35:54.9865048-07:00</updateDate>
+      <updateDate>2011-11-01T01:36:11.0361003-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX02 </serverName>
@@ -797,7 +731,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX03</groupName>
-      <updateDate>2011-10-26T22:36:01.4863384-07:00</updateDate>
+      <updateDate>2011-11-01T01:36:29.6137497-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX02 </serverName>
@@ -807,7 +741,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX04</groupName>
-      <updateDate>2011-10-26T22:36:26.7513166-07:00</updateDate>
+      <updateDate>2011-11-01T01:36:54.5193621-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX02 </serverName>
@@ -817,7 +751,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX05</groupName>
-      <updateDate>2011-10-26T22:36:40.0634758-07:00</updateDate>
+      <updateDate>2011-11-01T01:37:13.8157431-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX02 </serverName>
@@ -827,7 +761,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX06</groupName>
-      <updateDate>2011-10-26T22:36:58.5630022-07:00</updateDate>
+      <updateDate>2011-11-01T01:37:19.9249617-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX02 </serverName>
@@ -837,7 +771,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX07</groupName>
-      <updateDate>2011-10-26T22:37:11.890786-07:00</updateDate>
+      <updateDate>2011-11-01T01:37:32.8152567-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX02 </serverName>
@@ -847,7 +781,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX08</groupName>
-      <updateDate>2011-10-26T22:37:18.4999918-07:00</updateDate>
+      <updateDate>2011-11-01T01:37:39.1275951-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX08 </serverName>
@@ -857,7 +791,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX09</groupName>
-      <updateDate>2011-10-26T22:37:31.9996462-07:00</updateDate>
+      <updateDate>2011-11-01T01:37:57.5646231-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX08 </serverName>
@@ -867,7 +801,7 @@
     </ServerList>
     <ServerList>
       <groupName>CX10</groupName>
-      <updateDate>2011-10-26T22:37:43.9368406-07:00</updateDate>
+      <updateDate>2011-11-01T01:38:16.0329003-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBCX08 </serverName>
@@ -877,7 +811,7 @@
     </ServerList>
     <ServerList>
       <groupName>DAILY</groupName>
-      <updateDate>2011-10-26T22:38:00.2176738-07:00</updateDate>
+      <updateDate>2011-11-01T01:38:31.2512607-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBDLYAP01 </serverName>
@@ -923,7 +857,7 @@
     </ServerList>
     <ServerList>
       <groupName>DBADEV</groupName>
-      <updateDate>2011-10-26T22:38:30.8262652-07:00</updateDate>
+      <updateDate>2011-11-01T01:39:01.4848617-07:00</updateDate>
       <servers>
         <Server>
           <serverName>BLSQLDEV01 </serverName>
@@ -1001,7 +935,7 @@
     </ServerList>
     <ServerList>
       <groupName>DEVIPU</groupName>
-      <updateDate>2011-10-26T22:41:44.540056-07:00</updateDate>
+      <updateDate>2011-11-01T01:42:13.1541249-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLH04 </serverName>
@@ -1011,7 +945,7 @@
     </ServerList>
     <ServerList>
       <groupName>EADW</groupName>
-      <updateDate>2011-10-26T22:42:16.2423694-07:00</updateDate>
+      <updateDate>2011-11-01T01:42:42.5720004-07:00</updateDate>
       <servers>
         <Server>
           <serverName>BLSQLDMO02 </serverName>
@@ -1059,7 +993,7 @@
         </Server>
         <Server>
           <serverName>DLUTLBUS02 </serverName>
-          <travelServer>Unknown</travelServer>
+          <travelServer>SERVER OFFLINE</travelServer>
         </Server>
         <Server>
           <serverName>EBSTST02 </serverName>
@@ -1069,7 +1003,7 @@
     </ServerList>
     <ServerList>
       <groupName>ES-PMP01</groupName>
-      <updateDate>2011-10-26T22:44:31.9263958-07:00</updateDate>
+      <updateDate>2011-11-01T01:45:06.4776927-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP01 </serverName>
@@ -1087,7 +1021,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESENG01</groupName>
-      <updateDate>2011-10-26T22:44:53.9258326-07:00</updateDate>
+      <updateDate>2011-11-01T01:45:33.960387-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDS1H01 </serverName>
@@ -1105,7 +1039,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESENG02</groupName>
-      <updateDate>2011-10-26T22:45:17.893969-07:00</updateDate>
+      <updateDate>2011-11-01T01:46:08.0445462-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELUTLPMP48 </serverName>
@@ -1119,7 +1053,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESENGINTEGRATION</groupName>
-      <updateDate>2011-10-26T22:45:38.2371982-07:00</updateDate>
+      <updateDate>2011-11-01T01:46:33.2331144-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMSTRMM05 </serverName>
@@ -1129,7 +1063,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR06</groupName>
-      <updateDate>2011-10-26T22:45:45.5182618-07:00</updateDate>
+      <updateDate>2011-11-01T01:46:51.7080501-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR06 </serverName>
@@ -1139,7 +1073,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR11</groupName>
-      <updateDate>2011-10-26T22:46:00.1116382-07:00</updateDate>
+      <updateDate>2011-11-01T01:47:10.2778521-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMESTR17 </serverName>
@@ -1153,7 +1087,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR12</groupName>
-      <updateDate>2011-10-26T22:46:24.9078784-07:00</updateDate>
+      <updateDate>2011-11-01T01:47:28.8788901-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR12 </serverName>
@@ -1163,7 +1097,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR13</groupName>
-      <updateDate>2011-10-26T22:46:50.3447272-07:00</updateDate>
+      <updateDate>2011-11-01T01:47:47.3237481-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR13 </serverName>
@@ -1177,7 +1111,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR14</groupName>
-      <updateDate>2011-10-26T22:47:12.6722806-07:00</updateDate>
+      <updateDate>2011-11-01T01:48:17.0760381-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR14 </serverName>
@@ -1187,7 +1121,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR15</groupName>
-      <updateDate>2011-10-26T22:47:26.1250612-07:00</updateDate>
+      <updateDate>2011-11-01T01:48:36.3486501-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR15 </serverName>
@@ -1197,7 +1131,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR16</groupName>
-      <updateDate>2011-10-26T22:47:57.7648762-07:00</updateDate>
+      <updateDate>2011-11-01T01:48:54.8715981-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR16 </serverName>
@@ -1207,7 +1141,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR17</groupName>
-      <updateDate>2011-10-26T22:48:17.6081182-07:00</updateDate>
+      <updateDate>2011-11-01T01:49:13.3945461-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR17 </serverName>
@@ -1217,7 +1151,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR18</groupName>
-      <updateDate>2011-10-26T22:48:43.7168248-07:00</updateDate>
+      <updateDate>2011-11-01T01:49:31.9174941-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR18 </serverName>
@@ -1227,7 +1161,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR19</groupName>
-      <updateDate>2011-10-26T22:48:57.2477284-07:00</updateDate>
+      <updateDate>2011-11-01T01:49:50.4716781-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR19 </serverName>
@@ -1237,7 +1171,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR21</groupName>
-      <updateDate>2011-10-26T22:49:22.9345708-07:00</updateDate>
+      <updateDate>2011-11-01T01:50:09.8692341-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMESTR15 </serverName>
@@ -1251,7 +1185,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR22</groupName>
-      <updateDate>2011-10-26T22:49:45.0902536-07:00</updateDate>
+      <updateDate>2011-11-01T01:50:36.7790481-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR22 </serverName>
@@ -1261,7 +1195,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR23</groupName>
-      <updateDate>2011-10-26T22:49:58.5586588-07:00</updateDate>
+      <updateDate>2011-11-01T01:50:49.8513141-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR23 </serverName>
@@ -1271,7 +1205,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR24</groupName>
-      <updateDate>2011-10-26T22:50:10.8083452-07:00</updateDate>
+      <updateDate>2011-11-01T01:51:01.7366121-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMESTR20 </serverName>
@@ -1285,7 +1219,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR25</groupName>
-      <updateDate>2011-10-26T22:50:30.1516-07:00</updateDate>
+      <updateDate>2011-11-01T01:51:21.5870901-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR25 </serverName>
@@ -1295,17 +1229,17 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR27</groupName>
-      <updateDate>2011-10-26T22:50:41.9169238-07:00</updateDate>
+      <updateDate>2011-11-01T01:51:34.4563221-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR27 </serverName>
-          <travelServer>NSTVMINT01</travelServer>
+          <travelServer>CHELTVMNA01</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>ESTR28</groupName>
-      <updateDate>2011-10-26T22:50:55.1353354-07:00</updateDate>
+      <updateDate>2011-11-01T01:51:39.6741187-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR28 </serverName>
@@ -1315,7 +1249,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR29</groupName>
-      <updateDate>2011-10-26T22:51:07.1506528-07:00</updateDate>
+      <updateDate>2011-11-01T01:51:58.1396773-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR29 </serverName>
@@ -1325,7 +1259,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR30</groupName>
-      <updateDate>2011-10-26T22:51:32.5093786-07:00</updateDate>
+      <updateDate>2011-11-01T01:52:11.1061863-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR30 </serverName>
@@ -1335,7 +1269,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR31</groupName>
-      <updateDate>2011-10-26T22:51:45.8371624-07:00</updateDate>
+      <updateDate>2011-11-01T01:52:22.807289-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR31 </serverName>
@@ -1345,7 +1279,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR32</groupName>
-      <updateDate>2011-10-26T22:51:59.602435-07:00</updateDate>
+      <updateDate>2011-11-01T01:52:39.210704-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR32 </serverName>
@@ -1355,7 +1289,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR34</groupName>
-      <updateDate>2011-10-26T22:52:13.039591-07:00</updateDate>
+      <updateDate>2011-11-01T01:52:52.333436-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR34 </serverName>
@@ -1365,7 +1299,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR35</groupName>
-      <updateDate>2011-10-26T22:52:25.0549084-07:00</updateDate>
+      <updateDate>2011-11-01T01:53:04.0970279-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMESTR23 </serverName>
@@ -1383,7 +1317,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR36</groupName>
-      <updateDate>2011-10-26T22:52:56.5384774-07:00</updateDate>
+      <updateDate>2011-11-01T01:53:44.043249-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR36 </serverName>
@@ -1393,7 +1327,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR37</groupName>
-      <updateDate>2011-10-26T22:53:15.3973696-07:00</updateDate>
+      <updateDate>2011-11-01T01:54:02.4306961-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR37 </serverName>
@@ -1403,7 +1337,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR38</groupName>
-      <updateDate>2011-10-26T22:53:34.2250126-07:00</updateDate>
+      <updateDate>2011-11-01T01:54:27.3795092-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR38 </serverName>
@@ -1413,7 +1347,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR40</groupName>
-      <updateDate>2011-10-26T22:53:46.396576-07:00</updateDate>
+      <updateDate>2011-11-01T01:54:40.1585506-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR40 </serverName>
@@ -1423,17 +1357,17 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR41</groupName>
-      <updateDate>2011-10-26T22:54:05.2554682-07:00</updateDate>
+      <updateDate>2011-11-01T01:54:53.093815-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR41 </serverName>
-          <travelServer>CHELAIRTVMFG01</travelServer>
+          <travelServer>CHELTVMAPC01</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>ESTR42</groupName>
-      <updateDate>2011-10-26T22:54:19.9738414-07:00</updateDate>
+      <updateDate>2011-11-01T01:55:05.4822989-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR42 </serverName>
@@ -1447,7 +1381,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR43</groupName>
-      <updateDate>2011-10-26T22:54:25.848691-07:00</updateDate>
+      <updateDate>2011-11-01T01:55:10.8563701-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR43 </serverName>
@@ -1457,7 +1391,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR44</groupName>
-      <updateDate>2011-10-26T22:54:39.1920994-07:00</updateDate>
+      <updateDate>2011-11-01T01:55:35.7270717-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR44 </serverName>
@@ -1467,7 +1401,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR45</groupName>
-      <updateDate>2011-10-26T22:54:51.160543-07:00</updateDate>
+      <updateDate>2011-11-01T01:56:00.8477301-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR45 </serverName>
@@ -1477,7 +1411,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR46</groupName>
-      <updateDate>2011-10-26T22:55:03.2071096-07:00</updateDate>
+      <updateDate>2011-11-01T01:56:14.2516635-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR46 </serverName>
@@ -1487,7 +1421,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR47</groupName>
-      <updateDate>2011-10-26T22:55:21.9253804-07:00</updateDate>
+      <updateDate>2011-11-01T01:56:27.3275286-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR47 </serverName>
@@ -1497,7 +1431,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR48</groupName>
-      <updateDate>2011-10-26T22:55:40.9092694-07:00</updateDate>
+      <updateDate>2011-11-01T01:56:38.9509104-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR48 </serverName>
@@ -1507,7 +1441,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR49</groupName>
-      <updateDate>2011-10-26T22:55:59.8150354-07:00</updateDate>
+      <updateDate>2011-11-01T01:56:57.4337475-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMESTR22 </serverName>
@@ -1521,7 +1455,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR50</groupName>
-      <updateDate>2011-10-26T22:56:19.4239084-07:00</updateDate>
+      <updateDate>2011-11-01T01:57:19.2131853-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR50 </serverName>
@@ -1531,7 +1465,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR51</groupName>
-      <updateDate>2011-10-26T22:56:31.001737-07:00</updateDate>
+      <updateDate>2011-11-01T01:57:31.2434343-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR51 </serverName>
@@ -1541,7 +1475,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR52</groupName>
-      <updateDate>2011-10-26T22:56:44.2201486-07:00</updateDate>
+      <updateDate>2011-11-01T01:57:56.3663439-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR52 </serverName>
@@ -1551,7 +1485,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR53</groupName>
-      <updateDate>2011-10-26T22:56:56.1885922-07:00</updateDate>
+      <updateDate>2011-11-01T01:58:14.9897943-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR53 </serverName>
@@ -1561,7 +1495,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR54</groupName>
-      <updateDate>2011-10-26T22:57:15.7974652-07:00</updateDate>
+      <updateDate>2011-11-01T01:58:28.0668312-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR54 </serverName>
@@ -1571,7 +1505,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR55</groupName>
-      <updateDate>2011-10-26T22:57:27.7502842-07:00</updateDate>
+      <updateDate>2011-11-01T01:58:39.7846062-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR55 </serverName>
@@ -1581,7 +1515,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR56</groupName>
-      <updateDate>2011-10-26T22:57:53.0777608-07:00</updateDate>
+      <updateDate>2011-11-01T01:58:58.3768092-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR56 </serverName>
@@ -1591,7 +1525,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR57</groupName>
-      <updateDate>2011-10-26T22:58:12.014776-07:00</updateDate>
+      <updateDate>2011-11-01T01:59:16.9690122-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR57 </serverName>
@@ -1601,7 +1535,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR58</groupName>
-      <updateDate>2011-10-26T22:58:37.4516248-07:00</updateDate>
+      <updateDate>2011-11-01T01:59:35.5455915-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR58 </serverName>
@@ -1611,7 +1545,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR62</groupName>
-      <updateDate>2011-10-26T22:58:56.2792678-07:00</updateDate>
+      <updateDate>2011-11-01T02:00:00.3716508-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR62 </serverName>
@@ -1621,7 +1555,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR63</groupName>
-      <updateDate>2011-10-26T22:59:21.5598706-07:00</updateDate>
+      <updateDate>2011-11-01T02:00:19.6512966-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR63 </serverName>
@@ -1631,7 +1565,7 @@
     </ServerList>
     <ServerList>
       <groupName>ESTR64</groupName>
-      <updateDate>2011-10-26T22:59:36.0126256-07:00</updateDate>
+      <updateDate>2011-11-01T02:00:34.9781463-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR64 </serverName>
@@ -1641,15 +1575,27 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-AVAIL</groupName>
-      <updateDate>2011-10-26T23:00:46.4483224-07:00</updateDate>
+      <updateDate>2011-11-01T02:01:29.8017096-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELOBIAPACRC01 </serverName>
           <travelServer>CHELTVMAPC01</travelServer>
         </Server>
         <Server>
+          <serverName>CHELOBIAPCHF01 </serverName>
+          <travelServer>CHELTVMEURHF01</travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBIEUHF01 </serverName>
+          <travelServer>CHELTVMEURHF01</travelServer>
+        </Server>
+        <Server>
           <serverName>CHELOBIEURC01 </serverName>
           <travelServer>CHELTVMEUR01</travelServer>
+        </Server>
+        <Server>
+          <serverName>CHELOBINAHF01 </serverName>
+          <travelServer>CHELTVMNAHF01</travelServer>
         </Server>
         <Server>
           <serverName>CHELOBINARC01 </serverName>
@@ -1739,7 +1685,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-PERF-IPU</groupName>
-      <updateDate>2011-10-26T23:04:48.9108652-07:00</updateDate>
+      <updateDate>2011-11-01T02:05:41.9152314-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLM14 </serverName>
@@ -1753,7 +1699,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-PERF1</groupName>
-      <updateDate>2011-10-26T23:06:10.283782-07:00</updateDate>
+      <updateDate>2011-11-01T02:06:50.1936224-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELARCMV2TVM2 </serverName>
@@ -2035,7 +1981,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-PERF2</groupName>
-      <updateDate>2011-10-26T23:08:06.530806-07:00</updateDate>
+      <updateDate>2011-11-01T02:08:48.3148424-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPRF2-01 </serverName>
@@ -2305,7 +2251,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-PERF3</groupName>
-      <updateDate>2011-10-26T23:09:02.7168676-07:00</updateDate>
+      <updateDate>2011-11-01T02:09:22.5168729-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPRF3-01 </serverName>
@@ -2335,7 +2281,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-PERF4</groupName>
-      <updateDate>2011-10-26T23:09:41.294005-07:00</updateDate>
+      <updateDate>2011-11-01T02:09:47.7973139-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPRF4-01 </serverName>
@@ -2365,7 +2311,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWE-PERF5</groupName>
-      <updateDate>2011-10-26T23:10:04.6840312-07:00</updateDate>
+      <updateDate>2011-11-01T02:10:08.6716459-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPRF5-01 </serverName>
@@ -2389,13 +2335,13 @@
         </Server>
         <Server>
           <serverName>CHELWEBPRF5-01 </serverName>
-          <travelServer>CHELTVMPRF5-01</travelServer>
+          <travelServer>Unknown</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>EWS-FNT</groupName>
-      <updateDate>2011-10-26T23:11:23.6976334-07:00</updateDate>
+      <updateDate>2011-11-01T02:11:21.8568039-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPRF5-01 </serverName>
@@ -2419,13 +2365,13 @@
         </Server>
         <Server>
           <serverName>CHELWEBPRF5-01 </serverName>
-          <travelServer>CHELTVMPRF5-01</travelServer>
+          <travelServer>Unknown</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>EWS-PMP01</groupName>
-      <updateDate>2011-10-26T23:12:51.5703838-07:00</updateDate>
+      <updateDate>2011-11-01T02:12:40.9953216-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMEWS01 </serverName>
@@ -2439,7 +2385,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWS-PMP02</groupName>
-      <updateDate>2011-10-26T23:13:11.1011338-07:00</updateDate>
+      <updateDate>2011-11-01T02:13:01.0260588-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMEWS02 </serverName>
@@ -2453,7 +2399,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWS-PMP22</groupName>
-      <updateDate>2011-10-26T23:13:26.1476236-07:00</updateDate>
+      <updateDate>2011-11-01T02:13:15.1350726-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELSQLPMP22 </serverName>
@@ -2471,7 +2417,7 @@
     </ServerList>
     <ServerList>
       <groupName>EWS-PMP54</groupName>
-      <updateDate>2011-10-26T23:13:47.3345812-07:00</updateDate>
+      <updateDate>2011-11-01T02:13:33.9002172-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP54 </serverName>
@@ -2485,7 +2431,7 @@
     </ServerList>
     <ServerList>
       <groupName>FASTBUILDS</groupName>
-      <updateDate>2011-10-26T23:13:53.318803-07:00</updateDate>
+      <updateDate>2011-11-01T02:13:39.5250732-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIAUTQA301 </serverName>
@@ -2495,7 +2441,7 @@
     </ServerList>
     <ServerList>
       <groupName>FRA64</groupName>
-      <updateDate>2011-10-26T23:14:06.8809558-07:00</updateDate>
+      <updateDate>2011-11-01T02:13:52.7122356-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFRA64TEST01 </serverName>
@@ -2509,7 +2455,7 @@
     </ServerList>
     <ServerList>
       <groupName>FTIPU</groupName>
-      <updateDate>2011-10-26T23:14:12.6776824-07:00</updateDate>
+      <updateDate>2011-11-01T02:13:58.087098-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLH05 </serverName>
@@ -2519,7 +2465,7 @@
     </ServerList>
     <ServerList>
       <groupName>GLOBAL</groupName>
-      <updateDate>2011-10-26T23:14:31.6303222-07:00</updateDate>
+      <updateDate>2011-11-01T02:14:21.8052408-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELBGB02 </serverName>
@@ -2545,7 +2491,7 @@
     </ServerList>
     <ServerList>
       <groupName>GLOBALTEMP</groupName>
-      <updateDate>2011-10-26T23:15:33.0506248-07:00</updateDate>
+      <updateDate>2011-11-01T02:15:03.0541848-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELBGB02 </serverName>
@@ -2571,7 +2517,7 @@
     </ServerList>
     <ServerList>
       <groupName>GPT-PMP08</groupName>
-      <updateDate>2011-10-26T23:16:27.9867184-07:00</updateDate>
+      <updateDate>2011-11-01T02:15:49.9123602-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP08 </serverName>
@@ -2589,7 +2535,7 @@
     </ServerList>
     <ServerList>
       <groupName>GPT-PMP49</groupName>
-      <updateDate>2011-10-26T23:16:34.877167-07:00</updateDate>
+      <updateDate>2011-11-01T02:15:55.4590932-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP49 </serverName>
@@ -2607,7 +2553,7 @@
     </ServerList>
     <ServerList>
       <groupName>GUS</groupName>
-      <updateDate>2011-10-26T23:16:48.3768214-07:00</updateDate>
+      <updateDate>2011-11-01T02:16:08.9743722-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELSQLNTR01 </serverName>
@@ -2625,7 +2571,7 @@
     </ServerList>
     <ServerList>
       <groupName>HAPROJECT</groupName>
-      <updateDate>2011-10-26T23:18:02.2343056-07:00</updateDate>
+      <updateDate>2011-11-01T02:17:28.2692172-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLM22 </serverName>
@@ -2635,7 +2581,7 @@
     </ServerList>
     <ServerList>
       <groupName>HRIS</groupName>
-      <updateDate>2011-10-26T23:18:27.3586624-07:00</updateDate>
+      <updateDate>2011-11-01T02:17:46.909365-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELHRRPTSVC02 </serverName>
@@ -2645,7 +2591,7 @@
     </ServerList>
     <ServerList>
       <groupName>INT-MILAN</groupName>
-      <updateDate>2011-10-26T23:19:14.248087-07:00</updateDate>
+      <updateDate>2011-11-01T02:18:43.8297828-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSE2E201 </serverName>
@@ -2781,17 +2727,17 @@
         </Server>
         <Server>
           <serverName>CHELWEBE2ECCT34 </serverName>
-          <travelServer>Unknown</travelServer>
+          <travelServer>NSTVMINTMILAN01</travelServer>
         </Server>
         <Server>
           <serverName>CHELWEBE2ECCT35 </serverName>
-          <travelServer>Unknown</travelServer>
+          <travelServer>NSTVMINTMILAN01</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>INT-RIO</groupName>
-      <updateDate>2011-10-26T23:25:10.2233488-07:00</updateDate>
+      <updateDate>2011-11-01T02:25:28.3194276-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSE2E401 </serverName>
@@ -2819,11 +2765,11 @@
         </Server>
         <Server>
           <serverName>CHELWEBE2E107 </serverName>
-          <travelServer>CHELTVME2E401</travelServer>
+          <travelServer>SERVER OFFLINE</travelServer>
         </Server>
         <Server>
           <serverName>CHELWEBE2E108 </serverName>
-          <travelServer>CHELTVME2E401</travelServer>
+          <travelServer>SERVER OFFLINE</travelServer>
         </Server>
         <Server>
           <serverName>CHELWEBE2ECCT21 </serverName>
@@ -2837,7 +2783,7 @@
     </ServerList>
     <ServerList>
       <groupName>INTEGRATION</groupName>
-      <updateDate>2011-10-26T23:27:26.735479-07:00</updateDate>
+      <updateDate>2011-11-01T02:28:00.9873942-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELBOTINT-01 </serverName>
@@ -2981,7 +2927,7 @@
         </Server>
         <Server>
           <serverName>CHELUTL1HINT01 </serverName>
-          <travelServer>CHELTVOINT01 </travelServer>
+          <travelServer>NSTVMINT01</travelServer>
         </Server>
         <Server>
           <serverName>CHELUTLINT-01 </serverName>
@@ -3035,7 +2981,7 @@
     </ServerList>
     <ServerList>
       <groupName>INTIPU</groupName>
-      <updateDate>2011-10-26T23:32:46.727287-07:00</updateDate>
+      <updateDate>2011-11-01T02:32:58.526652-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELHASQL10 </serverName>
@@ -3109,7 +3055,7 @@
     </ServerList>
     <ServerList>
       <groupName>LAT-E2E</groupName>
-      <updateDate>2011-10-26T23:35:48.6913786-07:00</updateDate>
+      <updateDate>2011-11-01T02:36:21.724575-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBE2ECCT23 </serverName>
@@ -3123,7 +3069,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-ATL</groupName>
-      <updateDate>2011-10-26T23:36:15.6438136-07:00</updateDate>
+      <updateDate>2011-11-01T02:36:54.8331024-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELHASQL08 </serverName>
@@ -3149,7 +3095,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-AVAIL</groupName>
-      <updateDate>2011-10-26T23:49:17.4362992-07:00</updateDate>
+      <updateDate>2011-11-01T02:49:48.1570548-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA604 </serverName>
@@ -3235,7 +3181,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-BUILD</groupName>
-      <updateDate>2011-10-26T23:52:34.2593854-07:00</updateDate>
+      <updateDate>2011-11-01T02:53:48.7602702-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELMAKRTT09 </serverName>
@@ -3253,7 +3199,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-DV1</groupName>
-      <updateDate>2011-10-26T23:53:20.5394506-07:00</updateDate>
+      <updateDate>2011-11-01T02:54:27.8998932-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSDV101 </serverName>
@@ -3271,7 +3217,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-DV2</groupName>
-      <updateDate>2011-10-26T23:54:08.2882282-07:00</updateDate>
+      <updateDate>2011-11-01T02:55:07.5238788-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSDV201 </serverName>
@@ -3289,7 +3235,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-EHF</groupName>
-      <updateDate>2011-10-26T23:54:56.3182486-07:00</updateDate>
+      <updateDate>2011-11-01T02:55:52.8508434-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSEHF01 </serverName>
@@ -3351,7 +3297,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA1</groupName>
-      <updateDate>2011-10-26T23:56:59.7682132-07:00</updateDate>
+      <updateDate>2011-11-01T02:57:19.6454964-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA101 </serverName>
@@ -3401,7 +3347,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA10</groupName>
-      <updateDate>2011-10-26T23:59:03.952534-07:00</updateDate>
+      <updateDate>2011-11-01T02:59:14.2363128-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQ1001 </serverName>
@@ -3421,23 +3367,15 @@
         </Server>
         <Server>
           <serverName>CHELLILISQ1002 </serverName>
-          <travelServer>CHELLILISQA902</travelServer>
+          <travelServer>CHELLILISQ1001</travelServer>
         </Server>
         <Server>
           <serverName>CHELLITVMQ1001 </serverName>
-          <travelServer>CHELTVMSTB-01</travelServer>
-        </Server>
-        <Server>
-          <serverName>CHELLITVMQ1001 </serverName>
-          <travelServer>CHELTVMSTB-02</travelServer>
+          <travelServer>CHELLITVMQ1001</travelServer>
         </Server>
         <Server>
           <serverName>CHELLITVMQ1002 </serverName>
-          <travelServer>CHELTVMSTB-01</travelServer>
-        </Server>
-        <Server>
-          <serverName>CHELLITVMQ1002 </serverName>
-          <travelServer>CHELTVMSTB-02</travelServer>
+          <travelServer>CHELLITVMQ1002</travelServer>
         </Server>
         <Server>
           <serverName>CHELLIWEBQ1001 </serverName>
@@ -3451,7 +3389,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA11</groupName>
-      <updateDate>2011-10-26T23:59:54.810607-07:00</updateDate>
+      <updateDate>2011-11-01T02:59:59.1570378-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQ1101 </serverName>
@@ -3501,7 +3439,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA12</groupName>
-      <updateDate>2011-10-27T00:02:03.713557-07:00</updateDate>
+      <updateDate>2011-11-01T03:03:31.0734876-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQ1201 </serverName>
@@ -3551,7 +3489,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA13</groupName>
-      <updateDate>2011-10-27T00:03:23.1333988-07:00</updateDate>
+      <updateDate>2011-11-01T03:05:18.2894928-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQ1301 </serverName>
@@ -3585,7 +3523,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA14</groupName>
-      <updateDate>2011-10-27T00:04:13.0696204-07:00</updateDate>
+      <updateDate>2011-11-01T03:06:10.6944012-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQ1401 </serverName>
@@ -3611,7 +3549,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA2</groupName>
-      <updateDate>2011-10-27T00:04:53.0998456-07:00</updateDate>
+      <updateDate>2011-11-01T03:07:50.3481-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA201 </serverName>
@@ -3661,7 +3599,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA3</groupName>
-      <updateDate>2011-10-27T00:06:59.1122446-07:00</updateDate>
+      <updateDate>2011-11-01T03:09:49.563798-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA301 </serverName>
@@ -3707,7 +3645,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA4</groupName>
-      <updateDate>2011-10-27T00:08:07.84486-07:00</updateDate>
+      <updateDate>2011-11-01T03:11:11.3742036-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA401 </serverName>
@@ -3749,7 +3687,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA5</groupName>
-      <updateDate>2011-10-27T00:10:54.9030832-07:00</updateDate>
+      <updateDate>2011-11-01T03:14:07.9009344-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA501 </serverName>
@@ -3791,7 +3729,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA6</groupName>
-      <updateDate>2011-10-27T00:13:04.3372696-07:00</updateDate>
+      <updateDate>2011-11-01T03:16:07.0697586-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA601 </serverName>
@@ -3833,7 +3771,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA7</groupName>
-      <updateDate>2011-10-27T00:14:26.6164132-07:00</updateDate>
+      <updateDate>2011-11-01T03:17:09.2556666-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA701 </serverName>
@@ -3883,7 +3821,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA8</groupName>
-      <updateDate>2011-10-27T00:17:22.1900434-07:00</updateDate>
+      <updateDate>2011-11-01T03:20:41.4533592-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA801 </serverName>
@@ -3933,7 +3871,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-QA9</groupName>
-      <updateDate>2011-10-27T00:19:01.265632-07:00</updateDate>
+      <updateDate>2011-11-01T03:23:21.7773798-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSQA901 </serverName>
@@ -3945,7 +3883,7 @@
         </Server>
         <Server>
           <serverName>CHELLIFDSQA903 </serverName>
-          <travelServer>CHELLILISQA901</travelServer>
+          <travelServer>CHELLITVMQA902</travelServer>
         </Server>
         <Server>
           <serverName>CHELLILISQA901 </serverName>
@@ -3969,13 +3907,13 @@
         </Server>
         <Server>
           <serverName>CHELLIWEBQA902 </serverName>
-          <travelServer>CHELLITVMQA702</travelServer>
+          <travelServer>CHELLITVMQA902</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>LIS-RC</groupName>
-      <updateDate>2011-10-27T00:19:51.4049734-07:00</updateDate>
+      <updateDate>2011-11-01T03:24:14.932269-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIFDSRCA01 </serverName>
@@ -3997,7 +3935,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-STR1</groupName>
-      <updateDate>2011-10-27T00:20:05.2327444-07:00</updateDate>
+      <updateDate>2011-11-01T03:24:28.2756774-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIBOTST101 </serverName>
@@ -4051,7 +3989,7 @@
     </ServerList>
     <ServerList>
       <groupName>LIS-STR2</groupName>
-      <updateDate>2011-10-27T00:21:22.9182556-07:00</updateDate>
+      <updateDate>2011-11-01T03:25:56.7890364-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLIBOTST201 </serverName>
@@ -4105,7 +4043,7 @@
     </ServerList>
     <ServerList>
       <groupName>LOYALTY01</groupName>
-      <updateDate>2011-10-27T00:23:04.150039-07:00</updateDate>
+      <updateDate>2011-11-01T03:27:29.7554064-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMCITI01 </serverName>
@@ -4119,7 +4057,7 @@
     </ServerList>
     <ServerList>
       <groupName>LSS-CERT</groupName>
-      <updateDate>2011-10-27T00:23:43.5865294-07:00</updateDate>
+      <updateDate>2011-11-01T03:28:08.3012946-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLSSSQLCTF01 </serverName>
@@ -4137,7 +4075,7 @@
     </ServerList>
     <ServerList>
       <groupName>LSS-MONTREAL</groupName>
-      <updateDate>2011-10-27T00:24:06.3984454-07:00</updateDate>
+      <updateDate>2011-11-01T03:28:23.0665416-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLSSTVH01 </serverName>
@@ -4167,7 +4105,7 @@
     </ServerList>
     <ServerList>
       <groupName>LSS03</groupName>
-      <updateDate>2011-10-27T00:25:26.5370188-07:00</updateDate>
+      <updateDate>2011-11-01T03:29:32.892879-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLSSTVH03 </serverName>
@@ -4185,7 +4123,7 @@
     </ServerList>
     <ServerList>
       <groupName>LTY-PMP60</groupName>
-      <updateDate>2011-10-27T00:25:40.9897738-07:00</updateDate>
+      <updateDate>2011-11-01T03:29:52.0017648-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP60 </serverName>
@@ -4195,7 +4133,7 @@
     </ServerList>
     <ServerList>
       <groupName>LTY-PMP61</groupName>
-      <updateDate>2011-10-27T00:25:54.5050528-07:00</updateDate>
+      <updateDate>2011-11-01T03:30:10.5794142-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP61 </serverName>
@@ -4209,7 +4147,7 @@
     </ServerList>
     <ServerList>
       <groupName>MAIN01</groupName>
-      <updateDate>2011-10-27T00:26:37.3164568-07:00</updateDate>
+      <updateDate>2011-11-01T03:30:30.3445332-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSAPCM01 </serverName>
@@ -4251,7 +4189,7 @@
     </ServerList>
     <ServerList>
       <groupName>MARCHSQLDB</groupName>
-      <updateDate>2011-10-27T00:28:39.610201-07:00</updateDate>
+      <updateDate>2011-11-01T03:32:06.2014542-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSAPCM01 </serverName>
@@ -4293,7 +4231,7 @@
     </ServerList>
     <ServerList>
       <groupName>MMFNT</groupName>
-      <updateDate>2011-10-27T00:30:18.7326634-07:00</updateDate>
+      <updateDate>2011-11-01T03:33:33.902334-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSAPCM01 </serverName>
@@ -4335,7 +4273,7 @@
     </ServerList>
     <ServerList>
       <groupName>OMS-PERF02</groupName>
-      <updateDate>2011-10-27T00:32:05.151814-07:00</updateDate>
+      <updateDate>2011-11-01T03:34:47.9160642-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELSQLES06 </serverName>
@@ -4353,7 +4291,7 @@
     </ServerList>
     <ServerList>
       <groupName>OMS-PMP30</groupName>
-      <updateDate>2011-10-27T00:32:45.6664018-07:00</updateDate>
+      <updateDate>2011-11-01T03:35:34.602369-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP30 </serverName>
@@ -4371,7 +4309,7 @@
     </ServerList>
     <ServerList>
       <groupName>OMS-PMP55</groupName>
-      <updateDate>2011-10-27T00:33:18.899926-07:00</updateDate>
+      <updateDate>2011-11-01T03:36:17.0075334-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP55 </serverName>
@@ -4389,7 +4327,7 @@
     </ServerList>
     <ServerList>
       <groupName>OMS-PMP58</groupName>
-      <updateDate>2011-10-27T00:33:40.6493692-07:00</updateDate>
+      <updateDate>2011-11-01T03:36:50.1316854-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP58 </serverName>
@@ -4407,7 +4345,7 @@
     </ServerList>
     <ServerList>
       <groupName>ONEH</groupName>
-      <updateDate>2011-10-27T00:34:08.7892738-07:00</updateDate>
+      <updateDate>2011-11-01T03:37:18.1622178-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLH08 </serverName>
@@ -4433,7 +4371,7 @@
     </ServerList>
     <ServerList>
       <groupName>ONEHSTR01</groupName>
-      <updateDate>2011-10-27T00:35:21.2249194-07:00</updateDate>
+      <updateDate>2011-11-01T03:38:23.4574212-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELHRMSTR01 </serverName>
@@ -4463,7 +4401,7 @@
     </ServerList>
     <ServerList>
       <groupName>PERF-APP</groupName>
-      <updateDate>2011-10-27T00:36:45.3165166-07:00</updateDate>
+      <updateDate>2011-11-01T03:40:03.2829906-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELEVCSTR01 </serverName>
@@ -4481,7 +4419,7 @@
     </ServerList>
     <ServerList>
       <groupName>PERF-FTIPU</groupName>
-      <updateDate>2011-10-27T00:37:24.9561268-07:00</updateDate>
+      <updateDate>2011-11-01T03:40:31.6103904-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLM16 </serverName>
@@ -4491,7 +4429,7 @@
     </ServerList>
     <ServerList>
       <groupName>PMP03</groupName>
-      <updateDate>2011-10-27T00:37:43.893142-07:00</updateDate>
+      <updateDate>2011-11-01T03:40:44.8600512-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP03 </serverName>
@@ -4505,7 +4443,7 @@
     </ServerList>
     <ServerList>
       <groupName>PMP50</groupName>
-      <updateDate>2011-10-27T00:38:16.6579282-07:00</updateDate>
+      <updateDate>2011-11-01T03:41:10.4375214-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP50 </serverName>
@@ -4523,7 +4461,7 @@
     </ServerList>
     <ServerList>
       <groupName>PMP56</groupName>
-      <updateDate>2011-10-27T00:38:50.6570578-07:00</updateDate>
+      <updateDate>2011-11-01T03:41:56.0613534-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP56 </serverName>
@@ -4541,7 +4479,7 @@
     </ServerList>
     <ServerList>
       <groupName>PMP57</groupName>
-      <updateDate>2011-10-27T00:39:38.4683338-07:00</updateDate>
+      <updateDate>2011-11-01T03:42:25.685595-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMP57 </serverName>
@@ -4559,7 +4497,7 @@
     </ServerList>
     <ServerList>
       <groupName>PMPRE01</groupName>
-      <updateDate>2011-10-27T00:40:11.2799938-07:00</updateDate>
+      <updateDate>2011-11-01T03:42:41.5758132-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMPRE01 </serverName>
@@ -4569,7 +4507,7 @@
     </ServerList>
     <ServerList>
       <groupName>PMPRE02</groupName>
-      <updateDate>2011-10-27T00:40:24.1390396-07:00</updateDate>
+      <updateDate>2011-11-01T03:43:00.9503172-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELTVMPMPRE02 </serverName>
@@ -4583,7 +4521,7 @@
     </ServerList>
     <ServerList>
       <groupName>POD3-HOTELINFOSITE-B</groupName>
-      <updateDate>2011-10-27T00:40:41.0448568-07:00</updateDate>
+      <updateDate>2011-11-01T03:43:15.1218294-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR09 </serverName>
@@ -4597,7 +4535,7 @@
     </ServerList>
     <ServerList>
       <groupName>POD4-HOTELSOA-B</groupName>
-      <updateDate>2011-10-27T00:40:47.247823-07:00</updateDate>
+      <updateDate>2011-11-01T03:43:20.9810544-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELWEBESTR26 </serverName>
@@ -4607,7 +4545,7 @@
     </ServerList>
     <ServerList>
       <groupName>RAP01</groupName>
-      <updateDate>2011-10-27T00:41:06.8879452-07:00</updateDate>
+      <updateDate>2011-11-01T03:43:39.7618236-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELSQLRAP01 </serverName>
@@ -4617,7 +4555,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROEHF</groupName>
-      <updateDate>2011-10-27T00:41:20.1688552-07:00</updateDate>
+      <updateDate>2011-11-01T03:44:04.8080574-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELROTVMHF01 </serverName>
@@ -4631,7 +4569,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROEPMP42</groupName>
-      <updateDate>2011-10-27T00:41:50.6680744-07:00</updateDate>
+      <updateDate>2011-11-01T03:44:45.3226452-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPMP42 </serverName>
@@ -4653,7 +4591,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROEPMP43</groupName>
-      <updateDate>2011-10-27T00:43:16.3221316-07:00</updateDate>
+      <updateDate>2011-11-01T03:46:20.2264656-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPMP43 </serverName>
@@ -4675,7 +4613,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROEPMP44</groupName>
-      <updateDate>2011-10-27T00:44:02.6803198-07:00</updateDate>
+      <updateDate>2011-11-01T03:46:54.4130904-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLISPMP44 </serverName>
@@ -4693,7 +4631,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROEPMP45</groupName>
-      <updateDate>2011-10-27T00:44:28.804651-07:00</updateDate>
+      <updateDate>2011-11-01T03:47:38.5994592-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELLISPMP45 </serverName>
@@ -4711,7 +4649,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROERC</groupName>
-      <updateDate>2011-10-27T00:44:42.8355418-07:00</updateDate>
+      <updateDate>2011-11-01T03:47:59.3333034-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELROTVMRC01 </serverName>
@@ -4725,7 +4663,7 @@
     </ServerList>
     <ServerList>
       <groupName>ROGER</groupName>
-      <updateDate>2011-10-27T00:45:09.6786046-07:00</updateDate>
+      <updateDate>2011-11-01T03:48:24.9420228-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELSQLNTRHF01 </serverName>
@@ -4743,7 +4681,7 @@
     </ServerList>
     <ServerList>
       <groupName>SPLIT-TIX-FARMA</groupName>
-      <updateDate>2011-10-27T00:45:30.0062092-07:00</updateDate>
+      <updateDate>2011-11-01T03:48:44.19153-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELAIRTVMFG01 </serverName>
@@ -4753,7 +4691,7 @@
     </ServerList>
     <ServerList>
       <groupName>SPLIT-TIX-FARMB</groupName>
-      <updateDate>2011-10-27T00:45:46.224544-07:00</updateDate>
+      <updateDate>2011-11-01T03:49:02.8473024-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELAIRTVMFH01 </serverName>
@@ -4763,7 +4701,7 @@
     </ServerList>
     <ServerList>
       <groupName>STABLE</groupName>
-      <updateDate>2011-10-27T00:46:32.4421108-07:00</updateDate>
+      <updateDate>2011-11-01T03:58:58.1758116-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSSTB-01 </serverName>
@@ -4885,7 +4823,7 @@
     </ServerList>
     <ServerList>
       <groupName>STABLEIPU</groupName>
-      <updateDate>2011-10-27T00:49:26.3126596-07:00</updateDate>
+      <updateDate>2011-11-01T04:01:56.0150088-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELIPUSQLM21 </serverName>
@@ -4903,7 +4841,7 @@
     </ServerList>
     <ServerList>
       <groupName>STEVEJ</groupName>
-      <updateDate>2011-10-27T00:50:18.8894386-07:00</updateDate>
+      <updateDate>2011-11-01T04:02:35.5921206-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELHASQL05 </serverName>
@@ -4933,7 +4871,7 @@
     </ServerList>
     <ServerList>
       <groupName>STRESS</groupName>
-      <updateDate>2011-10-27T00:51:09.4506442-07:00</updateDate>
+      <updateDate>2011-11-01T04:03:44.8090986-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDSPRFE2E01 </serverName>
@@ -4963,7 +4901,7 @@
     </ServerList>
     <ServerList>
       <groupName>STRESS-M</groupName>
-      <updateDate>2011-10-27T00:51:38.949889-07:00</updateDate>
+      <updateDate>2011-11-01T04:04:14.6833338-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELEBASESTR04 </serverName>
@@ -5013,7 +4951,7 @@
     </ServerList>
     <ServerList>
       <groupName>STRESS-Q</groupName>
-      <updateDate>2011-10-27T00:53:52.7433388-07:00</updateDate>
+      <updateDate>2011-11-01T04:05:51.1027404-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELEBSSTREB01 </serverName>
@@ -5047,7 +4985,7 @@
     </ServerList>
     <ServerList>
       <groupName>STT01</groupName>
-      <updateDate>2011-10-27T00:55:28.39714-07:00</updateDate>
+      <updateDate>2011-11-01T04:07:37.5531402-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELCARFDSFA01 </serverName>
@@ -5073,7 +5011,7 @@
     </ServerList>
     <ServerList>
       <groupName>STT02</groupName>
-      <updateDate>2011-10-27T00:56:41.5515172-07:00</updateDate>
+      <updateDate>2011-11-01T04:08:50.7700158-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELCARFDSFB01 </serverName>
@@ -5099,7 +5037,7 @@
     </ServerList>
     <ServerList>
       <groupName>STT03</groupName>
-      <updateDate>2011-10-27T00:58:05.6899882-07:00</updateDate>
+      <updateDate>2011-11-01T04:10:07.7367954-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELBFSUTL17 </serverName>
@@ -5129,7 +5067,7 @@
     </ServerList>
     <ServerList>
       <groupName>STT04</groupName>
-      <updateDate>2011-10-27T00:59:31.7034112-07:00</updateDate>
+      <updateDate>2011-11-01T04:11:16.8287766-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELCARFDSFD01 </serverName>
@@ -5141,13 +5079,13 @@
         </Server>
         <Server>
           <serverName>CHELCARWEBFD01 </serverName>
-          <travelServer>SERVER OFFLINE</travelServer>
+          <travelServer>CHELCARTVMFD01</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>STTSTABLE</groupName>
-      <updateDate>2011-10-27T01:00:17.0772496-07:00</updateDate>
+      <updateDate>2011-11-01T04:11:50.3122944-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELCARFDSFD01 </serverName>
@@ -5159,13 +5097,13 @@
         </Server>
         <Server>
           <serverName>CHELCARWEBFD01 </serverName>
-          <travelServer>SERVER OFFLINE</travelServer>
+          <travelServer>CHELCARTVMFD01</travelServer>
         </Server>
       </servers>
     </ServerList>
     <ServerList>
       <groupName>STTSTRESS01</groupName>
-      <updateDate>2011-10-27T01:01:11.513356-07:00</updateDate>
+      <updateDate>2011-11-01T04:12:31.9049796-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELCARFDSSA01 </serverName>
@@ -5195,7 +5133,7 @@
     </ServerList>
     <ServerList>
       <groupName>TEMPFARM</groupName>
-      <updateDate>2011-10-27T01:02:36.1674388-07:00</updateDate>
+      <updateDate>2011-11-01T04:14:03.8245014-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELFDS02 </serverName>
@@ -5237,7 +5175,7 @@
     </ServerList>
     <ServerList>
       <groupName>VMWAREPOC</groupName>
-      <updateDate>2011-10-27T01:04:18.461695-07:00</updateDate>
+      <updateDate>2011-11-01T04:15:27.9160986-07:00</updateDate>
       <servers>
         <Server>
           <serverName>CHELVSH1155 </serverName>
@@ -5266,6 +5204,60 @@
         <Server>
           <serverName>CHELWEBENG04 </serverName>
           <travelServer>SERVER OFFLINE</travelServer>
+        </Server>
+      </servers>
+    </ServerList>
+    <ServerList>
+      <groupName>PPE</groupName>
+      <updateDate>2011-11-01T04:16:38.3205462-07:00</updateDate>
+      <servers>
+        <Server>
+          <serverName>ALL Ports</serverName>
+          <travelServer>ALL Servers</travelServer>
+        </Server>
+        <Server>
+          <serverName>60011</serverName>
+          <travelServer>DNSQCAPPE01</travelServer>
+        </Server>
+        <Server>
+          <serverName>60012</serverName>
+          <travelServer>DNSQCAPPE02</travelServer>
+        </Server>
+        <Server>
+          <serverName>60013</serverName>
+          <travelServer>DNSQCAPPE03</travelServer>
+        </Server>
+        <Server>
+          <serverName>60014</serverName>
+          <travelServer>DNSQCBPPE04</travelServer>
+        </Server>
+        <Server>
+          <serverName>60015</serverName>
+          <travelServer>DNSQCBPPE05</travelServer>
+        </Server>
+        <Server>
+          <serverName>60016</serverName>
+          <travelServer>DNSQCBPPE06</travelServer>
+        </Server>
+        <Server>
+          <serverName>60021</serverName>
+          <travelServer>DNSQLPPE01</travelServer>
+        </Server>
+        <Server>
+          <serverName>60022</serverName>
+          <travelServer>DNSQLPPE02</travelServer>
+        </Server>
+        <Server>
+          <serverName>60023</serverName>
+          <travelServer>DNSQLPPE03</travelServer>
+        </Server>
+        <Server>
+          <serverName>60024</serverName>
+          <travelServer>DNSQLPPE04</travelServer>
+        </Server>
+        <Server>
+          <serverName>36005</serverName>
+          <travelServer>DNSQLJDB01</travelServer>
         </Server>
       </servers>
     </ServerList>
