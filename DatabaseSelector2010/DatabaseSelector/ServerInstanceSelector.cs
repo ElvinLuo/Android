@@ -48,264 +48,19 @@ namespace DatabaseSelector
             index.SaveIndexToXml();
         }
 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void ServerInstanceSelector_KeyUp(object sender, KeyEventArgs e)
         {
-            ConnectToServer();
-        }
-
-        void lvDatabases_DoubleClick(object sender, System.EventArgs e)
-        {
-            if (!CanConnect()) return;
-            ConnectToServer();
-        }
-
-        private void ConnectToServer()
-        {
-            try
-            {
-                if (version == 2008)
-                {
-                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.RegSvrEnum.dll");
-                    connectionObject = System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo"));
-                    Type type = asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo");
-                    type.GetProperty("ServerType").SetValue(connectionObject, new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907"), null);
-                    type.GetProperty("ServerName").SetValue(connectionObject, targetServer, null);
-                    type.GetProperty("AuthenticationType").SetValue(connectionObject, targetAuthenticationIndex, null);
-                    type.GetProperty("UserName").SetValue(connectionObject, targetUsername, null);
-                    if (targetAuthenticationIndex == 1)
-                    {
-                        type.GetProperty("Password").SetValue(connectionObject, targetPassword, null);
-                    }
-                    asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.SqlTools.VSIntegration.dll");
-                    type = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.ServiceCache");
-                    MethodInfo methodGetObjectExplorer = type.GetMethod("GetObjectExplorer");
-                    object explorer = methodGetObjectExplorer.Invoke(null, null);
-                    type = explorer.GetType();
-                    Type[] parameters = new Type[1] { Type.GetType("System.Object") };
-                    methodGetObjectExplorer = type.GetMethod("ConnectToServer", parameters);
-                    methodGetObjectExplorer.Invoke(explorer, new object[] { connectionObject });
-                    objectExplorerService = explorer;
-                }
-                else if (version == 2005)
-                {
-                    connection = new UIConnectionInfo();
-                    connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
-                    connection.ServerName = targetServer;
-                    connection.AuthenticationType = targetAuthenticationIndex;
-                    connection.UserName = targetUsername;
-                    if (connection.AuthenticationType == 1)
-                    {
-                        connection.Password = targetPassword;
-                    }
-                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
-                    objectExplorerService = ServiceCache.GetObjectExplorer();
-                }
-
-                //Below is to expand tree
-                IExplorerHierarchy hierarchy;
-                MethodInfo methodGetHierarchy = objectExplorerService.GetType().GetMethod("GetHierarchy", BindingFlags.Instance | BindingFlags.NonPublic);
-                if (version == 2008)
-                {
-                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.ConnectionInfo.dll");
-                    object sqlConnectionInfoObject = targetAuthenticationIndex == 0 ?
-                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer }) :
-                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer, targetUsername, targetPassword }); ;
-                    object hierarchyObject = methodGetHierarchy.Invoke(objectExplorerService, new object[] { sqlConnectionInfoObject, null });
-                    object rootObject = hierarchyObject.GetType().GetProperty("Root").GetValue(hierarchyObject, null);
-                    object treeViewObject = rootObject.GetType().GetProperty("TreeView").GetValue(rootObject, null);
-                    tree = treeViewObject as TreeView;
-                }
-                else if (version == 2005)
-                {
-                    SqlConnectionInfo sqlConnectionInfo = targetAuthenticationIndex == 0 ?
-                    new SqlConnectionInfo(targetServer) :
-                    new SqlConnectionInfo(targetServer, targetUsername, targetPassword);
-                    hierarchy = (IExplorerHierarchy)methodGetHierarchy.Invoke(objectExplorerService, new object[] { sqlConnectionInfo });
-                    tree = hierarchy.Root.TreeView;
-                    needRefresh = true;
-                }
-                //Prepare the tree to expand
-                SelectAndExpandDatabasesNode();
-            }
-            catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
-            finally
+            if (e.KeyCode == Keys.Escape)
             { this.Close(); }
         }
 
-        void SelectAndExpandDatabasesNode()
+        private void ServerInstanceSelector_Load(object sender, EventArgs e)
         {
-            if (tree.SelectedNode.IsExpanded)
-                SelectAndExpandDatabasesNode_AfterParentExpand();
-            else
-            {
-                tree.AfterExpand += new TreeViewEventHandler(tree_AfterConnectionNodeExpand);
-                tree.SelectedNode.Expand();
-                //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
-            }
-        }
-
-        void SelectAndExpandDatabasesNode_AfterParentExpand()
-        {
-            TreeNode rootTreeNode = tree.SelectedNode;
-            for (int i = 0; i < rootTreeNode.Nodes.Count; i++)
-            {
-                databaseObjectNode = rootTreeNode.Nodes[i];
-                if (databaseObjectNode.Text.Equals("Databases"))
-                {
-                    tree.SelectedNode = databaseObjectNode;
-                    databaseObjectNode.Expand();
-                    //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
-                    SelectAndExpandInstanceNode();
-                    break;
-                }
-            }
-        }
-
-        void SelectAndExpandInstanceNode()
-        {
-            if (databaseObjectNode.IsExpanded)
-                SelectAndExpandInstanceNode_AfterParentExpand();
-            else
-            {
-                tree.AfterExpand += new TreeViewEventHandler(tree_AfterDatabaseObjectNodeExpand);
-            }
-        }
-
-        void SelectAndExpandInstanceNode_AfterParentExpand()
-        {
-            int index = 0, maxMatching = 0;
-            for (int i = 0; i < databaseObjectNode.Nodes.Count; i++)
-            {
-                databaseInstanceNode = databaseObjectNode.Nodes[i];
-                if (databaseInstanceNode.Text.ToLower().Equals(targetDatabase.ToLower()))
-                {
-                    index = i;
-                    break;
-                }
-                int currentMatching = GetMatchingLength(databaseInstanceNode.Text.ToLower().ToCharArray(), targetInstance.ToLower().ToCharArray());
-                if (currentMatching > maxMatching)
-                {
-                    index = i;
-                    maxMatching = currentMatching;
-                }
-            }
-            databaseInstanceNode = databaseObjectNode.Nodes[index];
-            tree.SelectedNode = databaseInstanceNode;
-            databaseInstanceNode.Expand();
-            //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
-            SelectAndExpandTablesNode();
-        }
-
-        void SelectAndExpandTablesNode()
-        {
-            if (databaseInstanceNode.IsExpanded)
-                SelectAndExpandTablesNode_AfterParentExpand();
-            else
-            {
-                tree.AfterExpand += new TreeViewEventHandler(tree_AfterDatabaseInstanceNodeExpand);
-            }
-        }
-
-        void SelectAndExpandTablesNode_AfterParentExpand()
-        {
-            for (int i = 0; i < databaseInstanceNode.Nodes.Count; i++)
-            {
-                tableNode = databaseInstanceNode.Nodes[i];
-                if (tableNode.Text.Equals("Tables"))
-                {
-                    //tree.SelectedNode = tableNode;
-                    tree.AfterExpand += new TreeViewEventHandler(tree_AfterTablesNodeExpand);
-                    tableNode.Expand();
-                    //System.Threading.Thread.Sleep(1000);    //Maybe this line can be removed
-                    break;
-                }
-            }
-        }
-
-        void tree_AfterConnectionNodeExpand(object sender, TreeViewEventArgs e)
-        {
-            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterConnectionNodeExpand);
-            SelectAndExpandDatabasesNode_AfterParentExpand();
-        }
-
-        void tree_AfterDatabaseObjectNodeExpand(object sender, TreeViewEventArgs e)
-        {
-            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterDatabaseObjectNodeExpand);
-            SelectAndExpandInstanceNode_AfterParentExpand();
-        }
-
-        void tree_AfterDatabaseInstanceNodeExpand(object sender, TreeViewEventArgs e)
-        {
-            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterDatabaseInstanceNodeExpand);
-            SelectAndExpandTablesNode_AfterParentExpand();
-        }
-
-        void tree_AfterTablesNodeExpand(object sender, TreeViewEventArgs e)
-        {
-            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterTablesNodeExpand);
-            if (cbAutoOpenEditer.Checked)
-            { CreateNewScript(); }
-        }
-
-        void CreateNewScript()
-        {
-            try
-            {
-                if (needRefresh && version == 2005)
-                {
-                    databaseObjectNode.Collapse();
-                    needRefresh = false;
-                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
-                    SelectAndExpandDatabasesNode();
-                    return;
-                }
-                string strFullPath = Global.applicationFolder + "SQLFile.sql";
-                if (version == 2008)
-                {
-                    connection = new UIConnectionInfo();
-                    connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
-                    connection.ServerName = targetServer;
-                    connection.AuthenticationType = targetAuthenticationIndex;
-                    connection.UserName = targetUsername;
-                    if (connection.AuthenticationType == 1)
-                    {
-                        connection.Password = targetPassword;
-                    }
-                }
-                SqlConnection sqlConnection = new SqlConnection(string.Format("Data Source=({0});Initial Catalog={1}{2}",
-                    connection.ServerName, databaseInstanceNode.Text,
-                    (connection.AuthenticationType == 0 ? ";Integrated Security=SSPI" : string.Format(";User Id={0};password={1}", connection.UserName, connection.Password))));
-
-                //Show the connection information in the Text Editor
-                using (StreamWriter streamWriter = new StreamWriter(strFullPath))
-                {
-                    StringBuilder sb = new StringBuilder();
-                    sb.AppendLine("/*****************************************************************************");
-                    sb.AppendLine("--This Query Editer window is opened by Database Selector automatically");
-                    sb.AppendLine("--Server		:" + connection.ServerName);
-                    sb.AppendLine("--Database	    :" + sqlConnection.Database);
-                    sb.AppendLine("--Authentication:" + targetAuthentication);
-                    sb.AppendLine("--UserName	    :" + targetUsername);
-                    sb.AppendLine("*****************************************************************************/");
-                    sb.Append("USE " + sqlConnection.Database);
-                    streamWriter.Write(sb.ToString());
-                }
-                if (version == 2008)
-                {
-                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "SQLEditors.dll");
-                    Type scriptFactoryType = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.Editors.ScriptFactory");
-                    object sfiObject = scriptFactoryType.GetField("instance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
-                    MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
-                    methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
-                }
-                else if (version == 2005)
-                {
-                    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
-                }
-            }
-            catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
+            this.tbGroupFilter.TextChanged += new System.EventHandler(this.tbGroupFilter_TextChanged);
+            this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
+            this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
+            this.tbDatabaseFilter.TextChanged += new System.EventHandler(this.tbDatabaseFilter_TextChanged);
+            ut.Updated += new EventHandler(ut_Updated);
         }
 
         private void ReloadGroupListView(string filter)
@@ -365,7 +120,7 @@ namespace DatabaseSelector
                 lvServers.Items[index.currentSelectedServer].Selected = true;
             }
             lblServersUpdateDate.Text = "Updated at: " + serverList.updateDate;
-            if (groupList.selectedGroup.Equals(Global.defaultALLGroupName) || groupList.selectedGroup.Contains("No group found"))
+            if (groupList.selectedGroup.Equals(Global.defaultALLGroupName) || groupList.selectedGroup.Equals(Global.noGroupItemBanner))
             {
                 btnReloadServers.Enabled = false;
                 btnSaveServers.Enabled = false;
@@ -419,13 +174,9 @@ namespace DatabaseSelector
             }
         }
 
-        private void ServerInstanceSelector_Load(object sender, EventArgs e)
+        private void btnReloadAll_Click(object sender, EventArgs e)
         {
-            this.tbGroupFilter.TextChanged += new System.EventHandler(this.tbGroupFilter_TextChanged);
-            this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
-            this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
-            this.tbDatabaseFilter.TextChanged += new System.EventHandler(this.tbDatabaseFilter_TextChanged);
-            ut.Updated += new EventHandler(ut_Updated);
+            ut.CreateNewThread().Start();
         }
 
         void ut_Updated(object sender, EventArgs e)
@@ -439,31 +190,163 @@ namespace DatabaseSelector
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnReloadGroups_Click(object sender, EventArgs e)
         {
-            this.Close();
+            trigger = Global.reloadGroupButtonName;
+            DisableAllButtons();
+            pgbReloadGroups.Visible = true;
+            bgwUpdate.RunWorkerAsync();
         }
 
-        private void cbConnectionType_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnReloadServers_Click(object sender, EventArgs e)
         {
-            if (cbConnectionType.SelectedIndex == 0)
-            {
-                tbUserName.Enabled = false;
-                tbPassword.Enabled = false;
-                tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
-                tbPassword.Text = "";
-            }
+            trigger = Global.reloadServerButtonName;
+            DisableAllButtons();
+            pgbReloadServers.Visible = true;
+            bgwUpdate.RunWorkerAsync();
+        }
+
+        private void btnReloadDatabases_Click(object sender, EventArgs e)
+        {
+            trigger = Global.reloadDatabaseButtonName;
+            DisableAllButtons();
+            pgbReloadDatabases.Visible = true;
+            bgwUpdate.RunWorkerAsync();
+        }
+
+        private void bgwUpdate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (trigger.Equals(Global.reloadDatabaseButtonName))
+            { travelServer.GetDatabasesFromRegistryAndChangeProgressBar(pgbReloadDatabases); }
+            else if (trigger.Equals(Global.reloadServerButtonName) && serverList.groupName.Equals(Global.defaultPPEGroupName))
+            { serverList.GetServersFromFile(serverList.groupName, pgbReloadServers); }
             else
             {
-                tbUserName.Enabled = true;
-                tbPassword.Enabled = true;
-                tbUserName.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[4].Text;
-                tbPassword.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[5].Text;
+                InternetExplorer ie = new InternetExplorer();
+                ie.ProgressChange += new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
+
+                if (trigger.Equals(Global.reloadGroupButtonName))
+                { groupList.GetGroupsFromWeb(ie, false); }
+                else if (trigger.Equals(Global.reloadServerButtonName))
+                { serverList.GetServersFromWeb(ie, false); }
+
+                ie.ProgressChange -= new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
+                ie.Quit();
             }
-            targetAuthentication = cbConnectionType.Text;
-            targetAuthenticationIndex = cbConnectionType.SelectedIndex;
-            targetUsername = tbUserName.Text;
-            targetPassword = tbPassword.Text;
+        }
+
+        void ie_ProgressChange(int Progress, int ProgressMax)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                ProgressBar pgb = null;
+                string text = null;
+                if (trigger.Equals(Global.reloadGroupButtonName))
+                {
+                    pgb = pgbReloadGroups;
+                    text = Global.reloadingGroupBanner;
+                }
+                else if (trigger.Equals(Global.reloadServerButtonName))
+                {
+                    pgb = pgbReloadServers;
+                    text = Global.reloadingServerBanner + groupList.selectedGroup;
+                }
+                if (pgbReloadGroups.Minimum <= Progress && Progress <= pgbReloadGroups.Maximum)
+                {
+                    pgb.Value = Progress;
+                    Global.SetProgressBarText(pgb, text);
+                }
+            });
+        }
+
+        private void bgwUpdate_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (trigger.Equals(Global.reloadGroupButtonName))
+            {
+                ReloadGroupListView(tbGroupFilter.Text);
+                pgbReloadGroups.Visible = false;
+            }
+            else if (trigger.Equals(Global.reloadServerButtonName))
+            {
+                ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+                pgbReloadServers.Visible = false;
+            }
+            else if (trigger.Equals(Global.reloadDatabaseButtonName))
+            {
+                ReloadDatabaseListView(tbDatabaseFilter.Text);
+                pgbReloadDatabases.Visible = false;
+            }
+            trigger = null;
+            EnableAllButtons();
+        }
+
+        private void btnSaveGroups_Click(object sender, EventArgs e)
+        {
+            DisableAllButtons();
+            groupList.SaveListToXML();
+            EnableAllButtons();
+        }
+
+        private void btnSaveServers_Click(object sender, EventArgs e)
+        {
+            DisableAllButtons();
+            GroupServerList gsl;
+            if (File.Exists(Global.defaultServersFile))
+            {
+                gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), Global.defaultServersFileName) as GroupServerList);
+                gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
+            }
+            else
+            { gsl = GroupServerList.CreateInstance(); }
+            gsl.groupServers.Add(serverList);
+            gsl.SaveListToXML();
+            EnableAllButtons();
+        }
+
+        private void btnSaveDatabases_Click(object sender, EventArgs e)
+        {
+            if (travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName)) return;
+            DisableAllButtons();
+            TravelServerList tsl;
+            if (File.Exists(Global.defaultDatabasesFile))
+            {
+                tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), Global.defaultDatabasesFileName) as TravelServerList);
+                tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
+            }
+            else
+            { tsl = TravelServerList.CreateInstance(); }
+            tsl.travelServers.Add(travelServer);
+            tsl.SaveListToXml();
+            EnableAllButtons();
+        }
+
+        private void tbGroupFilter_TextChanged(object sender, EventArgs e)
+        {
+            ReloadGroupListView(tbGroupFilter.Text);
+        }
+
+        private void tbWebServerFilter_TextChanged(object sender, EventArgs e)
+        {
+            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+        }
+
+        private void tbTravelServerFilter_TextChanged(object sender, EventArgs e)
+        {
+            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+        }
+
+        private void tbDatabaseFilter_TextChanged(object sender, EventArgs e)
+        {
+            ReloadDatabaseListView(tbDatabaseFilter.Text);
+        }
+
+        private void btnClearAllSearchText_Click(object sender, EventArgs e)
+        {
+            tbGroupFilter.Text = "";
+            tbWebServerFilter.Text = "";
+            tbTravelServerFilter.Text = "";
+            tbDatabaseFilter.Text = "";
         }
 
         private void lvGroups_SelectedIndexChanged(object sender, EventArgs e)
@@ -581,68 +464,293 @@ namespace DatabaseSelector
             }
         }
 
-        private void btnSaveGroups_Click(object sender, EventArgs e)
+        void lvDatabases_DoubleClick(object sender, System.EventArgs e)
         {
-            DisableAllButtons();
-            groupList.SaveListToXML();
-            EnableAllButtons();
+            if (!CanConnect()) return;
+            ConnectToServer();
         }
 
-        private void btnSaveServers_Click(object sender, EventArgs e)
+        private void cbConnectionType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisableAllButtons();
-            GroupServerList gsl;
-            if (File.Exists(Global.defaultServersFile))
+            if (cbConnectionType.SelectedIndex == 0)
             {
-                gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), Global.defaultServersFileName) as GroupServerList);
-                gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
+                tbUserName.Enabled = false;
+                tbPassword.Enabled = false;
+                tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
+                tbPassword.Text = "";
             }
             else
-            { gsl = GroupServerList.CreateInstance(); }
-            gsl.groupServers.Add(serverList);
-            gsl.SaveListToXML();
-            EnableAllButtons();
-        }
-
-        private void btnSaveDatabases_Click(object sender, EventArgs e)
-        {
-            if (travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName)) return;
-            DisableAllButtons();
-            TravelServerList tsl;
-            if (File.Exists(Global.defaultDatabasesFile))
             {
-                tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), Global.defaultDatabasesFileName) as TravelServerList);
-                tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
+                tbUserName.Enabled = true;
+                tbPassword.Enabled = true;
+                tbUserName.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[4].Text;
+                tbPassword.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[5].Text;
             }
+            targetAuthentication = cbConnectionType.Text;
+            targetAuthenticationIndex = cbConnectionType.SelectedIndex;
+            targetUsername = tbUserName.Text;
+            targetPassword = tbPassword.Text;
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            Options options = new Options();
+            options.ShowDialog();
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            if (!CanConnect()) return;
+            ConnectToServer();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ConnectToServer()
+        {
+            try
+            {
+                if (version == 2008)
+                {
+                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.RegSvrEnum.dll");
+                    connectionObject = System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo"));
+                    Type type = asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo");
+                    type.GetProperty("ServerType").SetValue(connectionObject, new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907"), null);
+                    type.GetProperty("ServerName").SetValue(connectionObject, targetServer, null);
+                    type.GetProperty("AuthenticationType").SetValue(connectionObject, targetAuthenticationIndex, null);
+                    type.GetProperty("UserName").SetValue(connectionObject, targetUsername, null);
+                    if (targetAuthenticationIndex == 1)
+                    {
+                        type.GetProperty("Password").SetValue(connectionObject, targetPassword, null);
+                    }
+                    asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.SqlTools.VSIntegration.dll");
+                    type = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.ServiceCache");
+                    MethodInfo methodGetObjectExplorer = type.GetMethod("GetObjectExplorer");
+                    object explorer = methodGetObjectExplorer.Invoke(null, null);
+                    type = explorer.GetType();
+                    Type[] parameters = new Type[1] { Type.GetType("System.Object") };
+                    methodGetObjectExplorer = type.GetMethod("ConnectToServer", parameters);
+                    methodGetObjectExplorer.Invoke(explorer, new object[] { connectionObject });
+                    objectExplorerService = explorer;
+                }
+                else if (version == 2005)
+                {
+                    connection = new UIConnectionInfo();
+                    connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
+                    connection.ServerName = targetServer;
+                    connection.AuthenticationType = targetAuthenticationIndex;
+                    connection.UserName = targetUsername;
+                    if (connection.AuthenticationType == 1)
+                    {
+                        connection.Password = targetPassword;
+                    }
+                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
+                    objectExplorerService = ServiceCache.GetObjectExplorer();
+                }
+
+                //Below is to expand tree
+                IExplorerHierarchy hierarchy;
+                MethodInfo methodGetHierarchy = objectExplorerService.GetType().GetMethod("GetHierarchy", BindingFlags.Instance | BindingFlags.NonPublic);
+                if (version == 2008)
+                {
+                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.ConnectionInfo.dll");
+                    object sqlConnectionInfoObject = targetAuthenticationIndex == 0 ?
+                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer }) :
+                        System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer, targetUsername, targetPassword }); ;
+                    object hierarchyObject = methodGetHierarchy.Invoke(objectExplorerService, new object[] { sqlConnectionInfoObject, null });
+                    object rootObject = hierarchyObject.GetType().GetProperty("Root").GetValue(hierarchyObject, null);
+                    object treeViewObject = rootObject.GetType().GetProperty("TreeView").GetValue(rootObject, null);
+                    tree = treeViewObject as TreeView;
+                }
+                else if (version == 2005)
+                {
+                    SqlConnectionInfo sqlConnectionInfo = targetAuthenticationIndex == 0 ?
+                    new SqlConnectionInfo(targetServer) :
+                    new SqlConnectionInfo(targetServer, targetUsername, targetPassword);
+                    hierarchy = (IExplorerHierarchy)methodGetHierarchy.Invoke(objectExplorerService, new object[] { sqlConnectionInfo });
+                    tree = hierarchy.Root.TreeView;
+                    needRefresh = true;
+                }
+                //Prepare the tree to expand
+                SelectAndExpandDatabasesNode();
+            }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
+            finally
+            { this.Close(); }
+        }
+
+        void SelectAndExpandDatabasesNode()
+        {
+            if (tree.SelectedNode.IsExpanded)
+                SelectAndExpandDatabasesNode_AfterParentExpand();
             else
-            { tsl = TravelServerList.CreateInstance(); }
-            tsl.travelServers.Add(travelServer);
-            tsl.SaveListToXml();
-            EnableAllButtons();
+            {
+                tree.AfterExpand += new TreeViewEventHandler(tree_AfterConnectionNodeExpand);
+                tree.SelectedNode.Expand();
+            }
         }
 
-        private void btnReloadGroups_Click(object sender, EventArgs e)
+        void tree_AfterConnectionNodeExpand(object sender, TreeViewEventArgs e)
         {
-            trigger = "btnReloadGroups";
-            DisableAllButtons();
-            pgbReloadGroups.Visible = true;
-            bgwUpdate.RunWorkerAsync();
+            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterConnectionNodeExpand);
+            SelectAndExpandDatabasesNode_AfterParentExpand();
         }
 
-        private void btnReloadServers_Click(object sender, EventArgs e)
+        void SelectAndExpandDatabasesNode_AfterParentExpand()
         {
-            trigger = "btnReloadServers";
-            DisableAllButtons();
-            pgbReloadServers.Visible = true;
-            bgwUpdate.RunWorkerAsync();
+            TreeNode rootTreeNode = tree.SelectedNode;
+            for (int i = 0; i < rootTreeNode.Nodes.Count; i++)
+            {
+                databaseObjectNode = rootTreeNode.Nodes[i];
+                if (databaseObjectNode.Text.Equals("Databases"))
+                {
+                    tree.SelectedNode = databaseObjectNode;
+                    databaseObjectNode.Expand();
+                    SelectAndExpandInstanceNode();
+                    break;
+                }
+            }
         }
 
-        private void btnReloadDatabases_Click(object sender, EventArgs e)
+        void SelectAndExpandInstanceNode()
         {
-            trigger = "btnReloadDatabases";
-            DisableAllButtons();
-            pgbReloadDatabases.Visible = true;
-            bgwUpdate.RunWorkerAsync();
+            if (databaseObjectNode.IsExpanded)
+                SelectAndExpandInstanceNode_AfterParentExpand();
+            else
+            {
+                tree.AfterExpand += new TreeViewEventHandler(tree_AfterDatabaseObjectNodeExpand);
+            }
+        }
+
+        void tree_AfterDatabaseObjectNodeExpand(object sender, TreeViewEventArgs e)
+        {
+            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterDatabaseObjectNodeExpand);
+            SelectAndExpandInstanceNode_AfterParentExpand();
+        }
+
+        void SelectAndExpandInstanceNode_AfterParentExpand()
+        {
+            int index = 0, maxMatching = 0;
+            for (int i = 0; i < databaseObjectNode.Nodes.Count; i++)
+            {
+                databaseInstanceNode = databaseObjectNode.Nodes[i];
+                if (databaseInstanceNode.Text.ToLower().Equals(targetDatabase.ToLower()))
+                {
+                    index = i;
+                    break;
+                }
+                int currentMatching = GetMatchingLength(databaseInstanceNode.Text.ToLower().ToCharArray(), targetInstance.ToLower().ToCharArray());
+                if (currentMatching > maxMatching)
+                {
+                    index = i;
+                    maxMatching = currentMatching;
+                }
+            }
+            databaseInstanceNode = databaseObjectNode.Nodes[index];
+            tree.SelectedNode = databaseInstanceNode;
+            databaseInstanceNode.Expand();
+            SelectAndExpandTablesNode();
+        }
+
+        void SelectAndExpandTablesNode()
+        {
+            if (databaseInstanceNode.IsExpanded)
+                SelectAndExpandTablesNode_AfterParentExpand();
+            else
+            {
+                tree.AfterExpand += new TreeViewEventHandler(tree_AfterDatabaseInstanceNodeExpand);
+            }
+        }
+
+        void tree_AfterDatabaseInstanceNodeExpand(object sender, TreeViewEventArgs e)
+        {
+            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterDatabaseInstanceNodeExpand);
+            SelectAndExpandTablesNode_AfterParentExpand();
+        }
+
+        void SelectAndExpandTablesNode_AfterParentExpand()
+        {
+            for (int i = 0; i < databaseInstanceNode.Nodes.Count; i++)
+            {
+                tableNode = databaseInstanceNode.Nodes[i];
+                if (tableNode.Text.Equals("Tables"))
+                {
+                    tree.AfterExpand += new TreeViewEventHandler(tree_AfterTablesNodeExpand);
+                    tableNode.Expand();
+                    break;
+                }
+            }
+        }
+
+        void tree_AfterTablesNodeExpand(object sender, TreeViewEventArgs e)
+        {
+            tree.AfterExpand -= new TreeViewEventHandler(tree_AfterTablesNodeExpand);
+            if (cbAutoOpenEditer.Checked)
+            { CreateNewScript(); }
+        }
+
+        void CreateNewScript()
+        {
+            try
+            {
+                if (needRefresh && version == 2005)
+                {
+                    databaseObjectNode.Collapse();
+                    needRefresh = false;
+                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
+                    SelectAndExpandDatabasesNode();
+                    return;
+                }
+                string strFullPath = Global.applicationFolder + "SQLFile.sql";
+                if (version == 2008)
+                {
+                    connection = new UIConnectionInfo();
+                    connection.ServerType = new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907");
+                    connection.ServerName = targetServer;
+                    connection.AuthenticationType = targetAuthenticationIndex;
+                    connection.UserName = targetUsername;
+                    if (connection.AuthenticationType == 1)
+                    {
+                        connection.Password = targetPassword;
+                    }
+                }
+                SqlConnection sqlConnection = new SqlConnection(string.Format("Data Source=({0});Initial Catalog={1}{2}",
+                    connection.ServerName, databaseInstanceNode.Text,
+                    (connection.AuthenticationType == 0 ? ";Integrated Security=SSPI" : string.Format(";User Id={0};password={1}", connection.UserName, connection.Password))));
+
+                //Show the connection information in the Text Editor
+                using (StreamWriter streamWriter = new StreamWriter(strFullPath))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("/*****************************************************************************");
+                    sb.AppendLine("--This Query Editer window is opened by Database Selector automatically");
+                    sb.AppendLine("--Server		:" + connection.ServerName);
+                    sb.AppendLine("--Database	    :" + sqlConnection.Database);
+                    sb.AppendLine("--Authentication:" + targetAuthentication);
+                    sb.AppendLine("--UserName	    :" + targetUsername);
+                    sb.AppendLine("*****************************************************************************/");
+                    sb.Append("USE " + sqlConnection.Database);
+                    streamWriter.Write(sb.ToString());
+                }
+                if (version == 2008)
+                {
+                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "SQLEditors.dll");
+                    Type scriptFactoryType = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.Editors.ScriptFactory");
+                    object sfiObject = scriptFactoryType.GetField("instance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
+                    MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
+                    methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
+                }
+                else if (version == 2005)
+                {
+                    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
+                }
+            }
+            catch (Exception exception)
+            { Console.WriteLine(exception.Message); }
         }
 
         private void DisableAllButtons()
@@ -685,6 +793,19 @@ namespace DatabaseSelector
             lvDatabases.Enabled = true;
         }
 
+        private bool CanReloadAndSaveDatabaseList()
+        {
+            return !(travelServer.MachineName.Equals(Global.defaultALLTravelServerName) ||
+                  travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName) ||
+                  lvServers.Items[index.currentSelectedServer].Text.Contains(Global.noWebServerItemBanner));
+        }
+
+        private bool IsMatchingFilter(string item, string filter)
+        { return (string.IsNullOrEmpty(filter) || item.ToLower().Contains(filter.ToLower())); }
+
+        private bool CanConnect()
+        { return !(targetDatabase.Equals(Global.noDatabaseItemBanner) || string.IsNullOrEmpty(targetServer)); }
+
         public int GetMatchingLength(char[] string1, char[] string2)
         {
             int len = 0, matched = 0;
@@ -718,131 +839,6 @@ namespace DatabaseSelector
             }
             return len;
         }
-
-        private void bgwUpdate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            if (trigger.Equals("btnReloadDatabases"))
-            { travelServer.GetDatabasesFromRegistryAndChangeProgressBar(pgbReloadDatabases); }
-            else if (trigger.Equals("btnReloadServers") && serverList.groupName.Equals(Global.defaultPPEGroupName))
-            { serverList.GetServersFromFile(serverList.groupName, pgbReloadServers); }
-            else
-            {
-                InternetExplorer ie = new InternetExplorer();
-                ie.ProgressChange += new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
-
-                if (trigger.Equals("btnReloadGroups"))
-                { groupList.GetGroupsFromWeb(ie, false); }
-                else if (trigger.Equals("btnReloadServers"))
-                { serverList.GetServersFromWeb(ie, false); }
-
-                ie.ProgressChange -= new DWebBrowserEvents2_ProgressChangeEventHandler(ie_ProgressChange);
-                ie.Quit();
-            }
-        }
-
-        void ie_ProgressChange(int Progress, int ProgressMax)
-        {
-            this.Invoke((MethodInvoker)delegate
-            {
-                ProgressBar pgb = null;
-                string text = null;
-                if (trigger.Equals("btnReloadGroups"))
-                {
-                    pgb = pgbReloadGroups;
-                    text = "Reloading groups";
-                }
-                else if (trigger.Equals("btnReloadServers"))
-                {
-                    pgb = pgbReloadServers;
-                    text = "Reloading server pairs of " + groupList.selectedGroup;
-                }
-                if (pgbReloadGroups.Minimum <= Progress && Progress <= pgbReloadGroups.Maximum)
-                {
-                    pgb.Value = Progress;
-                    Global.SetProgressBarText(pgb, text);
-                }
-            });
-        }
-
-        private void bgwUpdate_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            Button btn = sender as Button;
-            if (trigger.Equals("btnReloadGroups"))
-            {
-                ReloadGroupListView(tbGroupFilter.Text);
-                pgbReloadGroups.Visible = false;
-            }
-            else if (trigger.Equals("btnReloadServers"))
-            {
-                ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
-                pgbReloadServers.Visible = false;
-            }
-            else if (trigger.Equals("btnReloadDatabases"))
-            {
-                ReloadDatabaseListView(tbDatabaseFilter.Text);
-                pgbReloadDatabases.Visible = false;
-            }
-            trigger = null;
-            EnableAllButtons();
-        }
-
-        private void ServerInstanceSelector_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            { this.Close(); }
-        }
-
-        private void tbGroupFilter_TextChanged(object sender, EventArgs e)
-        {
-            ReloadGroupListView(tbGroupFilter.Text);
-        }
-
-        private void tbWebServerFilter_TextChanged(object sender, EventArgs e)
-        {
-            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
-        }
-
-        private void tbTravelServerFilter_TextChanged(object sender, EventArgs e)
-        {
-            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
-        }
-
-        private void tbDatabaseFilter_TextChanged(object sender, EventArgs e)
-        {
-            ReloadDatabaseListView(tbDatabaseFilter.Text);
-        }
-
-        private void btnReloadAll_Click(object sender, EventArgs e)
-        {
-            ut.CreateNewThread().Start();
-        }
-
-        private void btnClearAllSearchText_Click(object sender, EventArgs e)
-        {
-            tbGroupFilter.Text = "";
-            tbWebServerFilter.Text = "";
-            tbTravelServerFilter.Text = "";
-            tbDatabaseFilter.Text = "";
-        }
-
-        private void btnOptions_Click(object sender, EventArgs e)
-        {
-            Options options = new Options();
-            options.ShowDialog();
-        }
-
-        private bool CanReloadAndSaveDatabaseList()
-        {
-            return !(travelServer.MachineName.Equals(Global.defaultALLTravelServerName) ||
-                  travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName) ||
-                  lvServers.Items[index.currentSelectedServer].Text.Contains(Global.noWebServerItemBanner));
-        }
-
-        private bool IsMatchingFilter(string item, string filter)
-        { return (string.IsNullOrEmpty(filter) || item.ToLower().Contains(filter.ToLower())); }
-
-        private bool CanConnect()
-        { return !(targetDatabase.Equals(Global.noDatabaseItemBanner) || string.IsNullOrEmpty(targetServer)); }
 
     }
 }

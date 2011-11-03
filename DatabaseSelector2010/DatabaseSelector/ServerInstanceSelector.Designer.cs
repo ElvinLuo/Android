@@ -288,7 +288,7 @@ namespace DatabaseSelector
             // btnReloadGroups
             // 
             this.btnReloadGroups.Location = new System.Drawing.Point(0, 0);
-            this.btnReloadGroups.Name = "btnReloadGroups";
+            this.btnReloadGroups.Name = Global.reloadGroupButtonName;
             this.btnReloadGroups.Size = new System.Drawing.Size(101, 23);
             this.btnReloadGroups.TabIndex = 21;
             this.btnReloadGroups.Text = "Reload groups";
@@ -308,7 +308,7 @@ namespace DatabaseSelector
             // btnReloadServers
             // 
             this.btnReloadServers.Location = new System.Drawing.Point(202, 0);
-            this.btnReloadServers.Name = "btnReloadServers";
+            this.btnReloadServers.Name = Global.reloadServerButtonName;
             this.btnReloadServers.Size = new System.Drawing.Size(131, 23);
             this.btnReloadServers.TabIndex = 23;
             this.btnReloadServers.Text = "Reload servers";
@@ -328,7 +328,7 @@ namespace DatabaseSelector
             // btnReloadDatabases
             // 
             this.btnReloadDatabases.Location = new System.Drawing.Point(465, 0);
-            this.btnReloadDatabases.Name = "btnReloadDatabases";
+            this.btnReloadDatabases.Name = Global.reloadDatabaseButtonName;
             this.btnReloadDatabases.Size = new System.Drawing.Size(131, 23);
             this.btnReloadDatabases.TabIndex = 25;
             this.btnReloadDatabases.Text = "Reload databases";
@@ -512,7 +512,7 @@ namespace DatabaseSelector
             // 
             this.btnReloadAll.ForeColor = System.Drawing.Color.Red;
             this.btnReloadAll.Location = new System.Drawing.Point(727, 0);
-            this.btnReloadAll.Name = "btnReloadAll";
+            this.btnReloadAll.Name = Global.reloadAllButtonName;
             this.btnReloadAll.Size = new System.Drawing.Size(282, 23);
             this.btnReloadAll.TabIndex = 45;
             this.btnReloadAll.Text = "Reload all lists and save, it may cost several hours";

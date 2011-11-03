@@ -24,6 +24,15 @@ namespace DatabaseSelector
         public static readonly string noDatabaseItemBanner = "No database found";
         public static readonly string tryReloadDatabaseBanner = "Try to click 'Reload databases'";
 
+        public static readonly string reloadGroupButtonName = "btnReloadGroups";
+        public static readonly string reloadServerButtonName = "btnReloadServers";
+        public static readonly string reloadDatabaseButtonName = "btnReloadDatabases";
+        public static readonly string reloadAllButtonName = "btnReloadAll";
+
+        public static readonly string reloadingGroupBanner = "Reloading groups";
+        public static readonly string reloadingServerBanner = "Reloading server pairs of ";
+        public static readonly string reloadingDatabaseBanner = "Reloading databases of ";
+
         public static readonly string defaultGroupsFileName = "Groups.xml";
         public static readonly string defaultServersFileName = "Servers.xml";
         public static readonly string defaultDatabasesFileName = "Databases.xml";

@@ -184,7 +184,7 @@ namespace DatabaseSelector
                     pgb.Invoke((MethodInvoker)delegate
                     {
                         pgb.PerformStep();
-                        Global.SetProgressBarText(pgb, "Reloading databases of " + machineName);
+                        Global.SetProgressBarText(pgb, Global.reloadingDatabaseBanner + machineName);
                     });
                 }
             }
