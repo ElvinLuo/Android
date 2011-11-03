@@ -27,7 +27,7 @@ namespace DatabaseSelector
             result.updateDate = System.DateTime.Now;
             result.Databases = new List<DatabaseItem>();
 
-            if (machineName.ToUpper().Equals("ALL"))
+            if (machineName.ToUpper().Equals(Global.defaultALLTravelServerName))
             {
                 foreach (TravelServer travelServer in travelServers)
                 {
@@ -35,7 +35,7 @@ namespace DatabaseSelector
                     { result.Databases.Add(di); }
                 }
             }
-            else if (machineName.Equals("ALL Servers"))
+            else if (machineName.Equals(Global.defaultALLPPETravelServerName))
             {
                 TXTReader txtReader = TXTReader.CreateInstance();
                 Dictionary<string, int> pairs = txtReader.GetServerPortPair();
@@ -64,12 +64,12 @@ namespace DatabaseSelector
 
         public TravelServerList GetListFromXml()
         {
-            return Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Databases.xml") as TravelServerList;
+            return Serializer.CreateInstance().DeserializeFromXML(this.GetType(), Global.defaultDatabasesFileName) as TravelServerList;
         }
 
         public void SaveListToXml()
         {
-            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), "Databases.xml");
+            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), Global.defaultDatabasesFileName);
         }
 
     }
@@ -96,11 +96,11 @@ namespace DatabaseSelector
         public ServerList GetServerList(string groupName)
         {
             ServerList result = new ServerList();
-            result.groupName = "ALL";
+            result.groupName = Global.defaultALLGroupName;
             result.updateDate = System.DateTime.Now;
             result.servers = new List<Server>();
 
-            if (groupName.ToUpper().Equals("ALL"))
+            if (groupName.ToUpper().Equals(Global.defaultALLGroupName))
             {
                 foreach (ServerList groupServer in groupServers)
                 {
@@ -126,12 +126,12 @@ namespace DatabaseSelector
 
         public GroupServerList GetListFromXML()
         {
-            return Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Servers.xml") as GroupServerList;
+            return Serializer.CreateInstance().DeserializeFromXML(this.GetType(), Global.defaultServersFileName) as GroupServerList;
         }
 
         public void SaveListToXML()
         {
-            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), "Servers.xml");
+            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), Global.defaultServersFileName);
         }
 
     }

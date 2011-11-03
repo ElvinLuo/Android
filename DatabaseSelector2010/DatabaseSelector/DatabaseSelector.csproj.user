@@ -16,7 +16,7 @@
     <StartAction>Program</StartAction>
   </PropertyGroup>
   <PropertyGroup>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <PublishUrlHistory />
     <InstallUrlHistory />
     <SupportUrlHistory />

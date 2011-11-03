@@ -69,8 +69,8 @@ namespace DatabaseSelector
                 TravelServerList tsl = null;
                 updateDate = DateTime.MinValue;
                 Databases = null;
-                if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
-                { tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList); }
+                if (File.Exists(Global.defaultDatabasesFile))
+                { tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), Global.defaultDatabasesFileName) as TravelServerList); }
                 if (tsl == null)
                 { tsl = TravelServerList.CreateInstance(); }
                 if (tsl.GetTravelServer(MachineName) != null && tsl.GetTravelServer(MachineName).Databases.Count != 0)
@@ -89,8 +89,8 @@ namespace DatabaseSelector
             {
                 TXTReader txtReader = TXTReader.CreateInstance();
                 Dictionary<string, int> pairs = txtReader.GetServerPortPair();
-                if (MachineName.Equals("ALL")) return;
-                else if (MachineName.Equals("ALL Servers") || pairs.ContainsKey(MachineName))
+                if (MachineName.Equals(Global.defaultALLTravelServerName)) return;
+                else if (MachineName.Equals(Global.defaultALLPPETravelServerName) || pairs.ContainsKey(MachineName))
                 {
                     XLSReader xlsReader = XLSReader.CreateInstance();
                     Databases = xlsReader.GetTravelServerFromXLSAndChangeProgressBar(MachineName, pgb).Databases;
@@ -128,7 +128,7 @@ namespace DatabaseSelector
                                     pgb.Invoke((MethodInvoker)delegate
                                         {
                                             pgb.PerformStep();
-                                            GlobalOperator.SetProgressBarText(pgb, "Reloading databases of " + MachineName);
+                                            Global.SetProgressBarText(pgb, "Reloading databases of " + MachineName);
                                         });
                                 }
                             }

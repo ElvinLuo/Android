@@ -80,7 +80,7 @@ namespace DatabaseSelector
 
     class TXTReader
     {
-        string file = Index.CreateInstance().txtFile;
+        string file = Index.CreateInstance().TXTFile;
         private static TXTReader instance;
         Dictionary<string, int> serverPortPairs;
 
@@ -127,7 +127,7 @@ namespace DatabaseSelector
 
     class XLSReader
     {
-        string file = Index.CreateInstance().xlsFile;
+        string file = Index.CreateInstance().XLSFile;
 
         private static XLSReader instance;
 
@@ -169,7 +169,7 @@ namespace DatabaseSelector
             while (!range.Text.Equals(""))
             {
                 myvalues = (System.Array)range.Cells.Value2;
-                if (machineName.Equals("ALL Servers") || myvalues.GetValue(1, 1).ToString().Equals(machineName))
+                if (machineName.Equals(Global.defaultALLPPETravelServerName) || myvalues.GetValue(1, 1).ToString().Equals(machineName))
                 {
                     DatabaseItem databaseItem = new DatabaseItem(myvalues.GetValue(1, 2).ToString(),
                         myvalues.GetValue(1, 2).ToString(), "PPE database", "CHC-APPWG01.idx.expedmz.com," +
@@ -184,7 +184,7 @@ namespace DatabaseSelector
                     pgb.Invoke((MethodInvoker)delegate
                     {
                         pgb.PerformStep();
-                        GlobalOperator.SetProgressBarText(pgb, "Reloading databases of " + machineName);
+                        Global.SetProgressBarText(pgb, "Reloading databases of " + machineName);
                     });
                 }
             }

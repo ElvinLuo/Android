@@ -63,7 +63,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\Microsoft.SqlServer.ConnectionInfo\10.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+      <HintPath>dll\9.0.242.0\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.RegSvrEnum, Version=9.0.242.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +101,7 @@
     <Compile Include="Connect.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GlobalOperator.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Index.cs" />
     <Compile Include="Options.cs">
@@ -182,12 +182,25 @@
     </Content>
     <Content Include="Databases.xml" />
     <Content Include="DatabaseSelector.AddIn" />
+    <Content Include="dll\10.0.0.0\Microsoft.SqlServer.ConnectionInfo.dll" />
+    <Content Include="dll\10.0.0.0\Microsoft.SqlServer.RegSvrEnum.dll" />
+    <Content Include="dll\10.0.0.0\Microsoft.SqlServer.SqlTools.VSIntegration.dll" />
+    <Content Include="dll\10.0.0.0\SQLEditors.dll" />
+    <Content Include="dll\10.0.0.0\SqlWorkbench.Interfaces.dll" />
+    <Content Include="dll\9.0.242.0\Microsoft.SqlServer.ConnectionInfo.dll" />
+    <Content Include="dll\9.0.242.0\Microsoft.SqlServer.RegSvrEnum.dll" />
+    <Content Include="dll\9.0.242.0\Microsoft.SqlServer.SqlTools.VSIntegration.dll" />
+    <Content Include="dll\9.0.242.0\SqlWorkbench.Interfaces.dll" />
     <Content Include="Groups.xml" />
     <Content Include="Index.xml" />
     <Content Include="Servers.xml" />
     <Content Include="WingatePortMappingsForRTT_PPE.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CurrentUser100.reg" />
+    <None Include="CurrentUser90.reg" />
+    <None Include="LocalMachine100.reg" />
+    <None Include="LocalMachine90.reg" />
     <None Include="PPE_DSN_List.xls" />
   </ItemGroup>
   <ItemGroup>

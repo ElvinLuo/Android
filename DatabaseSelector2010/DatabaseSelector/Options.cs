@@ -14,14 +14,14 @@ namespace DatabaseSelector
         {
             InitializeComponent();
 
-            tbTEMCDefault.Text = @"http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
-            tbPPEDSNListDefault.Text = Serializer.CreateInstance().applicationFolder + "PPE_DSN_List.xls";
-            tbPortMappingsDefault.Text = Serializer.CreateInstance().applicationFolder + "WingatePortMappingsForRTT_PPE.txt";
+            tbTEMCDefault.Text = Global.defaultTEMCURL;
+            tbPPEDSNListDefault.Text = Global.defaultXLSFile;
+            tbPortMappingsDefault.Text = Global.defaultTXTFile;
 
             index = Index.CreateInstance();
-            tbTEMC.Text = index.temcurl;
-            tbPPEDSNList.Text = index.xlsFile;
-            tbPortMappings.Text = index.txtFile;
+            tbTEMC.Text = index.TEMCURL;
+            tbPPEDSNList.Text = index.XLSFile;
+            tbPortMappings.Text = index.TXTFile;
         }
 
         private void btnOpenXLS_Click(object sender, EventArgs e)
@@ -46,9 +46,9 @@ namespace DatabaseSelector
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            index.temcurl = tbTEMC.Text;
-            index.xlsFile = tbPPEDSNList.Text;
-            index.txtFile = tbPortMappings.Text;
+            index.TEMCURL = tbTEMC.Text;
+            index.XLSFile = tbPPEDSNList.Text;
+            index.TXTFile = tbPortMappings.Text;
             index.SaveIndexToXml();
             Close();
         }

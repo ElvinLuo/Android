@@ -38,8 +38,8 @@ namespace DatabaseSelector
                 GroupServerList gsl = null;
                 updateDate = DateTime.MinValue;
                 servers = null;
-                if (File.Exists(Serializer.CreateInstance().applicationFolder + "Servers.xml"))
-                { gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), "Servers.xml") as GroupServerList); }
+                if (File.Exists(Global.defaultServersFile))
+                { gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), Global.defaultServersFileName) as GroupServerList); }
                 if (gsl == null)
                 { gsl = GroupServerList.CreateInstance(); }
                 if (gsl.GetServerList(groupName) != null && gsl.GetServerList(groupName).servers.Count != 0)
@@ -58,16 +58,16 @@ namespace DatabaseSelector
             if (pgb != null) max = pgb.Maximum;
 
             servers = new List<Server>();
-            if (groupName.ToUpper().Equals("ALL"))
+            if (groupName.ToUpper().Equals(Global.defaultALLGroupName))
             {
                 return;
                 //    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = 1; });
-                //    servers.Add(new Server("ALL", "ALL"));
+                //    servers.Add(new Server(Global.defaultALLWebServerName, Global.defaultALLTravelServerName));
                 //    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
             }
-            else if (groupName.ToUpper().Equals("PPE"))
+            else if (groupName.ToUpper().Equals(Global.defaultPPEGroupName))
             {
-                servers.Add(new Server("ALL Ports", "ALL Servers"));
+                servers.Add(new Server(Global.defaultALLPPEWebServerName, Global.defaultALLPPETravelServerName));
                 TXTReader txtReader = TXTReader.CreateInstance();
                 Dictionary<string, int> pairs = txtReader.GetServerPortPair();
                 if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = pairs.Count; });
@@ -85,12 +85,12 @@ namespace DatabaseSelector
 
         public void GetServersFromWeb(InternetExplorer ie, bool visible)
         {
-            if (!groupName.Equals("PPE") && !groupName.Equals("ALL"))
+            if (!groupName.Equals(Global.defaultPPEGroupName) && !groupName.Equals(Global.defaultALLGroupName))
             {
                 try
                 {
                     object Empty = 0;
-                    object URL = Index.CreateInstance().temcurl + "?query=ON&group=" + groupName;
+                    object URL = Index.CreateInstance().TEMCURL + "?query=ON&group=" + groupName;
 
                     ie.Visible = visible;
                     ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);

@@ -55,8 +55,8 @@ namespace DatabaseSelector
 
         void lvDatabases_DoubleClick(object sender, System.EventArgs e)
         {
-            if (!tbDatabase.Text.Equals("No database found"))
-            { ConnectToServer(); }
+            if (!CanConnect()) return;
+            ConnectToServer();
         }
 
         private void ConnectToServer()
@@ -65,7 +65,7 @@ namespace DatabaseSelector
             {
                 if (version == 2008)
                 {
-                    Assembly asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/Microsoft.SqlServer.RegSvrEnum.dll");
+                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.RegSvrEnum.dll");
                     connectionObject = System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo"));
                     Type type = asm.GetType("Microsoft.SqlServer.Management.Smo.RegSvrEnum.UIConnectionInfo");
                     type.GetProperty("ServerType").SetValue(connectionObject, new Guid("8c91a03d-f9b4-46c0-a305-b5dcc79ff907"), null);
@@ -76,7 +76,7 @@ namespace DatabaseSelector
                     {
                         type.GetProperty("Password").SetValue(connectionObject, targetPassword, null);
                     }
-                    asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/Microsoft.SqlServer.SqlTools.VSIntegration.dll");
+                    asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.SqlTools.VSIntegration.dll");
                     type = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.ServiceCache");
                     MethodInfo methodGetObjectExplorer = type.GetMethod("GetObjectExplorer");
                     object explorer = methodGetObjectExplorer.Invoke(null, null);
@@ -106,7 +106,7 @@ namespace DatabaseSelector
                 MethodInfo methodGetHierarchy = objectExplorerService.GetType().GetMethod("GetHierarchy", BindingFlags.Instance | BindingFlags.NonPublic);
                 if (version == 2008)
                 {
-                    Assembly asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/Microsoft.SqlServer.ConnectionInfo.dll");
+                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "Microsoft.SqlServer.ConnectionInfo.dll");
                     object sqlConnectionInfoObject = targetAuthenticationIndex == 0 ?
                         System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer }) :
                         System.Activator.CreateInstance(asm.GetType("Microsoft.SqlServer.Management.Common.SqlConnectionInfo"), new object[] { targetServer, targetUsername, targetPassword }); ;
@@ -252,15 +252,15 @@ namespace DatabaseSelector
         {
             try
             {
-                //if (needRefresh && version == 2005)
-                //{
-                //    databaseObjectNode.Collapse();
-                //    needRefresh = false;
-                //    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
-                //    SelectAndExpandDatabasesNode();
-                //    return;
-                //}
-                string strFullPath = Serializer.CreateInstance().applicationFolder + "SQLFile.sql";
+                if (needRefresh && version == 2005)
+                {
+                    databaseObjectNode.Collapse();
+                    needRefresh = false;
+                    ServiceCache.GetObjectExplorer().ConnectToServer(connection);
+                    SelectAndExpandDatabasesNode();
+                    return;
+                }
+                string strFullPath = Global.applicationFolder + "SQLFile.sql";
                 if (version == 2008)
                 {
                     connection = new UIConnectionInfo();
@@ -293,16 +293,16 @@ namespace DatabaseSelector
                 }
                 if (version == 2008)
                 {
-                    Assembly asm = Assembly.LoadFile(Serializer.CreateInstance().applicationFolder + "dll/10.0.0.0/SQLEditors.dll");
+                    Assembly asm = Assembly.LoadFile(Global.dllFolderFor100 + "SQLEditors.dll");
                     Type scriptFactoryType = asm.GetType("Microsoft.SqlServer.Management.UI.VSIntegration.Editors.ScriptFactory");
                     object sfiObject = scriptFactoryType.GetField("instance", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
                     MethodInfo[] methodCreateNewScript = scriptFactoryType.GetMethods();
                     methodCreateNewScript[16].Invoke(sfiObject, new object[] { strFullPath, connectionObject, sqlConnection });
                 }
-                //else if (version == 2005)
-                //{
-                //    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
-                //}
+                else if (version == 2005)
+                {
+                    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
+                }
             }
             catch (Exception exception)
             { Console.WriteLine(exception.Message); }
@@ -312,27 +312,27 @@ namespace DatabaseSelector
         {
             lvGroups.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
-            lvicGroup.Add(new ListViewItem(new string[] { "ALL" }));
-            lvicGroup.Add(new ListViewItem(new string[] { "PPE" }));
+            if (IsMatchingFilter(Global.defaultALLGroupName, filter))
+            { lvicGroup.Add(new ListViewItem(new string[] { Global.defaultALLGroupName })); }
+            if (IsMatchingFilter(Global.defaultPPEGroupName, filter))
+            { lvicGroup.Add(new ListViewItem(new string[] { Global.defaultPPEGroupName })); }
             if (groupList.groups != null && groupList.groups.Count != 0)
             {
                 for (int i = 0; i < groupList.groups.Count; i++)
                 {
-                    if ((filter == null || filter.Equals("") || groupList.groups[i].ToLower().IndexOf(filter.ToLower()) > -1))
+                    if (IsMatchingFilter(groupList.groups[i], filter))
                     {
                         ListViewItem lviDatabase = new ListViewItem(new string[] { groupList.groups[i] });
                         lvicGroup.Add(lviDatabase);
                     }
                 }
             }
-            //if (lvGroups.Items.Count == 0)
-            //{ lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
+            if (lvGroups.Items.Count == 0)
+            { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
             if (lvGroups.Items.Count != 0)
             {
                 if (index.currentSelectedGroup >= lvGroups.Items.Count)
                 { index.currentSelectedGroup = 0; }
-                //lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
-                //lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
                 groupList.selectedGroup = lvGroups.Items[index.currentSelectedGroup].SubItems[0].Text;
                 lvGroups.Items[index.currentSelectedGroup].Selected = true;
             }
@@ -343,14 +343,13 @@ namespace DatabaseSelector
         {
             lvServers.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
-            if (serverList.groupName.ToUpper().Equals("ALL"))
-            { lvic.Add(new ListViewItem(new string[] { "ALL", "ALL" })); }
+            if (serverList.groupName.ToUpper().Equals(Global.defaultALLGroupName) && IsMatchingFilter(Global.defaultALLWebServerName, webServerFilter) && IsMatchingFilter(Global.defaultALLTravelServerName, travelServerFilter))
+            { lvic.Add(new ListViewItem(new string[] { Global.defaultALLWebServerName, Global.defaultALLTravelServerName })); }
             if (serverList.servers != null && serverList.servers.Count != 0)
             {
                 for (int i = 0; i < serverList.servers.Count; i++)
                 {
-                    if ((webServerFilter == null || webServerFilter.Equals("") || serverList.servers[i].serverName.ToLower().IndexOf(webServerFilter.ToLower()) > -1) &&
-                        (travelServerFilter == null || travelServerFilter.Equals("") || serverList.servers[i].travelServer.ToLower().IndexOf(travelServerFilter.ToLower()) > -1))
+                    if (IsMatchingFilter(serverList.servers[i].serverName, webServerFilter) && IsMatchingFilter(serverList.servers[i].travelServer, travelServerFilter))
                     {
                         ListViewItem lviServer = new ListViewItem(new string[] { serverList.servers[i].serverName, serverList.servers[i].travelServer });
                         lvic.Add(lviServer);
@@ -364,11 +363,9 @@ namespace DatabaseSelector
                 if (index.currentSelectedServer >= lvServers.Items.Count)
                 { index.currentSelectedServer = 0; }
                 lvServers.Items[index.currentSelectedServer].Selected = true;
-                //lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
-                //lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
             }
             lblServersUpdateDate.Text = "Updated at: " + serverList.updateDate;
-            if (groupList.selectedGroup.ToUpper().Equals("ALL") || groupList.selectedGroup.Contains("No group found"))
+            if (groupList.selectedGroup.ToUpper().Equals(Global.defaultALLGroupName) || groupList.selectedGroup.Contains("No group found"))
             {
                 btnReloadServers.Enabled = false;
                 btnSaveServers.Enabled = false;
@@ -388,7 +385,7 @@ namespace DatabaseSelector
             {
                 foreach (DatabaseItem database in travelServer.Databases)
                 {
-                    if (filter == null || filter.Equals("") || database.DatabaseName.ToLower().IndexOf(filter.ToLower()) > -1)
+                    if (IsMatchingFilter(database.DatabaseName, filter))
                     {
                         ListViewItem lviDatabase = new ListViewItem(new string[] { database.DatabaseName, database.Server, database.Database, "SQL Server Authentication", database.UserName, database.UserAuth });
                         lvic.Add(lviDatabase);
@@ -402,9 +399,6 @@ namespace DatabaseSelector
                 if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
                 { index.currentSelectedDatabase = 0; }
                 lvDatabases.Items[index.currentSelectedDatabase].Selected = true;
-                //lvDatabases.Items[index.currentSelectedDatabase].BackColor = SystemColors.Highlight;
-                //lvDatabases.Items[index.currentSelectedDatabase].ForeColor = Color.White;
-                //lvDatabases.Focus();
             }
             foreach (ColumnHeader ch in lvDatabases.Columns)
             {
@@ -413,9 +407,7 @@ namespace DatabaseSelector
                 { ch.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize); }
             }
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
-            if (travelServer.MachineName.ToUpper().Equals("ALL") ||
-                travelServer.MachineName.Equals("ALL Servers") ||
-                lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text.Contains("No server found"))
+            if (CanReloadAndSaveDatabaseList())
             {
                 btnReloadDatabases.Enabled = false;
                 btnSaveDatabases.Enabled = false;
@@ -563,13 +555,12 @@ namespace DatabaseSelector
                 targetServer = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[1].Text;
                 targetInstance = tbInstance.Text;
 
-                if (tbDatabase.Text.Equals("No database found"))
+                if (!CanConnect())
                 { btnConnect.Enabled = false; }
                 else
                 { btnConnect.Enabled = true; }
 
-                //if (lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text.Equals("PPE"))
-                if (serverList.groupName.Equals("PPE"))
+                if (serverList.groupName.Equals(Global.defaultPPEGroupName))
                 {
                     cbConnectionType.SelectedIndex = 1;
                     tbUserName.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[4].Text;
@@ -601,9 +592,9 @@ namespace DatabaseSelector
         {
             DisableAllButtons();
             GroupServerList gsl;
-            if (File.Exists(Serializer.CreateInstance().applicationFolder + "Servers.xml"))
+            if (File.Exists(Global.defaultServersFile))
             {
-                gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), "Servers.xml") as GroupServerList);
+                gsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(GroupServerList), Global.defaultServersFileName) as GroupServerList);
                 gsl.groupServers.Remove(gsl.GetServerList(serverList.groupName));
             }
             else
@@ -615,12 +606,12 @@ namespace DatabaseSelector
 
         private void btnSaveDatabases_Click(object sender, EventArgs e)
         {
-            if (travelServer.MachineName.Equals("ALL Servers")) return;
+            if (travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName)) return;
             DisableAllButtons();
             TravelServerList tsl;
-            if (File.Exists(Serializer.CreateInstance().applicationFolder + "Databases.xml"))
+            if (File.Exists(Global.defaultDatabasesFile))
             {
-                tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), "Databases.xml") as TravelServerList);
+                tsl = (Serializer.CreateInstance().DeserializeFromXML(typeof(TravelServerList), Global.defaultDatabasesFileName) as TravelServerList);
                 tsl.travelServers.Remove(tsl.GetTravelServer(travelServer.MachineName));
             }
             else
@@ -675,14 +666,12 @@ namespace DatabaseSelector
         {
             btnReloadGroups.Enabled = true;
             btnSaveGroups.Enabled = true;
-            if (!groupList.selectedGroup.ToUpper().Equals("ALL") && !groupList.selectedGroup.Contains("No group found"))
+            if (!groupList.selectedGroup.ToUpper().Equals(Global.defaultALLGroupName) && !groupList.selectedGroup.Contains("No group found"))
             {
                 btnReloadServers.Enabled = true;
                 btnSaveServers.Enabled = true;
             }
-            if (!travelServer.MachineName.ToUpper().Equals("ALL") &&
-                !travelServer.MachineName.Equals("ALL Servers") &&
-                !lvServers.Items[index.currentSelectedServer].SubItems[0].Text.Contains("No server found"))
+            if (CanReloadAndSaveDatabaseList())
             {
                 btnReloadDatabases.Enabled = true;
                 btnSaveDatabases.Enabled = true;
@@ -734,7 +723,7 @@ namespace DatabaseSelector
         {
             if (trigger.Equals("btnReloadDatabases"))
             { travelServer.GetDatabasesFromRegistryAndChangeProgressBar(pgbReloadDatabases); }
-            else if (trigger.Equals("btnReloadServers") && serverList.groupName.Equals("PPE"))
+            else if (trigger.Equals("btnReloadServers") && serverList.groupName.Equals(Global.defaultPPEGroupName))
             { serverList.GetServersFromFile(serverList.groupName, pgbReloadServers); }
             else
             {
@@ -770,7 +759,7 @@ namespace DatabaseSelector
                 if (pgbReloadGroups.Minimum <= Progress && Progress <= pgbReloadGroups.Maximum)
                 {
                     pgb.Value = Progress;
-                    GlobalOperator.SetProgressBarText(pgb, text);
+                    Global.SetProgressBarText(pgb, text);
                 }
             });
         }
@@ -841,6 +830,19 @@ namespace DatabaseSelector
             Options options = new Options();
             options.ShowDialog();
         }
+
+        private bool CanReloadAndSaveDatabaseList()
+        {
+            return !(travelServer.MachineName.Equals(Global.defaultALLTravelServerName) ||
+                  travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName) ||
+                  lvServers.Items[index.currentSelectedServer].Text.Contains("No server found"));
+        }
+
+        private bool IsMatchingFilter(string item, string filter)
+        { return (string.IsNullOrEmpty(filter) || item.ToLower().Contains(filter.ToLower())); }
+
+        private bool CanConnect()
+        { return !(targetDatabase.Equals("No database found") || targetServer.Equals("")); }
 
     }
 }

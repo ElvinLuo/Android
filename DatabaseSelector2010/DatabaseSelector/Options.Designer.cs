@@ -139,14 +139,14 @@
             // 
             // ofdXLS
             // 
-            this.ofdXLS.FileName = "PPE_DSN_List.xls";
+            this.ofdXLS.FileName = Global.defaultXLSFileName;
             this.ofdXLS.Filter = "Excel Files|*.xls";
             this.ofdXLS.Title = "Select PPE_DSN_List.xls";
             this.ofdXLS.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdXLS_FileOk);
             // 
             // ofdTXT
             // 
-            this.ofdTXT.FileName = "WingatePortMappingsForRTT_PPE.txt";
+            this.ofdTXT.FileName = Global.defaultTXTFileName;
             this.ofdTXT.Filter = "Text Files|*.txt";
             this.ofdTXT.Title = "Select WingatePortMappingsForRTT_PPE.txt";
             this.ofdTXT.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdTXT_FileOk);

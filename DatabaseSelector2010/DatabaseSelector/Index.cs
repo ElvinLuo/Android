@@ -5,11 +5,10 @@ namespace DatabaseSelector
     public class Index
     {
         private static Index instance;
-        private string fileName = "Index.xml";
 
-        public string temcurl;
-        public string xlsFile;
-        public string txtFile;
+        private string temcurl;
+        private string xlsFile;
+        private string txtFile;
 
         public string groupFilter;
         public string webServerFilter;
@@ -39,17 +38,53 @@ namespace DatabaseSelector
         {
         }
 
+        public string TEMCURL
+        {
+            get
+            {
+                if (temcurl == null || temcurl.Equals(""))
+                { return Global.defaultTEMCURL; }
+                else
+                { return temcurl; }
+            }
+            set { temcurl = value; }
+        }
+
+        public string XLSFile
+        {
+            get
+            {
+                if (xlsFile == null || xlsFile.Equals(""))
+                { return Global.defaultXLSFile; }
+                else
+                { return xlsFile; }
+            }
+            set { xlsFile = value; }
+        }
+
+        public string TXTFile
+        {
+            get
+            {
+                if (txtFile == null || txtFile.Equals(""))
+                { return Global.defaultTXTFile; }
+                else
+                { return txtFile; }
+            }
+            set { txtFile = value; }
+        }
+
         public Index GetIndexFromXml()
         {
-            if (File.Exists(Serializer.CreateInstance().applicationFolder + fileName))
-                return Serializer.CreateInstance().DeserializeFromXML(this.GetType(), fileName) as Index;
+            if (File.Exists(Global.defaultIndexFile))
+                return Serializer.CreateInstance().DeserializeFromXML(this.GetType(), Global.defaultIndexFileName) as Index;
             else
                 return this;
         }
 
         public void SaveIndexToXml()
         {
-            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), fileName);
+            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), Global.defaultIndexFileName);
         }
 
     }

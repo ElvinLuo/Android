@@ -46,14 +46,14 @@ namespace DatabaseSelector
 
         public void SaveListToXML()
         {
-            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), "Groups.xml");
+            Serializer.CreateInstance().SerializeToXML(this, this.GetType(), Global.defaultGroupsFileName);
         }
 
         public void GetGroups()
         {
-            if (File.Exists(Serializer.CreateInstance().applicationFolder + "Groups.xml"))
+            if (File.Exists(Global.defaultGroupsFile))
             {
-                GroupList gl = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), "Groups.xml") as GroupList;
+                GroupList gl = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), Global.defaultGroupsFileName) as GroupList;
                 groups = gl.groups;
                 selectedGroup = gl.selectedGroup;
                 updateDate = gl.updateDate;
@@ -62,10 +62,10 @@ namespace DatabaseSelector
                 //if (groupList.Count == 0)
                 //{ GetGroupsFromWebAndSaveToXML(); }
                 //groups = new List<string>();
-                //if (!groupList.Contains("ALL"))
-                //{ groups.Add("ALL"); }
-                //if (!groupList.Contains("PPE"))
-                //{ groups.Add("PPE"); }
+                //if (!groupList.Contains(Global.defaultALLGroupName))
+                //{ groups.Add(Global.defaultALLGroupName); }
+                //if (!groupList.Contains(Global.defaultPPEGroupName))
+                //{ groups.Add(Global.defaultPPEGroupName); }
                 //foreach (string item in groupList)
                 //    groups.Add(item);
             }
@@ -86,11 +86,11 @@ namespace DatabaseSelector
             try
             {
                 groups = new List<string>();
-                //groups.Add("ALL");
-                //groups.Add("PPE");
+                //groups.Add(Global.defaultALLGroupName);
+                //groups.Add(Global.defaultPPEGroupName);
 
                 object Empty = 0;
-                object URL = Index.CreateInstance().temcurl;
+                object URL = Index.CreateInstance().TEMCURL;
 
                 ie.Visible = visible;
                 ie.Navigate2(ref URL, ref Empty, ref Empty, ref Empty, ref Empty);
