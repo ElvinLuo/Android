@@ -148,7 +148,7 @@ namespace DatabaseSelector
                 }
             }
             if (lvDatabases.Items.Count == 0)
-            { lvic.Add(new ListViewItem(new string[] { Global.noDatabaseItemBanner, Global.tryReloadDatabaseBanner, "", "", "", "" })); }
+            { lvic.Add(new ListViewItem(new string[] { Global.noDatabaseItemBanner, Global.tryReloadDatabaseBanner, Global.emptyString, Global.emptyString, Global.emptyString, Global.emptyString })); }
             if (lvDatabases.Items.Count != 0)
             {
                 if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
@@ -164,13 +164,13 @@ namespace DatabaseSelector
             lblDatabasesUpdateDate.Text = "Updated at: " + travelServer.updateDate;
             if (CanReloadAndSaveDatabaseList())
             {
-                btnReloadDatabases.Enabled = false;
-                btnSaveDatabases.Enabled = false;
+                btnReloadDatabases.Enabled = true;
+                btnSaveDatabases.Enabled = true;
             }
             else
             {
-                btnReloadDatabases.Enabled = true;
-                btnSaveDatabases.Enabled = true;
+                btnReloadDatabases.Enabled = false;
+                btnSaveDatabases.Enabled = false;
             }
         }
 
@@ -343,10 +343,10 @@ namespace DatabaseSelector
 
         private void btnClearAllSearchText_Click(object sender, EventArgs e)
         {
-            tbGroupFilter.Text = "";
-            tbWebServerFilter.Text = "";
-            tbTravelServerFilter.Text = "";
-            tbDatabaseFilter.Text = "";
+            tbGroupFilter.Text = Global.emptyString;
+            tbWebServerFilter.Text = Global.emptyString;
+            tbTravelServerFilter.Text = Global.emptyString;
+            tbDatabaseFilter.Text = Global.emptyString;
         }
 
         private void lvGroups_SelectedIndexChanged(object sender, EventArgs e)
@@ -367,8 +367,6 @@ namespace DatabaseSelector
                     lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
                     lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
                 }
-
-                //tbGroup.Text = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
                 groupList.selectedGroup = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
 
                 serverList.groupName = groupList.selectedGroup;
@@ -455,7 +453,7 @@ namespace DatabaseSelector
                     tbUserName.Enabled = false;
                     tbPassword.Enabled = false;
                     tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
-                    tbPassword.Text = "";
+                    tbPassword.Text = Global.emptyString;
                 }
                 targetAuthentication = cbConnectionType.Text;
                 targetAuthenticationIndex = cbConnectionType.SelectedIndex;
@@ -477,7 +475,7 @@ namespace DatabaseSelector
                 tbUserName.Enabled = false;
                 tbPassword.Enabled = false;
                 tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
-                tbPassword.Text = "";
+                tbPassword.Text = Global.emptyString;
             }
             else
             {
@@ -774,7 +772,7 @@ namespace DatabaseSelector
         {
             btnReloadGroups.Enabled = true;
             btnSaveGroups.Enabled = true;
-            if (!groupList.selectedGroup.Equals(Global.defaultALLGroupName) && !groupList.selectedGroup.Contains("No group found"))
+            if (!groupList.selectedGroup.Equals(Global.defaultALLGroupName) && !groupList.selectedGroup.Equals(Global.noGroupItemBanner))
             {
                 btnReloadServers.Enabled = true;
                 btnSaveServers.Enabled = true;

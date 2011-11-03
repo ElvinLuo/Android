@@ -117,11 +117,11 @@ namespace DatabaseSelector
                                 bool[] matching = Match(new string[] { "Database", "Description", "Server", "UserAuth", "UserName" }, items);
                                 DatabaseItem databaseItem = new DatabaseItem(
                                     subKeyName,
-                                    matching[0] ? expDsnSubKey.GetValue("Database").ToString() : "",
-                                    matching[1] ? expDsnSubKey.GetValue("Description").ToString() : "",
-                                    matching[2] ? expDsnSubKey.GetValue("Server").ToString() : "",
-                                    matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : "",
-                                    matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : "");
+                                    matching[0] ? expDsnSubKey.GetValue("Database").ToString() : Global.emptyString,
+                                    matching[1] ? expDsnSubKey.GetValue("Description").ToString() : Global.emptyString,
+                                    matching[2] ? expDsnSubKey.GetValue("Server").ToString() : Global.emptyString,
+                                    matching[3] ? expDsnSubKey.GetValue("UserAuth").ToString() : Global.emptyString,
+                                    matching[4] ? expDsnSubKey.GetValue("UserName").ToString() : Global.emptyString);
                                 Databases.Add(databaseItem);
                                 if (pgb != null)
                                 {

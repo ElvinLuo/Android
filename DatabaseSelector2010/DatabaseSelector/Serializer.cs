@@ -28,9 +28,9 @@ namespace DatabaseSelector
             {
                 if (applicationFolder == null)
                 {
-                    string result = "";
+                    string result = Global.emptyString;
                     RegistryKey dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.ClassesRoot, System.Environment.MachineName).OpenSubKey("DatabaseSelector.Connect\\CLSID");
-                    result = dllKey.GetValue("").ToString();
+                    result = dllKey.GetValue(Global.emptyString).ToString();
 
                     dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.ClassesRoot, System.Environment.MachineName).OpenSubKey("\\Wow6432Node\\CLSID");
                     if (dllKey == null)
@@ -166,7 +166,7 @@ namespace DatabaseSelector
 
             Microsoft.Office.Interop.Excel.Range range = worksheet.get_Range("A" + i.ToString(), "B" + i.ToString());
             if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = worksheet.Rows.Row; });
-            while (!range.Text.Equals(""))
+            while (!range.Text.Equals(Global.emptyString))
             {
                 myvalues = (System.Array)range.Cells.Value2;
                 if (machineName.Equals(Global.defaultALLPPETravelServerName) || myvalues.GetValue(1, 1).ToString().Equals(machineName))

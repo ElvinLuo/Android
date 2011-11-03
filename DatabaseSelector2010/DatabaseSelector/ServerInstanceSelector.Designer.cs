@@ -252,7 +252,7 @@ namespace DatabaseSelector
             this.lvServers.Name = "lvServers";
             this.lvServers.Size = new System.Drawing.Size(263, 276);
             this.lvServers.TabIndex = 19;
-            this.lvServers.Tag = "";
+            this.lvServers.Tag = Global.emptyString;
             this.lvServers.UseCompatibleStateImageBehavior = false;
             this.lvServers.View = System.Windows.Forms.View.Details;
             this.lvServers.SelectedIndexChanged += new System.EventHandler(this.lvServers_SelectedIndexChanged);

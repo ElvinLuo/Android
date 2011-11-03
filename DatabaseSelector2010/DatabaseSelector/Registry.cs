@@ -49,7 +49,7 @@ namespace DatabaseSelector
             }
 
             HTMLDivElement divSitesTable = (HTMLDivElement)document.getElementById("sitestable");
-            string targetWebServerName = "";
+            string targetWebServerName = Global.emptyString;
             foreach (HTMLDTElement cell in divSitesTable.getElementsByTagName("td"))
             {
                 bool isServerName = false;

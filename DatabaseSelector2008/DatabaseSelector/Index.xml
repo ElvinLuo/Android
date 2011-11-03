@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <temcurl>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</temcurl>
-  <xlsFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</xlsFile>
-  <txtFile>C:\Program Files (x86)\DatabaseSelectorSetup\WingatePortMappingsForRTT_PPE.txt</txtFile>
-  <groupFilter />
-  <webServerFilter />
-  <travelServerFilter />
-  <databaseFilter />
-  <automaticallyOpenEditer>false</automaticallyOpenEditer>
-  <previousSelectedGroup>0</previousSelectedGroup>
-  <currentSelectedGroup>1</currentSelectedGroup>
-  <previousSelectedServer>6</previousSelectedServer>
-  <currentSelectedServer>2</currentSelectedServer>
-  <previousSelectedDatabase>0</previousSelectedDatabase>
-  <currentSelectedDatabase>3</currentSelectedDatabase>
+  <groupFilter>qa</groupFilter>
+  <webServerFilter>801</webServerFilter>
+  <travelServerFilter>tvm</travelServerFilter>
+  <databaseFilter>lodginginventory</databaseFilter>
+  <automaticallyOpenEditer>true</automaticallyOpenEditer>
+  <previousSelectedGroup>3</previousSelectedGroup>
+  <currentSelectedGroup>12</currentSelectedGroup>
+  <previousSelectedServer>0</previousSelectedServer>
+  <currentSelectedServer>1</currentSelectedServer>
+  <previousSelectedDatabase>18</previousSelectedDatabase>
+  <currentSelectedDatabase>10</currentSelectedDatabase>
+  <TEMCURL>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</TEMCURL>
+  <XLSFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</XLSFile>
+  <TXTFile>C:\Program Files (x86)\DatabaseSelectorSetup\WingatePortMappingsForRTT_PPE.txt</TXTFile>
 </Index>

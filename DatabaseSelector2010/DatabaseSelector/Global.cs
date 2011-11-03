@@ -10,6 +10,7 @@ namespace DatabaseSelector
     class Global
     {
         public static readonly string applicationFolder = Serializer.CreateInstance().applicationFolder;
+        public static readonly string emptyString = "";
 
         public static readonly string defaultALLGroupName = "ALL";
         public static readonly string defaultALLWebServerName = "ALL";
