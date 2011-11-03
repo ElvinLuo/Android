@@ -58,14 +58,14 @@ namespace DatabaseSelector
             if (pgb != null) max = pgb.Maximum;
 
             servers = new List<Server>();
-            if (groupName.ToUpper().Equals(Global.defaultALLGroupName))
+            if (groupName.Equals(Global.defaultALLGroupName))
             {
                 return;
                 //    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.Maximum = 1; });
                 //    servers.Add(new Server(Global.defaultALLWebServerName, Global.defaultALLTravelServerName));
                 //    if (pgb != null) pgb.Invoke((MethodInvoker)delegate { pgb.PerformStep(); });
             }
-            else if (groupName.ToUpper().Equals(Global.defaultPPEGroupName))
+            else if (groupName.Equals(Global.defaultPPEGroupName))
             {
                 servers.Add(new Server(Global.defaultALLPPEWebServerName, Global.defaultALLPPETravelServerName));
                 TXTReader txtReader = TXTReader.CreateInstance();
@@ -114,8 +114,8 @@ namespace DatabaseSelector
                                 {
                                     HTMLTableCell serverCell = (HTMLTableCell)row.cells.item(0, 0);
                                     HTMLTableCell travelServerCell = (HTMLTableCell)row.cells.item(4, 4);
-                                    if (serverCell != null && serverCell.innerText != null && !serverCell.innerText.Equals("") &&
-                                        travelServerCell != null && travelServerCell.innerText != null && !travelServerCell.innerText.Equals(""))
+                                    if (serverCell != null && !string.IsNullOrEmpty(serverCell.innerText) &&
+                                        travelServerCell != null && !string.IsNullOrEmpty(travelServerCell.innerText))
                                     {
                                         foreach (string singleTravelServer in travelServerCell.innerText.Split(new char[] { ',' }))
                                         { servers.Add(new Server(serverCell.innerText, singleTravelServer)); }

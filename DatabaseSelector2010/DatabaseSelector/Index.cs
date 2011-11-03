@@ -42,7 +42,7 @@ namespace DatabaseSelector
         {
             get
             {
-                if (temcurl == null || temcurl.Equals(""))
+                if (string.IsNullOrEmpty(temcurl))
                 { return Global.defaultTEMCURL; }
                 else
                 { return temcurl; }
@@ -54,7 +54,7 @@ namespace DatabaseSelector
         {
             get
             {
-                if (xlsFile == null || xlsFile.Equals(""))
+                if (string.IsNullOrEmpty(xlsFile))
                 { return Global.defaultXLSFile; }
                 else
                 { return xlsFile; }
@@ -66,7 +66,7 @@ namespace DatabaseSelector
         {
             get
             {
-                if (txtFile == null || txtFile.Equals(""))
+                if (string.IsNullOrEmpty(txtFile))
                 { return Global.defaultTXTFile; }
                 else
                 { return txtFile; }

@@ -107,7 +107,7 @@ namespace DatabaseSelector
                         for (int i = 0; i < selGroups.length; i++)
                         {
                             HTMLOptionElement option = (HTMLOptionElement)selGroups.item(i, i);
-                            if (option.text != null && !option.text.Equals(""))
+                            if (!string.IsNullOrEmpty(option.text))
                             { groups.Add(option.text); }
                         }
                     }

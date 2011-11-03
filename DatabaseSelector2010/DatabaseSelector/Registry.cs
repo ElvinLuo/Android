@@ -30,7 +30,7 @@ namespace DatabaseSelector
             HTMLDivElement divSubmit = (HTMLDivElement)document.getElementById("submitbutton");
             HTMLButtonElement btnSubmit = (HTMLButtonElement)divSubmit.firstChild;
 
-            if (environment == null || environment == "")
+            if (string.IsNullOrEmpty(environment))
             {
                 selGroups.value = "CHE-RC01";
             }

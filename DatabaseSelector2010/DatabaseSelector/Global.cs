@@ -18,6 +18,11 @@ namespace DatabaseSelector
         public static readonly string defaultALLPPEWebServerName = "ALL Ports";
         public static readonly string defaultALLPPETravelServerName = "ALL Servers";
 
+        public static readonly string noGroupItemBanner = "No group found, try to click 'Reload groups'";
+        public static readonly string noWebServerItemBanner = "No server found";
+        public static readonly string noTravelServerItemBanner = "Try to click 'Reload servers'";
+        public static readonly string noDatabaseItemBanner = "No database found";
+        public static readonly string tryReloadDatabaseBanner = "Try to click 'Reload databases'";
 
         public static readonly string defaultGroupsFileName = "Groups.xml";
         public static readonly string defaultServersFileName = "Servers.xml";
@@ -110,8 +115,8 @@ namespace DatabaseSelector
             {
                 //Get server pairs from files or web site
                 serverList.groupName = group;
-                if (group.ToUpper().Equals(Global.defaultALLGroupName)) continue;
-                else if (group.ToUpper().Equals(Global.defaultPPEGroupName))
+                if (group.Equals(Global.defaultALLGroupName)) continue;
+                else if (group.Equals(Global.defaultPPEGroupName))
                 { serverList.GetServersFromFile(group, null); }
                 else
                 { serverList.GetServersFromWeb(ie, false); }

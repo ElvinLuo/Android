@@ -27,7 +27,7 @@ namespace DatabaseSelector
             result.updateDate = System.DateTime.Now;
             result.Databases = new List<DatabaseItem>();
 
-            if (machineName.ToUpper().Equals(Global.defaultALLTravelServerName))
+            if (machineName.Equals(Global.defaultALLTravelServerName))
             {
                 foreach (TravelServer travelServer in travelServers)
                 {
@@ -100,7 +100,7 @@ namespace DatabaseSelector
             result.updateDate = System.DateTime.Now;
             result.servers = new List<Server>();
 
-            if (groupName.ToUpper().Equals(Global.defaultALLGroupName))
+            if (groupName.Equals(Global.defaultALLGroupName))
             {
                 foreach (ServerList groupServer in groupServers)
                 {

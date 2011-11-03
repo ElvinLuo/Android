@@ -328,7 +328,7 @@ namespace DatabaseSelector
                 }
             }
             if (lvGroups.Items.Count == 0)
-            { lvicGroup.Add(new ListViewItem(new string[] { "No group found, try to click 'Reload groups'" })); }
+            { lvicGroup.Add(new ListViewItem(new string[] { Global.noGroupItemBanner })); }
             if (lvGroups.Items.Count != 0)
             {
                 if (index.currentSelectedGroup >= lvGroups.Items.Count)
@@ -343,7 +343,7 @@ namespace DatabaseSelector
         {
             lvServers.Items.Clear();
             System.Windows.Forms.ListView.ListViewItemCollection lvic = new ListView.ListViewItemCollection(lvServers);
-            if (serverList.groupName.ToUpper().Equals(Global.defaultALLGroupName) && IsMatchingFilter(Global.defaultALLWebServerName, webServerFilter) && IsMatchingFilter(Global.defaultALLTravelServerName, travelServerFilter))
+            if (serverList.groupName.Equals(Global.defaultALLGroupName) && IsMatchingFilter(Global.defaultALLWebServerName, webServerFilter) && IsMatchingFilter(Global.defaultALLTravelServerName, travelServerFilter))
             { lvic.Add(new ListViewItem(new string[] { Global.defaultALLWebServerName, Global.defaultALLTravelServerName })); }
             if (serverList.servers != null && serverList.servers.Count != 0)
             {
@@ -357,7 +357,7 @@ namespace DatabaseSelector
                 }
             }
             if (lvServers.Items.Count == 0)
-            { lvic.Add(new ListViewItem(new string[] { "No server found", "Try to click 'Reload servers'" })); }
+            { lvic.Add(new ListViewItem(new string[] { Global.noWebServerItemBanner, Global.noTravelServerItemBanner })); }
             if (lvServers.Items.Count != 0)
             {
                 if (index.currentSelectedServer >= lvServers.Items.Count)
@@ -365,7 +365,7 @@ namespace DatabaseSelector
                 lvServers.Items[index.currentSelectedServer].Selected = true;
             }
             lblServersUpdateDate.Text = "Updated at: " + serverList.updateDate;
-            if (groupList.selectedGroup.ToUpper().Equals(Global.defaultALLGroupName) || groupList.selectedGroup.Contains("No group found"))
+            if (groupList.selectedGroup.Equals(Global.defaultALLGroupName) || groupList.selectedGroup.Contains("No group found"))
             {
                 btnReloadServers.Enabled = false;
                 btnSaveServers.Enabled = false;
@@ -393,7 +393,7 @@ namespace DatabaseSelector
                 }
             }
             if (lvDatabases.Items.Count == 0)
-            { lvic.Add(new ListViewItem(new string[] { "No database found", "Try to click 'Reload databases'", "", "", "", "" })); }
+            { lvic.Add(new ListViewItem(new string[] { Global.noDatabaseItemBanner, Global.tryReloadDatabaseBanner, "", "", "", "" })); }
             if (lvDatabases.Items.Count != 0)
             {
                 if (index.currentSelectedDatabase >= lvDatabases.Items.Count)
@@ -511,7 +511,7 @@ namespace DatabaseSelector
                     lvServers.Items[index.currentSelectedServer].BackColor = SystemColors.Highlight;
                     lvServers.Items[index.currentSelectedServer].ForeColor = Color.White;
                 }
-                if (!lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text.Contains("No server found"))
+                if (!lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text.Contains(Global.noWebServerItemBanner))
                 {
                     tbWebServer.Text = lvServers.Items[lvServers.SelectedIndices[0]].SubItems[0].Text;
                     tbTravelServer.Text = lvServers.Items[lvServers.SelectedIndices[0]].SubItems[1].Text;
@@ -666,7 +666,7 @@ namespace DatabaseSelector
         {
             btnReloadGroups.Enabled = true;
             btnSaveGroups.Enabled = true;
-            if (!groupList.selectedGroup.ToUpper().Equals(Global.defaultALLGroupName) && !groupList.selectedGroup.Contains("No group found"))
+            if (!groupList.selectedGroup.Equals(Global.defaultALLGroupName) && !groupList.selectedGroup.Contains("No group found"))
             {
                 btnReloadServers.Enabled = true;
                 btnSaveServers.Enabled = true;
@@ -835,14 +835,14 @@ namespace DatabaseSelector
         {
             return !(travelServer.MachineName.Equals(Global.defaultALLTravelServerName) ||
                   travelServer.MachineName.Equals(Global.defaultALLPPETravelServerName) ||
-                  lvServers.Items[index.currentSelectedServer].Text.Contains("No server found"));
+                  lvServers.Items[index.currentSelectedServer].Text.Contains(Global.noWebServerItemBanner));
         }
 
         private bool IsMatchingFilter(string item, string filter)
         { return (string.IsNullOrEmpty(filter) || item.ToLower().Contains(filter.ToLower())); }
 
         private bool CanConnect()
-        { return !(targetDatabase.Equals("No database found") || targetServer.Equals("")); }
+        { return !(targetDatabase.Equals(Global.noDatabaseItemBanner) || string.IsNullOrEmpty(targetServer)); }
 
     }
 }
