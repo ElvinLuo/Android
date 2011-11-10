@@ -6,9 +6,55 @@ namespace DatabaseSelector
     {
         private static Index instance;
 
+        #region Fileds & Properties
+
         private string temcurl;
+        /// <summary>
+        /// Gets or sets the url of temc
+        /// </summary>
+        public string TEMCURL
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(temcurl))
+                { return Global.defaultTEMCURL; }
+                else
+                { return temcurl; }
+            }
+            set { temcurl = value; }
+        }
+
         private string xlsFile;
+        /// <summary>
+        /// Gets or sets xlsFile
+        /// </summary>
+        public string XLSFile
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(xlsFile))
+                { return Global.defaultXLSFile; }
+                else
+                { return xlsFile; }
+            }
+            set { xlsFile = value; }
+        }
+
         private string txtFile;
+        /// <summary>
+        /// Gets or sets txtFile
+        /// </summary>
+        public string TXTFile
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(txtFile))
+                { return Global.defaultTXTFile; }
+                else
+                { return txtFile; }
+            }
+            set { txtFile = value; }
+        }
 
         public string groupFilter;
         public string webServerFilter;
@@ -23,7 +69,12 @@ namespace DatabaseSelector
         public int currentSelectedServer;
         public int previousSelectedDatabase;
         public int currentSelectedDatabase;
+        #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static Index CreateInstance()
         {
             if (instance == null)
@@ -34,46 +85,17 @@ namespace DatabaseSelector
             return instance;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Index()
         {
         }
 
-        public string TEMCURL
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(temcurl))
-                { return Global.defaultTEMCURL; }
-                else
-                { return temcurl; }
-            }
-            set { temcurl = value; }
-        }
-
-        public string XLSFile
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(xlsFile))
-                { return Global.defaultXLSFile; }
-                else
-                { return xlsFile; }
-            }
-            set { xlsFile = value; }
-        }
-
-        public string TXTFile
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(txtFile))
-                { return Global.defaultTXTFile; }
-                else
-                { return txtFile; }
-            }
-            set { txtFile = value; }
-        }
-
+        /// <summary>
+        /// Get Index instacne from xml file
+        /// </summary>
+        /// <returns></returns>
         public Index GetIndexFromXml()
         {
             if (File.Exists(Global.defaultIndexFile))
@@ -82,6 +104,9 @@ namespace DatabaseSelector
                 return this;
         }
 
+        /// <summary>
+        /// Save Index instacne from xml file
+        /// </summary>
         public void SaveIndexToXml()
         {
             Serializer.CreateInstance().SerializeToXML(this, this.GetType(), Global.defaultIndexFileName);
