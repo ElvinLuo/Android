@@ -7,8 +7,9 @@ using SHDocVw;
 
 namespace DatabaseSelector
 {
-    class Global
+    public class Global
     {
+        #region Fileds & Properties
         public static readonly string applicationFolder = Serializer.CreateInstance().applicationFolder;
         public static readonly string emptyString = "";
 
@@ -51,6 +52,7 @@ namespace DatabaseSelector
 
         public static readonly string dllFolderFor90 = applicationFolder + "dll/9.0.242.0/";
         public static readonly string dllFolderFor100 = applicationFolder + "dll/10.0.0.0/";
+        #endregion
 
         public static void SetProgressBarText(ProgressBar target, string text)
         {
