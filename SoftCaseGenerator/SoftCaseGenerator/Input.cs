@@ -29,6 +29,7 @@ namespace SoftCaseGenerator
         /// </summary>
         private List<string[]> invalidConfigItems;
 
+        private List<string> configItemNames;
         private Dictionary<string, string> softCases;
 
         /// <summary>
@@ -48,7 +49,35 @@ namespace SoftCaseGenerator
         {
             if (softCases == null)
             {
+                List<string> needToRemove = new List<string>();
                 GetCombination(0);
+                foreach (string[] conflict in invalidConfigItems)
+                {
+                    string[] firstCondition = conflict[0].Split(new char[] { '=' });
+                    string firstConditionName = firstCondition[0];
+                    string firstConditionValue = firstCondition[1];
+
+                    string[] secondCondition = conflict[1].Split(new char[] { '=' });
+                    string secondConditionName = secondCondition[0];
+                    string secondConditionValue = secondCondition[1];
+
+                    int firstIndex = configItemNames.IndexOf(firstConditionName);
+                    int secondIndex = configItemNames.IndexOf(secondConditionName);
+
+                    foreach (KeyValuePair<string, string> softCase in softCases)
+                    {
+                        string[] configValues = softCase.Value.Split(new char[] { ';' });
+                        if (configValues[firstIndex].Equals(firstConditionValue) &&
+                            configValues[secondIndex].Equals(secondConditionValue))
+                        {
+                            needToRemove.Add(softCase.Key);
+                        }
+                    }
+                }
+                foreach (string key in needToRemove)
+                {
+                    softCases.Remove(key);
+                }
             }
             return softCases;
         }
@@ -68,11 +97,13 @@ namespace SoftCaseGenerator
                 temp = new Dictionary<string, string>(softCases);
                 softCases.Clear();
             }
+
             string[] configItemValues = validConfigItems[processingIndex][1].Split(new char[] { '/' });
             string[] configItemNodeNames = validConfigItems[processingIndex][2].Split(new char[] { '/' });
 
             if (temp.Count == 0)
             {
+                configItemNames = new List<string>();
                 softCases = new Dictionary<string, string>();
                 for (int i = 0; i < configItemValues.Length; i++)
                 {
@@ -100,11 +131,12 @@ namespace SoftCaseGenerator
                         }
                         softCases.Add(
                             softCaseName,
-                            softCase.Value + "\t" + configItemValue);
+                            softCase.Value + ";" + configItemValue);
                     }
                 }
             }
 
+            configItemNames.Add(validConfigItems[processingIndex][0]);
             if (processingIndex != validConfigItems.Count - 1)
             {
                 GetCombination(processingIndex + 1);

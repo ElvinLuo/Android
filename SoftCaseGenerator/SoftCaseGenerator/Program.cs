@@ -23,7 +23,7 @@ namespace SoftCaseGenerator
                 "PDP./OBP./PPP." };
             string[] lar = new string[] {
                 "LAREnabled",
-                "LAR/NonLAR", 
+                "True/false", 
                 "LAR./NonLAR." };
             string[] los = new string[] {
                 "LOSEnabled", 
@@ -50,7 +50,16 @@ namespace SoftCaseGenerator
             valid.Add(ratePlanContractType);
             valid.Add(targetRatePlanContractType);
 
-            Input input = new Input(valid, null);
+            string[] invalidItem1 = new string[] { "PricingModel=OBP", "LOSEnabled=True" };
+            string[] invalidItem2 = new string[] { "PricingModel=PPP", "LOSEnabled=True" };
+            string[] invalidItem3 = new string[] { "RatePlanType=Corporate", "RatePlanContractType=Agency" };
+
+            List<string[]> invalid = new List<string[]>();
+            invalid.Add(invalidItem1);
+            invalid.Add(invalidItem2);
+            invalid.Add(invalidItem3);
+
+            Input input = new Input(valid, invalid);
             Dictionary<string, string> softCases = input.GetAllSoftCasesFromConfig();
         }
     }
