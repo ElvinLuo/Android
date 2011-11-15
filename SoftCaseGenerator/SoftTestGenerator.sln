@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftCaseGenerator", "SoftCaseGenerator\SoftCaseGenerator.csproj", "{8373458B-675D-4C9F-BBB8-1C642EA44287}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftTestGenerator", "SoftCaseGenerator\SoftTestGenerator.csproj", "{8373458B-675D-4C9F-BBB8-1C642EA44287}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

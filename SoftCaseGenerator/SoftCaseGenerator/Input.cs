@@ -29,8 +29,19 @@ namespace SoftCaseGenerator
         /// </summary>
         private List<string[]> invalidConfigItems;
 
-        private List<string> configItemNames;
+        public List<string> configItemNames;
         private Dictionary<string, string> softCases;
+
+        Dictionary<string, string> SoftCases
+        {
+            get
+            {
+                if (softCases == null)
+                { softCases = GetAllSoftCasesFromConfig(); }
+                return softCases;
+            }
+            set { softCases = value; }
+        }
 
         /// <summary>
         /// Initializes a new instance of the Input class.
