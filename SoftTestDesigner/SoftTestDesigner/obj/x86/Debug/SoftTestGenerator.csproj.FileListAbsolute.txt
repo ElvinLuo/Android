@@ -1,0 +1,11 @@
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\bin\Debug\SoftCaseGenerator.exe
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\bin\Debug\SoftCaseGenerator.pdb
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.SoftCaseGenerator.resources
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.Properties.Resources.resources
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.exe
+D:\Projects\GitHub\SoftCaseGenerator\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.pdb
+D:\Projects\GitHub\SoftTestDesigner\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.exe
+D:\Projects\GitHub\SoftTestDesigner\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.pdb
