@@ -13,9 +13,15 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            Convert<int>(1);
-            Convert<string>("s");
-            Convert<bool>(true);
+            TestInstance a = new TestInstance(1, 2);
+            TestInstance b = new TestInstance();
+            b = a;
+            b.i = 3;
+            b.j = 4;
+
+            //Convert<int>(1);
+            //Convert<string>("s");
+            //Convert<bool>(true);
             //MergeTables();
 
             //int i = 1;
@@ -34,6 +40,22 @@ namespace WindowsFormsApplication
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new BrowserControllerForm());
+        }
+
+        public class TestInstance
+        {
+            public int i, j;
+
+            public TestInstance()
+            {
+            }
+
+            public TestInstance(int i, int j)
+            {
+                this.i = i;
+                this.j = j;
+            }
+
         }
 
         private static void Convert<T>(T value)
