@@ -13,7 +13,10 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            MergeTables();
+            Convert<int>(1);
+            Convert<string>("s");
+            Convert<bool>(true);
+            //MergeTables();
 
             //int i = 1;
             //int j = Convert.ToInt32(i.ToString(), 2);
@@ -31,6 +34,14 @@ namespace WindowsFormsApplication
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new BrowserControllerForm());
+        }
+
+        private static void Convert<T>(T value)
+        {
+            int? i = value as int?;
+            string s = value as string;
+            bool? b = value as bool?;
+            Console.WriteLine(i);
         }
 
         private static void MergeTables()
