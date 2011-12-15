@@ -20,6 +20,11 @@ namespace SoftCaseGenerator
         {
             dataGridView1.Controls.Add(checkBox1);
             dataGridView2.Controls.Add(checkBox2);
+
+            dataGridView1.Rows.Add(true, "HotelContractType", "Merchant/Agency/Dual", "1/2/3", "1/1/8");
+            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", "8/1/1");
+
+            dataGridView2.Rows.Add(true, "PricingModel='OBP' AND LOSEnabled=TRUE");
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
