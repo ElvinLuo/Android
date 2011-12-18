@@ -16,7 +16,7 @@ namespace SoftCaseGenerator
     /// </summary>
     public class Input
     {
-        private string prefix = "CheckUI.";
+        private string prefix = "";
         private string suffix = "";
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace SoftCaseGenerator
                 softCases.Clear();
             }
 
-            string[] configItemValues = validConfigItems[processingIndex][1].Split(new char[] { '/' });
-            string[] configItemNodeNames = validConfigItems[processingIndex][2].Split(new char[] { '/' });
+            string[] configItemNodeNames = validConfigItems[processingIndex][1].Split(new char[] { '/' });
+            string[] configItemValues = validConfigItems[processingIndex][2].Split(new char[] { '/' });
 
             if (temp.Count == 0)
             {
@@ -142,7 +142,7 @@ namespace SoftCaseGenerator
                         }
                         softCases.Add(
                             softCaseName,
-                            softCase.Value + ";" + configItemValue);
+                            softCase.Value + "/" + configItemValue);
                     }
                 }
             }

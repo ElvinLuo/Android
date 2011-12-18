@@ -17,56 +17,61 @@ namespace SoftCaseGenerator
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SoftTestDesigner());
 
-            //string[] pricing = new string[] {
-            //    "PricingModel",
-            //    "PDP/OBP/PPP",
-            //    "PDP./OBP./PPP." };
-            //string[] lar = new string[] {
-            //    "LAREnabled",
-            //    "True/false", 
-            //    "LAR./NonLAR." };
-            //string[] los = new string[] {
-            //    "LOSEnabled", 
-            //    "True/False",
-            //    "LOS_/" };
-            //string[] ratePlanType = new string[] {
-            //    "RatePlanType", 
-            //    "Standalone/Package/Corporate", 
-            //    "/Package_/Corporate_" };
-            //string[] ratePlanContractType = new string[] {
-            //    "RatePlanContractType", 
-            //    "Merchant/Agency/Flex",
-            //    "Merchant/Agency/Flex" };
-            //string[] targetRatePlanContractType = new string[] {
-            //    "RatePlanContractType", 
-            //    "Merchant/Agency/Flex",
-            //    "ToMerchant/ToAgency/ToFlex" };
+            //TestInput();
 
-            //List<string[]> valid = new List<string[]>();
-            //valid.Add(pricing);
-            ////valid.Add(lar);
-            ////valid.Add(los);
-            ////valid.Add(ratePlanType);
-            //valid.Add(ratePlanContractType);
-            //valid.Add(targetRatePlanContractType);
+        }
 
-            ////string[] invalidItem1 = new string[] { "PricingModel=OBP", "LOSEnabled=True" };
-            ////string[] invalidItem2 = new string[] { "PricingModel=PPP", "LOSEnabled=True" };
-            ////string[] invalidItem3 = new string[] { "RatePlanType=Corporate", "RatePlanContractType=Agency" };
+        private static void TestInput()
+        {
+            string[] pricing = new string[] {
+                "PricingModel",
+                "PDP./OBP./PPP.",
+                "PDP/OBP/PPP" };
+            string[] lar = new string[] {
+                "LAREnabled",
+                "LAR./NonLAR.",
+                "True/false" };
+            string[] los = new string[] {
+                "LOSEnabled", 
+                "LOS_/",
+                "True/False"};
+            string[] ratePlanType = new string[] {
+                "RatePlanType", 
+                "/Package_/Corporate_",
+                "Standalone/Package/Corporate"};
+            string[] ratePlanContractType = new string[] {
+                "RatePlanContractType",
+                "Merchant/Agency/Flex",
+                "Merchant/Agency/Flex"};
+            string[] targetRatePlanContractType = new string[] {
+                "RatePlanContractType",
+                "ToMerchant/ToAgency/ToFlex",
+                "Merchant/Agency/Flex"};
 
-            //List<string[]> invalid = new List<string[]>();
-            ////invalid.Add(invalidItem1);
-            ////invalid.Add(invalidItem2);
-            ////invalid.Add(invalidItem3);
+            List<string[]> valid = new List<string[]>();
+            valid.Add(pricing);
+            //valid.Add(lar);
+            //valid.Add(los);
+            //valid.Add(ratePlanType);
+            valid.Add(ratePlanContractType);
+            valid.Add(targetRatePlanContractType);
 
-            //Input input = new Input(valid, invalid);
-            //Dictionary<string, string> softCases = input.GetAllSoftCasesFromConfig();
+            //string[] invalidItem1 = new string[] { "PricingModel=OBP", "LOSEnabled=True" };
+            //string[] invalidItem2 = new string[] { "PricingModel=PPP", "LOSEnabled=True" };
+            //string[] invalidItem3 = new string[] { "RatePlanType=Corporate", "RatePlanContractType=Agency" };
 
-            //foreach (KeyValuePair<string, string> pair in softCases)
-            //{
-            //    new SoftTest(pair.Key, input.configItemNames, pair.Value);
-            //}
+            List<string[]> invalid = new List<string[]>();
+            //invalid.Add(invalidItem1);
+            //invalid.Add(invalidItem2);
+            //invalid.Add(invalidItem3);
 
+            Input input = new Input(valid, invalid);
+            Dictionary<string, string> softCases = input.GetAllSoftCasesFromConfig();
+
+            foreach (KeyValuePair<string, string> pair in softCases)
+            {
+                new SoftTest(pair.Key, input.configItemNames, pair.Value);
+            }
         }
     }
 }
