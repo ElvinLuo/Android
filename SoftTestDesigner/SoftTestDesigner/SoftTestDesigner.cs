@@ -170,6 +170,32 @@ namespace SoftCaseGenerator
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.Rows.Count > 0)
+            {
+                try
+                {
+                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                    {
+                        row.Selected = true;
+                    }
+
+                    // Add the selection to the clipboard.
+                    Clipboard.SetDataObject(this.dataGridView3.GetClipboardContent());
+
+                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                    {
+                        row.Selected = false;
+                    }
+                }
+                catch (System.Runtime.InteropServices.ExternalException)
+                {
+                    throw new Exception("Failed to copy selected cells to clipboard.");
+                }
+            }
+        }
+
     }
 
     public class ConfigItem

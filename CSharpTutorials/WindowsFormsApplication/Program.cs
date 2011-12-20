@@ -13,19 +13,25 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            TestInstance a = new TestInstance(1, 2);
-            TestInstance b = new TestInstance();
-            b = a;
-            b.i = 3;
-            b.j = 4;
+            //TestInstance a = new TestInstance(1, 2);
+            //TestInstance b = new TestInstance();
+            //b = a;
+            //b.i = 3;
+            //b.j = 4;
 
             //Convert<int>(1);
             //Convert<string>("s");
             //Convert<bool>(true);
             //MergeTables();
 
-            //int i = 1;
-            //int j = Convert.ToInt32(i.ToString(), 2);
+            int originalV = 3;
+            int originalH = (originalV & 2) >> 1;
+            int originalL = originalV & 1;
+            int? h = null;
+            int? l = null;
+            int result = 10 * (h.HasValue ? h.Value : originalH) +
+                (l.HasValue ? l.Value : originalL);
+            int j = System.Convert.ToInt32(result.ToString(), 2);
 
             //Dictionary<string, string> expected = new Dictionary<string, string>
             //{ { "200021792", "289400" },
