@@ -21,9 +21,9 @@ namespace SoftCaseGenerator
             dataGridView1.Controls.Add(checkBox1);
             dataGridView2.Controls.Add(checkBox2);
 
-            dataGridView1.Rows.Add(true, "HotelContractType", "BMC.Merchant./BMC.Agency./BMC.Dual.", "1/2/3", "1/1/2");
-            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", "3/1/1");
-            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_CheckUI/NonLAR_CheckUI", "True/False", "1/1");
+            dataGridView1.Rows.Add(true, "HotelContractType", "BMC.Merchant./BMC.Agency./BMC.Dual.", "1/2/3", true, "1/1/2");
+            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "3/1/1");
+            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_CheckUI/NonLAR_CheckUI", "True/False", true, "1/1");
 
             dataGridView2.Rows.Add(true, "PricingModel='OBP' AND LOSEnabled=TRUE");
         }
@@ -90,6 +90,7 @@ namespace SoftCaseGenerator
                 }
             }
 
+            dataGridView3.Rows[0].Selected = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -108,7 +109,7 @@ namespace SoftCaseGenerator
                 item = row.Cells[1].Value.ToString();
                 names = row.Cells[2].Value.ToString();
                 values = row.Cells[3].Value.ToString();
-                coverages = row.Cells[4].Value.ToString();
+                coverages = row.Cells[5].Value.ToString();
 
                 if ((bool)row.Cells[0].Value)
                 {
@@ -137,6 +138,8 @@ namespace SoftCaseGenerator
                 cells.Insert(0, softTestName);
                 dataGridView3.Rows.Add(cells.ToArray());
             }
+
+            dataGridView3.Rows[0].Selected = false;
         }
 
         private bool NeedToContinue(List<ConfigItem> items)
@@ -170,6 +173,21 @@ namespace SoftCaseGenerator
             }
         }
 
+        private void EnableCell(DataGridViewCell dc, bool enabled)
+        {
+            dc.ReadOnly = !enabled;
+            if (enabled)
+            {
+                dc.Style.BackColor = dc.OwningColumn.DefaultCellStyle.BackColor;
+                dc.Style.ForeColor = dc.OwningColumn.DefaultCellStyle.ForeColor;
+            }
+            else
+            {
+                dc.Style.BackColor = Color.DarkGray;
+                dc.Style.ForeColor = Color.LightGray;
+            }
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             if (dataGridView3.Rows.Count > 0)
@@ -193,6 +211,53 @@ namespace SoftCaseGenerator
                 {
                     throw new Exception("Failed to copy selected cells to clipboard.");
                 }
+            }
+        }
+
+        private void dataGridView3_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            string strRowNumber = (e.RowIndex + 1).ToString();
+
+            while (strRowNumber.Length < dataGridView3.RowCount.ToString().Length)
+            {
+                strRowNumber = "0" + strRowNumber;
+            }
+
+            SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
+
+            if (dataGridView3.RowHeadersWidth < (int)(size.Width + 20))
+            {
+                dataGridView3.RowHeadersWidth = (int)(size.Width + 20);
+            }
+
+            Brush b = SystemBrushes.ControlText;
+            e.Graphics.DrawString(
+                strRowNumber,
+                this.Font,
+                b,
+                e.RowBounds.Location.X + 15,
+                e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
+        }
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+
+            if (dgv.IsCurrentCellDirty)
+            {
+                dgv.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4 &&
+               dataGridView1.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn &&
+               e.RowIndex != dataGridView1.Rows.Count - 1 &&
+               e.RowIndex != -1)
+            {
+                bool flag = (bool)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                EnableCell(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
             }
         }
 
