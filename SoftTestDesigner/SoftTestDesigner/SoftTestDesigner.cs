@@ -25,7 +25,13 @@ namespace SoftCaseGenerator
             dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "3/1/1");
             dataGridView1.Rows.Add(true, "LAREnabled", "LAR_CheckUI/NonLAR_CheckUI", "True/False", true, "1/1");
 
-            dataGridView2.Rows.Add(true, "PricingModel='OBP' AND LOSEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "HotelContractType=2 AND RatePlanTypeMask=16777216");
+            dataGridView2.Rows.Add(true, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -101,7 +107,7 @@ namespace SoftCaseGenerator
             dataGridView3.Columns.Clear();
             dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
 
-            string item, names, values, coverages;
+            string item, names, values, random, coverages;
 
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
@@ -109,11 +115,12 @@ namespace SoftCaseGenerator
                 item = row.Cells[1].Value.ToString();
                 names = row.Cells[2].Value.ToString();
                 values = row.Cells[3].Value.ToString();
+                random = row.Cells[4].Value.ToString();
                 coverages = row.Cells[5].Value.ToString();
 
                 if ((bool)row.Cells[0].Value)
                 {
-                    configItems.Add(new ConfigItem(item, names, values, coverages));
+                    configItems.Add(new ConfigItem(item, names, values, random, coverages));
                     dataGridView3.Columns.Add(item, item);
                 }
             }
@@ -269,12 +276,13 @@ namespace SoftCaseGenerator
         public int count;
         public string item;
         public string[] names, values;
+        public bool random;
         public int[] coverages;
         public bool[] flags;
         public List<int> indexes;
         public List<int> remainingIndexes;
 
-        public ConfigItem(string item, string names, string values, string coverages)
+        public ConfigItem(string item, string names, string values, string random, string coverages)
         {
             this.flag = false;
             this.count = 0;
@@ -282,6 +290,7 @@ namespace SoftCaseGenerator
             this.names = names.Split(new char[] { '/' });
             this.values = values.Split(new char[] { '/' });
             string[] temp = coverages.Split(new char[] { '/' });
+            this.random = random.ToLower().Equals("true") ? true : false;
             this.coverages = new int[temp.Length];
 
             indexes = new List<int>();
@@ -340,4 +349,57 @@ namespace SoftCaseGenerator
         }
 
     }
+
+    public class RestrictionItem
+    {
+        public int indexInConfigItemList;
+        public int indexInConfigValues;
+    }
+
+    public class SoftTestConfiguration
+    {
+        private ConfigItem[] configItems;
+        private ConfigItem[] fullConfigItems;
+        private ConfigItem[] randomConfigItems;
+        private RestrictionItem[] restrictionItems;
+        private List<RestrictionItem>[] restrictionRules;
+        private List<int[]> indexResultList;
+        private List<string[]> valueResultList;
+
+        public SoftTestConfiguration()
+        {
+        }
+
+        public void GetResult()
+        {
+            indexResultList = new List<int[]>();
+            valueResultList = new List<string[]>();
+
+            int[] row = new int[configItems.Length];
+            while (true)
+            {
+                PerformStep(row);
+            }
+        }
+
+        private void PerformStep(int[] number)
+        {
+            number[number.Length - 1]++;
+
+            for (int i = number.Length - 1; i > -1; i--)
+            {
+                if (number[i] == fullConfigItems[i].values.Length)
+                {
+                    number[i] = 0;
+
+                    if (i > 1)
+                    {
+                        number[i - 1]++;
+                    }
+                }
+            }
+        }
+
+    }
+
 }

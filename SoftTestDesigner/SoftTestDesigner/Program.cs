@@ -16,9 +16,24 @@ namespace SoftCaseGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SoftTestDesigner());
+        }
 
-            //TestInput();
+        private static void PerformStep(int[] number)
+        {
+            number[number.Length - 1]++;
 
+            for (int i = number.Length - 1; i > -1; i--)
+            {
+                if (number[i] == 2)
+                {
+                    number[i] = 0;
+
+                    if (i > 1)
+                    {
+                        number[i - 1]++;
+                    }
+                }
+            }
         }
 
         private static void TestInput()
