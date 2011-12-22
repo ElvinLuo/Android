@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SoftCaseGenerator
@@ -21,8 +18,8 @@ namespace SoftCaseGenerator
             dataGridView1.Controls.Add(checkBox1);
             dataGridView2.Controls.Add(checkBox2);
 
-            dataGridView1.Rows.Add(true, "HotelContractType", "BMC.Merchant./BMC.Agency./BMC.Dual.", "1/2/3", true, "1/1/2");
-            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "3/1/1");
+            dataGridView1.Rows.Add(true, "HotelContractType", "BMC.Merchant./BMC.Agency./BMC.Dual.", "1/2/3", false, "1/1/2");
+            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "3/1/1");
             dataGridView1.Rows.Add(true, "LAREnabled", "LAR_CheckUI/NonLAR_CheckUI", "True/False", true, "1/1");
 
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
@@ -32,6 +29,7 @@ namespace SoftCaseGenerator
             dataGridView2.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
             dataGridView2.Rows.Add(true, "HotelContractType=2 AND RatePlanTypeMask=16777216");
             dataGridView2.Rows.Add(true, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -54,49 +52,52 @@ namespace SoftCaseGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row;
-            List<string[]> configRows = new List<string[]>();
-            List<string[]> restrictionRows = new List<string[]>();
-            string item, names, values;
+            SoftTestConfiguration sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
+            sc.GetResult();
 
-            dataGridView3.Columns.Clear();
-            dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            {
-                row = dataGridView1.Rows[i];
-                item = row.Cells[1].Value.ToString();
-                names = row.Cells[2].Value.ToString();
-                values = row.Cells[3].Value.ToString();
-                if ((bool)row.Cells[0].Value)
-                {
-                    configRows.Add(new string[] { item, names, values });
-                    dataGridView3.Columns.Add(item, item);
-                }
-            }
+            //DataGridViewRow row;
+            //List<string[]> configRows = new List<string[]>();
+            //List<string[]> restrictionRows = new List<string[]>();
+            //string item, names, values;
 
-            if (configRows.Count > 0)
-            {
-                Input input = new Input(configRows, restrictionRows);
-                Dictionary<string, string> softCases = input.GetAllSoftCasesFromConfig();
+            //dataGridView3.Columns.Clear();
+            //dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
+            //for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            //{
+            //    row = dataGridView1.Rows[i];
+            //    item = row.Cells[1].Value.ToString();
+            //    names = row.Cells[2].Value.ToString();
+            //    values = row.Cells[3].Value.ToString();
+            //    if ((bool)row.Cells[0].Value)
+            //    {
+            //        configRows.Add(new string[] { item, names, values });
+            //        dataGridView3.Columns.Add(item, item);
+            //    }
+            //}
 
-                List<string> cells = new List<string>();
+            //if (configRows.Count > 0)
+            //{
+            //    Input input = new Input(configRows, restrictionRows);
+            //    Dictionary<string, string> softCases = input.GetAllSoftCasesFromConfig();
 
-                foreach (KeyValuePair<string, string> pair in softCases)
-                {
-                    cells.Clear();
-                    cells.Add(pair.Key);
+            //    List<string> cells = new List<string>();
 
-                    string[] valueArray = pair.Value.Split(new char[] { '/' });
-                    foreach (string value in valueArray)
-                    {
-                        cells.Add(value);
-                    }
+            //    foreach (KeyValuePair<string, string> pair in softCases)
+            //    {
+            //        cells.Clear();
+            //        cells.Add(pair.Key);
 
-                    dataGridView3.Rows.Add(cells.ToArray());
-                }
-            }
+            //        string[] valueArray = pair.Value.Split(new char[] { '/' });
+            //        foreach (string value in valueArray)
+            //        {
+            //            cells.Add(value);
+            //        }
 
-            dataGridView3.Rows[0].Selected = false;
+            //        dataGridView3.Rows.Add(cells.ToArray());
+            //    }
+            //}
+
+            //dataGridView3.Rows[0].Selected = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -265,138 +266,6 @@ namespace SoftCaseGenerator
             {
                 bool flag = (bool)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 EnableCell(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
-            }
-        }
-
-    }
-
-    public class ConfigItem
-    {
-        private bool flag;
-        public int count;
-        public string item;
-        public string[] names, values;
-        public bool random;
-        public int[] coverages;
-        public bool[] flags;
-        public List<int> indexes;
-        public List<int> remainingIndexes;
-
-        public ConfigItem(string item, string names, string values, string random, string coverages)
-        {
-            this.flag = false;
-            this.count = 0;
-            this.item = item;
-            this.names = names.Split(new char[] { '/' });
-            this.values = values.Split(new char[] { '/' });
-            string[] temp = coverages.Split(new char[] { '/' });
-            this.random = random.ToLower().Equals("true") ? true : false;
-            this.coverages = new int[temp.Length];
-
-            indexes = new List<int>();
-            remainingIndexes = new List<int>();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                this.coverages[i] = Convert.ToInt32(temp[i]);
-
-                for (int j = 0; j < this.coverages[i]; j++)
-                {
-                    indexes.Add(i);
-                    remainingIndexes.Add(i);
-                }
-
-                count += this.coverages[i];
-            }
-
-            this.flags = new bool[temp.Length];
-
-            for (int i = 0; i < temp.Length; i++)
-            {
-                this.flags[i] = false;
-            }
-        }
-
-        public int GetIndex()
-        {
-            if (remainingIndexes == null || remainingIndexes.Count == 0)
-            {
-                foreach (int element in indexes)
-                {
-                    remainingIndexes.Add(element);
-                }
-            }
-
-            int idx;
-            int random = new Random().Next(remainingIndexes.Count);
-            idx = remainingIndexes.ElementAt(random);
-            flags[idx] = true;
-            remainingIndexes.RemoveAt(random);
-
-            if (remainingIndexes.Count == 0)
-            { flag = true; }
-
-            return idx;
-        }
-
-        public bool Checked()
-        {
-            //foreach (bool flag in this.flags)
-            //{
-            //    if (!flag)
-            //        return false;
-            //}
-            return flag;
-        }
-
-    }
-
-    public class RestrictionItem
-    {
-        public int indexInConfigItemList;
-        public int indexInConfigValues;
-    }
-
-    public class SoftTestConfiguration
-    {
-        private ConfigItem[] configItems;
-        private ConfigItem[] fullConfigItems;
-        private ConfigItem[] randomConfigItems;
-        private RestrictionItem[] restrictionItems;
-        private List<RestrictionItem>[] restrictionRules;
-        private List<int[]> indexResultList;
-        private List<string[]> valueResultList;
-
-        public SoftTestConfiguration()
-        {
-        }
-
-        public void GetResult()
-        {
-            indexResultList = new List<int[]>();
-            valueResultList = new List<string[]>();
-
-            int[] row = new int[configItems.Length];
-            while (true)
-            {
-                PerformStep(row);
-            }
-        }
-
-        private void PerformStep(int[] number)
-        {
-            number[number.Length - 1]++;
-
-            for (int i = number.Length - 1; i > -1; i--)
-            {
-                if (number[i] == fullConfigItems[i].values.Length)
-                {
-                    number[i] = 0;
-
-                    if (i > 1)
-                    {
-                        number[i - 1]++;
-                    }
-                }
             }
         }
 
