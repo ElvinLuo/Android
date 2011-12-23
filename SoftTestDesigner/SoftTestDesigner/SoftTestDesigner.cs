@@ -18,17 +18,20 @@ namespace SoftCaseGenerator
             dataGridView1.Controls.Add(checkBox1);
             dataGridView2.Controls.Add(checkBox2);
 
-            dataGridView1.Rows.Add(true, "HotelContractType", "BMC.Merchant./BMC.Agency./BMC.Dual.", "1/2/3", false, "1/1/2");
+            dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", false, "1/1/2");
             dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "3/1/1");
-            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_CheckUI/NonLAR_CheckUI", "True/False", true, "1/1");
+            dataGridView1.Rows.Add(false, "LAREnabled", "LAR/NonLAR", "True/False", true, "2/1");
+            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS/NonLOS", "True/False", false, "1/9");
+            dataGridView1.Rows.Add(false, "ARIEnabled", "ARI/NonARI", "True/False", true, "1/7");
+            dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI/NonHotelARI", "True/False", true, "1/7");
 
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
+            dataGridView2.Rows.Add(false, "PricingModel=OBP AND HotelARIEnabled=TRUE");
+            dataGridView2.Rows.Add(false, "PricingModel=PPP AND HotelARIEnabled=TRUE");
             dataGridView2.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "HotelContractType=2 AND RatePlanTypeMask=16777216");
-            dataGridView2.Rows.Add(true, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
+            dataGridView2.Rows.Add(false, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
+            dataGridView2.Rows.Add(false, "HotelContractType=2 AND RatePlanTypeMask=16777216");
+            dataGridView2.Rows.Add(false, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
 
         }
 
@@ -52,15 +55,25 @@ namespace SoftCaseGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dataGridView3.Columns.Clear();
             SoftTestConfiguration sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
             sc.GetResult();
+
+            foreach (string columnName in sc.itemNames)
+            {
+                dataGridView3.Columns.Add(columnName, columnName);
+            }
+
+            foreach (string[] row in sc.valueResultList)
+            {
+                dataGridView3.Rows.Add(row.ToArray());
+            }
 
             //DataGridViewRow row;
             //List<string[]> configRows = new List<string[]>();
             //List<string[]> restrictionRows = new List<string[]>();
             //string item, names, values;
 
-            //dataGridView3.Columns.Clear();
             //dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
             //for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             //{
