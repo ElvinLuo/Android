@@ -279,7 +279,8 @@ namespace SoftCaseGenerator
                     foreach (RestrictionItem ri in rule)
                     {
                         if (indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues ||
-                            ri.indexInConfigItemList > fullConfigItems.Length - 1)
+                            //ri.indexInConfigItemList > fullConfigItems.Length - 1)
+                            ri.indexInConfigItemList > configItems.Length - 1)
                         {
                             filtered = false;
                             break;
@@ -300,54 +301,55 @@ namespace SoftCaseGenerator
                     valueResultList.Add(valueRow.ToArray<string>());
                 }
 
-                finished = PerformStep(indexRow, fullConfigItems.Length - 1);
+                //finished = PerformStep(indexRow, fullConfigItems.Length - 1);
+                finished = PerformStep(indexRow, configItems.Length - 1);
             } while (!finished);
 
-            for (int j = 0; j < indexResultList.Count; j++)
-            {
-                bool moveOn;
-                do
-                {
-                    moveOn = false;
-                    int[] indexResult = indexResultList.ElementAt(j);
+            //for (int j = 0; j < indexResultList.Count; j++)
+            //{
+            //    bool moveOn;
+            //    do
+            //    {
+            //        moveOn = false;
+            //        int[] indexResult = indexResultList.ElementAt(j);
 
-                    for (int i = fullConfigItems.Length; i < configItems.Length; i++)
-                    {
-                        indexResult[i] = configItems.ElementAt(i).GetIndex();
-                    }
+            //        for (int i = fullConfigItems.Length; i < configItems.Length; i++)
+            //        {
+            //            indexResult[i] = configItems.ElementAt(i).GetIndex();
+            //        }
 
-                    bool filtered = false;
+            //        bool filtered = false;
 
-                    foreach (List<RestrictionItem> rule in this.restrictionRuleList)
-                    {
-                        filtered = true;
+            //        foreach (List<RestrictionItem> rule in this.restrictionRuleList)
+            //        {
+            //            filtered = true;
 
-                        foreach (RestrictionItem ri in rule)
-                        {
-                            if (indexResult[ri.indexInConfigItemList] != ri.indexInConfigValues)
-                            {
-                                filtered = false;
-                                break;
-                            }
-                        }
+            //            foreach (RestrictionItem ri in rule)
+            //            {
+            //                if (indexResult[ri.indexInConfigItemList] != ri.indexInConfigValues)
+            //                {
+            //                    filtered = false;
+            //                    break;
+            //                }
+            //            }
 
-                        if (filtered) break;
-                    }
+            //            if (filtered) break;
+            //        }
 
-                    if (!filtered)
-                    {
-                        moveOn = true;
+            //        if (!filtered)
+            //        {
+            //            moveOn = true;
 
-                        for (int i = fullConfigItems.Length; i < configItems.Length; i++)
-                        {
-                            valueResultList.ElementAt(j)[i] = configItems[i].values[indexResult[i]];
-                            configItems[i].RemoveUsed();
-                        }
+            //            for (int i = fullConfigItems.Length; i < configItems.Length; i++)
+            //            {
+            //                valueResultList.ElementAt(j)[i] = configItems[i].values[indexResult[i]];
+            //                configItems[i].RemoveUsed();
+            //            }
 
-                    }                    
-                } while (!moveOn);
+            //        }
+            //    } while (!moveOn);
 
-            }
+            //}
         }
 
         private bool PerformStep(int[] numbers, int index)

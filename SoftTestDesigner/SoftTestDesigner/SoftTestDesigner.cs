@@ -20,9 +20,9 @@ namespace SoftCaseGenerator
 
             dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", false, "1/1/2");
             dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "3/1/1");
-            dataGridView1.Rows.Add(false, "LAREnabled", "LAR/NonLAR", "True/False", true, "2/1");
-            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS/NonLOS", "True/False", false, "1/9");
-            dataGridView1.Rows.Add(false, "ARIEnabled", "ARI/NonARI", "True/False", true, "1/7");
+            dataGridView1.Rows.Add(true, "LAREnabled", "LAR/NonLAR", "True/False", false, "2/1");
+            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS/NonLOS", "True/False", true, "1/2");
+            dataGridView1.Rows.Add(true, "ARIEnabled", "ARI/NonARI", "True/False", true, "1/3");
             dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI/NonHotelARI", "True/False", true, "1/7");
 
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
