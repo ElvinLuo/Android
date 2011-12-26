@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigItem.cs" />
     <Compile Include="Input.cs" />
-    <Compile Include="MetaData.cs" />
+    <Compile Include="SoftTestConfiguration.cs" />
+    <Compile Include="RestrictionItem.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="SoftTestDesigner.cs">
       <SubType>Form</SubType>

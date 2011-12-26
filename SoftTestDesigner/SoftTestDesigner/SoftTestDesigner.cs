@@ -26,8 +26,8 @@ namespace SoftCaseGenerator
             dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI/NonHotelARI", "True/False", true, "1/7");
 
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
-            dataGridView2.Rows.Add(false, "PricingModel=OBP AND HotelARIEnabled=TRUE");
-            dataGridView2.Rows.Add(false, "PricingModel=PPP AND HotelARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
             dataGridView2.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
             dataGridView2.Rows.Add(false, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
             dataGridView2.Rows.Add(false, "HotelContractType=2 AND RatePlanTypeMask=16777216");
