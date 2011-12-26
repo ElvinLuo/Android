@@ -141,7 +141,73 @@ namespace SoftCaseGenerator
         public void GetResult()
         {
             valueResultList = new List<string[]>();
-            GetMatrixWithFilters(allConfigItems, valueResultList, true);
+            List<int[]> allAvailMatrix = GetMatrixWithFilters(allConfigItems, valueResultList, true);
+
+            List<int[]> fullAvailMatrix = new List<int[]>();
+            List<List<int>> fullAllAvailMatrixMapping = new List<List<int>>();
+            List<int[]> randomAvailMatrix = new List<int[]>();
+            List<List<int>> randomAllAvailMatrixMapping = new List<List<int>>();
+
+            GetMappingMatrix(
+                allAvailMatrix,
+                fullAvailMatrix,
+                fullAllAvailMatrixMapping,
+                randomAvailMatrix,
+                randomAllAvailMatrixMapping);
+        }
+
+        private void GetMappingMatrix(
+            List<int[]> allAvailMatrix,
+            List<int[]> fullAvailMatrix,
+            List<List<int>> fullAllAvailMatrixMapping,
+            List<int[]> randomAvailMatrix,
+            List<List<int>> randomAllAvailMatrixMapping)
+        {
+            int foundIndex;
+            int allConfigItemCount = allConfigItems.Length;
+            int fullConfigItemCount = fullConfigItems.Length;
+            int[] fullAvailMatrixRow;
+            int[] randomAvailMatrixRow;
+            List<int> temp;
+
+            for (int i = 0; i < allAvailMatrix.Count; i++)
+            {
+                int[] allAvailMatrixRow = allAvailMatrix.ElementAt(i);
+
+                for (int j = fullConfigItemCount; j < allConfigItemCount; j++)
+                {
+                    allConfigItems.ElementAt(j).indexInAllAvailMatrix.ElementAt(allAvailMatrixRow[j]).Add(i);
+                }
+
+                fullAvailMatrixRow = new int[fullConfigItemCount];
+                CopyArray(fullAvailMatrixRow, allAvailMatrixRow, 0);
+                randomAvailMatrixRow = new int[allConfigItemCount - fullConfigItemCount];
+                CopyArray(randomAvailMatrixRow, allAvailMatrixRow, fullConfigItemCount);
+
+                if (AlreadyExists<int[]>(fullAvailMatrix, fullAvailMatrixRow, out foundIndex))
+                {
+                    fullAllAvailMatrixMapping.ElementAt(foundIndex).Add(i);
+                }
+                else
+                {
+                    fullAvailMatrix.Add(fullAvailMatrixRow);
+                    temp = new List<int>();
+                    temp.Add(i);
+                    fullAllAvailMatrixMapping.Add(temp);
+                }
+
+                if (AlreadyExists<int[]>(randomAvailMatrix, randomAvailMatrixRow, out foundIndex))
+                {
+                    randomAllAvailMatrixMapping.ElementAt(foundIndex).Add(i);
+                }
+                else
+                {
+                    randomAvailMatrix.Add(randomAvailMatrixRow);
+                    temp = new List<int>();
+                    temp.Add(i);
+                    randomAllAvailMatrixMapping.Add(temp);
+                }
+            }
         }
 
         private void ExpandMatrixWithRandomItems()
@@ -280,12 +346,84 @@ namespace SoftCaseGenerator
 
         private bool AlreadyExists<T>(List<T> list, T obj)
         {
-            foreach (T item in list)
+            if (obj.GetType() == typeof(int[]))
             {
-                if (item.Equals(obj))
-                { return true; }
+                foreach (T that in list)
+                {
+                    if (IsSameArray(obj as int[], that as int[]))
+                    { return true; }
+                }
+            }
+            else
+            {
+                foreach (T item in list)
+                {
+                    if (item.Equals(obj))
+                    { return true; }
+                }
             }
             return false;
+        }
+
+        private bool AlreadyExists<T>(List<T> list, T obj, out int index)
+        {
+            if (obj.GetType() == typeof(int[]))
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    T that = list.ElementAt(i);
+                    if (IsSameArray(obj as int[], that as int[]))
+                    {
+                        index = i;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    T item = list.ElementAt(i);
+                    if (item.Equals(obj))
+                    {
+                        index = i;
+                        return true;
+                    }
+                }
+            }
+
+            index = 0;
+            return false;
+        }
+
+        private bool CopyArray(
+            int[] target,
+            int[] source,
+            int startIndex)
+        {
+            if (target.Length + startIndex > source.Length)
+            { return false; }
+            else
+            {
+                for (int i = 0; i < target.Length; i++)
+                {
+                    target[i] = source[startIndex + i];
+                }
+                return true;
+            }
+        }
+
+        private bool IsSameArray(int[] left, int[] right)
+        {
+            if (left.Length != right.Length) return false;
+
+            for (int i = 0; i < left.Length; i++)
+            {
+                if (left[i] != right[i])
+                    return false;
+            }
+
+            return true;
         }
 
     }

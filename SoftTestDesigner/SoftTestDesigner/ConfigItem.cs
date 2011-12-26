@@ -22,6 +22,7 @@ namespace SoftCaseGenerator
         public int count;
         public string item;
         public string[] names, values;
+        public List<List<int>> indexInAllAvailMatrix;
         public bool random;
         public int[] coverages;
         public bool[] flags;
@@ -35,9 +36,16 @@ namespace SoftCaseGenerator
             this.item = item;
             this.names = names.Split(new char[] { '/' });
             this.values = values.Split(new char[] { '/' });
+            indexInAllAvailMatrix = new List<List<int>>();
             string[] temp = coverages.Split(new char[] { '/' });
             this.random = random.ToLower().Equals("true") ? true : false;
             this.coverages = new int[temp.Length];
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                List<int> availList = new List<int>();
+                indexInAllAvailMatrix.Add(availList);
+            }
 
             indexes = new List<int>();
             remainingIndexes = new List<int>();
