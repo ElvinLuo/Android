@@ -20,10 +20,10 @@ namespace SoftCaseGenerator
 
             dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", false, "1/1/2");
             dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "3/1/1");
-            dataGridView1.Rows.Add(true, "LAREnabled", "LAR/NonLAR", "True/False", false, "2/1");
-            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS/NonLOS", "True/False", true, "1/2");
-            dataGridView1.Rows.Add(true, "ARIEnabled", "ARI/NonARI", "True/False", true, "1/3");
-            dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI/NonHotelARI", "True/False", true, "1/7");
+            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", false, "2/1");
+            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/2");
+            dataGridView1.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
+            dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", true, "1/7");
 
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
@@ -59,15 +59,8 @@ namespace SoftCaseGenerator
             SoftTestConfiguration sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
             sc.GetResult();
 
-            foreach (string columnName in sc.itemNames)
-            {
-                dataGridView3.Columns.Add(columnName, columnName);
-            }
-
-            foreach (string[] row in sc.valueResultList)
-            {
-                dataGridView3.Rows.Add(row.ToArray());
-            }
+            AddColumns(sc);
+            AddRows(sc);
 
             //DataGridViewRow row;
             //List<string[]> configRows = new List<string[]>();
@@ -111,6 +104,31 @@ namespace SoftCaseGenerator
             //}
 
             //dataGridView3.Rows[0].Selected = false;
+        }
+
+        private void AddRows(SoftTestConfiguration sc)
+        {
+            for (int i = 0; i < sc.softTestNameList.Count; i++)
+            {
+                List<string> finalRow = new List<string>();
+                finalRow.Add(sc.softTestNameList.ElementAt(i));
+
+                foreach (string value in sc.valueResultList.ElementAt(i))
+                {
+                    finalRow.Add(value);
+                }
+
+                dataGridView3.Rows.Add(finalRow.ToArray());
+            }
+        }
+
+        private void AddColumns(SoftTestConfiguration sc)
+        {
+            dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
+            foreach (string columnName in sc.itemNames)
+            {
+                dataGridView3.Columns.Add(columnName, columnName);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -279,6 +297,20 @@ namespace SoftCaseGenerator
             {
                 bool flag = (bool)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 EnableCell(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SoftTestConfiguration sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
+            sc.GetResult();
+
+            for (int i = 0; i < sc.valueResultList.Count; i++)
+            {
+                new SoftTest(
+                    sc.softTestNameList.ElementAt(i),
+                    sc.itemNames,
+                    sc.valueResultList.ElementAt(i));
             }
         }
 

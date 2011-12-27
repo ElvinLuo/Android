@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoftTest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <id>77091</id>
+  <id xsi:nil="true" />
   <testTeam>Lodging Inventory Systems</testTeam>
   <category>Regression</category>
   <risktier>2</risktier>
@@ -11,18 +11,13 @@
   <parameters />
   <testData>
     <Data>
-      <dataName>PricingModel</dataName>
-      <defaultValue>OBP</defaultValue>
+      <dataName>HotelContractType</dataName>
+      <defaultValue>2</defaultValue>
       <stripingValues />
     </Data>
     <Data>
-      <dataName>RatePlanContractType</dataName>
-      <defaultValue>Agency</defaultValue>
-      <stripingValues />
-    </Data>
-    <Data>
-      <dataName>RatePlanContractType</dataName>
-      <defaultValue>Flex</defaultValue>
+      <dataName>LOSEnabled</dataName>
+      <defaultValue>False</defaultValue>
       <stripingValues />
     </Data>
   </testData>

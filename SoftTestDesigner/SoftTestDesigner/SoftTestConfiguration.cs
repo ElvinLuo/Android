@@ -26,6 +26,7 @@ namespace SoftCaseGenerator
         public List<string> itemNames;
         public List<int[]> indexResultList;
         public List<string[]> valueResultList;
+        public List<string> softTestNameList;
         #endregion
 
         public SoftTestConfiguration(
@@ -140,7 +141,9 @@ namespace SoftCaseGenerator
 
         public void GetResult()
         {
+            indexResultList = new List<int[]>();
             valueResultList = new List<string[]>();
+            softTestNameList = new List<string>();
             List<int[]> allAvailMatrix = GetMatrixWithFilters(allConfigItems, valueResultList, true);
 
             List<int[]> fullAvailMatrix = new List<int[]>();
@@ -154,6 +157,60 @@ namespace SoftCaseGenerator
                 fullAllAvailMatrixMapping,
                 randomAvailMatrix,
                 randomAllAvailMatrixMapping);
+
+            string[] valueRow = new string[allConfigItems.Length];
+
+            if (randomConfigItems.Length > 0)
+            {
+                int round = 1;
+                bool needed, needToContinue = false;
+                valueResultList = new List<string[]>();
+
+                do
+                {
+                    foreach (int[] row in allAvailMatrix)
+                    {
+                        needed = true;
+
+                        for (int i = fullConfigItems.Length; i < allConfigItems.Length; i++)
+                        {
+                            ConfigItem ci = allConfigItems.ElementAt(i);
+                            if (!ci.PickOneInRemainingIndexes(row[i]))
+                            {
+                                needed = false;
+                                break;
+                            }
+                        }
+
+                        if (needed)
+                        {
+                            foreach (ConfigItem ci in randomConfigItems)
+                            {
+                                ci.RemoveUsed();
+                                needToContinue = NeedToContinue();
+                            }
+                            CopyIndexRowToValueRow(row, valueRow);
+                            indexResultList.Add(row.ToArray());
+                            valueResultList.Add(valueRow.ToArray());
+                            softTestNameList.Add(CopyIndexRowToNameRow(row));
+
+                            if (round > 1 && !needToContinue) break;
+                        }
+                    }
+
+                    round++;
+                } while (needToContinue);
+            }
+            else
+            {
+                foreach (int[] row in allAvailMatrix)
+                {
+                    CopyIndexRowToValueRow(row, valueRow);
+                    indexResultList.Add(row.ToArray());
+                    valueResultList.Add(valueRow.ToArray());
+                    softTestNameList.Add(CopyIndexRowToNameRow(row));
+                }
+            }
         }
 
         private void GetMappingMatrix(
@@ -208,6 +265,12 @@ namespace SoftCaseGenerator
                     randomAllAvailMatrixMapping.Add(temp);
                 }
             }
+
+            foreach (ConfigItem ci in randomConfigItems)
+            {
+                ci.Adjust();
+            }
+
         }
 
         private void ExpandMatrixWithRandomItems()
@@ -278,10 +341,11 @@ namespace SoftCaseGenerator
                 {
                     if (needValueMatrix)
                     {
-                        for (int i = 0; i < itemsCount; i++)
-                        {
-                            valueRow[i] = allConfigItems[i].values[indexRow[i]];
-                        }
+                        //for (int i = 0; i < itemsCount; i++)
+                        //{
+                        //    valueRow[i] = allConfigItems[i].values[indexRow[i]];
+                        //}
+                        CopyIndexRowToValueRow(indexRow, valueRow);
                         valueMatrix.Add(valueRow.ToArray<string>());
                     }
 
@@ -292,6 +356,26 @@ namespace SoftCaseGenerator
             } while (!finished);
 
             return indexMatrix;
+        }
+
+        private void CopyIndexRowToValueRow(int[] indexRow, string[] valueRow)
+        {
+            for (int i = 0; i < indexRow.Length; i++)
+            {
+                valueRow[i] = allConfigItems[i].values[indexRow[i]];
+            }
+        }
+
+        private string CopyIndexRowToNameRow(int[] indexRow)
+        {
+            string name = null;
+
+            for (int i = 0; i < indexRow.Length; i++)
+            {
+                name += allConfigItems[i].names[indexRow[i]];
+            }
+
+            return name;
         }
 
         private bool IsFiltered(int[] indexRow)
@@ -424,6 +508,17 @@ namespace SoftCaseGenerator
             }
 
             return true;
+        }
+
+        private bool NeedToContinue()
+        {
+            foreach (ConfigItem item in randomConfigItems)
+            {
+                if (!item.Checked())
+                    return true;
+            }
+
+            return false;
         }
 
     }

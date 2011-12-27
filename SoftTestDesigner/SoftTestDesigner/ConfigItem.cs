@@ -25,6 +25,7 @@ namespace SoftCaseGenerator
         public List<List<int>> indexInAllAvailMatrix;
         public bool random;
         public int[] coverages;
+        public bool[] canExceed;
         public bool[] flags;
         public List<int> indexes;
         public List<int> remainingIndexes;
@@ -40,8 +41,9 @@ namespace SoftCaseGenerator
             string[] temp = coverages.Split(new char[] { '/' });
             this.random = random.ToLower().Equals("true") ? true : false;
             this.coverages = new int[temp.Length];
+            this.canExceed = new bool[this.values.Length];
 
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < this.values.Length; i++)
             {
                 List<int> availList = new List<int>();
                 indexInAllAvailMatrix.Add(availList);
@@ -86,6 +88,36 @@ namespace SoftCaseGenerator
             return priviousPickedIndex;
         }
 
+        public bool PickOneInRemainingIndexes(int position)
+        {
+            if (remainingIndexes == null || remainingIndexes.Count == 0)
+            {
+                foreach (int element in indexes)
+                {
+                    remainingIndexes.Add(element);
+                }
+            }
+
+            priviousPickedItem = -1;
+
+            for (int i = 0; i < remainingIndexes.Count; i++)
+            {
+                if (remainingIndexes[i] == position)
+                {
+                    priviousPickedItem = i;
+                    break;
+                }
+            }
+
+            if (priviousPickedItem > -1)
+            {
+                priviousPickedIndex = position;
+                return true;
+            }
+
+            return false;
+        }
+
         public void RemoveUsed()
         {
             flags[priviousPickedIndex] = true;
@@ -98,6 +130,38 @@ namespace SoftCaseGenerator
         public bool Checked()
         {
             return flag;
+        }
+
+        public void Adjust()
+        {
+            for (int i = 0; i < indexInAllAvailMatrix.Count; i++)
+            {
+                if (indexInAllAvailMatrix.ElementAt(i).Count == 0)
+                {
+                    coverages[i] = 0;
+                }
+            }
+
+            count = 0;
+
+            indexes.Clear();
+            remainingIndexes.Clear();
+
+            for (int i = 0; i < coverages.Length; i++)
+            {
+                if (indexInAllAvailMatrix.ElementAt(i).Count < coverages[i])
+                {
+                    canExceed[i] = true;
+                }
+
+                for (int j = 0; j < coverages[i]; j++)
+                {
+                    indexes.Add(i);
+                    remainingIndexes.Add(i);
+                }
+
+                count += coverages[i];
+            }
         }
 
     }
