@@ -51,6 +51,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -91,7 +92,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 155);
+            this.dataGridView1.Size = new System.Drawing.Size(1011, 142);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -127,7 +128,7 @@
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column9.HeaderText = "Random?";
             this.Column9.Name = "Column9";
-            this.Column9.Width = 59;
+            this.Column9.Width = 53;
             // 
             // Column4
             // 
@@ -160,8 +161,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer1.Size = new System.Drawing.Size(1011, 574);
-            this.splitContainer1.SplitterDistance = 331;
+            this.splitContainer1.Size = new System.Drawing.Size(1011, 530);
+            this.splitContainer1.SplitterDistance = 305;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitContainer2
@@ -179,8 +180,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1011, 331);
-            this.splitContainer2.SplitterDistance = 155;
+            this.splitContainer2.Size = new System.Drawing.Size(1011, 305);
+            this.splitContainer2.SplitterDistance = 142;
             this.splitContainer2.TabIndex = 0;
             // 
             // checkBox1
@@ -212,7 +213,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Panel2.Controls.Add(this.button4);
             this.splitContainer3.Panel2.Controls.Add(this.button3);
-            this.splitContainer3.Size = new System.Drawing.Size(1011, 172);
+            this.splitContainer3.Size = new System.Drawing.Size(1011, 159);
             this.splitContainer3.SplitterDistance = 886;
             this.splitContainer3.TabIndex = 7;
             // 
@@ -239,7 +240,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(886, 172);
+            this.dataGridView2.Size = new System.Drawing.Size(886, 159);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -272,7 +273,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 25);
+            this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 7;
             this.button1.Text = "Full combination";
             this.button1.UseVisualStyleBackColor = true;
@@ -281,9 +282,9 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(0, 100);
+            this.button5.Location = new System.Drawing.Point(0, 92);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(121, 25);
+            this.button5.Size = new System.Drawing.Size(121, 23);
             this.button5.TabIndex = 11;
             this.button5.Text = "Copy to clipboard";
             this.button5.UseVisualStyleBackColor = true;
@@ -292,9 +293,9 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(0, 25);
+            this.button2.Location = new System.Drawing.Point(0, 23);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 25);
+            this.button2.Size = new System.Drawing.Size(121, 23);
             this.button2.TabIndex = 8;
             this.button2.Text = "Full coverage";
             this.button2.UseVisualStyleBackColor = true;
@@ -303,9 +304,9 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(0, 75);
+            this.button4.Location = new System.Drawing.Point(0, 69);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(121, 25);
+            this.button4.Size = new System.Drawing.Size(121, 23);
             this.button4.TabIndex = 10;
             this.button4.Text = "Save as csv file";
             this.button4.UseVisualStyleBackColor = true;
@@ -313,9 +314,9 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(0, 50);
+            this.button3.Location = new System.Drawing.Point(0, 46);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 25);
+            this.button3.Size = new System.Drawing.Size(121, 23);
             this.button3.TabIndex = 9;
             this.button3.Text = "Most important";
             this.button3.UseVisualStyleBackColor = true;
@@ -323,31 +324,36 @@
             // 
             // dataGridView3
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AllowUserToResizeColumns = false;
-            this.dataGridView3.AllowUserToResizeRows = false;
+            this.dataGridView3.AllowUserToOrderColumns = true;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.ColumnHeadersVisible = false;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column10});
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(0, 0);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowTemplate.Height = 23;
             this.dataGridView3.ShowCellErrors = false;
             this.dataGridView3.ShowCellToolTips = false;
             this.dataGridView3.ShowEditingIcon = false;
             this.dataGridView3.ShowRowErrors = false;
-            this.dataGridView3.Size = new System.Drawing.Size(1011, 239);
+            this.dataGridView3.Size = new System.Drawing.Size(1011, 221);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView3_RowPostPaint);
+            this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Column10";
+            this.Column10.Name = "Column10";
             // 
             // SoftTestDesigner
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 574);
+            this.ClientSize = new System.Drawing.Size(1011, 530);
             this.Controls.Add(this.splitContainer1);
             this.Name = "SoftTestDesigner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -400,6 +406,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     }
 }
 
