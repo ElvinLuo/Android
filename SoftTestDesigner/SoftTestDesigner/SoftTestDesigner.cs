@@ -108,6 +108,14 @@ namespace SoftCaseGenerator
 
         private void AddRows(SoftTestConfiguration sc)
         {
+            string[] headerRow = new string[sc.itemNames.Count + 1];
+            headerRow[0] = "Soft Test Name";
+
+            for (int i = 0; i < sc.itemNames.Count; i++)
+            { headerRow[i + 1] = sc.itemNames[i]; }
+
+            dataGridView3.Rows.Add(headerRow);
+
             for (int i = 0; i < sc.softTestNameList.Count; i++)
             {
                 List<string> finalRow = new List<string>();
@@ -255,7 +263,9 @@ namespace SoftCaseGenerator
 
         private void dataGridView3_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            string strRowNumber = (e.RowIndex + 1).ToString();
+            if (e.RowIndex == 0) return;
+
+            string strRowNumber = e.RowIndex.ToString();
 
             while (strRowNumber.Length < dataGridView3.RowCount.ToString().Length)
             {
@@ -302,25 +312,37 @@ namespace SoftCaseGenerator
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SoftTestConfiguration sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
-            sc.GetResult();
+            string[] valueArray = new string[dataGridView3.Columns.Count - 1];
+            List<string> itemNameList = new List<string>();
 
-            for (int i = 0; i < sc.valueResultList.Count; i++)
+            for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
+                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString());
+            }
+
+            for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
+            {
+                for (int j = 1; j < dataGridView3.Columns.Count; j++)
+                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
+
                 new SoftTest(
-                    sc.softTestNameList.ElementAt(i),
-                    sc.itemNames,
-                    sc.valueResultList.ElementAt(i));
+                    dataGridView3.Rows[i].Cells[0].Value.ToString(),
+                    itemNameList,
+                    valueArray);
             }
         }
 
         private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Control && e.KeyCode == Keys.Delete) || (e.Shift && e.KeyCode == Keys.Delete))
+            if ((e.Control && e.KeyCode == Keys.C) ||
+                (e.Control && e.KeyCode == Keys.Delete) ||
+                (e.Shift && e.KeyCode == Keys.Delete))
             {
                 CopyClipboard();
             }
-            if ((e.Control && e.KeyCode == Keys.Insert) || (e.Shift && e.KeyCode == Keys.Insert))
+            if ((e.Control && e.KeyCode == Keys.V) ||
+                (e.Control && e.KeyCode == Keys.Insert) ||
+                (e.Shift && e.KeyCode == Keys.Insert))
             {
                 PasteClipboard();
             }
@@ -336,47 +358,40 @@ namespace SoftCaseGenerator
         {
             try
             {
+                string[] sCells;
+                DataGridViewCell oCell;
                 string s = Clipboard.GetText();
                 string[] lines = s.Split('\n');
-                int iFail = 0, iRow = dataGridView3.CurrentCell.RowIndex;
+                int iRow = dataGridView3.CurrentCell.RowIndex;
                 int iCol = dataGridView3.CurrentCell.ColumnIndex;
-                DataGridViewCell oCell;
+
                 foreach (string line in lines)
                 {
-                    if (iRow < dataGridView3.RowCount && line.Length > 0)
+                    if (line.Length > 0)
                     {
-                        string[] sCells = line.Split('\t');
+                        if (iRow == dataGridView3.RowCount - 1)
+                        { dataGridView3.Rows.Add(1); }
+
+                        sCells = line.Split('\t');
+
                         for (int i = 0; i < sCells.GetLength(0); ++i)
                         {
-                            if (iCol + i < this.dataGridView3.ColumnCount)
-                            {
-                                oCell = dataGridView3[iCol + i, iRow];
-                                if (!oCell.ReadOnly)
-                                {
-                                    if (oCell.Value.ToString() != sCells[i])
-                                    {
-                                        oCell.Value = Convert.ChangeType(sCells[i], oCell.ValueType);
-                                        oCell.Style.BackColor = Color.Tomato;
-                                    }
-                                    else
-                                        iFail++;//only traps a fail if the data has changed and you are pasting into a read only cell
-                                }
-                            }
-                            else
-                            { break; }
+                            if (iCol + i == this.dataGridView3.ColumnCount)
+                            { dataGridView3.Columns.Add("NewColumn", "NewColumn"); }
+
+                            oCell = dataGridView3[iCol + i, iRow];
+
+                            if (oCell.Value == null || oCell.Value.ToString() != sCells[i])
+                            { oCell.Value = Convert.ChangeType(sCells[i], oCell.ValueType); }
                         }
+
                         iRow++;
                     }
-                    else
-                    { break; }
-                    if (iFail > 0)
-                        MessageBox.Show(string.Format("{0} updates failed due to read only column setting", iFail));
                 }
             }
-            catch (FormatException)
+            catch (Exception)
             {
-                MessageBox.Show("The data you pasted is in the wrong format for the cell");
-                return;
+                throw new Exception("The data you pasted is in the wrong format for the cell");
             }
         }
 

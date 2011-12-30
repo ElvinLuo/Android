@@ -11,13 +11,13 @@
   <parameters />
   <testData>
     <Data>
-      <dataName>HotelContractType</dataName>
-      <defaultValue>3</defaultValue>
+      <dataName>PricingModel</dataName>
+      <defaultValue>PDP</defaultValue>
       <stripingValues />
     </Data>
     <Data>
       <dataName>LOSEnabled</dataName>
-      <defaultValue>False</defaultValue>
+      <defaultValue>True</defaultValue>
       <stripingValues />
     </Data>
   </testData>

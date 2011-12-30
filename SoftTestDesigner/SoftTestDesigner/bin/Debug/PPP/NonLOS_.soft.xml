@@ -11,8 +11,8 @@
   <parameters />
   <testData>
     <Data>
-      <dataName>HotelContractType</dataName>
-      <defaultValue>1</defaultValue>
+      <dataName>PricingModel</dataName>
+      <defaultValue>PPP</defaultValue>
       <stripingValues />
     </Data>
     <Data>
