@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SoftCaseGenerator
+namespace SoftTestDesigner
 {
     public partial class SoftTestDesigner : Form
     {
@@ -61,49 +61,6 @@ namespace SoftCaseGenerator
 
             AddColumns(sc);
             AddRows(sc);
-
-            //DataGridViewRow row;
-            //List<string[]> configRows = new List<string[]>();
-            //List<string[]> restrictionRows = new List<string[]>();
-            //string item, names, values;
-
-            //dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
-            //for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-            //{
-            //    row = dataGridView1.Rows[i];
-            //    item = row.Cells[1].Value.ToString();
-            //    names = row.Cells[2].Value.ToString();
-            //    values = row.Cells[3].Value.ToString();
-            //    if ((bool)row.Cells[0].Value)
-            //    {
-            //        configRows.Add(new string[] { item, names, values });
-            //        dataGridView3.Columns.Add(item, item);
-            //    }
-            //}
-
-            //if (configRows.Count > 0)
-            //{
-            //    Input input = new Input(configRows, restrictionRows);
-            //    Dictionary<string, string> softCases = input.GetAllSoftCasesFromConfig();
-
-            //    List<string> cells = new List<string>();
-
-            //    foreach (KeyValuePair<string, string> pair in softCases)
-            //    {
-            //        cells.Clear();
-            //        cells.Add(pair.Key);
-
-            //        string[] valueArray = pair.Value.Split(new char[] { '/' });
-            //        foreach (string value in valueArray)
-            //        {
-            //            cells.Add(value);
-            //        }
-
-            //        dataGridView3.Rows.Add(cells.ToArray());
-            //    }
-            //}
-
-            //dataGridView3.Rows[0].Selected = false;
         }
 
         private void AddRows(SoftTestConfiguration sc)
@@ -325,7 +282,7 @@ namespace SoftCaseGenerator
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
                 { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
 
-                new SoftTest(
+                new SoftTest.SoftTest(
                     dataGridView3.Rows[i].Cells[0].Value.ToString(),
                     itemNameList,
                     valueArray);
@@ -392,6 +349,28 @@ namespace SoftCaseGenerator
             catch (Exception)
             {
                 throw new Exception("The data you pasted is in the wrong format for the cell");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string[] valueArray = new string[dataGridView3.Columns.Count - 1];
+            List<string> itemNameList = new List<string>();
+
+            for (int i = 1; i < dataGridView3.Columns.Count; i++)
+            {
+                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString());
+            }
+
+            for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
+            {
+                for (int j = 1; j < dataGridView3.Columns.Count; j++)
+                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
+
+                new SoftTest.SoftTest(
+                    dataGridView3.Rows[i].Cells[0].Value.ToString(),
+                    itemNameList,
+                    valueArray);
             }
         }
 

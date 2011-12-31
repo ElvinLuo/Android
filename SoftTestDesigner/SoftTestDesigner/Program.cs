@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using SoftTest;
 
-namespace SoftCaseGenerator
+namespace SoftTestDesigner
 {
     static class Program
     {
@@ -66,7 +67,7 @@ namespace SoftCaseGenerator
 
             foreach (KeyValuePair<string, string> pair in softCases)
             {
-                new SoftTest(pair.Key, input.configItemNames, pair.Value);
+                new SoftTest.SoftTest(pair.Key, input.configItemNames, pair.Value);
             }
         }
     }

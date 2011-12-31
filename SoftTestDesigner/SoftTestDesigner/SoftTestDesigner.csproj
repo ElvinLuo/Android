@@ -75,6 +75,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoftTest.cs" />
+    <Compile Include="TestRun.cs" />
     <EmbeddedResource Include="SoftTestDesigner.resx">
       <DependentUpon>SoftTestDesigner.cs</DependentUpon>
     </EmbeddedResource>

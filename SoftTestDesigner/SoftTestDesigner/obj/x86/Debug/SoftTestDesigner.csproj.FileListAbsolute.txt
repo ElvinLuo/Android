@@ -8,7 +8,6 @@ D:\Projects\GitHub\SoftTestDesigner\SoftCaseGenerator\obj\x86\Debug\SoftCaseGene
 D:\Projects\GitHub\SoftTestDesigner\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.pdb
 D:\Projects\GitHub\SoftTestDesigner\SoftCaseGenerator\obj\x86\Debug\SoftCaseGenerator.SoftTestDesigner.resources
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftCaseGenerator.SoftTestDesigner.resources
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\bin\Debug\SoftTestDesigner.exe
@@ -16,3 +15,4 @@ D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\bin\Debug\SoftTestDesigner.
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.Properties.Resources.resources
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.exe
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.pdb
+D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.SoftTestDesigner.resources

@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SoftCaseGenerator
+namespace SoftTest
 {
     using System;
     using System.Collections.Generic;
@@ -12,6 +12,7 @@ namespace SoftCaseGenerator
     using System.Text;
     using System.Xml.Serialization;
     using System.IO;
+    using SoftTestDesigner;
 
     /// <summary>
     /// TODO: Update summary.

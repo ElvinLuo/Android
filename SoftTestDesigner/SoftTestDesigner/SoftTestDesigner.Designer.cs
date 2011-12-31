@@ -1,4 +1,4 @@
-﻿namespace SoftCaseGenerator
+﻿namespace SoftTestDesigner
 {
     partial class SoftTestDesigner
     {
@@ -214,7 +214,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.button4);
             this.splitContainer3.Panel2.Controls.Add(this.button3);
             this.splitContainer3.Size = new System.Drawing.Size(1011, 159);
-            this.splitContainer3.SplitterDistance = 886;
+            this.splitContainer3.SplitterDistance = 856;
             this.splitContainer3.TabIndex = 7;
             // 
             // checkBox2
@@ -240,7 +240,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(886, 159);
+            this.dataGridView2.Size = new System.Drawing.Size(856, 159);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -271,20 +271,20 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Location = new System.Drawing.Point(3, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.Size = new System.Drawing.Size(148, 23);
             this.button1.TabIndex = 7;
-            this.button1.Text = "Full combination";
+            this.button1.Text = "Generate combination";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(0, 92);
+            this.button5.Location = new System.Drawing.Point(3, 92);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(121, 23);
+            this.button5.Size = new System.Drawing.Size(148, 23);
             this.button5.TabIndex = 11;
             this.button5.Text = "Copy to clipboard";
             this.button5.UseVisualStyleBackColor = true;
@@ -293,9 +293,9 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(0, 23);
+            this.button2.Location = new System.Drawing.Point(3, 23);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
+            this.button2.Size = new System.Drawing.Size(148, 23);
             this.button2.TabIndex = 8;
             this.button2.Text = "Full coverage";
             this.button2.UseVisualStyleBackColor = true;
@@ -304,21 +304,22 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(0, 69);
+            this.button4.Location = new System.Drawing.Point(3, 69);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(121, 23);
+            this.button4.Size = new System.Drawing.Size(148, 23);
             this.button4.TabIndex = 10;
-            this.button4.Text = "Save as csv file";
+            this.button4.Text = "Create Assignment";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(0, 46);
+            this.button3.Location = new System.Drawing.Point(3, 46);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 23);
+            this.button3.Size = new System.Drawing.Size(148, 23);
             this.button3.TabIndex = 9;
-            this.button3.Text = "Most important";
+            this.button3.Text = "Create Labrun";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

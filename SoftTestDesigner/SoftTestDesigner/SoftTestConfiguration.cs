@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SoftCaseGenerator
+namespace SoftTestDesigner
 {
     using System.Collections.Generic;
     using System.Linq;
