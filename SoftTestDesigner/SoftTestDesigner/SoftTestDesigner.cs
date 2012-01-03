@@ -354,24 +354,37 @@ namespace SoftTestDesigner
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string[] valueArray = new string[dataGridView3.Columns.Count - 1];
             List<string> itemNameList = new List<string>();
-
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
                 itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString());
             }
 
+            string[] softTestNameArray = new string[dataGridView3.Rows.Count - 1];
+            string[] valueArray;
+            List<string[]> valueArrayList = new List<string[]>();
             for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
             {
+                softTestNameArray[i - 1] = dataGridView3.Rows[i].Cells[0].Value.ToString();
+
+                valueArray = new string[dataGridView3.Columns.Count - 1];
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
                 { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
 
-                new SoftTest.SoftTest(
-                    dataGridView3.Rows[i].Cells[0].Value.ToString(),
-                    itemNameList,
-                    valueArray);
+                valueArrayList.Add(valueArray);
             }
+
+            new TestRun.TestRun(
+                "ULP_CoreAdminPhase2_BulkEdit_LISQA8_Oct  7 2011 11:04PM",
+                 "TFxIDXManager",
+                 "LFS00006",
+                 "2.0",
+                 softTestNameArray,
+                itemNameList,
+                valueArrayList,
+                null,
+                null,
+                null);
         }
 
     }

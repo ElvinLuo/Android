@@ -7,6 +7,7 @@
 namespace TestRun
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Xml.Serialization;
     using SoftTestDesigner;
 
@@ -31,13 +32,38 @@ namespace TestRun
 
         public TestRun()
         {
-            testrunname = "ULP_CoreAdminPhase2_BulkEdit_LISQA8_Oct  7 2011 11:04PM";
-            managername = "TFxIDXManager";
-            branchName = "LFS00006";
-            version = "2.0";
+        }
+
+        public TestRun(
+            string testrunname,
+            string managername,
+            string branchName,
+            string version,
+            string[] softTestNameArray,
+            List<string> testConfigNameList,
+            List<string[]> testConfigValueList,
+            string methodModule,
+            List<string[]> varNameArrayList,
+            List<string[]> varValueArrayList)
+        {
+            this.testrunname = testrunname ?? "ULP_CoreAdminPhase2_BulkEdit_LISQA8_Oct  7 2011 11:04PM";
+            this.managername = managername ?? "TFxIDXManager";
+            this.branchName = branchName ?? "LFS00006";
+            this.version = version ?? "2.0";
 
             Assignments = new List<Assignment>();
-            Assignments.Add(new Assignment());
+            for (int i = 0; i < softTestNameArray.Length - 1; i++)
+            {
+                Assignment assignment = new Assignment(
+                    i,
+                    softTestNameArray,
+                    testConfigNameList,
+                    testConfigValueList.ElementAt(i),
+                    methodModule,
+                    varNameArrayList,
+                    varValueArrayList);
+                Assignments.Add(assignment);
+            }
 
             Serializer.CreateInstance().SerializeToXML(
                this,
@@ -66,6 +92,24 @@ namespace TestRun
             Configs.Add(new Var());
             Configs.Add(new Var("langid", "1033"));
         }
+
+        public Assignment(
+            int i,
+            string[] softTestNameArray,
+            List<string> testConfigNameList,
+            string[] testConfigValueArray,
+            string methodModule,
+            List<string[]> varNameArrayList,
+            List<string[]> varValueArrayList)
+        {
+            this.id = i.ToString();
+            this.Disabled = false.ToString();
+            SoftTest = new SoftTest(softTestNameArray[i], i, testConfigNameList, testConfigValueArray, methodModule);
+
+            Configs = new List<Var>();
+            Configs.Add(new Var());
+            Configs.Add(new Var("langid", "1033"));
+        }
     }
 
     public class SoftTest
@@ -89,6 +133,27 @@ namespace TestRun
 
             Methods = new List<Method>();
             Methods.Add(new Method());
+        }
+
+        public SoftTest(
+            string softTestName,
+            int id,
+            List<string> testConfigNameList,
+            string[] testConfigValueArray,
+            string methodModule)
+        {
+            this.name = softTestName;
+            this.id = id.ToString();
+            TestConfigs = new List<TestConfig>();
+
+            for (int i = 0; i < testConfigNameList.Count; i++)
+            {
+                TestConfig testConfig = new TestConfig(testConfigNameList[i], testConfigValueArray[i]);
+                TestConfigs.Add(testConfig);
+            }
+
+            Methods = new List<Method>();
+            Methods.Add(new Method(methodModule ?? "HotelTest.dll", softTestName));
         }
     }
 
@@ -140,6 +205,9 @@ namespace TestRun
 
     public class Parameter
     {
+        public Parameter()
+        {
+        }
     }
 
     public class Var
