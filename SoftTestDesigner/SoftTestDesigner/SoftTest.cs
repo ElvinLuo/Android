@@ -143,17 +143,22 @@ namespace SoftTest
         }
 
         public SoftTest(
+            int id,
+            string testTeam,
+            string category,
+            string risktier,
+            string method,
+            string lobmask,
+            string environmentType,
             string filename,
             List<string> nameList,
             string[] valueArray)
         {
-            id = null;
-            testTeam = "Lodging Inventory Systems";
-            category = "Regression";
-            risktier = 2;
-            invoke = new Invoke(
-                "HotelTest.dll",
-                "Expedia.Automation.Test.Hotels.ExpediaServiceFee.Functional.ExpediaServiceFeeBulkUpdate");
+            this.id = id;
+            this.testTeam = testTeam;
+            this.category = category;
+            this.risktier = Convert.ToInt32(risktier);
+            invoke = new Invoke("HotelTest.dll", method);
             parameters = new List<string>();
 
             testData = new List<Data>();
@@ -169,18 +174,27 @@ namespace SoftTest
             }
 
             LOBMasks = new List<lobmask>();
-            LOBMasks.Add(new lobmask("Hotel"));
+            LOBMasks.Add(new lobmask(lobmask));
+
+            string site = "HIMS";
+            for (int i = 0; i < nameList.Count; i++)
+            {
+                if (nameList.ElementAt(i).ToLower().Equals("OnExtranet") &&
+                    valueArray[i].ToLower().Equals("true"))
+                { site = "XNet"; }
+            }
 
             siteFlags = new List<siteflag>();
-            siteFlags.Add(new siteflag("HIMS"));
+            siteFlags.Add(new siteflag(site));
 
             environmentTypes = new List<environmenttype>();
-            environmentTypes.Add(new environmenttype("Lab"));
+            environmentTypes.Add(new environmenttype(environmentType));
 
             riskitems = new List<riskitem>();
             filename = filename.Replace('.', '\\') + ".soft.xml";
 
             string path = Path.GetDirectoryName(filename);
+
             if (!Directory.Exists(path))
             { Directory.CreateDirectory(path); }
 
@@ -258,7 +272,7 @@ namespace SoftTest
 
         public riskitem(string name)
         {
-            this.name = "";
+            this.name = name;
         }
     }
 

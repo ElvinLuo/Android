@@ -75,7 +75,19 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoftTest.cs" />
+    <Compile Include="SoftTestSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoftTestSetting.Designer.cs">
+      <DependentUpon>SoftTestSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestRun.cs" />
+    <Compile Include="TestRunSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestRunSetting.Designer.cs">
+      <DependentUpon>TestRunSetting.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="SoftTestDesigner.resx">
       <DependentUpon>SoftTestDesigner.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +101,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SoftTestSetting.resx">
+      <DependentUpon>SoftTestSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestRunSetting.resx">
+      <DependentUpon>TestRunSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

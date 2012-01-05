@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" testrunname="1ULP_CoreAdminPhase2_BulkEdit_LISQA8" managername="1TFxIDXManager" branchName="1LFS000023" version="12">
+  <Assignments>
+    <Assignment id="0" Disabled="False">
+      <SoftTest name="CheckUI.Merchant.PDP_LAR_NoSingleRatePlanConversionLink" id="0">
+        <TestConfigs>
+          <TestConfig name="HotelContractType" value="1" />
+          <TestConfig name="PricingModel" value="PDP" />
+          <TestConfig name="LAREnabled" value="TRUE" />
+          <TestConfig name="LARExtranetEnabled&#xD;" value="TRUE&#xD;" />
+        </TestConfigs>
+        <Methods>
+          <Method module="1Expedia.Automation.Test.Hotels.ICPRUpdateUI.Functional.ChangeCloseOut" name="CheckUI.Merchant.PDP_LAR_NoSingleRatePlanConversionLink">
+            <Parameters />
+          </Method>
+        </Methods>
+      </SoftTest>
+      <Configs>
+        <Var varName="site" varValue="10.184.23.95" />
+        <Var varName="langid" varValue="1033" />
+      </Configs>
+    </Assignment>
+    <Assignment id="1" Disabled="False">
+      <SoftTest name="CheckUI.Merchant.PDP_NonLAR_NoSingleRatePlanConversionLink" id="1">
+        <TestConfigs>
+          <TestConfig name="HotelContractType" value="1" />
+          <TestConfig name="PricingModel" value="PDP" />
+          <TestConfig name="LAREnabled" value="FALSE" />
+          <TestConfig name="LARExtranetEnabled&#xD;" value="FALSE&#xD;" />
+        </TestConfigs>
+        <Methods>
+          <Method module="1Expedia.Automation.Test.Hotels.ICPRUpdateUI.Functional.ChangeCloseOut" name="CheckUI.Merchant.PDP_NonLAR_NoSingleRatePlanConversionLink">
+            <Parameters />
+          </Method>
+        </Methods>
+      </SoftTest>
+      <Configs>
+        <Var varName="site" varValue="10.184.23.95" />
+        <Var varName="langid" varValue="1033" />
+      </Configs>
+    </Assignment>
+    <Assignment id="2" Disabled="False">
+      <SoftTest name="CheckUI.Merchant.OBP_LAR_NoSingleRatePlanConversionLink" id="2">
+        <TestConfigs>
+          <TestConfig name="HotelContractType" value="1" />
+          <TestConfig name="PricingModel" value="OBP" />
+          <TestConfig name="LAREnabled" value="TRUE" />
+          <TestConfig name="LARExtranetEnabled&#xD;" value="TRUE&#xD;" />
+        </TestConfigs>
+        <Methods>
+          <Method module="1Expedia.Automation.Test.Hotels.ICPRUpdateUI.Functional.ChangeCloseOut" name="CheckUI.Merchant.OBP_LAR_NoSingleRatePlanConversionLink">
+            <Parameters />
+          </Method>
+        </Methods>
+      </SoftTest>
+      <Configs>
+        <Var varName="site" varValue="10.184.23.95" />
+        <Var varName="langid" varValue="1033" />
+      </Configs>
+    </Assignment>
+  </Assignments>
+</TestRun>

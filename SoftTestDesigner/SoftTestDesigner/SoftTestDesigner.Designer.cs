@@ -48,8 +48,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCreateAssignment = new System.Windows.Forms.Button();
+            this.btnCreateLabrun = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -211,8 +211,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.button1);
             this.splitContainer3.Panel2.Controls.Add(this.button5);
             this.splitContainer3.Panel2.Controls.Add(this.button2);
-            this.splitContainer3.Panel2.Controls.Add(this.button4);
-            this.splitContainer3.Panel2.Controls.Add(this.button3);
+            this.splitContainer3.Panel2.Controls.Add(this.btnCreateAssignment);
+            this.splitContainer3.Panel2.Controls.Add(this.btnCreateLabrun);
             this.splitContainer3.Size = new System.Drawing.Size(1011, 159);
             this.splitContainer3.SplitterDistance = 856;
             this.splitContainer3.TabIndex = 7;
@@ -301,27 +301,27 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button4
+            // btnCreateAssignment
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(3, 69);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(148, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Create Assignment";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnCreateAssignment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreateAssignment.Location = new System.Drawing.Point(3, 69);
+            this.btnCreateAssignment.Name = "btnCreateAssignment";
+            this.btnCreateAssignment.Size = new System.Drawing.Size(148, 23);
+            this.btnCreateAssignment.TabIndex = 10;
+            this.btnCreateAssignment.Text = "Create Assignment";
+            this.btnCreateAssignment.UseVisualStyleBackColor = true;
+            this.btnCreateAssignment.Click += new System.EventHandler(this.btnCreateAssignment_Click);
             // 
-            // button3
+            // btnCreateLabrun
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(3, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Create Labrun";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnCreateLabrun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreateLabrun.Location = new System.Drawing.Point(3, 46);
+            this.btnCreateLabrun.Name = "btnCreateLabrun";
+            this.btnCreateLabrun.Size = new System.Drawing.Size(148, 23);
+            this.btnCreateLabrun.TabIndex = 9;
+            this.btnCreateLabrun.Text = "Create Labrun";
+            this.btnCreateLabrun.UseVisualStyleBackColor = true;
+            this.btnCreateLabrun.Click += new System.EventHandler(this.btnCreateLabrun_Click);
             // 
             // dataGridView3
             // 
@@ -395,8 +395,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCreateAssignment;
+        private System.Windows.Forms.Button btnCreateLabrun;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;

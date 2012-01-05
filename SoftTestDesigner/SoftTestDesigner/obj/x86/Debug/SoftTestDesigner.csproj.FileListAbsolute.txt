@@ -16,3 +16,5 @@ D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesig
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.exe
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.pdb
 D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.SoftTestDesigner.resources
+D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.SoftTestSetting.resources
+D:\Projects\GitHub\SoftTestDesigner\SoftTestDesigner\obj\x86\Debug\SoftTestDesigner.TestRunSetting.resources

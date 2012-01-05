@@ -267,10 +267,11 @@ namespace SoftTestDesigner
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnCreateLabrun_Click(object sender, EventArgs e)
         {
-            string[] valueArray = new string[dataGridView3.Columns.Count - 1];
+            List<string> softTestNameList = new List<string>();
             List<string> itemNameList = new List<string>();
+            List<string[]> valueArrayList = new List<string[]>();
 
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
@@ -279,14 +280,19 @@ namespace SoftTestDesigner
 
             for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
             {
+                softTestNameList.Add(dataGridView3.Rows[i].Cells[0].Value.ToString());
+
+                string[] valueArray = new string[dataGridView3.Columns.Count - 1];
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
                 { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
-
-                new SoftTest.SoftTest(
-                    dataGridView3.Rows[i].Cells[0].Value.ToString(),
-                    itemNameList,
-                    valueArray);
+                valueArrayList.Add(valueArray);
             }
+
+            SoftTestSetting softTestSetting = new SoftTestSetting(
+                softTestNameList,
+                itemNameList,
+                valueArrayList);
+            softTestSetting.ShowDialog();
         }
 
         private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
@@ -352,7 +358,7 @@ namespace SoftTestDesigner
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnCreateAssignment_Click(object sender, EventArgs e)
         {
             List<string> itemNameList = new List<string>();
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
@@ -374,17 +380,11 @@ namespace SoftTestDesigner
                 valueArrayList.Add(valueArray);
             }
 
-            new TestRun.TestRun(
-                "ULP_CoreAdminPhase2_BulkEdit_LISQA8_Oct  7 2011 11:04PM",
-                 "TFxIDXManager",
-                 "LFS00006",
-                 "2.0",
-                 softTestNameArray,
+            TestRunSetting testRunSetting = new TestRunSetting(
+                softTestNameArray,
                 itemNameList,
-                valueArrayList,
-                null,
-                null,
-                null);
+                valueArrayList);
+            testRunSetting.ShowDialog();
         }
 
     }
