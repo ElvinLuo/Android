@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SoftTest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id>74253</id>
+  <testTeam>Lodging Inventory Systems</testTeam>
+  <category>Regression</category>
+  <risktier>1</risktier>
+  <invoke>
+    <module>HotelTest.dll</module>
+    <method>Expedia.Automation.Test.Hotels.ICPRUpdateUI.Functional.UpdateCTA</method>
+  </invoke>
+  <parameters />
+  <testData>
+    <Data>
+      <dataName>ARIEnabled</dataName>
+      <defaultValue>false</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>BulkEditEnabled</dataName>
+      <defaultValue>true</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>HotelContractType</dataName>
+      <defaultValue>3</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>OnExtranet</dataName>
+      <defaultValue>false</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>Password</dataName>
+      <defaultValue>hottest</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>PricingModel</dataName>
+      <defaultValue>PDP</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>RatePlanContractType</dataName>
+      <defaultValue>3</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>RateplanRestrictionStatus</dataName>
+      <defaultValue>Close</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>RequestorType</dataName>
+      <defaultValue>8</defaultValue>
+      <stripingValues />
+    </Data>
+    <Data>
+      <dataName>Username</dataName>
+      <defaultValue>hotauto</defaultValue>
+      <stripingValues />
+    </Data>
+  </testData>
+  <LOBMasks>
+    <lobmask name="Hotel" />
+  </LOBMasks>
+  <siteFlags>
+    <siteflag name="HIMS" />
+  </siteFlags>
+  <environmentTypes>
+    <environmenttype name="Lab" />
+  </environmentTypes>
+  <riskitems />
+</SoftTest>
