@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using TestRunPKG;
 
 namespace SoftTestDesigner
 {
@@ -25,7 +21,7 @@ namespace SoftTestDesigner
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            new TestRun.TestRun(
+            new TestRun(
                 this.tbTestRunName.Text,
                 this.tbManagerName.Text,
                 this.tbBranchName.Text,

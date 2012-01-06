@@ -92,7 +92,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 142);
+            this.dataGridView1.Size = new System.Drawing.Size(1011, 153);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -128,7 +128,7 @@
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column9.HeaderText = "Random?";
             this.Column9.Name = "Column9";
-            this.Column9.Width = 53;
+            this.Column9.Width = 59;
             // 
             // Column4
             // 
@@ -161,8 +161,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer1.Size = new System.Drawing.Size(1011, 530);
-            this.splitContainer1.SplitterDistance = 305;
+            this.splitContainer1.Size = new System.Drawing.Size(1011, 574);
+            this.splitContainer1.SplitterDistance = 330;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitContainer2
@@ -180,8 +180,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1011, 305);
-            this.splitContainer2.SplitterDistance = 142;
+            this.splitContainer2.Size = new System.Drawing.Size(1011, 330);
+            this.splitContainer2.SplitterDistance = 153;
             this.splitContainer2.TabIndex = 0;
             // 
             // checkBox1
@@ -213,7 +213,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Panel2.Controls.Add(this.btnCreateAssignment);
             this.splitContainer3.Panel2.Controls.Add(this.btnCreateLabrun);
-            this.splitContainer3.Size = new System.Drawing.Size(1011, 159);
+            this.splitContainer3.Size = new System.Drawing.Size(1011, 173);
             this.splitContainer3.SplitterDistance = 856;
             this.splitContainer3.TabIndex = 7;
             // 
@@ -240,7 +240,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(856, 159);
+            this.dataGridView2.Size = new System.Drawing.Size(856, 173);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -273,7 +273,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(3, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 23);
+            this.button1.Size = new System.Drawing.Size(148, 25);
             this.button1.TabIndex = 7;
             this.button1.Text = "Generate combination";
             this.button1.UseVisualStyleBackColor = true;
@@ -282,9 +282,9 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(3, 92);
+            this.button5.Location = new System.Drawing.Point(3, 100);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(148, 23);
+            this.button5.Size = new System.Drawing.Size(148, 25);
             this.button5.TabIndex = 11;
             this.button5.Text = "Copy to clipboard";
             this.button5.UseVisualStyleBackColor = true;
@@ -293,9 +293,9 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(3, 23);
+            this.button2.Location = new System.Drawing.Point(3, 25);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 23);
+            this.button2.Size = new System.Drawing.Size(148, 25);
             this.button2.TabIndex = 8;
             this.button2.Text = "Full coverage";
             this.button2.UseVisualStyleBackColor = true;
@@ -304,9 +304,9 @@
             // btnCreateAssignment
             // 
             this.btnCreateAssignment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateAssignment.Location = new System.Drawing.Point(3, 69);
+            this.btnCreateAssignment.Location = new System.Drawing.Point(3, 75);
             this.btnCreateAssignment.Name = "btnCreateAssignment";
-            this.btnCreateAssignment.Size = new System.Drawing.Size(148, 23);
+            this.btnCreateAssignment.Size = new System.Drawing.Size(148, 25);
             this.btnCreateAssignment.TabIndex = 10;
             this.btnCreateAssignment.Text = "Create Assignment";
             this.btnCreateAssignment.UseVisualStyleBackColor = true;
@@ -315,9 +315,9 @@
             // btnCreateLabrun
             // 
             this.btnCreateLabrun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateLabrun.Location = new System.Drawing.Point(3, 46);
+            this.btnCreateLabrun.Location = new System.Drawing.Point(3, 50);
             this.btnCreateLabrun.Name = "btnCreateLabrun";
-            this.btnCreateLabrun.Size = new System.Drawing.Size(148, 23);
+            this.btnCreateLabrun.Size = new System.Drawing.Size(148, 25);
             this.btnCreateLabrun.TabIndex = 9;
             this.btnCreateLabrun.Text = "Create Labrun";
             this.btnCreateLabrun.UseVisualStyleBackColor = true;
@@ -340,7 +340,7 @@
             this.dataGridView3.ShowCellToolTips = false;
             this.dataGridView3.ShowEditingIcon = false;
             this.dataGridView3.ShowRowErrors = false;
-            this.dataGridView3.Size = new System.Drawing.Size(1011, 221);
+            this.dataGridView3.Size = new System.Drawing.Size(1011, 240);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView3_RowPostPaint);
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
@@ -352,9 +352,9 @@
             // 
             // SoftTestDesigner
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 530);
+            this.ClientSize = new System.Drawing.Size(1011, 574);
             this.Controls.Add(this.splitContainer1);
             this.Name = "SoftTestDesigner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

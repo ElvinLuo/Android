@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TestRun
+namespace TestRunPKG
 {
     using System.Collections.Generic;
     using System.Linq;

@@ -48,110 +48,110 @@ namespace SoftTestDesigner
             // lblTestTeam
             // 
             this.lblTestTeam.AutoSize = true;
-            this.lblTestTeam.Location = new System.Drawing.Point(54, 9);
+            this.lblTestTeam.Location = new System.Drawing.Point(54, 10);
             this.lblTestTeam.Name = "lblTestTeam";
-            this.lblTestTeam.Size = new System.Drawing.Size(59, 12);
+            this.lblTestTeam.Size = new System.Drawing.Size(54, 13);
             this.lblTestTeam.TabIndex = 0;
             this.lblTestTeam.Text = "Test team";
             // 
             // tbTestTeam
             // 
-            this.tbTestTeam.Location = new System.Drawing.Point(121, 9);
+            this.tbTestTeam.Location = new System.Drawing.Point(121, 10);
             this.tbTestTeam.Name = "tbTestTeam";
-            this.tbTestTeam.Size = new System.Drawing.Size(339, 21);
+            this.tbTestTeam.Size = new System.Drawing.Size(339, 20);
             this.tbTestTeam.TabIndex = 1;
             this.tbTestTeam.Text = "Lodging Inventory Systems";
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(60, 30);
+            this.lblCategory.Location = new System.Drawing.Point(60, 33);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(53, 12);
+            this.lblCategory.Size = new System.Drawing.Size(49, 13);
             this.lblCategory.TabIndex = 2;
             this.lblCategory.Text = "Category";
             // 
             // tbCategory
             // 
-            this.tbCategory.Location = new System.Drawing.Point(121, 30);
+            this.tbCategory.Location = new System.Drawing.Point(121, 33);
             this.tbCategory.Name = "tbCategory";
-            this.tbCategory.Size = new System.Drawing.Size(339, 21);
+            this.tbCategory.Size = new System.Drawing.Size(339, 20);
             this.tbCategory.TabIndex = 3;
             this.tbCategory.Text = "Regression";
             // 
             // lblRisktier
             // 
             this.lblRisktier.AutoSize = true;
-            this.lblRisktier.Location = new System.Drawing.Point(60, 51);
+            this.lblRisktier.Location = new System.Drawing.Point(60, 55);
             this.lblRisktier.Name = "lblRisktier";
-            this.lblRisktier.Size = new System.Drawing.Size(53, 12);
+            this.lblRisktier.Size = new System.Drawing.Size(42, 13);
             this.lblRisktier.TabIndex = 4;
             this.lblRisktier.Text = "Risktier";
             // 
             // tbRisktier
             // 
-            this.tbRisktier.Location = new System.Drawing.Point(121, 51);
+            this.tbRisktier.Location = new System.Drawing.Point(121, 55);
             this.tbRisktier.Name = "tbRisktier";
-            this.tbRisktier.Size = new System.Drawing.Size(339, 21);
+            this.tbRisktier.Size = new System.Drawing.Size(339, 20);
             this.tbRisktier.TabIndex = 5;
-            this.tbRisktier.Text = "1";
+            this.tbRisktier.Text = "2";
             // 
             // lblMethod
             // 
             this.lblMethod.AutoSize = true;
-            this.lblMethod.Location = new System.Drawing.Point(72, 72);
+            this.lblMethod.Location = new System.Drawing.Point(72, 78);
             this.lblMethod.Name = "lblMethod";
-            this.lblMethod.Size = new System.Drawing.Size(41, 12);
+            this.lblMethod.Size = new System.Drawing.Size(43, 13);
             this.lblMethod.TabIndex = 6;
             this.lblMethod.Text = "Method";
             // 
             // tbMethod
             // 
-            this.tbMethod.Location = new System.Drawing.Point(121, 72);
+            this.tbMethod.Location = new System.Drawing.Point(121, 78);
             this.tbMethod.Name = "tbMethod";
-            this.tbMethod.Size = new System.Drawing.Size(339, 21);
+            this.tbMethod.Size = new System.Drawing.Size(339, 20);
             this.tbMethod.TabIndex = 7;
-            this.tbMethod.Text = "Expedia.Automation.Test.Hotels.BMC.Functional.CheckUI";
+            this.tbMethod.Text = "Expedia.Automation.Test.Hotels.BMC.SingleRatePlanConversionUI.CheckUI";
             // 
             // lblLOBMaskName
             // 
             this.lblLOBMaskName.AutoSize = true;
-            this.lblLOBMaskName.Location = new System.Drawing.Point(36, 93);
+            this.lblLOBMaskName.Location = new System.Drawing.Point(36, 101);
             this.lblLOBMaskName.Name = "lblLOBMaskName";
-            this.lblLOBMaskName.Size = new System.Drawing.Size(77, 12);
+            this.lblLOBMaskName.Size = new System.Drawing.Size(83, 13);
             this.lblLOBMaskName.TabIndex = 8;
             this.lblLOBMaskName.Text = "LOBMask name";
             // 
             // tbLOBMaskName
             // 
-            this.tbLOBMaskName.Location = new System.Drawing.Point(121, 93);
+            this.tbLOBMaskName.Location = new System.Drawing.Point(121, 101);
             this.tbLOBMaskName.Name = "tbLOBMaskName";
-            this.tbLOBMaskName.Size = new System.Drawing.Size(339, 21);
+            this.tbLOBMaskName.Size = new System.Drawing.Size(339, 20);
             this.tbLOBMaskName.TabIndex = 9;
             this.tbLOBMaskName.Text = "Hotel";
             // 
             // lblEnvironmentType
             // 
             this.lblEnvironmentType.AutoSize = true;
-            this.lblEnvironmentType.Location = new System.Drawing.Point(12, 114);
+            this.lblEnvironmentType.Location = new System.Drawing.Point(12, 124);
             this.lblEnvironmentType.Name = "lblEnvironmentType";
-            this.lblEnvironmentType.Size = new System.Drawing.Size(101, 12);
+            this.lblEnvironmentType.Size = new System.Drawing.Size(89, 13);
             this.lblEnvironmentType.TabIndex = 10;
             this.lblEnvironmentType.Text = "Environment type";
             // 
             // tbEnvironmentType
             // 
-            this.tbEnvironmentType.Location = new System.Drawing.Point(121, 114);
+            this.tbEnvironmentType.Location = new System.Drawing.Point(121, 124);
             this.tbEnvironmentType.Name = "tbEnvironmentType";
-            this.tbEnvironmentType.Size = new System.Drawing.Size(339, 21);
+            this.tbEnvironmentType.Size = new System.Drawing.Size(339, 20);
             this.tbEnvironmentType.TabIndex = 11;
             this.tbEnvironmentType.Text = "Lab";
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(304, 143);
+            this.btnGenerate.Location = new System.Drawing.Point(304, 155);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerate.Size = new System.Drawing.Size(75, 25);
             this.btnGenerate.TabIndex = 12;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -159,9 +159,9 @@ namespace SoftTestDesigner
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(385, 143);
+            this.btnCancel.Location = new System.Drawing.Point(385, 155);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -169,9 +169,9 @@ namespace SoftTestDesigner
             // 
             // SoftTestSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 172);
+            this.ClientSize = new System.Drawing.Size(477, 186);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.tbEnvironmentType);

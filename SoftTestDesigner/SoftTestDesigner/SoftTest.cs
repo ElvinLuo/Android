@@ -4,14 +4,13 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace SoftTest
+namespace SoftTestPKG
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Xml.Serialization;
     using System.IO;
+    using System.Linq;
+    using System.Xml.Serialization;
     using SoftTestDesigner;
 
     /// <summary>
@@ -173,6 +172,8 @@ namespace SoftTest
                 string.Empty));
             }
 
+            testData.Sort();
+
             LOBMasks = new List<lobmask>();
             LOBMasks.Add(new lobmask(lobmask));
 
@@ -191,12 +192,20 @@ namespace SoftTest
             environmentTypes.Add(new environmenttype(environmentType));
 
             riskitems = new List<riskitem>();
-            filename = filename.Replace('.', '\\') + ".soft.xml";
+            filename = filename.Replace('.', '\\') + ".test.xml";
 
             string path = Path.GetDirectoryName(filename);
 
-            if (!Directory.Exists(path))
-            { Directory.CreateDirectory(path); }
+            if (File.Exists(filename))
+            {
+                SoftTest existingSoftTest = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), filename) as SoftTest;
+                this.id = existingSoftTest.id;
+            }
+            else
+            {
+                if (!Directory.Exists(path))
+                { Directory.CreateDirectory(path); }
+            }
 
             Serializer.CreateInstance().SerializeToXML(
                 this,
@@ -206,10 +215,14 @@ namespace SoftTest
 
     }
 
-    public struct Invoke
+    public class Invoke
     {
         public string module;
         public string method;
+
+        public Invoke()
+        {
+        }
 
         public Invoke(string module, string method)
         {
@@ -218,11 +231,15 @@ namespace SoftTest
         }
     }
 
-    public struct Data
+    public class Data : IComparable
     {
         public string dataName;
         public string defaultValue;
         public string stripingValues;
+
+        public Data()
+        {
+        }
 
         public Data(string dataName, string defaultValue, string stripingValues)
         {
@@ -230,12 +247,21 @@ namespace SoftTest
             this.defaultValue = defaultValue;
             this.stripingValues = stripingValues;
         }
+
+        public int CompareTo(object obj)
+        {
+            return this.dataName.CompareTo((obj as Data).dataName);
+        }
     }
 
-    public struct lobmask
+    public class lobmask
     {
         [XmlAttribute]
         public string name;
+
+        public lobmask()
+        {
+        }
 
         public lobmask(string name)
         {
@@ -243,10 +269,14 @@ namespace SoftTest
         }
     }
 
-    public struct siteflag
+    public class siteflag
     {
         [XmlAttribute]
         public string name;
+
+        public siteflag()
+        {
+        }
 
         public siteflag(string name)
         {
@@ -254,10 +284,14 @@ namespace SoftTest
         }
     }
 
-    public struct environmenttype
+    public class environmenttype
     {
         [XmlAttribute]
         public string name;
+
+        public environmenttype()
+        {
+        }
 
         public environmenttype(string name)
         {
@@ -265,10 +299,14 @@ namespace SoftTest
         }
     }
 
-    public struct riskitem
+    public class riskitem
     {
         [XmlAttribute]
         public string name;
+
+        public riskitem()
+        {
+        }
 
         public riskitem(string name)
         {

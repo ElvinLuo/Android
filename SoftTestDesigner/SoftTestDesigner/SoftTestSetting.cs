@@ -23,7 +23,7 @@ namespace SoftTestDesigner
         {
             for (int i = 0; i < SoftTestNameList.Count; i++)
             {
-                new SoftTest.SoftTest(
+                new SoftTestPKG.SoftTest(
                     i,
                     this.tbTestTeam.Text,
                     this.tbCategory.Text,

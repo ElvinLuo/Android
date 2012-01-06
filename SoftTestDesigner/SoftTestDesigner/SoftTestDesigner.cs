@@ -275,16 +275,16 @@ namespace SoftTestDesigner
 
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
-                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString());
+                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
             }
 
             for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
             {
-                softTestNameList.Add(dataGridView3.Rows[i].Cells[0].Value.ToString());
+                softTestNameList.Add(dataGridView3.Rows[i].Cells[0].Value.ToString().Trim());
 
                 string[] valueArray = new string[dataGridView3.Columns.Count - 1];
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
-                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
+                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString().Trim(); }
                 valueArrayList.Add(valueArray);
             }
 
@@ -363,7 +363,7 @@ namespace SoftTestDesigner
             List<string> itemNameList = new List<string>();
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
-                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString());
+                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
             }
 
             string[] softTestNameArray = new string[dataGridView3.Rows.Count - 1];
@@ -371,11 +371,11 @@ namespace SoftTestDesigner
             List<string[]> valueArrayList = new List<string[]>();
             for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
             {
-                softTestNameArray[i - 1] = dataGridView3.Rows[i].Cells[0].Value.ToString();
+                softTestNameArray[i - 1] = dataGridView3.Rows[i].Cells[0].Value.ToString().Trim();
 
                 valueArray = new string[dataGridView3.Columns.Count - 1];
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
-                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString(); }
+                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString().Trim(); }
 
                 valueArrayList.Add(valueArray);
             }
