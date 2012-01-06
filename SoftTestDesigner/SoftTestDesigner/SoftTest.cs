@@ -153,6 +153,8 @@ namespace SoftTestPKG
             List<string> nameList,
             string[] valueArray)
         {
+            if (string.IsNullOrEmpty(filename)) return;
+
             this.id = id;
             this.testTeam = testTeam;
             this.category = category;
@@ -166,6 +168,12 @@ namespace SoftTestPKG
             {
                 string configName = nameList.ElementAt(i);
                 string configValue = valueArray[i];
+
+                if (string.IsNullOrEmpty(configName) ||
+                    string.IsNullOrEmpty(configValue) ||
+                    configValue.ToLower().Equals("null"))
+                { continue; }
+
                 testData.Add(new Data(
                 configName,
                 configValue,
