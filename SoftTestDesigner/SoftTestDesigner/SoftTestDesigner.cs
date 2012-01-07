@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using SoftTestPKG;
 
 namespace SoftTestDesigner
 {
@@ -96,54 +98,82 @@ namespace SoftTestDesigner
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSelectFolder_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row;
-            List<ConfigItem> configItems = new List<ConfigItem>();
+            DialogResult dr = this.folderBrowserDialog.ShowDialog();
 
-            dataGridView3.Columns.Clear();
-            dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
-
-            string item, names, values, random, coverages;
-
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            if (dr == DialogResult.OK)
             {
-                row = dataGridView1.Rows[i];
-                item = row.Cells[1].Value.ToString();
-                names = row.Cells[2].Value.ToString();
-                values = row.Cells[3].Value.ToString();
-                random = row.Cells[4].Value.ToString();
-                coverages = row.Cells[5].Value.ToString();
+                this.dataGridView3.Columns.Clear();
 
-                if ((bool)row.Cells[0].Value)
+                SoftTest softTest;
+                List<SoftTest> softTestList = new List<SoftTest>();
+                List<string> softTestNameList = new List<string>();
+                List<string> itemNameList = new List<string>();
+                List<List<string>> valueList = new List<List<string>>();
+                string selectedPath = this.folderBrowserDialog.SelectedPath;
+
+                string[] files = Directory.GetFiles(
+                    selectedPath,
+                    "*.xml",
+                    SearchOption.AllDirectories);
+
+                foreach (string file in files)
                 {
-                    configItems.Add(new ConfigItem(item, names, values, random, coverages));
-                    dataGridView3.Columns.Add(item, item);
+                    softTest = (SoftTest)Serializer.CreateInstance().DeserializeFromXML(typeof(SoftTest), file);
+                    softTestList.Add(softTest);
+
+                    foreach (Data data in softTest.testData)
+                    {
+                        if (!itemNameList.Contains(data.dataName))
+                        { itemNameList.Add(data.dataName); }
+                    }
+                }
+
+                itemNameList.Sort();
+                string[] row = new string[itemNameList.Count + 1];
+                row[0] = "Soft Test Name";
+
+                for (int i = 0; i < itemNameList.Count; i++)
+                {
+                    string itemName = itemNameList.ElementAt(i);
+                    this.dataGridView3.Columns.Add(itemName, itemName);
+                    row[i + 1] = itemName;
+                }
+
+                this.dataGridView3.Rows.Add(row);
+
+                for (int i = 0; i < files.Length; i++)
+                {
+                    row[0] = files[i].Replace(selectedPath.Substring(0, selectedPath.LastIndexOf("\\") + 1), "");
+                    row[0] = row[0].Replace(".test.xml", "");
+                    row[0] = row[0].Replace("\\", ".");
+                    softTest = softTestList.ElementAt(i);
+
+                    for (int j = 0; j < itemNameList.Count; j++)
+                    {
+                        row[j + 1] = GetValue(itemNameList.ElementAt(j), softTest);
+                    }
+
+                    this.dataGridView3.Rows.Add(row);
+                }
+            }
+        }
+
+        private string GetValue(string itemName, SoftTest softTest)
+        {
+            string result = string.Empty;
+
+            foreach (Data data in softTest.testData)
+            {
+                if (data.dataName.Equals(itemName))
+                {
+                    result = data.defaultValue;
+                    break;
                 }
             }
 
-            int index;
-            string softTestName;
-            ConfigItem configItem;
-            List<string> cells = new List<string>();
-
-            while (NeedToContinue(configItems))
-            {
-                cells.Clear();
-                softTestName = "";
-
-                for (int i = 0; i < configItems.Count; i++)
-                {
-                    configItem = configItems.ElementAt(i);
-                    index = configItem.GetIndex();
-                    softTestName += configItem.names[index];
-                    cells.Add(configItem.values[index]);
-                }
-                cells.Insert(0, softTestName);
-                dataGridView3.Rows.Add(cells.ToArray());
-            }
-
-            dataGridView3.Rows[0].Selected = false;
+            return result;
         }
 
         private bool NeedToContinue(List<ConfigItem> items)
@@ -385,6 +415,12 @@ namespace SoftTestDesigner
                 itemNameList,
                 valueArrayList);
             testRunSetting.ShowDialog();
+        }
+
+        private void btnClearDataGridView_Click(object sender, EventArgs e)
+        {
+            this.dataGridView3.Columns.Clear();
+            this.dataGridView3.Columns.Add("", "");
         }
 
     }

@@ -66,7 +66,6 @@ namespace SoftTestDesigner
 
             foreach (KeyValuePair<string, string> pair in softCases)
             {
-                new SoftTestPKG.SoftTest(pair.Key, input.configItemNames, pair.Value);
             }
         }
     }
