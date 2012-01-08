@@ -423,6 +423,16 @@ namespace SoftTestDesigner
             this.dataGridView3.Columns.Add("", "");
         }
 
+        private void btnSaveRestrictions_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialog.ShowDialog();
+        }
+
+        private void saveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string file = this.saveFileDialog.FileName;
+        }
+
     }
 
 }

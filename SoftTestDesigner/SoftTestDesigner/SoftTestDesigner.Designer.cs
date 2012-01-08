@@ -54,6 +54,9 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnSaveRestrictions = new System.Windows.Forms.Button();
+            this.btnOpenRestrictions = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -94,7 +97,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 140);
+            this.dataGridView1.Size = new System.Drawing.Size(1011, 89);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -183,7 +186,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(1011, 304);
-            this.splitContainer2.SplitterDistance = 140;
+            this.splitContainer2.SplitterDistance = 89;
             this.splitContainer2.TabIndex = 0;
             // 
             // checkBox1
@@ -210,13 +213,15 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.btnOpenRestrictions);
+            this.splitContainer3.Panel2.Controls.Add(this.btnSaveRestrictions);
             this.splitContainer3.Panel2.Controls.Add(this.btnClearDataGridView);
             this.splitContainer3.Panel2.Controls.Add(this.button1);
             this.splitContainer3.Panel2.Controls.Add(this.button5);
             this.splitContainer3.Panel2.Controls.Add(this.btnSelectFolder);
             this.splitContainer3.Panel2.Controls.Add(this.btnCreateAssignment);
             this.splitContainer3.Panel2.Controls.Add(this.btnCreateLabrun);
-            this.splitContainer3.Size = new System.Drawing.Size(1011, 160);
+            this.splitContainer3.Size = new System.Drawing.Size(1011, 211);
             this.splitContainer3.SplitterDistance = 856;
             this.splitContainer3.TabIndex = 7;
             // 
@@ -243,7 +248,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(856, 160);
+            this.dataGridView2.Size = new System.Drawing.Size(856, 211);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -367,6 +372,31 @@
             // 
             this.folderBrowserDialog.Description = "Select a folder";
             // 
+            // btnSaveRestrictions
+            // 
+            this.btnSaveRestrictions.Location = new System.Drawing.Point(3, 161);
+            this.btnSaveRestrictions.Name = "btnSaveRestrictions";
+            this.btnSaveRestrictions.Size = new System.Drawing.Size(148, 23);
+            this.btnSaveRestrictions.TabIndex = 13;
+            this.btnSaveRestrictions.Text = "Save restrictions";
+            this.btnSaveRestrictions.UseVisualStyleBackColor = true;
+            this.btnSaveRestrictions.Click += new System.EventHandler(this.btnSaveRestrictions_Click);
+            // 
+            // btnOpenRestrictions
+            // 
+            this.btnOpenRestrictions.Location = new System.Drawing.Point(3, 138);
+            this.btnOpenRestrictions.Name = "btnOpenRestrictions";
+            this.btnOpenRestrictions.Size = new System.Drawing.Size(148, 23);
+            this.btnOpenRestrictions.TabIndex = 14;
+            this.btnOpenRestrictions.Text = "Open restrictions";
+            this.btnOpenRestrictions.UseVisualStyleBackColor = true;
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "txt";
+            this.saveFileDialog.Title = "Specify file name";
+            this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog_FileOk);
+            // 
             // SoftTestDesigner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -427,6 +457,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Button btnClearDataGridView;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.Button btnOpenRestrictions;
+        private System.Windows.Forms.Button btnSaveRestrictions;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 
