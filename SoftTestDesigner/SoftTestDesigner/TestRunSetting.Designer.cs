@@ -109,7 +109,7 @@ namespace SoftTestDesigner
             this.tbVersion.Name = "tbVersion";
             this.tbVersion.Size = new System.Drawing.Size(436, 20);
             this.tbVersion.TabIndex = 7;
-            this.tbVersion.Text = "2";
+            this.tbVersion.Text = "2.0";
             // 
             // lblMethodName
             // 
@@ -188,7 +188,7 @@ namespace SoftTestDesigner
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Button btnCancel;
 
-        private string[] SoftTestNameArray { get; set; }
+        private List<string> SoftTestNameList { get; set; }
         private List<string> ItemNameList { get; set; }
         private List<string[]> ValueArrayList { get; set; }
     }

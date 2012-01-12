@@ -20,10 +20,17 @@ namespace SoftTestDesigner
             dataGridView1.Controls.Add(checkBox1);
             dataGridView2.Controls.Add(checkBox2);
 
-            dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", false, "1/1/2");
+            //dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", false, "1/1/2");
+            dataGridView1.Rows.Add(true, "HotelContractType", "Dual.", "3", false, "1");
             dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "3/1/1");
             dataGridView1.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", false, "2/1");
-            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/2");
+            dataGridView1.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/5");
+            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/5");
+            dataGridView1.Rows.Add(true, "RatePlanActive", "Active_/Inactive_", "True/False", true, "1/5");
+            dataGridView1.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "4/1/1");
+            dataGridView1.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
+            dataGridView1.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
+
             dataGridView1.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
             dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", true, "1/7");
 
@@ -391,27 +398,34 @@ namespace SoftTestDesigner
         private void btnCreateAssignment_Click(object sender, EventArgs e)
         {
             List<string> itemNameList = new List<string>();
+
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
                 itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
             }
 
-            string[] softTestNameArray = new string[dataGridView3.Rows.Count - 1];
+            string softTestName;
             string[] valueArray;
+            List<string> softTestNameList = new List<string>();
             List<string[]> valueArrayList = new List<string[]>();
+
             for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
             {
-                softTestNameArray[i - 1] = dataGridView3.Rows[i].Cells[0].Value.ToString().Trim();
+                softTestName = dataGridView3.Rows[i].Cells[0].Value.ToString().Trim();
+
+                if (string.IsNullOrEmpty(softTestName) || softTestName.Equals("")) continue;
 
                 valueArray = new string[dataGridView3.Columns.Count - 1];
+
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
                 { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString().Trim(); }
 
+                softTestNameList.Add(softTestName);
                 valueArrayList.Add(valueArray);
             }
 
             TestRunSetting testRunSetting = new TestRunSetting(
-                softTestNameArray,
+                softTestNameList,
                 itemNameList,
                 valueArrayList);
             testRunSetting.ShowDialog();

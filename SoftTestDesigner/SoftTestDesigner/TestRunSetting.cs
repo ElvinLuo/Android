@@ -8,11 +8,11 @@ namespace SoftTestDesigner
     public partial class TestRunSetting : Form
     {
         public TestRunSetting(
-            string[] softTestNameArray,
+            List<string> softTestNameList,
             List<string> itemNameList,
             List<string[]> valueArrayList)
         {
-            SoftTestNameArray = softTestNameArray;
+            SoftTestNameList = softTestNameList;
             ItemNameList = itemNameList;
             ValueArrayList = valueArrayList;
 
@@ -26,7 +26,7 @@ namespace SoftTestDesigner
                 this.tbManagerName.Text,
                 this.tbBranchName.Text,
                 this.tbVersion.Text,
-                SoftTestNameArray,
+                SoftTestNameList,
                 ItemNameList,
                 ValueArrayList,
                 this.tbMethodName.Text,

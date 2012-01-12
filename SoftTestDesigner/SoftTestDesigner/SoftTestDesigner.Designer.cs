@@ -45,6 +45,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnOpenRestrictions = new System.Windows.Forms.Button();
+            this.btnSaveRestrictions = new System.Windows.Forms.Button();
             this.btnClearDataGridView = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -54,8 +56,6 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnSaveRestrictions = new System.Windows.Forms.Button();
-            this.btnOpenRestrictions = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -97,7 +97,7 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1011, 89);
+            this.dataGridView1.Size = new System.Drawing.Size(1011, 96);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -133,7 +133,7 @@
             this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column9.HeaderText = "Random?";
             this.Column9.Name = "Column9";
-            this.Column9.Width = 53;
+            this.Column9.Width = 59;
             // 
             // Column4
             // 
@@ -166,8 +166,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer1.Size = new System.Drawing.Size(1011, 530);
-            this.splitContainer1.SplitterDistance = 304;
+            this.splitContainer1.Size = new System.Drawing.Size(1011, 574);
+            this.splitContainer1.SplitterDistance = 329;
             this.splitContainer1.TabIndex = 3;
             // 
             // splitContainer2
@@ -185,8 +185,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(1011, 304);
-            this.splitContainer2.SplitterDistance = 89;
+            this.splitContainer2.Size = new System.Drawing.Size(1011, 329);
+            this.splitContainer2.SplitterDistance = 96;
             this.splitContainer2.TabIndex = 0;
             // 
             // checkBox1
@@ -221,7 +221,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.btnSelectFolder);
             this.splitContainer3.Panel2.Controls.Add(this.btnCreateAssignment);
             this.splitContainer3.Panel2.Controls.Add(this.btnCreateLabrun);
-            this.splitContainer3.Size = new System.Drawing.Size(1011, 211);
+            this.splitContainer3.Size = new System.Drawing.Size(1011, 229);
             this.splitContainer3.SplitterDistance = 856;
             this.splitContainer3.TabIndex = 7;
             // 
@@ -248,7 +248,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(856, 211);
+            this.dataGridView2.Size = new System.Drawing.Size(856, 229);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -276,11 +276,30 @@
             this.Column6.UseColumnTextForButtonValue = true;
             this.Column6.Width = 50;
             // 
+            // btnOpenRestrictions
+            // 
+            this.btnOpenRestrictions.Location = new System.Drawing.Point(3, 150);
+            this.btnOpenRestrictions.Name = "btnOpenRestrictions";
+            this.btnOpenRestrictions.Size = new System.Drawing.Size(148, 25);
+            this.btnOpenRestrictions.TabIndex = 14;
+            this.btnOpenRestrictions.Text = "Open restrictions";
+            this.btnOpenRestrictions.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveRestrictions
+            // 
+            this.btnSaveRestrictions.Location = new System.Drawing.Point(3, 174);
+            this.btnSaveRestrictions.Name = "btnSaveRestrictions";
+            this.btnSaveRestrictions.Size = new System.Drawing.Size(148, 25);
+            this.btnSaveRestrictions.TabIndex = 13;
+            this.btnSaveRestrictions.Text = "Save restrictions";
+            this.btnSaveRestrictions.UseVisualStyleBackColor = true;
+            this.btnSaveRestrictions.Click += new System.EventHandler(this.btnSaveRestrictions_Click);
+            // 
             // btnClearDataGridView
             // 
-            this.btnClearDataGridView.Location = new System.Drawing.Point(3, 115);
+            this.btnClearDataGridView.Location = new System.Drawing.Point(3, 125);
             this.btnClearDataGridView.Name = "btnClearDataGridView";
-            this.btnClearDataGridView.Size = new System.Drawing.Size(148, 23);
+            this.btnClearDataGridView.Size = new System.Drawing.Size(148, 25);
             this.btnClearDataGridView.TabIndex = 12;
             this.btnClearDataGridView.Text = "Clear";
             this.btnClearDataGridView.UseVisualStyleBackColor = true;
@@ -291,7 +310,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(3, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 23);
+            this.button1.Size = new System.Drawing.Size(148, 25);
             this.button1.TabIndex = 7;
             this.button1.Text = "Generate combination";
             this.button1.UseVisualStyleBackColor = true;
@@ -300,9 +319,9 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(3, 92);
+            this.button5.Location = new System.Drawing.Point(3, 100);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(148, 23);
+            this.button5.Size = new System.Drawing.Size(148, 25);
             this.button5.TabIndex = 11;
             this.button5.Text = "Copy to clipboard";
             this.button5.UseVisualStyleBackColor = true;
@@ -311,9 +330,9 @@
             // btnSelectFolder
             // 
             this.btnSelectFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectFolder.Location = new System.Drawing.Point(3, 23);
+            this.btnSelectFolder.Location = new System.Drawing.Point(3, 25);
             this.btnSelectFolder.Name = "btnSelectFolder";
-            this.btnSelectFolder.Size = new System.Drawing.Size(148, 23);
+            this.btnSelectFolder.Size = new System.Drawing.Size(148, 25);
             this.btnSelectFolder.TabIndex = 8;
             this.btnSelectFolder.Text = "Select a folder";
             this.btnSelectFolder.UseVisualStyleBackColor = true;
@@ -322,9 +341,9 @@
             // btnCreateAssignment
             // 
             this.btnCreateAssignment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateAssignment.Location = new System.Drawing.Point(3, 69);
+            this.btnCreateAssignment.Location = new System.Drawing.Point(3, 75);
             this.btnCreateAssignment.Name = "btnCreateAssignment";
-            this.btnCreateAssignment.Size = new System.Drawing.Size(148, 23);
+            this.btnCreateAssignment.Size = new System.Drawing.Size(148, 25);
             this.btnCreateAssignment.TabIndex = 10;
             this.btnCreateAssignment.Text = "Create Assignment";
             this.btnCreateAssignment.UseVisualStyleBackColor = true;
@@ -333,9 +352,9 @@
             // btnCreateLabrun
             // 
             this.btnCreateLabrun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateLabrun.Location = new System.Drawing.Point(3, 46);
+            this.btnCreateLabrun.Location = new System.Drawing.Point(3, 50);
             this.btnCreateLabrun.Name = "btnCreateLabrun";
-            this.btnCreateLabrun.Size = new System.Drawing.Size(148, 23);
+            this.btnCreateLabrun.Size = new System.Drawing.Size(148, 25);
             this.btnCreateLabrun.TabIndex = 9;
             this.btnCreateLabrun.Text = "Create Labrun";
             this.btnCreateLabrun.UseVisualStyleBackColor = true;
@@ -358,7 +377,7 @@
             this.dataGridView3.ShowCellToolTips = false;
             this.dataGridView3.ShowEditingIcon = false;
             this.dataGridView3.ShowRowErrors = false;
-            this.dataGridView3.Size = new System.Drawing.Size(1011, 222);
+            this.dataGridView3.Size = new System.Drawing.Size(1011, 241);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView3_RowPostPaint);
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
@@ -372,25 +391,6 @@
             // 
             this.folderBrowserDialog.Description = "Select a folder";
             // 
-            // btnSaveRestrictions
-            // 
-            this.btnSaveRestrictions.Location = new System.Drawing.Point(3, 161);
-            this.btnSaveRestrictions.Name = "btnSaveRestrictions";
-            this.btnSaveRestrictions.Size = new System.Drawing.Size(148, 23);
-            this.btnSaveRestrictions.TabIndex = 13;
-            this.btnSaveRestrictions.Text = "Save restrictions";
-            this.btnSaveRestrictions.UseVisualStyleBackColor = true;
-            this.btnSaveRestrictions.Click += new System.EventHandler(this.btnSaveRestrictions_Click);
-            // 
-            // btnOpenRestrictions
-            // 
-            this.btnOpenRestrictions.Location = new System.Drawing.Point(3, 138);
-            this.btnOpenRestrictions.Name = "btnOpenRestrictions";
-            this.btnOpenRestrictions.Size = new System.Drawing.Size(148, 23);
-            this.btnOpenRestrictions.TabIndex = 14;
-            this.btnOpenRestrictions.Text = "Open restrictions";
-            this.btnOpenRestrictions.UseVisualStyleBackColor = true;
-            // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "txt";
@@ -399,9 +399,9 @@
             // 
             // SoftTestDesigner
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 530);
+            this.ClientSize = new System.Drawing.Size(1011, 574);
             this.Controls.Add(this.splitContainer1);
             this.Name = "SoftTestDesigner";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

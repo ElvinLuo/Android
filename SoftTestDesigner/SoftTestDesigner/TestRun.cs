@@ -39,7 +39,7 @@ namespace TestRunPKG
             string managername,
             string branchName,
             string version,
-            string[] softTestNameArray,
+            List<string> softTestNameList,
             List<string> testConfigNameList,
             List<string[]> testConfigValueList,
             string methodModule,
@@ -52,11 +52,15 @@ namespace TestRunPKG
             this.version = version ?? "2.0";
 
             Assignments = new List<Assignment>();
-            for (int i = 0; i < softTestNameArray.Length - 1; i++)
+            for (int i = 0; i < softTestNameList.Count; i++)
             {
+                if (string.IsNullOrEmpty(softTestNameList[i]) ||
+                    softTestNameList[i].Equals(""))
+                { continue; }
+
                 Assignment assignment = new Assignment(
                     i,
-                    softTestNameArray,
+                    softTestNameList,
                     testConfigNameList,
                     testConfigValueList.ElementAt(i),
                     methodModule,
@@ -95,7 +99,7 @@ namespace TestRunPKG
 
         public Assignment(
             int i,
-            string[] softTestNameArray,
+            List<string> softTestNameArray,
             List<string> testConfigNameList,
             string[] testConfigValueArray,
             string methodModule,
@@ -107,8 +111,14 @@ namespace TestRunPKG
             SoftTest = new SoftTest(softTestNameArray[i], i, testConfigNameList, testConfigValueArray, methodModule);
 
             Configs = new List<Var>();
-            Configs.Add(new Var());
+            Configs.Add(new Var("eap", "0"));
+            Configs.Add(new Var("flags", "4"));
             Configs.Add(new Var("langid", "1033"));
+            Configs.Add(new Var("servername", "CHELLIWEBQA301"));
+            Configs.Add(new Var("tpid", "20001"));
+            Configs.Add(new Var("utilsite", "10.184.16.200"));
+            Configs.Add(new Var("himssite", "10.184.17.234"));
+            Configs.Add(new Var("site", "10.184.17.234"));
         }
     }
 
@@ -144,16 +154,21 @@ namespace TestRunPKG
         {
             this.name = softTestName;
             this.id = id.ToString();
+            TestConfig testConfig;
             TestConfigs = new List<TestConfig>();
 
             for (int i = 0; i < testConfigNameList.Count; i++)
             {
-                TestConfig testConfig = new TestConfig(testConfigNameList[i], testConfigValueArray[i]);
+                if (string.IsNullOrEmpty(testConfigNameList[i]) ||
+                    string.IsNullOrEmpty(testConfigValueArray[i]))
+                { continue; }
+
+                testConfig = new TestConfig(testConfigNameList[i], testConfigValueArray[i]);
                 TestConfigs.Add(testConfig);
             }
 
             Methods = new List<Method>();
-            Methods.Add(new Method(methodModule ?? "HotelTest.dll", softTestName));
+            Methods.Add(new Method("HotelTest.dll", methodModule));
         }
     }
 
