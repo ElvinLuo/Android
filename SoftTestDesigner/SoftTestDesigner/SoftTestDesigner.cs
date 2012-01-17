@@ -321,7 +321,12 @@ namespace SoftTestDesigner
 
                 string[] valueArray = new string[dataGridView3.Columns.Count - 1];
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
-                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString().Trim(); }
+                {
+                    valueArray[j - 1] =
+                        dataGridView3.Rows[i].Cells[j].Value == null ?
+                        string.Empty :
+                        dataGridView3.Rows[i].Cells[j].Value.ToString().Trim();
+                }
                 valueArrayList.Add(valueArray);
             }
 
@@ -401,7 +406,10 @@ namespace SoftTestDesigner
 
             for (int i = 1; i < dataGridView3.Columns.Count; i++)
             {
-                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
+                itemNameList.Add(
+                    dataGridView3.Rows[0].Cells[i].Value == null ?
+                    string.Empty :
+                    dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
             }
 
             string softTestName;
@@ -411,14 +419,22 @@ namespace SoftTestDesigner
 
             for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
             {
-                softTestName = dataGridView3.Rows[i].Cells[0].Value.ToString().Trim();
+                softTestName =
+                    dataGridView3.Rows[i].Cells[0].Value == null ?
+                    string.Empty :
+                    dataGridView3.Rows[i].Cells[0].Value.ToString().Trim();
 
                 if (string.IsNullOrEmpty(softTestName) || softTestName.Equals("")) continue;
 
                 valueArray = new string[dataGridView3.Columns.Count - 1];
 
                 for (int j = 1; j < dataGridView3.Columns.Count; j++)
-                { valueArray[j - 1] = dataGridView3.Rows[i].Cells[j].Value.ToString().Trim(); }
+                {
+                    valueArray[j - 1] =
+                        dataGridView3.Rows[i].Cells[j].Value == null ?
+                        string.Empty :
+                        dataGridView3.Rows[i].Cells[j].Value.ToString().Trim();
+                }
 
                 softTestNameList.Add(softTestName);
                 valueArrayList.Add(valueArray);

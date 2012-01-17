@@ -101,6 +101,7 @@ namespace SoftTestPKG
             {
                 SoftTest existingSoftTest = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), filename) as SoftTest;
                 this.id = existingSoftTest.id;
+                this.invoke.method = existingSoftTest.invoke.method;
             }
             else
             {

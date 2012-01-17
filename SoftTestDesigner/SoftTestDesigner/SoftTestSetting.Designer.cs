@@ -48,7 +48,7 @@ namespace SoftTestDesigner
             // lblTestTeam
             // 
             this.lblTestTeam.AutoSize = true;
-            this.lblTestTeam.Location = new System.Drawing.Point(54, 10);
+            this.lblTestTeam.Location = new System.Drawing.Point(65, 10);
             this.lblTestTeam.Name = "lblTestTeam";
             this.lblTestTeam.Size = new System.Drawing.Size(54, 13);
             this.lblTestTeam.TabIndex = 0;
@@ -65,7 +65,7 @@ namespace SoftTestDesigner
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(60, 33);
+            this.lblCategory.Location = new System.Drawing.Point(70, 33);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(49, 13);
             this.lblCategory.TabIndex = 2;
@@ -82,7 +82,7 @@ namespace SoftTestDesigner
             // lblRisktier
             // 
             this.lblRisktier.AutoSize = true;
-            this.lblRisktier.Location = new System.Drawing.Point(60, 55);
+            this.lblRisktier.Location = new System.Drawing.Point(77, 55);
             this.lblRisktier.Name = "lblRisktier";
             this.lblRisktier.Size = new System.Drawing.Size(42, 13);
             this.lblRisktier.TabIndex = 4;
@@ -99,24 +99,26 @@ namespace SoftTestDesigner
             // lblMethod
             // 
             this.lblMethod.AutoSize = true;
-            this.lblMethod.Location = new System.Drawing.Point(72, 78);
+            this.lblMethod.Location = new System.Drawing.Point(76, 115);
             this.lblMethod.Name = "lblMethod";
             this.lblMethod.Size = new System.Drawing.Size(43, 13);
             this.lblMethod.TabIndex = 6;
             this.lblMethod.Text = "Method";
+            this.lblMethod.Visible = false;
             // 
             // tbMethod
             // 
-            this.tbMethod.Location = new System.Drawing.Point(121, 78);
+            this.tbMethod.Location = new System.Drawing.Point(121, 115);
             this.tbMethod.Name = "tbMethod";
             this.tbMethod.Size = new System.Drawing.Size(339, 20);
             this.tbMethod.TabIndex = 7;
             this.tbMethod.Text = "Expedia.Automation.Test.Hotels.BMC.SingleRatePlanConversionUI.CheckUI";
+            this.tbMethod.Visible = false;
             // 
             // lblLOBMaskName
             // 
             this.lblLOBMaskName.AutoSize = true;
-            this.lblLOBMaskName.Location = new System.Drawing.Point(36, 101);
+            this.lblLOBMaskName.Location = new System.Drawing.Point(36, 75);
             this.lblLOBMaskName.Name = "lblLOBMaskName";
             this.lblLOBMaskName.Size = new System.Drawing.Size(83, 13);
             this.lblLOBMaskName.TabIndex = 8;
@@ -124,7 +126,7 @@ namespace SoftTestDesigner
             // 
             // tbLOBMaskName
             // 
-            this.tbLOBMaskName.Location = new System.Drawing.Point(121, 101);
+            this.tbLOBMaskName.Location = new System.Drawing.Point(121, 75);
             this.tbLOBMaskName.Name = "tbLOBMaskName";
             this.tbLOBMaskName.Size = new System.Drawing.Size(339, 20);
             this.tbLOBMaskName.TabIndex = 9;
@@ -133,7 +135,7 @@ namespace SoftTestDesigner
             // lblEnvironmentType
             // 
             this.lblEnvironmentType.AutoSize = true;
-            this.lblEnvironmentType.Location = new System.Drawing.Point(12, 124);
+            this.lblEnvironmentType.Location = new System.Drawing.Point(30, 95);
             this.lblEnvironmentType.Name = "lblEnvironmentType";
             this.lblEnvironmentType.Size = new System.Drawing.Size(89, 13);
             this.lblEnvironmentType.TabIndex = 10;
@@ -141,7 +143,7 @@ namespace SoftTestDesigner
             // 
             // tbEnvironmentType
             // 
-            this.tbEnvironmentType.Location = new System.Drawing.Point(121, 124);
+            this.tbEnvironmentType.Location = new System.Drawing.Point(121, 95);
             this.tbEnvironmentType.Name = "tbEnvironmentType";
             this.tbEnvironmentType.Size = new System.Drawing.Size(339, 20);
             this.tbEnvironmentType.TabIndex = 11;
