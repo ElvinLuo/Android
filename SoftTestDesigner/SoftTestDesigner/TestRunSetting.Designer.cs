@@ -46,7 +46,7 @@ namespace SoftTestDesigner
             // lblTestRunName
             // 
             this.lblTestRunName.AutoSize = true;
-            this.lblTestRunName.Location = new System.Drawing.Point(13, 14);
+            this.lblTestRunName.Location = new System.Drawing.Point(23, 14);
             this.lblTestRunName.Name = "lblTestRunName";
             this.lblTestRunName.Size = new System.Drawing.Size(75, 13);
             this.lblTestRunName.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace SoftTestDesigner
             // 
             // tbTestRunName
             // 
-            this.tbTestRunName.Location = new System.Drawing.Point(103, 14);
+            this.tbTestRunName.Location = new System.Drawing.Point(98, 14);
             this.tbTestRunName.Name = "tbTestRunName";
             this.tbTestRunName.Size = new System.Drawing.Size(436, 20);
             this.tbTestRunName.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace SoftTestDesigner
             // lblManagerName
             // 
             this.lblManagerName.AutoSize = true;
-            this.lblManagerName.Location = new System.Drawing.Point(19, 37);
+            this.lblManagerName.Location = new System.Drawing.Point(20, 37);
             this.lblManagerName.Name = "lblManagerName";
             this.lblManagerName.Size = new System.Drawing.Size(78, 13);
             this.lblManagerName.TabIndex = 2;
@@ -71,7 +71,7 @@ namespace SoftTestDesigner
             // 
             // tbManagerName
             // 
-            this.tbManagerName.Location = new System.Drawing.Point(103, 37);
+            this.tbManagerName.Location = new System.Drawing.Point(98, 37);
             this.tbManagerName.Name = "tbManagerName";
             this.tbManagerName.Size = new System.Drawing.Size(436, 20);
             this.tbManagerName.TabIndex = 3;
@@ -80,7 +80,7 @@ namespace SoftTestDesigner
             // lblBranchName
             // 
             this.lblBranchName.AutoSize = true;
-            this.lblBranchName.Location = new System.Drawing.Point(25, 60);
+            this.lblBranchName.Location = new System.Drawing.Point(28, 60);
             this.lblBranchName.Name = "lblBranchName";
             this.lblBranchName.Size = new System.Drawing.Size(70, 13);
             this.lblBranchName.TabIndex = 4;
@@ -88,7 +88,7 @@ namespace SoftTestDesigner
             // 
             // tbBranchName
             // 
-            this.tbBranchName.Location = new System.Drawing.Point(103, 60);
+            this.tbBranchName.Location = new System.Drawing.Point(98, 60);
             this.tbBranchName.Name = "tbBranchName";
             this.tbBranchName.Size = new System.Drawing.Size(436, 20);
             this.tbBranchName.TabIndex = 5;
@@ -97,7 +97,7 @@ namespace SoftTestDesigner
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(49, 82);
+            this.lblVersion.Location = new System.Drawing.Point(56, 82);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(42, 13);
             this.lblVersion.TabIndex = 6;
@@ -105,7 +105,7 @@ namespace SoftTestDesigner
             // 
             // tbVersion
             // 
-            this.tbVersion.Location = new System.Drawing.Point(103, 82);
+            this.tbVersion.Location = new System.Drawing.Point(98, 82);
             this.tbVersion.Name = "tbVersion";
             this.tbVersion.Size = new System.Drawing.Size(436, 20);
             this.tbVersion.TabIndex = 7;
@@ -114,7 +114,7 @@ namespace SoftTestDesigner
             // lblMethodName
             // 
             this.lblMethodName.AutoSize = true;
-            this.lblMethodName.Location = new System.Drawing.Point(25, 105);
+            this.lblMethodName.Location = new System.Drawing.Point(26, 105);
             this.lblMethodName.Name = "lblMethodName";
             this.lblMethodName.Size = new System.Drawing.Size(72, 13);
             this.lblMethodName.TabIndex = 8;
@@ -122,7 +122,7 @@ namespace SoftTestDesigner
             // 
             // tbMethodName
             // 
-            this.tbMethodName.Location = new System.Drawing.Point(103, 105);
+            this.tbMethodName.Location = new System.Drawing.Point(98, 105);
             this.tbMethodName.Name = "tbMethodName";
             this.tbMethodName.Size = new System.Drawing.Size(436, 20);
             this.tbMethodName.TabIndex = 9;
@@ -130,7 +130,7 @@ namespace SoftTestDesigner
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(383, 134);
+            this.btnGenerate.Location = new System.Drawing.Point(378, 132);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 25);
             this.btnGenerate.TabIndex = 10;
@@ -140,7 +140,7 @@ namespace SoftTestDesigner
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(464, 134);
+            this.btnCancel.Location = new System.Drawing.Point(459, 132);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 25);
             this.btnCancel.TabIndex = 11;

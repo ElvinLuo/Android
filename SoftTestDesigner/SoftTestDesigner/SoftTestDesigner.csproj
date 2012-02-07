@@ -49,8 +49,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CollapsibleSplitter">
+      <HintPath>dll\CollapsibleSplitter.dll</HintPath>
+    </Reference>
+    <Reference Include="SoftTestDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Design.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +70,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollapsibleSplitter.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ConfigItem.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="SoftTestConfiguration.cs" />
@@ -138,6 +150,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CollapsibleSplitter.bmp" />
+    <Content Include="dll\CollapsibleSplitter.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
