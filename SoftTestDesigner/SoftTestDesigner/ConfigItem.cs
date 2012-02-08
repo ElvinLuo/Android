@@ -32,13 +32,14 @@ namespace SoftTestDesigner
 
         public ConfigItem(string item, string names, string values, string random, string coverages)
         {
+            char splitCharacter = '/';
             this.flag = false;
             this.count = 0;
             this.item = item;
-            this.names = names.Split(new char[] { '/' });
-            this.values = values.Split(new char[] { '/' });
+            this.names = names.Split(splitCharacter);
+            this.values = values.Split(splitCharacter);
             indexInAllAvailMatrix = new List<List<int>>();
-            string[] temp = coverages.Split(new char[] { '/' });
+            string[] temp = coverages.Split(splitCharacter);
             this.random = random.ToLower().Equals("true") ? true : false;
             this.coverages = new int[temp.Length];
             this.canExceed = new bool[this.values.Length];
@@ -74,30 +75,15 @@ namespace SoftTestDesigner
 
         public int GetIndex()
         {
-            if (remainingIndexes == null || remainingIndexes.Count == 0)
-            {
-                foreach (int element in indexes)
-                {
-                    remainingIndexes.Add(element);
-                }
-            }
-
+            CreateNewRemainingIndexes();
             priviousPickedItem = new Random().Next(remainingIndexes.Count);
             priviousPickedIndex = remainingIndexes.ElementAt(priviousPickedItem);
-
             return priviousPickedIndex;
         }
 
         public bool PickOneInRemainingIndexes(int position)
         {
-            if (remainingIndexes == null || remainingIndexes.Count == 0)
-            {
-                foreach (int element in indexes)
-                {
-                    remainingIndexes.Add(element);
-                }
-            }
-
+            CreateNewRemainingIndexes();
             priviousPickedItem = -1;
 
             for (int i = 0; i < remainingIndexes.Count; i++)
@@ -161,6 +147,17 @@ namespace SoftTestDesigner
                 }
 
                 count += coverages[i];
+            }
+        }
+
+        public void CreateNewRemainingIndexes()
+        {
+            if (remainingIndexes == null || remainingIndexes.Count == 0)
+            {
+                foreach (int element in indexes)
+                {
+                    remainingIndexes.Add(element);
+                }
             }
         }
 

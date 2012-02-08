@@ -17,19 +17,19 @@ namespace SoftTestDesigner
 
         private void SoftTestDesigner_Load(object sender, EventArgs e)
         {
-            dataGridView1.Controls.Add(checkBox1);
-            dataGridView2.Controls.Add(checkBox2);
+            dataGridView1.Controls.Add(cbSelectAllConfigItems);
+            dataGridView2.Controls.Add(cbSelectAllRestrictions);
 
-            //dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", false, "1/1/2");
-            dataGridView1.Rows.Add(true, "HotelContractType", "Dual.", "3", false, "1");
-            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "3/1/1");
-            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", false, "2/1");
-            dataGridView1.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/5");
-            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/5");
-            dataGridView1.Rows.Add(true, "RatePlanActive", "Active_/Inactive_", "True/False", true, "1/5");
-            dataGridView1.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "4/1/1");
+            dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "1/1/10");
+            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "1/1/1");
+            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "7/3");
+            dataGridView1.Rows.Add(true, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "1/2/7/10");
+            dataGridView1.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/9");
+            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/8");
+            dataGridView1.Rows.Add(true, "RatePlanActiveStatusTypeID", "Active_/Inactive_", "2/3", true, "1/9");
+            dataGridView1.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "8/1/1");
             dataGridView1.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
-            dataGridView1.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
+            dataGridView1.Rows.Add(true, "TargetRatePlanContractType", "Merchant./Agency./Flex.", "1/2/3", false, "1/1/1");
 
             dataGridView1.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
             dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", true, "1/7");
@@ -38,35 +38,36 @@ namespace SoftTestDesigner
             dataGridView2.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
             dataGridView2.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
             dataGridView2.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
-            dataGridView2.Rows.Add(false, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
+            dataGridView2.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
             dataGridView2.Rows.Add(false, "HotelContractType=2 AND RatePlanTypeMask=16777216");
             dataGridView2.Rows.Add(false, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void cbSelectAllConfigItems_CheckedChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                dataGridView1[0, i].Value = ((CheckBox)dataGridView1.Controls.Find("checkBox1", true)[0]).Checked;
+                dataGridView1[0, i].Value = ((CheckBox)dataGridView1.Controls.Find("cbSelectAllConfigItems", true)[0]).Checked;
             }
             dataGridView1.EndEdit();
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void cbSelectAllRestrictions_CheckedChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < dataGridView2.RowCount; i++)
             {
-                dataGridView2[0, i].Value = ((CheckBox)dataGridView2.Controls.Find("checkBox2", true)[0]).Checked;
+                dataGridView2[0, i].Value = ((CheckBox)dataGridView2.Controls.Find("cbSelectAllRestrictions", true)[0]).Checked;
             }
             dataGridView2.EndEdit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGenerateCombination_Click(object sender, EventArgs e)
         {
             dataGridView3.Columns.Clear();
-            SoftTestConfiguration sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
-            sc.GetResult();
+            sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
+            //sc.GetResult();
+            sc.GetResultWitoutRestrictions();
 
             AddColumns(sc);
             AddRows(sc);
@@ -229,7 +230,7 @@ namespace SoftTestDesigner
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnCopy_Click(object sender, EventArgs e)
         {
             if (dataGridView3.Rows.Count > 0)
             {
@@ -461,6 +462,24 @@ namespace SoftTestDesigner
         private void saveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string file = this.saveFileDialog.FileName;
+        }
+
+        private void btnApplyRestrictions_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Columns.Clear();
+
+            for (int i = 0; i < sc.indexResultList.Count; i++)
+            {
+                if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
+                {
+                    sc.indexResultList.RemoveAt(i);
+                    sc.valueResultList.RemoveAt(i);
+                    sc.softTestNameList.RemoveAt(i);
+                }
+            }
+
+            AddColumns(sc);
+            AddRows(sc);
         }
 
     }

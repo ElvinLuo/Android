@@ -13,6 +13,12 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
+            string str1 = "1/2/";
+            string str2 = "/1/2";
+
+            string[] array = str1.Split('/');
+            array = str2.Split('/');
+
             //TestInstance a = new TestInstance(1, 2);
             //TestInstance b = new TestInstance();
             //b = a;
@@ -24,14 +30,14 @@ namespace WindowsFormsApplication
             //Convert<bool>(true);
             //MergeTables();
 
-            int originalV = 3;
-            int originalH = (originalV & 2) >> 1;
-            int originalL = originalV & 1;
-            int? h = null;
-            int? l = null;
-            int result = 10 * (h.HasValue ? h.Value : originalH) +
-                (l.HasValue ? l.Value : originalL);
-            int j = System.Convert.ToInt32(result.ToString(), 2);
+            //int originalV = 3;
+            //int originalH = (originalV & 2) >> 1;
+            //int originalL = originalV & 1;
+            //int? h = null;
+            //int? l = null;
+            //int result = 10 * (h.HasValue ? h.Value : originalH) +
+            //    (l.HasValue ? l.Value : originalL);
+            //int j = System.Convert.ToInt32(result.ToString(), 2);
 
             //Dictionary<string, string> expected = new Dictionary<string, string>
             //{ { "200021792", "289400" },

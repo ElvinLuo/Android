@@ -6,10 +6,7 @@
 
 namespace SoftTestDesigner
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
     /// TODO: Update summary.
@@ -64,11 +61,12 @@ namespace SoftTestDesigner
                 GetCombination(0);
                 foreach (string[] conflict in invalidConfigItems)
                 {
-                    string[] firstCondition = conflict[0].Split(new char[] { '=' });
+                    char splitCharacter = '=';
+                    string[] firstCondition = conflict[0].Split(splitCharacter);
                     string firstConditionName = firstCondition[0];
                     string firstConditionValue = firstCondition[1];
 
-                    string[] secondCondition = conflict[1].Split(new char[] { '=' });
+                    string[] secondCondition = conflict[1].Split(splitCharacter);
                     string secondConditionName = secondCondition[0];
                     string secondConditionValue = secondCondition[1];
 
@@ -77,7 +75,7 @@ namespace SoftTestDesigner
 
                     foreach (KeyValuePair<string, string> softCase in softCases)
                     {
-                        string[] configValues = softCase.Value.Split(new char[] { ';' });
+                        string[] configValues = softCase.Value.Split(';');
                         if (configValues[firstIndex].Equals(firstConditionValue) &&
                             configValues[secondIndex].Equals(secondConditionValue))
                         {
@@ -109,8 +107,9 @@ namespace SoftTestDesigner
                 softCases.Clear();
             }
 
-            string[] configItemNodeNames = validConfigItems[processingIndex][1].Split(new char[] { '/' });
-            string[] configItemValues = validConfigItems[processingIndex][2].Split(new char[] { '/' });
+            char splitCharacter = '/';
+            string[] configItemNodeNames = validConfigItems[processingIndex][1].Split(splitCharacter);
+            string[] configItemValues = validConfigItems[processingIndex][2].Split(splitCharacter);
 
             if (temp.Count == 0)
             {

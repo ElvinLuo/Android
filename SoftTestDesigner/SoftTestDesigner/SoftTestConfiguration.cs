@@ -97,7 +97,7 @@ namespace SoftTestDesigner
                 int ruleItemCount = 0;
                 rule = new List<RestrictionItem>();
                 restrictionString = rrow.Cells[1].Value.ToString();
-                restrictionItems = restrictionString.Split(" ".ToCharArray());
+                restrictionItems = restrictionString.Split(' ');
                 foreach (string ri in restrictionItems)
                 {
                     string[] nameValue;
@@ -106,7 +106,7 @@ namespace SoftTestDesigner
                     if (ri.Contains("="))
                     {
                         ruleItemCount++;
-                        nameValue = ri.Split("=".ToCharArray());
+                        nameValue = ri.Split('=');
                         for (int i = 0; i < configItemsCount; i++)
                         {
                             if (nameValue[0].ToLower().Equals(allConfigItems[i].item.ToLower()))
@@ -137,6 +137,36 @@ namespace SoftTestDesigner
                 }
             }
             this.restrictionItems.Sort();
+        }
+
+        public void GetResultWitoutRestrictions()
+        {
+            indexResultList = new List<int[]>();
+            valueResultList = new List<string[]>();
+            softTestNameList = new List<string>();
+
+            int round = 1;
+            int fullConfigItemsCount = fullConfigItems.Length;
+            int allConfigItemsCount = allConfigItems.Length;
+            int[] indexRow = new int[allConfigItemsCount];
+            string[] valueRow = new string[allConfigItemsCount];
+
+            do
+            {
+                for (int i = 0; i < randomConfigItems.Length; i++)
+                {
+                    ConfigItem randomConfigItem = randomConfigItems.ElementAt(i);
+                    indexRow[fullConfigItemsCount + i] = randomConfigItem.GetIndex();
+                    randomConfigItem.RemoveUsed();
+                }
+                
+                CopyIndexRowToValueRow(indexRow, valueRow);
+                indexResultList.Add(indexRow.ToArray());
+                valueResultList.Add(valueRow.ToArray());
+                softTestNameList.Add(CopyIndexRowToNameRow(indexRow));
+
+                if (PerformStep(indexRow, fullConfigItemsCount - 1)) round++;
+            } while (round == 1 || NeedToContinue());
         }
 
         public void GetResult()
@@ -378,7 +408,7 @@ namespace SoftTestDesigner
             return name;
         }
 
-        private bool IsFiltered(int[] indexRow)
+        public bool IsFiltered(int[] indexRow)
         {
             bool filtered = false;
 
@@ -480,10 +510,7 @@ namespace SoftTestDesigner
             return false;
         }
 
-        private bool CopyArray(
-            int[] target,
-            int[] source,
-            int startIndex)
+        private bool CopyArray(int[] target, int[] source, int startIndex)
         {
             if (target.Length + startIndex > source.Length)
             { return false; }

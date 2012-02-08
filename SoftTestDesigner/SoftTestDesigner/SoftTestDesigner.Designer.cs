@@ -44,23 +44,24 @@
             this.Column9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGenerateCombination = new System.Windows.Forms.Button();
             this.btnCreateAssignment = new System.Windows.Forms.Button();
             this.btnCreateLabrun = new System.Windows.Forms.Button();
             this.btnSelectFolder = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnCopy = new System.Windows.Forms.Button();
             this.btnOpenRestrictions = new System.Windows.Forms.Button();
             this.btnClearDataGridView = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbSelectAllConfigItems = new System.Windows.Forms.CheckBox();
             this.collapsibleSplitter2 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cbSelectAllRestrictions = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.collapsibleSplitter3 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnApplyRestrictions = new System.Windows.Forms.Button();
             this.btnSaveRestrictions = new System.Windows.Forms.Button();
             this.collapsibleSplitter1 = new NJFLib.Controls.CollapsibleSplitter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -147,7 +148,7 @@
             this.dataGridView3.ShowCellToolTips = false;
             this.dataGridView3.ShowEditingIcon = false;
             this.dataGridView3.ShowRowErrors = false;
-            this.dataGridView3.Size = new System.Drawing.Size(741, 217);
+            this.dataGridView3.Size = new System.Drawing.Size(741, 234);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView3_RowPostPaint);
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
@@ -230,19 +231,19 @@
             this.Column8.UseColumnTextForButtonValue = true;
             this.Column8.Width = 50;
             // 
-            // button1
+            // btnGenerateCombination
             // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 25);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Generate combination";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGenerateCombination.Location = new System.Drawing.Point(0, 0);
+            this.btnGenerateCombination.Name = "btnGenerateCombination";
+            this.btnGenerateCombination.Size = new System.Drawing.Size(148, 25);
+            this.btnGenerateCombination.TabIndex = 18;
+            this.btnGenerateCombination.Text = "Generate combination";
+            this.btnGenerateCombination.UseVisualStyleBackColor = true;
+            this.btnGenerateCombination.Click += new System.EventHandler(this.btnGenerateCombination_Click);
             // 
             // btnCreateAssignment
             // 
-            this.btnCreateAssignment.Location = new System.Drawing.Point(0, 75);
+            this.btnCreateAssignment.Location = new System.Drawing.Point(0, 150);
             this.btnCreateAssignment.Name = "btnCreateAssignment";
             this.btnCreateAssignment.Size = new System.Drawing.Size(148, 25);
             this.btnCreateAssignment.TabIndex = 21;
@@ -252,7 +253,7 @@
             // 
             // btnCreateLabrun
             // 
-            this.btnCreateLabrun.Location = new System.Drawing.Point(0, 50);
+            this.btnCreateLabrun.Location = new System.Drawing.Point(0, 125);
             this.btnCreateLabrun.Name = "btnCreateLabrun";
             this.btnCreateLabrun.Size = new System.Drawing.Size(148, 25);
             this.btnCreateLabrun.TabIndex = 20;
@@ -262,7 +263,7 @@
             // 
             // btnSelectFolder
             // 
-            this.btnSelectFolder.Location = new System.Drawing.Point(0, 25);
+            this.btnSelectFolder.Location = new System.Drawing.Point(0, 50);
             this.btnSelectFolder.Name = "btnSelectFolder";
             this.btnSelectFolder.Size = new System.Drawing.Size(148, 25);
             this.btnSelectFolder.TabIndex = 19;
@@ -270,19 +271,19 @@
             this.btnSelectFolder.UseVisualStyleBackColor = true;
             this.btnSelectFolder.Click += new System.EventHandler(this.btnSelectFolder_Click);
             // 
-            // button5
+            // btnCopy
             // 
-            this.button5.Location = new System.Drawing.Point(0, 100);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(148, 25);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "Copy to clipboard";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnCopy.Location = new System.Drawing.Point(0, 75);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(148, 25);
+            this.btnCopy.TabIndex = 22;
+            this.btnCopy.Text = "Copy to clipboard";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // btnOpenRestrictions
             // 
-            this.btnOpenRestrictions.Location = new System.Drawing.Point(0, 150);
+            this.btnOpenRestrictions.Location = new System.Drawing.Point(0, 175);
             this.btnOpenRestrictions.Name = "btnOpenRestrictions";
             this.btnOpenRestrictions.Size = new System.Drawing.Size(148, 25);
             this.btnOpenRestrictions.TabIndex = 24;
@@ -291,7 +292,7 @@
             // 
             // btnClearDataGridView
             // 
-            this.btnClearDataGridView.Location = new System.Drawing.Point(0, 125);
+            this.btnClearDataGridView.Location = new System.Drawing.Point(0, 100);
             this.btnClearDataGridView.Name = "btnClearDataGridView";
             this.btnClearDataGridView.Size = new System.Drawing.Size(148, 25);
             this.btnClearDataGridView.TabIndex = 23;
@@ -314,7 +315,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.Controls.Add(this.checkBox1);
+            this.panel4.Controls.Add(this.cbSelectAllConfigItems);
             this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -322,15 +323,15 @@
             this.panel4.Size = new System.Drawing.Size(897, 188);
             this.panel4.TabIndex = 2;
             // 
-            // checkBox1
+            // cbSelectAllConfigItems
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(4, 4);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.cbSelectAllConfigItems.AutoSize = true;
+            this.cbSelectAllConfigItems.Location = new System.Drawing.Point(4, 4);
+            this.cbSelectAllConfigItems.Name = "cbSelectAllConfigItems";
+            this.cbSelectAllConfigItems.Size = new System.Drawing.Size(15, 14);
+            this.cbSelectAllConfigItems.TabIndex = 7;
+            this.cbSelectAllConfigItems.UseVisualStyleBackColor = true;
+            this.cbSelectAllConfigItems.CheckedChanged += new System.EventHandler(this.cbSelectAllConfigItems_CheckedChanged);
             // 
             // collapsibleSplitter2
             // 
@@ -351,7 +352,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.checkBox2);
+            this.panel3.Controls.Add(this.cbSelectAllRestrictions);
             this.panel3.Controls.Add(this.dataGridView2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 196);
@@ -359,16 +360,16 @@
             this.panel3.Size = new System.Drawing.Size(897, 221);
             this.panel3.TabIndex = 0;
             // 
-            // checkBox2
+            // cbSelectAllRestrictions
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.checkBox2.Location = new System.Drawing.Point(5, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 6;
-            this.checkBox2.UseVisualStyleBackColor = false;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.cbSelectAllRestrictions.AutoSize = true;
+            this.cbSelectAllRestrictions.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cbSelectAllRestrictions.Location = new System.Drawing.Point(5, 3);
+            this.cbSelectAllRestrictions.Name = "cbSelectAllRestrictions";
+            this.cbSelectAllRestrictions.Size = new System.Drawing.Size(15, 14);
+            this.cbSelectAllRestrictions.TabIndex = 6;
+            this.cbSelectAllRestrictions.UseVisualStyleBackColor = false;
+            this.cbSelectAllRestrictions.CheckedChanged += new System.EventHandler(this.cbSelectAllRestrictions_CheckedChanged);
             // 
             // panel2
             // 
@@ -379,7 +380,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 425);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(897, 217);
+            this.panel2.Size = new System.Drawing.Size(897, 234);
             this.panel2.TabIndex = 27;
             // 
             // panel6
@@ -389,7 +390,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(741, 217);
+            this.panel6.Size = new System.Drawing.Size(741, 234);
             this.panel6.TabIndex = 2;
             // 
             // collapsibleSplitter3
@@ -410,23 +411,34 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.btnApplyRestrictions);
             this.panel5.Controls.Add(this.btnSaveRestrictions);
-            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.btnGenerateCombination);
             this.panel5.Controls.Add(this.btnClearDataGridView);
             this.panel5.Controls.Add(this.btnOpenRestrictions);
-            this.panel5.Controls.Add(this.button5);
+            this.panel5.Controls.Add(this.btnCopy);
             this.panel5.Controls.Add(this.btnCreateAssignment);
             this.panel5.Controls.Add(this.btnSelectFolder);
             this.panel5.Controls.Add(this.btnCreateLabrun);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(749, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(148, 217);
+            this.panel5.Size = new System.Drawing.Size(148, 234);
             this.panel5.TabIndex = 0;
+            // 
+            // btnApplyRestrictions
+            // 
+            this.btnApplyRestrictions.Location = new System.Drawing.Point(0, 25);
+            this.btnApplyRestrictions.Name = "btnApplyRestrictions";
+            this.btnApplyRestrictions.Size = new System.Drawing.Size(148, 25);
+            this.btnApplyRestrictions.TabIndex = 26;
+            this.btnApplyRestrictions.Text = "Apply restrictions";
+            this.btnApplyRestrictions.UseVisualStyleBackColor = true;
+            this.btnApplyRestrictions.Click += new System.EventHandler(this.btnApplyRestrictions_Click);
             // 
             // btnSaveRestrictions
             // 
-            this.btnSaveRestrictions.Location = new System.Drawing.Point(0, 175);
+            this.btnSaveRestrictions.Location = new System.Drawing.Point(0, 200);
             this.btnSaveRestrictions.Name = "btnSaveRestrictions";
             this.btnSaveRestrictions.Size = new System.Drawing.Size(148, 25);
             this.btnSaveRestrictions.TabIndex = 25;
@@ -454,7 +466,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 642);
+            this.ClientSize = new System.Drawing.Size(897, 659);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.collapsibleSplitter1);
             this.Controls.Add(this.panel1);
@@ -480,6 +492,8 @@
 
         #endregion
 
+        SoftTestConfiguration sc;
+
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
@@ -496,11 +510,11 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGenerateCombination;
         private System.Windows.Forms.Button btnCreateAssignment;
         private System.Windows.Forms.Button btnCreateLabrun;
         private System.Windows.Forms.Button btnSelectFolder;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnOpenRestrictions;
         private System.Windows.Forms.Button btnClearDataGridView;
         private System.Windows.Forms.Panel panel1;
@@ -512,9 +526,10 @@
         private System.Windows.Forms.Panel panel6;
         private NJFLib.Controls.CollapsibleSplitter collapsibleSplitter3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox cbSelectAllConfigItems;
+        private System.Windows.Forms.CheckBox cbSelectAllRestrictions;
         private System.Windows.Forms.Button btnSaveRestrictions;
+        private System.Windows.Forms.Button btnApplyRestrictions;
     }
 }
 
