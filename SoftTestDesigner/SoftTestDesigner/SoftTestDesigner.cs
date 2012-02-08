@@ -482,6 +482,24 @@ namespace SoftTestDesigner
             AddRows(sc);
         }
 
+        private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Columns.Clear();
+
+            for (int i = sc.softTestNameList.Count - 1; i >= 0; i--)
+            {
+                if (sc.softTestNameList.IndexOf(sc.softTestNameList.ElementAt(i)) != i)
+                {
+                    sc.indexResultList.RemoveAt(i);
+                    sc.valueResultList.RemoveAt(i);
+                    sc.softTestNameList.RemoveAt(i);
+                }
+            }
+
+            AddColumns(sc);
+            AddRows(sc);
+        }
+
     }
 
 }

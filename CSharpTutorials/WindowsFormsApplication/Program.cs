@@ -13,11 +13,53 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            string str1 = "1/2/";
-            string str2 = "/1/2";
+            List<string> stringList = new List<string> { "PDP1", "OBP2", "PDP1", "OBP2", "PDP1" };
 
-            string[] array = str1.Split('/');
-            array = str2.Split('/');
+            int index1;
+            index1 = stringList.IndexOf("PDP1");
+            index1 = stringList.IndexOf("OBP2");
+
+            List<string[]> stringArrayList = new List<string[]>();
+            string[] stringArray = new string[2];
+            stringArray = new string[] { "PDP", "1" };
+            stringArrayList.Add(stringArray);
+            stringArray = new string[] { "OBP", "2" };
+            stringArrayList.Add(stringArray);
+            stringArray = new string[] { "PDP", "1" };
+            stringArrayList.Add(stringArray);
+            stringArray = new string[] { "OBP", "2" };
+            stringArrayList.Add(stringArray);
+            stringArray = new string[] { "PDP", "1" };
+            stringArrayList.Add(stringArray);
+            stringArrayList.Distinct();
+
+            int index2;
+            index2 = stringArrayList.IndexOf(new string[] { "PDP", "1" });
+            index2 = stringArrayList.IndexOf(new string[] { "OBP", "2" });
+
+            List<int[]> intArrayList = new List<int[]>();
+            int[] intArray = new int[2];
+            intArray = new int[] { 1, 2 };
+            intArrayList.Add(intArray);
+            intArray = new int[] { 2, 2 };
+            intArrayList.Add(intArray);
+            intArray = new int[] { 1, 2 };
+            intArrayList.Add(intArray);
+            intArray = new int[] { 2, 2 };
+            intArrayList.Add(intArray);
+            intArray = new int[] { 1, 2 };
+            intArrayList.Add(intArray);
+            intArrayList.Distinct();
+
+            int index3;
+            index3 = intArrayList.IndexOf(new int[] { 1, 2 });
+            index3 = intArrayList.IndexOf(new int[] { 2, 2 });
+
+            //string str1 = "1/2/";
+            //string str2 = "/1/2";
+
+            //string[] array = str1.Split('/');
+            //array = str2.Split('/');
 
             //TestInstance a = new TestInstance(1, 2);
             //TestInstance b = new TestInstance();

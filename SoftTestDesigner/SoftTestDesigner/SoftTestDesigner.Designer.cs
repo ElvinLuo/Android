@@ -54,16 +54,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cbSelectAllConfigItems = new System.Windows.Forms.CheckBox();
-            this.collapsibleSplitter2 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbSelectAllRestrictions = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.collapsibleSplitter3 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnApplyRestrictions = new System.Windows.Forms.Button();
             this.btnSaveRestrictions = new System.Windows.Forms.Button();
+            this.btnRemoveDuplicatedRows = new System.Windows.Forms.Button();
+            this.collapsibleSplitter3 = new NJFLib.Controls.CollapsibleSplitter();
             this.collapsibleSplitter1 = new NJFLib.Controls.CollapsibleSplitter();
+            this.collapsibleSplitter2 = new NJFLib.Controls.CollapsibleSplitter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -148,7 +149,7 @@
             this.dataGridView3.ShowCellToolTips = false;
             this.dataGridView3.ShowEditingIcon = false;
             this.dataGridView3.ShowRowErrors = false;
-            this.dataGridView3.Size = new System.Drawing.Size(741, 234);
+            this.dataGridView3.Size = new System.Drawing.Size(741, 254);
             this.dataGridView3.TabIndex = 0;
             this.dataGridView3.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView3_RowPostPaint);
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
@@ -243,7 +244,7 @@
             // 
             // btnCreateAssignment
             // 
-            this.btnCreateAssignment.Location = new System.Drawing.Point(0, 150);
+            this.btnCreateAssignment.Location = new System.Drawing.Point(0, 175);
             this.btnCreateAssignment.Name = "btnCreateAssignment";
             this.btnCreateAssignment.Size = new System.Drawing.Size(148, 25);
             this.btnCreateAssignment.TabIndex = 21;
@@ -253,7 +254,7 @@
             // 
             // btnCreateLabrun
             // 
-            this.btnCreateLabrun.Location = new System.Drawing.Point(0, 125);
+            this.btnCreateLabrun.Location = new System.Drawing.Point(0, 150);
             this.btnCreateLabrun.Name = "btnCreateLabrun";
             this.btnCreateLabrun.Size = new System.Drawing.Size(148, 25);
             this.btnCreateLabrun.TabIndex = 20;
@@ -263,7 +264,7 @@
             // 
             // btnSelectFolder
             // 
-            this.btnSelectFolder.Location = new System.Drawing.Point(0, 50);
+            this.btnSelectFolder.Location = new System.Drawing.Point(0, 75);
             this.btnSelectFolder.Name = "btnSelectFolder";
             this.btnSelectFolder.Size = new System.Drawing.Size(148, 25);
             this.btnSelectFolder.TabIndex = 19;
@@ -273,7 +274,7 @@
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(0, 75);
+            this.btnCopy.Location = new System.Drawing.Point(0, 100);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(148, 25);
             this.btnCopy.TabIndex = 22;
@@ -283,7 +284,7 @@
             // 
             // btnOpenRestrictions
             // 
-            this.btnOpenRestrictions.Location = new System.Drawing.Point(0, 175);
+            this.btnOpenRestrictions.Location = new System.Drawing.Point(0, 200);
             this.btnOpenRestrictions.Name = "btnOpenRestrictions";
             this.btnOpenRestrictions.Size = new System.Drawing.Size(148, 25);
             this.btnOpenRestrictions.TabIndex = 24;
@@ -292,7 +293,7 @@
             // 
             // btnClearDataGridView
             // 
-            this.btnClearDataGridView.Location = new System.Drawing.Point(0, 100);
+            this.btnClearDataGridView.Location = new System.Drawing.Point(0, 125);
             this.btnClearDataGridView.Name = "btnClearDataGridView";
             this.btnClearDataGridView.Size = new System.Drawing.Size(148, 25);
             this.btnClearDataGridView.TabIndex = 23;
@@ -333,22 +334,6 @@
             this.cbSelectAllConfigItems.UseVisualStyleBackColor = true;
             this.cbSelectAllConfigItems.CheckedChanged += new System.EventHandler(this.cbSelectAllConfigItems_CheckedChanged);
             // 
-            // collapsibleSplitter2
-            // 
-            this.collapsibleSplitter2.AnimationDelay = 20;
-            this.collapsibleSplitter2.AnimationStep = 20;
-            this.collapsibleSplitter2.BorderStyle3D = System.Windows.Forms.Border3DStyle.Flat;
-            this.collapsibleSplitter2.ControlToHide = this.panel3;
-            this.collapsibleSplitter2.Cursor = System.Windows.Forms.Cursors.HSplit;
-            this.collapsibleSplitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.collapsibleSplitter2.ExpandParentForm = false;
-            this.collapsibleSplitter2.Location = new System.Drawing.Point(0, 188);
-            this.collapsibleSplitter2.Name = "collapsibleSplitter2";
-            this.collapsibleSplitter2.TabIndex = 1;
-            this.collapsibleSplitter2.TabStop = false;
-            this.collapsibleSplitter2.UseAnimations = false;
-            this.collapsibleSplitter2.VisualStyle = NJFLib.Controls.VisualStyles.Mozilla;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
@@ -380,7 +365,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 425);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(897, 234);
+            this.panel2.Size = new System.Drawing.Size(897, 254);
             this.panel2.TabIndex = 27;
             // 
             // panel6
@@ -390,27 +375,13 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(741, 234);
+            this.panel6.Size = new System.Drawing.Size(741, 254);
             this.panel6.TabIndex = 2;
-            // 
-            // collapsibleSplitter3
-            // 
-            this.collapsibleSplitter3.AnimationDelay = 20;
-            this.collapsibleSplitter3.AnimationStep = 20;
-            this.collapsibleSplitter3.BorderStyle3D = System.Windows.Forms.Border3DStyle.Flat;
-            this.collapsibleSplitter3.ControlToHide = this.panel5;
-            this.collapsibleSplitter3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.collapsibleSplitter3.ExpandParentForm = false;
-            this.collapsibleSplitter3.Location = new System.Drawing.Point(741, 0);
-            this.collapsibleSplitter3.Name = "collapsibleSplitter3";
-            this.collapsibleSplitter3.TabIndex = 1;
-            this.collapsibleSplitter3.TabStop = false;
-            this.collapsibleSplitter3.UseAnimations = false;
-            this.collapsibleSplitter3.VisualStyle = NJFLib.Controls.VisualStyles.Mozilla;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.Controls.Add(this.btnRemoveDuplicatedRows);
             this.panel5.Controls.Add(this.btnApplyRestrictions);
             this.panel5.Controls.Add(this.btnSaveRestrictions);
             this.panel5.Controls.Add(this.btnGenerateCombination);
@@ -423,7 +394,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(749, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(148, 234);
+            this.panel5.Size = new System.Drawing.Size(148, 254);
             this.panel5.TabIndex = 0;
             // 
             // btnApplyRestrictions
@@ -438,7 +409,7 @@
             // 
             // btnSaveRestrictions
             // 
-            this.btnSaveRestrictions.Location = new System.Drawing.Point(0, 200);
+            this.btnSaveRestrictions.Location = new System.Drawing.Point(0, 225);
             this.btnSaveRestrictions.Name = "btnSaveRestrictions";
             this.btnSaveRestrictions.Size = new System.Drawing.Size(148, 25);
             this.btnSaveRestrictions.TabIndex = 25;
@@ -446,11 +417,36 @@
             this.btnSaveRestrictions.UseVisualStyleBackColor = true;
             this.btnSaveRestrictions.Click += new System.EventHandler(this.btnSaveRestrictions_Click);
             // 
+            // btnRemoveDuplicatedRows
+            // 
+            this.btnRemoveDuplicatedRows.Location = new System.Drawing.Point(0, 50);
+            this.btnRemoveDuplicatedRows.Name = "btnRemoveDuplicatedRows";
+            this.btnRemoveDuplicatedRows.Size = new System.Drawing.Size(148, 25);
+            this.btnRemoveDuplicatedRows.TabIndex = 27;
+            this.btnRemoveDuplicatedRows.Text = "Remove duplicated rows";
+            this.btnRemoveDuplicatedRows.UseVisualStyleBackColor = true;
+            this.btnRemoveDuplicatedRows.Click += new System.EventHandler(this.btnRemoveDuplicatedRows_Click);
+            // 
+            // collapsibleSplitter3
+            // 
+            this.collapsibleSplitter3.AnimationDelay = 20;
+            this.collapsibleSplitter3.AnimationStep = 20;
+            this.collapsibleSplitter3.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.collapsibleSplitter3.ControlToHide = this.panel5;
+            this.collapsibleSplitter3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.collapsibleSplitter3.ExpandParentForm = false;
+            this.collapsibleSplitter3.Location = new System.Drawing.Point(741, 0);
+            this.collapsibleSplitter3.Name = "collapsibleSplitter3";
+            this.collapsibleSplitter3.TabIndex = 1;
+            this.collapsibleSplitter3.TabStop = false;
+            this.collapsibleSplitter3.UseAnimations = false;
+            this.collapsibleSplitter3.VisualStyle = NJFLib.Controls.VisualStyles.DoubleDots;
+            // 
             // collapsibleSplitter1
             // 
             this.collapsibleSplitter1.AnimationDelay = 20;
             this.collapsibleSplitter1.AnimationStep = 20;
-            this.collapsibleSplitter1.BorderStyle3D = System.Windows.Forms.Border3DStyle.Flat;
+            this.collapsibleSplitter1.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedOuter;
             this.collapsibleSplitter1.ControlToHide = this.panel1;
             this.collapsibleSplitter1.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.collapsibleSplitter1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -460,13 +456,29 @@
             this.collapsibleSplitter1.TabIndex = 26;
             this.collapsibleSplitter1.TabStop = false;
             this.collapsibleSplitter1.UseAnimations = false;
-            this.collapsibleSplitter1.VisualStyle = NJFLib.Controls.VisualStyles.Mozilla;
+            this.collapsibleSplitter1.VisualStyle = NJFLib.Controls.VisualStyles.DoubleDots;
+            // 
+            // collapsibleSplitter2
+            // 
+            this.collapsibleSplitter2.AnimationDelay = 20;
+            this.collapsibleSplitter2.AnimationStep = 20;
+            this.collapsibleSplitter2.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
+            this.collapsibleSplitter2.ControlToHide = this.panel3;
+            this.collapsibleSplitter2.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.collapsibleSplitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.collapsibleSplitter2.ExpandParentForm = false;
+            this.collapsibleSplitter2.Location = new System.Drawing.Point(0, 188);
+            this.collapsibleSplitter2.Name = "collapsibleSplitter2";
+            this.collapsibleSplitter2.TabIndex = 1;
+            this.collapsibleSplitter2.TabStop = false;
+            this.collapsibleSplitter2.UseAnimations = false;
+            this.collapsibleSplitter2.VisualStyle = NJFLib.Controls.VisualStyles.XP;
             // 
             // SoftTestDesigner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 659);
+            this.ClientSize = new System.Drawing.Size(897, 679);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.collapsibleSplitter1);
             this.Controls.Add(this.panel1);
@@ -530,6 +542,7 @@
         private System.Windows.Forms.CheckBox cbSelectAllRestrictions;
         private System.Windows.Forms.Button btnSaveRestrictions;
         private System.Windows.Forms.Button btnApplyRestrictions;
+        private System.Windows.Forms.Button btnRemoveDuplicatedRows;
     }
 }
 
