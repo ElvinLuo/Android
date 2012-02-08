@@ -34,10 +34,11 @@ namespace SoftTestDesigner
             DataGridViewRowCollection restrictionRows)
         {
             DataGridViewRow row;
-            List<ConfigItem> fullConfigItemList = new List<ConfigItem>();
-            List<ConfigItem> randomConfigItemList = new List<ConfigItem>();
+            List<ConfigItem> allConfigItemList = new List<ConfigItem>();
 
+            ConfigItem ci;
             string item, names, values, random, coverages;
+            int fullConfigItemCount = 0, randomConfigItemCount = 0;
 
             for (int i = 0; i < configItemRows.Count - 1; i++)
             {
@@ -50,34 +51,41 @@ namespace SoftTestDesigner
 
                 if ((bool)row.Cells[0].Value)
                 {
+                    ci = new ConfigItem(item, names, values, allConfigItemList.Count, random, coverages);
+
                     if ((bool)row.Cells[4].Value)
                     {
-                        randomConfigItemList.Add(new ConfigItem(item, names, values, random, coverages));
+                        randomConfigItemCount++;
                     }
                     else
                     {
-                        fullConfigItemList.Add(new ConfigItem(item, names, values, random, coverages));
+                        fullConfigItemCount++;
                     }
+
+                    allConfigItemList.Add(ci);
                 }
 
-                configItemsCount = fullConfigItemList.Count + randomConfigItemList.Count;
                 itemNames = new List<string>();
+                configItemsCount = allConfigItemList.Count;
                 allConfigItems = new ConfigItem[configItemsCount];
-                fullConfigItems = new ConfigItem[fullConfigItemList.Count];
-                randomConfigItems = new ConfigItem[randomConfigItemList.Count];
+                fullConfigItems = new ConfigItem[fullConfigItemCount];
+                randomConfigItems = new ConfigItem[randomConfigItemCount];
 
-                for (int j = 0; j < fullConfigItemList.Count; j++)
+                for (int j = 0, fullIndex = 0, randomIndex = 0; j < allConfigItemList.Count; j++)
                 {
-                    allConfigItems[j] = fullConfigItemList.ElementAt(j);
-                    itemNames.Add(fullConfigItemList.ElementAt(j).item);
-                    fullConfigItems[j] = fullConfigItemList.ElementAt(j);
-                }
-
-                for (int j = 0; j < randomConfigItemList.Count; j++)
-                {
-                    allConfigItems[fullConfigItemList.Count + j] = randomConfigItemList.ElementAt(j);
-                    itemNames.Add(randomConfigItemList.ElementAt(j).item);
-                    randomConfigItems[j] = randomConfigItemList.ElementAt(j);
+                    ci = allConfigItemList.ElementAt(j);
+                    allConfigItems[j] = ci;
+                    itemNames.Add(ci.item);
+                    if (ci.random)
+                    {
+                        randomConfigItems[randomIndex] = ci;
+                        randomIndex++;
+                    }
+                    else
+                    {
+                        fullConfigItems[fullIndex] = ci;
+                        fullIndex++;
+                    }
                 }
             }
 
@@ -148,24 +156,30 @@ namespace SoftTestDesigner
             int round = 1;
             int fullConfigItemsCount = fullConfigItems.Length;
             int allConfigItemsCount = allConfigItems.Length;
+            int[] fullIndexRow = new int[fullConfigItemsCount];
             int[] indexRow = new int[allConfigItemsCount];
             string[] valueRow = new string[allConfigItemsCount];
 
             do
             {
+                for (int i = 0; i < fullConfigItemsCount; i++)
+                {
+                    indexRow[fullConfigItems.ElementAt(i).priority] = fullIndexRow[i];
+                }
+
                 for (int i = 0; i < randomConfigItems.Length; i++)
                 {
                     ConfigItem randomConfigItem = randomConfigItems.ElementAt(i);
-                    indexRow[fullConfigItemsCount + i] = randomConfigItem.GetIndex();
+                    indexRow[randomConfigItem.priority] = randomConfigItem.GetIndex();
                     randomConfigItem.RemoveUsed();
                 }
-                
+
                 CopyIndexRowToValueRow(indexRow, valueRow);
                 indexResultList.Add(indexRow.ToArray());
                 valueResultList.Add(valueRow.ToArray());
                 softTestNameList.Add(CopyIndexRowToNameRow(indexRow));
 
-                if (PerformStep(indexRow, fullConfigItemsCount - 1)) round++;
+                if (PerformStepOnFullConfigItems(fullIndexRow)) round++;
             } while (round == 1 || NeedToContinue());
         }
 
@@ -446,6 +460,27 @@ namespace SoftTestDesigner
             for (int i = index; i > -1; i--)
             {
                 if (numbers[i] == allConfigItems[i].values.Length)
+                {
+                    numbers[i] = 0;
+
+                    if (i > 0)
+                    { numbers[i - 1]++; }
+                    else
+                    { return true; }
+                }
+            }
+            return false;
+        }
+
+        private bool PerformStepOnFullConfigItems(int[] numbers)
+        {
+            int index = numbers.Length - 1;
+            if (index < 0 || index > numbers.Length - 1) return true;
+            numbers[index]++;
+
+            for (int i = index; i > -1; i--)
+            {
+                if (numbers[i] == fullConfigItems[i].values.Length)
                 {
                     numbers[i] = 0;
 

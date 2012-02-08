@@ -468,7 +468,7 @@ namespace SoftTestDesigner
         {
             dataGridView3.Columns.Clear();
 
-            for (int i = 0; i < sc.indexResultList.Count; i++)
+            for (int i = sc.indexResultList.Count - 1; i > -1; i--)
             {
                 if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
                 {

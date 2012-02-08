@@ -9,7 +9,6 @@ namespace SoftTestDesigner
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     /// <summary>
     /// TODO: Update summary.
@@ -20,6 +19,7 @@ namespace SoftTestDesigner
         private int priviousPickedItem;
         private bool flag;
         public int count;
+        public int priority;
         public string item;
         public string[] names, values;
         public List<List<int>> indexInAllAvailMatrix;
@@ -30,7 +30,13 @@ namespace SoftTestDesigner
         public List<int> indexes;
         public List<int> remainingIndexes;
 
-        public ConfigItem(string item, string names, string values, string random, string coverages)
+        public ConfigItem(
+            string item,
+            string names,
+            string values,
+            int priority,
+            string random,
+            string coverages)
         {
             char splitCharacter = '/';
             this.flag = false;
@@ -40,6 +46,7 @@ namespace SoftTestDesigner
             this.values = values.Split(splitCharacter);
             indexInAllAvailMatrix = new List<List<int>>();
             string[] temp = coverages.Split(splitCharacter);
+            this.priority = priority;
             this.random = random.ToLower().Equals("true") ? true : false;
             this.coverages = new int[temp.Length];
             this.canExceed = new bool[this.values.Length];
