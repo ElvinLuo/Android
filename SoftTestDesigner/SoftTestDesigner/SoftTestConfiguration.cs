@@ -8,6 +8,7 @@ namespace SoftTestDesigner
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using System.Windows.Forms;
 
     /// <summary>
@@ -586,6 +587,27 @@ namespace SoftTestDesigner
             }
 
             return false;
+        }
+
+        public string GetExpression(DataGridViewRowCollection restrictionRows)
+        {
+            StringBuilder expression = new StringBuilder();
+
+            for (int rowIndex = 0; rowIndex < restrictionRows.Count - 1; rowIndex++)
+            {
+                DataGridViewRow row = restrictionRows[rowIndex];
+
+                if (!(bool)row.Cells[0].Value) continue;
+                if (row.Cells[1].Value == null) continue;
+
+                string restrictionString = row.Cells[1].Value.ToString();
+                if (string.IsNullOrEmpty(restrictionString)) continue;
+
+                expression.AppendLine(string.Format("!({0}) AND", restrictionString));
+            }
+
+            expression.Remove(expression.Length - 6, 6);
+            return expression.ToString();
         }
 
     }

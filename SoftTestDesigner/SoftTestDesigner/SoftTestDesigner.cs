@@ -20,19 +20,19 @@ namespace SoftTestDesigner
             dgvConfigItem.Controls.Add(cbSelectAllConfigItems);
             dgvRestriction.Controls.Add(cbSelectAllRestrictions);
 
-            dgvConfigItem.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "1/1/10");
-            dgvConfigItem.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "1/1/1");
-            dgvConfigItem.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "7/3");
-            dgvConfigItem.Rows.Add(true, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "1/2/7/10");
-            dgvConfigItem.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/9");
-            dgvConfigItem.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/8");
-            dgvConfigItem.Rows.Add(true, "RatePlanActiveStatusTypeID", "Active_/Inactive_", "2/3", true, "1/9");
-            dgvConfigItem.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "8/1/1");
-            dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
-            dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant./Agency./Flex.", "1/2/3", false, "1/1/1");
+            dgvConfigItem.Rows.Add(false, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "1/1/10");
+            dgvConfigItem.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "1/1/1");
+            dgvConfigItem.Rows.Add(false, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "7/3");
+            dgvConfigItem.Rows.Add(false, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "1/2/7/10");
+            dgvConfigItem.Rows.Add(false, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/9");
+            dgvConfigItem.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", false, "1/8");
+            dgvConfigItem.Rows.Add(false, "RatePlanActiveStatusTypeID", "Active_/Inactive_", "2/3", true, "1/9");
+            dgvConfigItem.Rows.Add(false, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "8/1/1");
+            dgvConfigItem.Rows.Add(false, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
+            dgvConfigItem.Rows.Add(false, "TargetRatePlanContractType", "Merchant./Agency./Flex.", "1/2/3", false, "1/1/1");
 
             dgvConfigItem.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
-            dgvConfigItem.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", true, "1/7");
+            dgvConfigItem.Rows.Add(true, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", false, "1/7");
 
             dgvRestriction.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
             dgvRestriction.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
@@ -466,21 +466,23 @@ namespace SoftTestDesigner
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
         {
-            dgvResult.Columns.Clear();
-            sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
+            (dgvResult.DataSource as BindingSource).Filter = sc.GetExpression(dgvRestriction.Rows);
 
-            for (int i = sc.indexResultList.Count - 1; i > -1; i--)
-            {
-                if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
-                {
-                    sc.indexResultList.RemoveAt(i);
-                    sc.valueResultList.RemoveAt(i);
-                    sc.softTestNameList.RemoveAt(i);
-                }
-            }
+            //dgvResult.Columns.Clear();
 
-            AddColumns(sc);
-            AddRows(sc);
+            //sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
+            //for (int i = sc.indexResultList.Count - 1; i > -1; i--)
+            //{
+            //    if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
+            //    {
+            //        sc.indexResultList.RemoveAt(i);
+            //        sc.valueResultList.RemoveAt(i);
+            //        sc.softTestNameList.RemoveAt(i);
+            //    }
+            //}
+
+            //AddColumns(sc);
+            //AddRows(sc);
         }
 
         private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
