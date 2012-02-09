@@ -81,9 +81,12 @@ namespace SoftTestPKG
             string site = "HIMS";
             for (int i = 0; i < nameList.Count; i++)
             {
-                if (nameList.ElementAt(i).ToLower().Equals("OnExtranet") &&
+                if (nameList.ElementAt(i).ToLower().Equals("onextranet") &&
                     valueArray[i].ToLower().Equals("true"))
-                { site = "XNet"; }
+                {
+                    site = "XNet";
+                    break;
+                }
             }
 
             siteFlags = new List<siteflag>();
@@ -105,7 +108,7 @@ namespace SoftTestPKG
             }
             else
             {
-                if (!Directory.Exists(path))
+                if (!Directory.Exists(path) && !string.IsNullOrEmpty(path))
                 { Directory.CreateDirectory(path); }
             }
 

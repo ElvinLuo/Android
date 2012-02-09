@@ -17,55 +17,55 @@ namespace SoftTestDesigner
 
         private void SoftTestDesigner_Load(object sender, EventArgs e)
         {
-            dataGridView1.Controls.Add(cbSelectAllConfigItems);
-            dataGridView2.Controls.Add(cbSelectAllRestrictions);
+            dgvConfigItem.Controls.Add(cbSelectAllConfigItems);
+            dgvRestriction.Controls.Add(cbSelectAllRestrictions);
 
-            dataGridView1.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "1/1/10");
-            dataGridView1.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "1/1/1");
-            dataGridView1.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "7/3");
-            dataGridView1.Rows.Add(true, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "1/2/7/10");
-            dataGridView1.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/9");
-            dataGridView1.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/8");
-            dataGridView1.Rows.Add(true, "RatePlanActiveStatusTypeID", "Active_/Inactive_", "2/3", true, "1/9");
-            dataGridView1.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "8/1/1");
-            dataGridView1.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
-            dataGridView1.Rows.Add(true, "TargetRatePlanContractType", "Merchant./Agency./Flex.", "1/2/3", false, "1/1/1");
+            dgvConfigItem.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "1/1/10");
+            dgvConfigItem.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "1/1/1");
+            dgvConfigItem.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "7/3");
+            dgvConfigItem.Rows.Add(true, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "1/2/7/10");
+            dgvConfigItem.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/9");
+            dgvConfigItem.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", true, "1/8");
+            dgvConfigItem.Rows.Add(true, "RatePlanActiveStatusTypeID", "Active_/Inactive_", "2/3", true, "1/9");
+            dgvConfigItem.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "8/1/1");
+            dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
+            dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant./Agency./Flex.", "1/2/3", false, "1/1/1");
 
-            dataGridView1.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
-            dataGridView1.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", true, "1/7");
+            dgvConfigItem.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
+            dgvConfigItem.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", true, "1/7");
 
-            dataGridView2.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
-            dataGridView2.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
-            dataGridView2.Rows.Add(false, "HotelContractType=2 AND RatePlanTypeMask=16777216");
-            dataGridView2.Rows.Add(false, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
+            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
+            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
+            dgvRestriction.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
+            dgvRestriction.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
+            dgvRestriction.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
+            dgvRestriction.Rows.Add(false, "HotelContractType=2 AND RatePlanTypeMask=16777216");
+            dgvRestriction.Rows.Add(false, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
 
         }
 
         private void cbSelectAllConfigItems_CheckedChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            for (int i = 0; i < dgvConfigItem.RowCount; i++)
             {
-                dataGridView1[0, i].Value = ((CheckBox)dataGridView1.Controls.Find("cbSelectAllConfigItems", true)[0]).Checked;
+                dgvConfigItem[0, i].Value = ((CheckBox)dgvConfigItem.Controls.Find("cbSelectAllConfigItems", true)[0]).Checked;
             }
-            dataGridView1.EndEdit();
+            dgvConfigItem.EndEdit();
         }
 
         private void cbSelectAllRestrictions_CheckedChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView2.RowCount; i++)
+            for (int i = 0; i < dgvRestriction.RowCount; i++)
             {
-                dataGridView2[0, i].Value = ((CheckBox)dataGridView2.Controls.Find("cbSelectAllRestrictions", true)[0]).Checked;
+                dgvRestriction[0, i].Value = ((CheckBox)dgvRestriction.Controls.Find("cbSelectAllRestrictions", true)[0]).Checked;
             }
-            dataGridView2.EndEdit();
+            dgvRestriction.EndEdit();
         }
 
         private void btnGenerateCombination_Click(object sender, EventArgs e)
         {
-            dataGridView3.Columns.Clear();
-            sc = new SoftTestConfiguration(dataGridView1.Rows, dataGridView2.Rows);
+            dgvResult.Columns.Clear();
+            sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
             //sc.GetResult();
             sc.GetResultWitoutRestrictions();
 
@@ -81,7 +81,7 @@ namespace SoftTestDesigner
             for (int i = 0; i < sc.itemNames.Count; i++)
             { headerRow[i + 1] = sc.itemNames[i]; }
 
-            dataGridView3.Rows.Add(headerRow);
+            dgvResult.Rows.Add(headerRow);
 
             for (int i = 0; i < sc.softTestNameList.Count; i++)
             {
@@ -93,16 +93,16 @@ namespace SoftTestDesigner
                     finalRow.Add(value);
                 }
 
-                dataGridView3.Rows.Add(finalRow.ToArray());
+                dgvResult.Rows.Add(finalRow.ToArray());
             }
         }
 
         private void AddColumns(SoftTestConfiguration sc)
         {
-            dataGridView3.Columns.Add("Soft Test Name", "Soft Test Name");
+            dgvResult.Columns.Add("Soft Test Name", "Soft Test Name");
             foreach (string columnName in sc.itemNames)
             {
-                dataGridView3.Columns.Add(columnName, columnName);
+                dgvResult.Columns.Add(columnName, columnName);
             }
         }
 
@@ -112,7 +112,7 @@ namespace SoftTestDesigner
 
             if (dr == DialogResult.OK)
             {
-                this.dataGridView3.Columns.Clear();
+                this.dgvResult.Columns.Clear();
 
                 SoftTest softTest;
                 List<SoftTest> softTestList = new List<SoftTest>();
@@ -145,11 +145,11 @@ namespace SoftTestDesigner
                 for (int i = 0; i < itemNameList.Count; i++)
                 {
                     string itemName = itemNameList.ElementAt(i);
-                    this.dataGridView3.Columns.Add(itemName, itemName);
+                    this.dgvResult.Columns.Add(itemName, itemName);
                     row[i + 1] = itemName;
                 }
 
-                this.dataGridView3.Rows.Add(row);
+                this.dgvResult.Rows.Add(row);
 
                 for (int i = 0; i < files.Length; i++)
                 {
@@ -163,7 +163,7 @@ namespace SoftTestDesigner
                         row[j + 1] = GetValue(itemNameList.ElementAt(j), softTest);
                     }
 
-                    this.dataGridView3.Rows.Add(row);
+                    this.dgvResult.Rows.Add(row);
                 }
             }
         }
@@ -195,23 +195,23 @@ namespace SoftTestDesigner
             return false;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvRestriction_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView2.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex != dataGridView2.Rows.Count - 1 &&
+            if (dgvRestriction.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex != dgvRestriction.Rows.Count - 1 &&
                 e.RowIndex != -1)
             {
-                dataGridView2.Rows.RemoveAt(e.RowIndex);
+                dgvRestriction.Rows.RemoveAt(e.RowIndex);
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvConfigItem_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex != dataGridView1.Rows.Count - 1 &&
+            if (dgvConfigItem.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex != dgvConfigItem.Rows.Count - 1 &&
                 e.RowIndex != -1)
             {
-                dataGridView1.Rows.RemoveAt(e.RowIndex);
+                dgvConfigItem.Rows.RemoveAt(e.RowIndex);
             }
         }
 
@@ -232,19 +232,19 @@ namespace SoftTestDesigner
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            if (dataGridView3.Rows.Count > 0)
+            if (dgvResult.Rows.Count > 0)
             {
                 try
                 {
-                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                    foreach (DataGridViewRow row in dgvResult.Rows)
                     {
                         row.Selected = true;
                     }
 
                     // Add the selection to the clipboard.
-                    Clipboard.SetDataObject(this.dataGridView3.GetClipboardContent());
+                    Clipboard.SetDataObject(this.dgvResult.GetClipboardContent());
 
-                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                    foreach (DataGridViewRow row in dgvResult.Rows)
                     {
                         row.Selected = false;
                     }
@@ -256,22 +256,22 @@ namespace SoftTestDesigner
             }
         }
 
-        private void dataGridView3_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgvResult_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             if (e.RowIndex == 0) return;
 
             string strRowNumber = e.RowIndex.ToString();
 
-            while (strRowNumber.Length < dataGridView3.RowCount.ToString().Length)
+            while (strRowNumber.Length < dgvResult.RowCount.ToString().Length)
             {
                 strRowNumber = "0" + strRowNumber;
             }
 
             SizeF size = e.Graphics.MeasureString(strRowNumber, this.Font);
 
-            if (dataGridView3.RowHeadersWidth < (int)(size.Width + 20))
+            if (dgvResult.RowHeadersWidth < (int)(size.Width + 20))
             {
-                dataGridView3.RowHeadersWidth = (int)(size.Width + 20);
+                dgvResult.RowHeadersWidth = (int)(size.Width + 20);
             }
 
             Brush b = SystemBrushes.ControlText;
@@ -283,7 +283,7 @@ namespace SoftTestDesigner
                 e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
         }
 
-        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void dgvConfigItem_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             DataGridView dgv = (DataGridView)sender;
 
@@ -293,15 +293,15 @@ namespace SoftTestDesigner
             }
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dgvConfigItem_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4 &&
-               dataGridView1.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn &&
-               e.RowIndex != dataGridView1.Rows.Count - 1 &&
+               dgvConfigItem.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn &&
+               e.RowIndex != dgvConfigItem.Rows.Count - 1 &&
                e.RowIndex != -1)
             {
-                bool flag = (bool)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                EnableCell(dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
+                bool flag = (bool)dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                EnableCell(dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
             }
         }
 
@@ -311,22 +311,22 @@ namespace SoftTestDesigner
             List<string> itemNameList = new List<string>();
             List<string[]> valueArrayList = new List<string[]>();
 
-            for (int i = 1; i < dataGridView3.Columns.Count; i++)
+            for (int i = 1; i < dgvResult.Columns.Count; i++)
             {
-                itemNameList.Add(dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
+                itemNameList.Add(dgvResult.Rows[0].Cells[i].Value.ToString().Trim());
             }
 
-            for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
+            for (int i = 1; i < dgvResult.Rows.Count - 1; i++)
             {
-                softTestNameList.Add(dataGridView3.Rows[i].Cells[0].Value.ToString().Trim());
+                softTestNameList.Add(dgvResult.Rows[i].Cells[0].Value.ToString().Trim());
 
-                string[] valueArray = new string[dataGridView3.Columns.Count - 1];
-                for (int j = 1; j < dataGridView3.Columns.Count; j++)
+                string[] valueArray = new string[dgvResult.Columns.Count - 1];
+                for (int j = 1; j < dgvResult.Columns.Count; j++)
                 {
                     valueArray[j - 1] =
-                        dataGridView3.Rows[i].Cells[j].Value == null ?
+                        dgvResult.Rows[i].Cells[j].Value == null ?
                         string.Empty :
-                        dataGridView3.Rows[i].Cells[j].Value.ToString().Trim();
+                        dgvResult.Rows[i].Cells[j].Value.ToString().Trim();
                 }
                 valueArrayList.Add(valueArray);
             }
@@ -338,7 +338,7 @@ namespace SoftTestDesigner
             softTestSetting.ShowDialog();
         }
 
-        private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
+        private void dgvResult_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Control && e.KeyCode == Keys.C) ||
                 (e.Control && e.KeyCode == Keys.Delete) ||
@@ -356,7 +356,7 @@ namespace SoftTestDesigner
 
         private void CopyClipboard()
         {
-            DataObject d = dataGridView3.GetClipboardContent();
+            DataObject d = dgvResult.GetClipboardContent();
             Clipboard.SetDataObject(d);
         }
 
@@ -368,24 +368,24 @@ namespace SoftTestDesigner
                 DataGridViewCell oCell;
                 string s = Clipboard.GetText();
                 string[] lines = s.Split('\n');
-                int iRow = dataGridView3.CurrentCell.RowIndex;
-                int iCol = dataGridView3.CurrentCell.ColumnIndex;
+                int iRow = dgvResult.CurrentCell.RowIndex;
+                int iCol = dgvResult.CurrentCell.ColumnIndex;
 
                 foreach (string line in lines)
                 {
                     if (line.Length > 0)
                     {
-                        if (iRow == dataGridView3.RowCount - 1)
-                        { dataGridView3.Rows.Add(1); }
+                        if (iRow == dgvResult.RowCount - 1)
+                        { dgvResult.Rows.Add(1); }
 
                         sCells = line.Split('\t');
 
                         for (int i = 0; i < sCells.GetLength(0); ++i)
                         {
-                            if (iCol + i == this.dataGridView3.ColumnCount)
-                            { dataGridView3.Columns.Add("NewColumn", "NewColumn"); }
+                            if (iCol + i == this.dgvResult.ColumnCount)
+                            { dgvResult.Columns.Add("NewColumn", "NewColumn"); }
 
-                            oCell = dataGridView3[iCol + i, iRow];
+                            oCell = dgvResult[iCol + i, iRow];
 
                             if (oCell.Value == null || oCell.Value.ToString() != sCells[i])
                             { oCell.Value = Convert.ChangeType(sCells[i], oCell.ValueType); }
@@ -405,12 +405,12 @@ namespace SoftTestDesigner
         {
             List<string> itemNameList = new List<string>();
 
-            for (int i = 1; i < dataGridView3.Columns.Count; i++)
+            for (int i = 1; i < dgvResult.Columns.Count; i++)
             {
                 itemNameList.Add(
-                    dataGridView3.Rows[0].Cells[i].Value == null ?
+                    dgvResult.Rows[0].Cells[i].Value == null ?
                     string.Empty :
-                    dataGridView3.Rows[0].Cells[i].Value.ToString().Trim());
+                    dgvResult.Rows[0].Cells[i].Value.ToString().Trim());
             }
 
             string softTestName;
@@ -418,23 +418,23 @@ namespace SoftTestDesigner
             List<string> softTestNameList = new List<string>();
             List<string[]> valueArrayList = new List<string[]>();
 
-            for (int i = 1; i < dataGridView3.Rows.Count - 1; i++)
+            for (int i = 1; i < dgvResult.Rows.Count - 1; i++)
             {
                 softTestName =
-                    dataGridView3.Rows[i].Cells[0].Value == null ?
+                    dgvResult.Rows[i].Cells[0].Value == null ?
                     string.Empty :
-                    dataGridView3.Rows[i].Cells[0].Value.ToString().Trim();
+                    dgvResult.Rows[i].Cells[0].Value.ToString().Trim();
 
                 if (string.IsNullOrEmpty(softTestName) || softTestName.Equals("")) continue;
 
-                valueArray = new string[dataGridView3.Columns.Count - 1];
+                valueArray = new string[dgvResult.Columns.Count - 1];
 
-                for (int j = 1; j < dataGridView3.Columns.Count; j++)
+                for (int j = 1; j < dgvResult.Columns.Count; j++)
                 {
                     valueArray[j - 1] =
-                        dataGridView3.Rows[i].Cells[j].Value == null ?
+                        dgvResult.Rows[i].Cells[j].Value == null ?
                         string.Empty :
-                        dataGridView3.Rows[i].Cells[j].Value.ToString().Trim();
+                        dgvResult.Rows[i].Cells[j].Value.ToString().Trim();
                 }
 
                 softTestNameList.Add(softTestName);
@@ -450,8 +450,8 @@ namespace SoftTestDesigner
 
         private void btnClearDataGridView_Click(object sender, EventArgs e)
         {
-            this.dataGridView3.Columns.Clear();
-            this.dataGridView3.Columns.Add("", "");
+            this.dgvResult.Columns.Clear();
+            this.dgvResult.Columns.Add("", "");
         }
 
         private void btnSaveRestrictions_Click(object sender, EventArgs e)
@@ -466,7 +466,8 @@ namespace SoftTestDesigner
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
         {
-            dataGridView3.Columns.Clear();
+            dgvResult.Columns.Clear();
+            sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
 
             for (int i = sc.indexResultList.Count - 1; i > -1; i--)
             {
@@ -484,7 +485,7 @@ namespace SoftTestDesigner
 
         private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
         {
-            dataGridView3.Columns.Clear();
+            dgvResult.Columns.Clear();
 
             for (int i = sc.softTestNameList.Count - 1; i >= 0; i--)
             {

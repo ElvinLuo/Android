@@ -89,6 +89,11 @@ namespace SoftTestDesigner
                 }
             }
 
+            LoadRestrictionFromDataGridView(restrictionRows);
+        }
+
+        public void LoadRestrictionFromDataGridView(DataGridViewRowCollection restrictionRows)
+        {
             string restrictionString;
             string[] restrictionItems;
             List<RestrictionItem> rule;
@@ -119,7 +124,7 @@ namespace SoftTestDesigner
                         {
                             if (nameValue[0].ToLower().Equals(allConfigItems[i].item.ToLower()))
                             {
-                                indexInConfigItemList = i;
+                                indexInConfigItemList = allConfigItems[i].priority;
                                 for (int j = 0; j < allConfigItems[i].values.Length - 1; j++)
                                 {
                                     if (!nameValue[1].ToLower().Equals(allConfigItems[i].values[j].ToLower()))
