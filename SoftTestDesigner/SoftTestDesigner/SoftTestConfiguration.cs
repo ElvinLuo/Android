@@ -126,7 +126,7 @@ namespace SoftTestDesigner
                             if (nameValue[0].ToLower().Equals(allConfigItems[i].item.ToLower()))
                             {
                                 indexInConfigItemList = allConfigItems[i].priority;
-                                for (int j = 0; j < allConfigItems[i].values.Length - 1; j++)
+                                for (int j = 0; j < allConfigItems[i].values.Length; j++)
                                 {
                                     if (!nameValue[1].ToLower().Equals(allConfigItems[i].values[j].ToLower()))
                                     { continue; }

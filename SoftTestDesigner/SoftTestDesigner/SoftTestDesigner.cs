@@ -64,13 +64,9 @@ namespace SoftTestDesigner
 
         private void btnGenerateCombination_Click(object sender, EventArgs e)
         {
-            dgvResult.Columns.Clear();
             sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
-            //sc.GetResult();
             sc.GetResultWitoutRestrictions();
-
-            AddColumns(sc);
-            AddRows(sc);
+            ReloadResultFromSoftTestConfiguration(sc);
         }
 
         private void AddRows(SoftTestConfiguration sc)
@@ -466,29 +462,23 @@ namespace SoftTestDesigner
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
         {
-            (dgvResult.DataSource as BindingSource).Filter = sc.GetExpression(dgvRestriction.Rows);
+            sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
 
-            //dgvResult.Columns.Clear();
+            for (int i = sc.indexResultList.Count - 1; i > -1; i--)
+            {
+                if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
+                {
+                    sc.indexResultList.RemoveAt(i);
+                    sc.valueResultList.RemoveAt(i);
+                    sc.softTestNameList.RemoveAt(i);
+                }
+            }
 
-            //sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
-            //for (int i = sc.indexResultList.Count - 1; i > -1; i--)
-            //{
-            //    if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
-            //    {
-            //        sc.indexResultList.RemoveAt(i);
-            //        sc.valueResultList.RemoveAt(i);
-            //        sc.softTestNameList.RemoveAt(i);
-            //    }
-            //}
-
-            //AddColumns(sc);
-            //AddRows(sc);
+            ReloadResultFromSoftTestConfiguration(sc);
         }
 
         private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
         {
-            dgvResult.Columns.Clear();
-
             for (int i = sc.softTestNameList.Count - 1; i >= 0; i--)
             {
                 if (sc.softTestNameList.IndexOf(sc.softTestNameList.ElementAt(i)) != i)
@@ -499,6 +489,12 @@ namespace SoftTestDesigner
                 }
             }
 
+            ReloadResultFromSoftTestConfiguration(sc);
+        }
+
+        private void ReloadResultFromSoftTestConfiguration(SoftTestConfiguration sc)
+        {
+            dgvResult.Columns.Clear();
             AddColumns(sc);
             AddRows(sc);
         }
