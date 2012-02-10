@@ -76,8 +76,8 @@ namespace SoftTestDesigner
                     foreach (KeyValuePair<string, string> softCase in softCases)
                     {
                         string[] configValues = softCase.Value.Split(';');
-                        if (configValues[firstIndex].Equals(firstConditionValue) &&
-                            configValues[secondIndex].Equals(secondConditionValue))
+                        if (configValues[firstIndex].ToLower().Equals(firstConditionValue.ToLower()) &&
+                            configValues[secondIndex].ToLower().Equals(secondConditionValue.ToLower()))
                         {
                             needToRemove.Add(softCase.Key);
                         }

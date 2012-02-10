@@ -20,27 +20,32 @@ namespace SoftTestDesigner
             dgvConfigItem.Controls.Add(cbSelectAllConfigItems);
             dgvRestriction.Controls.Add(cbSelectAllRestrictions);
 
-            dgvConfigItem.Rows.Add(false, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "1/1/10");
-            dgvConfigItem.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", false, "1/1/1");
-            dgvConfigItem.Rows.Add(false, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "7/3");
-            dgvConfigItem.Rows.Add(false, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "1/2/7/10");
-            dgvConfigItem.Rows.Add(false, "DOAEnabled", "DOA_/NonDOA_", "True/False", true, "1/9");
-            dgvConfigItem.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_", "True/False", false, "1/8");
-            dgvConfigItem.Rows.Add(false, "RatePlanActiveStatusTypeID", "Active_/Inactive_", "2/3", true, "1/9");
-            dgvConfigItem.Rows.Add(false, "RatePlanTypeMask", "Standalone_/Package_/Corporate_", "524288/16777216/8388608", true, "8/1/1");
-            dgvConfigItem.Rows.Add(false, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
-            dgvConfigItem.Rows.Add(false, "TargetRatePlanContractType", "Merchant./Agency./Flex.", "1/2/3", false, "1/1/1");
+            dgvConfigItem.Rows.Add(true, "HotelContractType", "Merchant./Agency./Dual.", "1/2/3", true, "12/11/180");
+            dgvConfigItem.Rows.Add(true, "PricingModel", "PDP./OBP./PPP.", "PDP/OBP/PPP", true, "160/13/14");
+            dgvConfigItem.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "59/15");
+            dgvConfigItem.Rows.Add(true, "LARExtranetEnabled", "/", "True/False", true, "69/16");
+            dgvConfigItem.Rows.Add(false, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "10/20/70/100");
+            dgvConfigItem.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_/", "True/False/", true, "37/3/180");
+            dgvConfigItem.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_/", "True/False/", true, "18/10/180");
+            dgvConfigItem.Rows.Add(true, "RatePlanActiveStatusTypeID", "Active_/Inactive_/", "2/3/", true, "6/11/180");
+            dgvConfigItem.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_/", "524288/16777216/8388608/", true, "19/15/13/170");
+            dgvConfigItem.Rows.Add(true, "ARIEnabled", "ARI_/NonARI_/", "True/False/", true, "21/3/160");
+            dgvConfigItem.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", false, "1/7");
+            dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
+            dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
 
-            dgvConfigItem.Rows.Add(false, "ARIEnabled", "ARI_/NonARI_", "True/False", true, "1/3");
-            dgvConfigItem.Rows.Add(true, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", false, "1/7");
-
-            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=TRUE");
-            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=TRUE");
-            dgvRestriction.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=TRUE");
-            dgvRestriction.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=TRUE");
-            dgvRestriction.Rows.Add(true, "EQCEnabled=TRUE AND ARIEnabled=TRUE");
-            dgvRestriction.Rows.Add(false, "HotelContractType=2 AND RatePlanTypeMask=16777216");
-            dgvRestriction.Rows.Add(false, "DOAEnabled=FALSE AND LOSEnabled=TRUE");
+            dgvRestriction.Rows.Add(true, "RatePlanContractType=1 AND TargetRatePlanContractType=1");
+            dgvRestriction.Rows.Add(true, "RatePlanContractType=2 AND TargetRatePlanContractType=2");
+            dgvRestriction.Rows.Add(true, "RatePlanContractType=3 AND TargetRatePlanContractType=3");
+            dgvRestriction.Rows.Add(true, "LAREnabled=True AND LARExtranetEnabled=False");
+            dgvRestriction.Rows.Add(true, "LAREnabled=False AND LARExtranetEnabled=True");
+            dgvRestriction.Rows.Add(true, "DOAEnabled=False AND LOSEnabled=True");
+            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=True");
+            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=True");
+            dgvRestriction.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=True");
+            dgvRestriction.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=True");
+            dgvRestriction.Rows.Add(true, "EQCEnabled=True AND ARIEnabled=True");
+            dgvRestriction.Rows.Add(true, "HotelContractType=2 AND RatePlanTypeMask=16777216");
 
         }
 
@@ -163,7 +168,7 @@ namespace SoftTestDesigner
 
             foreach (Data data in softTest.testData)
             {
-                if (data.dataName.Equals(itemName))
+                if (data.dataName.ToLower().Equals(itemName.ToLower()))
                 {
                     result = data.defaultValue;
                     break;
@@ -497,6 +502,13 @@ namespace SoftTestDesigner
             dgvResult.Columns.Clear();
             AddColumns(sc);
             AddRows(sc);
+        }
+
+        private void btnOneClick_Click(object sender, EventArgs e)
+        {
+            btnGenerateCombination.PerformClick();
+            btnRemoveDuplicatedRows.PerformClick();
+            btnApplyRestrictions.PerformClick();
         }
 
     }
