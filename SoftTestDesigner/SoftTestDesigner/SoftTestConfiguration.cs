@@ -89,8 +89,6 @@ namespace SoftTestDesigner
                     }
                 }
             }
-
-            LoadRestrictionFromDataGridView(restrictionRows);
         }
 
         public void LoadRestrictionFromDataGridView(DataGridViewRowCollection restrictionRows)
@@ -439,7 +437,6 @@ namespace SoftTestDesigner
                 foreach (RestrictionItem ri in rule)
                 {
                     if (indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues ||
-                        //ri.indexInConfigItemList > fullConfigItems.Length - 1)
                         ri.indexInConfigItemList > allConfigItems.Length - 1)
                     {
                         filtered = false;
@@ -603,7 +600,7 @@ namespace SoftTestDesigner
                 string restrictionString = row.Cells[1].Value.ToString();
                 if (string.IsNullOrEmpty(restrictionString)) continue;
 
-                expression.AppendLine(string.Format("!({0}) AND", restrictionString));
+                expression.AppendLine(string.Format("NOT({0}) AND", restrictionString));
             }
 
             expression.Remove(expression.Length - 6, 6);

@@ -62,13 +62,6 @@ namespace SoftTestDesigner
             dgvRestriction.EndEdit();
         }
 
-        private void btnGenerateCombination_Click(object sender, EventArgs e)
-        {
-            sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
-            sc.GetResultWitoutRestrictions();
-            ReloadResultFromSoftTestConfiguration(sc);
-        }
-
         private void AddRows(SoftTestConfiguration sc)
         {
             string[] headerRow = new string[sc.itemNames.Count + 1];
@@ -458,6 +451,13 @@ namespace SoftTestDesigner
         private void saveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string file = this.saveFileDialog.FileName;
+        }
+
+        private void btnGenerateCombination_Click(object sender, EventArgs e)
+        {
+            sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
+            sc.GetResultWitoutRestrictions();
+            ReloadResultFromSoftTestConfiguration(sc);
         }
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
