@@ -42,14 +42,48 @@ namespace SoftTestDesigner
             this.flag = false;
             this.count = 0;
             this.item = item;
-            this.names = names.Split(splitCharacter);
-            this.values = values.Split(splitCharacter);
-            indexInAllAvailMatrix = new List<List<int>>();
-            string[] temp = coverages.Split(splitCharacter);
+            string[] namesBeforeSorting = names.Split(splitCharacter);
+            string[] valuesBeforeSorting = values.Split(splitCharacter);
+            string[] coveragesBeforeSorting = coverages.Split(splitCharacter);
+            int[] order = new int[coveragesBeforeSorting.Length];
             this.priority = priority;
             this.random = random.ToLower().Equals("true") ? true : false;
-            this.coverages = new int[temp.Length];
+            this.coverages = new int[coveragesBeforeSorting.Length];
+
+            for (int i = 0; i < coveragesBeforeSorting.Length; i++)
+            {
+                order[i] = i;
+                this.coverages[i] = Convert.ToInt32(coveragesBeforeSorting[i]);
+
+                for (int j = 0; j < i; j++)
+                {
+                    if (this.coverages[i] > this.coverages[j])
+                    {
+                        int cvrg = this.coverages[i];
+
+                        for (int k = i; k > j; k--)
+                        {
+                            this.coverages[k] = this.coverages[k - 1];
+                            order[k] = order[k - 1];
+                        }
+
+                        this.coverages[j] = cvrg;
+                        order[j] = i;
+                    }
+                }
+            }
+
+            this.names = new string[namesBeforeSorting.Length];
+            this.values = new string[valuesBeforeSorting.Length];
+
+            for (int i = 0; i < order.Length; i++)
+            {
+                this.names[i] = namesBeforeSorting[order[i]];
+                this.values[i] = valuesBeforeSorting[order[i]];
+            }
+
             this.canExceed = new bool[this.values.Length];
+            indexInAllAvailMatrix = new List<List<int>>();
 
             for (int i = 0; i < this.values.Length; i++)
             {
@@ -59,10 +93,10 @@ namespace SoftTestDesigner
 
             indexes = new List<int>();
             remainingIndexes = new List<int>();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                this.coverages[i] = Convert.ToInt32(temp[i]);
+            this.flags = new bool[coveragesBeforeSorting.Length];
 
+            for (int i = 0; i < coveragesBeforeSorting.Length; i++)
+            {
                 for (int j = 0; j < this.coverages[i]; j++)
                 {
                     indexes.Add(i);
@@ -70,12 +104,6 @@ namespace SoftTestDesigner
                 }
 
                 count += this.coverages[i];
-            }
-
-            this.flags = new bool[temp.Length];
-
-            for (int i = 0; i < temp.Length; i++)
-            {
                 this.flags[i] = false;
             }
         }
