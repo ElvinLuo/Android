@@ -6,6 +6,7 @@
 
 namespace SoftTestDesigner
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -178,10 +179,20 @@ namespace SoftTestDesigner
                     randomConfigItem.RemoveUsed();
                 }
 
+                int position = indexResultList.Count;
+                for (int i = 0; i < indexResultList.Count; i++)
+                {
+                    if (CompareArray(indexRow, indexResultList.ElementAt(i)) == -1)
+                    {
+                        position = i;
+                        break;
+                    }
+                }
+
                 CopyIndexRowToValueRow(indexRow, valueRow);
-                indexResultList.Add(indexRow.ToArray());
-                valueResultList.Add(valueRow.ToArray());
-                softTestNameList.Add(CopyIndexRowToNameRow(indexRow));
+                indexResultList.Insert(position, indexRow.ToArray());
+                valueResultList.Insert(position, valueRow.ToArray());
+                softTestNameList.Insert(position, CopyIndexRowToNameRow(indexRow));
 
                 if (PerformStepOnFullConfigItems(fullIndexRow)) round++;
             } while (round == 1 || NeedToContinue());
@@ -605,6 +616,32 @@ namespace SoftTestDesigner
 
             expression.Remove(expression.Length - 6, 6);
             return expression.ToString();
+        }
+
+        private int CompareArray(int[] left, int[] right)
+        {
+            if (left.Length == 0 || right.Length == 0 || left.Length != right.Length)
+            {
+                throw new Exception("Invalid arrays");
+            }
+
+            for (int i = 0; i < left.Length; i++)
+            {
+                if (left[i] < right[i])
+                {
+                    return -1;
+                }
+                else if (left[i] > right[i])
+                {
+                    return 1;
+                }
+                else if (i == left.Length - 1)
+                {
+                    return 0;
+                }
+            }
+
+            return 0;
         }
 
     }

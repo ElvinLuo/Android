@@ -250,11 +250,26 @@ namespace SoftTestDesigner
             }
         }
 
+        private void dgvConfigItem_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            DataGridView_RowPostPaint(e, 0, 1);
+        }
+
+        private void dgvRestriction_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            DataGridView_RowPostPaint(e, 0, 1);
+        }
+
         private void dgvResult_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            if (e.RowIndex == 0) return;
+            DataGridView_RowPostPaint(e, 1, 0);
+        }
 
-            string strRowNumber = e.RowIndex.ToString();
+        private void DataGridView_RowPostPaint(DataGridViewRowPostPaintEventArgs e, int startIndex, int startValue)
+        {
+            if (e.RowIndex < startIndex) return;
+
+            string strRowNumber = (e.RowIndex + startValue).ToString();
 
             while (strRowNumber.Length < dgvResult.RowCount.ToString().Length)
             {
@@ -509,6 +524,17 @@ namespace SoftTestDesigner
             btnGenerateCombination.PerformClick();
             btnRemoveDuplicatedRows.PerformClick();
             btnApplyRestrictions.PerformClick();
+        }
+
+        private void btnCoveragesMultiplyBy10_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgvConfigItem.Rows)
+            {
+                if (row.Cells[5].Value == null) continue;
+
+                row.Cells[5].Value = row.Cells[5].Value.ToString().Replace("/", "0/");
+                row.Cells[5].Value = row.Cells[5].Value.ToString() + "0";
+            }
         }
 
     }
