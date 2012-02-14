@@ -476,12 +476,22 @@ namespace SoftTestDesigner
 
         private void btnGenerateCombination_Click(object sender, EventArgs e)
         {
+            GenerateCombination();
+        }
+
+        private void GenerateCombination()
+        {
             sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
             sc.GetResultWitoutRestrictions();
             ReloadResultFromSoftTestConfiguration(sc);
         }
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
+        {
+            ApplyRestrictions();
+        }
+
+        private void ApplyRestrictions()
         {
             sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
 
@@ -499,6 +509,11 @@ namespace SoftTestDesigner
         }
 
         private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
+        {
+            RemoveDuplicatedRows();
+        }
+
+        private void RemoveDuplicatedRows()
         {
             for (int i = sc.softTestNameList.Count - 1; i >= 0; i--)
             {
@@ -522,9 +537,19 @@ namespace SoftTestDesigner
 
         private void btnOneClick_Click(object sender, EventArgs e)
         {
-            btnGenerateCombination.PerformClick();
-            btnRemoveDuplicatedRows.PerformClick();
-            btnApplyRestrictions.PerformClick();
+            DisableAll();
+            int retryTimes = 0;
+            Dictionary<string, Dictionary<string, int>> result = new Dictionary<string, Dictionary<string, int>>();
+
+            do
+            {
+                GenerateCombination();
+                RemoveDuplicatedRows();
+                ApplyRestrictions();
+                retryTimes++;
+            } while (retryTimes <= 5 && !GetResultStatistics(out result));
+
+            EnableAll();
         }
 
         private void btnCoveragesMultiplyBy10_Click(object sender, EventArgs e)
@@ -605,6 +630,54 @@ namespace SoftTestDesigner
             }
 
             return true;
+        }
+
+        private void DisableAll()
+        {
+            this.btnApplyRestrictions.Enabled = false;
+            this.btnClearDataGridView.Enabled = false;
+            this.btnCopy.Enabled = false;
+            this.btnCoveragesMultiplyBy10.Enabled = false;
+            this.btnCreateAssignment.Enabled = false;
+            this.btnCreateLabrun.Enabled = false;
+            this.btnGenerateCombination.Enabled = false;
+            this.btnMoveDown.Enabled = false;
+            this.btnMoveUp.Enabled = false;
+            this.btnOneClick.Enabled = false;
+            this.btnOpenConfigFile.Enabled = false;
+            this.btnOpenRestrictions.Enabled = false;
+            this.btnRemoveDuplicatedRows.Enabled = false;
+            this.btnSaveRestrictions.Enabled = false;
+            this.btnSaveToFile.Enabled = false;
+            this.btnSelectFolder.Enabled = false;
+            this.btnShowResultStatistics.Enabled = false;
+            this.dgvConfigItem.Enabled = false;
+            this.dgvRestriction.Enabled = false;
+            this.dgvResult.Enabled = false;
+        }
+
+        private void EnableAll()
+        {
+            this.btnApplyRestrictions.Enabled = true;
+            this.btnClearDataGridView.Enabled = true;
+            this.btnCopy.Enabled = true;
+            this.btnCoveragesMultiplyBy10.Enabled = true;
+            this.btnCreateAssignment.Enabled = true;
+            this.btnCreateLabrun.Enabled = true;
+            this.btnGenerateCombination.Enabled = true;
+            this.btnMoveDown.Enabled = true;
+            this.btnMoveUp.Enabled = true;
+            this.btnOneClick.Enabled = true;
+            this.btnOpenConfigFile.Enabled = true;
+            this.btnOpenRestrictions.Enabled = true;
+            this.btnRemoveDuplicatedRows.Enabled = true;
+            this.btnSaveRestrictions.Enabled = true;
+            this.btnSaveToFile.Enabled = true;
+            this.btnSelectFolder.Enabled = true;
+            this.btnShowResultStatistics.Enabled = true;
+            this.dgvConfigItem.Enabled = true;
+            this.dgvRestriction.Enabled = true;
+            this.dgvResult.Enabled = true;
         }
 
     }
