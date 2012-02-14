@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using SoftTestPKG;
 
@@ -535,6 +536,75 @@ namespace SoftTestDesigner
                 row.Cells[5].Value = row.Cells[5].Value.ToString().Replace("/", "0/");
                 row.Cells[5].Value = row.Cells[5].Value.ToString() + "0";
             }
+        }
+
+        private void btnShowResultStatistics_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, Dictionary<string, int>> itemValueCountDictionary;
+            bool pass = GetResultStatistics(out itemValueCountDictionary);
+
+            StringBuilder statistics = new StringBuilder();
+            statistics.AppendLine("Pass: " + pass + "\n");
+
+            foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
+            {
+                statistics.AppendLine(pair.Key + ": ");
+                foreach (KeyValuePair<string, int> innerPair in itemValueCountDictionary[pair.Key])
+                {
+                    statistics.Append(string.Format("\t{0}({1})", innerPair.Key, innerPair.Value));
+                }
+                statistics.AppendLine("\n");
+            }
+
+            MessageBox.Show(statistics.ToString());
+        }
+
+        private bool GetResultStatistics(out Dictionary<string, Dictionary<string, int>> itemValueCountDictionary)
+        {
+            string itemName, cellValue;
+            int columnCount = dgvResult.Rows[0].Cells.Count;
+            itemValueCountDictionary = new Dictionary<string, Dictionary<string, int>>();
+
+            for (int columnIndex = 0; columnIndex < sc.allConfigItems.Length; columnIndex++)
+            {
+                itemName = sc.allConfigItems[columnIndex].item;
+
+                if (!itemValueCountDictionary.ContainsKey(itemName))
+                { itemValueCountDictionary.Add(itemName, new Dictionary<string, int>()); }
+
+                foreach (string value in sc.allConfigItems[columnIndex].values)
+                {
+                    itemValueCountDictionary[itemName].Add(value, 0);
+                }
+            }
+
+            for (int rowIndex = 1; rowIndex < dgvResult.Rows.Count - 1; rowIndex++)
+            {
+                for (int columnIndex = 1; columnIndex < columnCount; columnIndex++)
+                {
+                    itemName = dgvResult.Rows[0].Cells[columnIndex].Value.ToString().Trim();
+                    cellValue = dgvResult.Rows[rowIndex].Cells[columnIndex].Value.ToString().Trim();
+
+                    if (!itemValueCountDictionary.ContainsKey(itemName))
+                    { itemValueCountDictionary.Add(itemName, new Dictionary<string, int>()); }
+
+                    if (itemValueCountDictionary[itemName].ContainsKey(cellValue))
+                    {
+                        itemValueCountDictionary[itemName][cellValue] += 1;
+                    }
+                }
+            }
+
+            foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
+            {
+                foreach (KeyValuePair<string, int> innerPair in itemValueCountDictionary[pair.Key])
+                {
+                    if (innerPair.Value == 0)
+                        return false;
+                }
+            }
+
+            return true;
         }
 
     }

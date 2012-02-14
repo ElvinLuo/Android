@@ -19,7 +19,7 @@ namespace SoftTestDesigner
     {
         #region
         private int configItemsCount;
-        private ConfigItem[] allConfigItems;
+        public ConfigItem[] allConfigItems;
         private ConfigItem[] fullConfigItems;
         private ConfigItem[] randomConfigItems;
         private List<RestrictionItem> restrictionItems;
