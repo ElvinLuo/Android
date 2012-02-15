@@ -105,11 +105,11 @@ namespace SoftTestDesigner
                 DataGridViewRow rrow = restrictionRows[rowIndex];
                 if (!(bool)rrow.Cells[0].Value) continue;
 
-                if (rrow.Cells[1].Value == null) continue;
+                if (rrow.Cells[2].Value == null) continue;
 
                 int ruleItemCount = 0;
                 rule = new List<RestrictionItem>();
-                restrictionString = rrow.Cells[1].Value.ToString();
+                restrictionString = rrow.Cells[2].Value.ToString();
                 restrictionItems = restrictionString.Split(' ');
                 foreach (string ri in restrictionItems)
                 {

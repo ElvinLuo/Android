@@ -30,9 +30,6 @@
         {
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvRestriction = new System.Windows.Forms.DataGridView();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvResult = new System.Windows.Forms.DataGridView();
@@ -73,6 +70,12 @@
             this.btnOneClick = new System.Windows.Forms.Button();
             this.btnRemoveDuplicatedRows = new System.Windows.Forms.Button();
             this.btnApplyRestrictions = new System.Windows.Forms.Button();
+            this.btnMoveUpRestriction = new System.Windows.Forms.Button();
+            this.btnMoveDownRestriction = new System.Windows.Forms.Button();
+            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.collapsibleSplitter3 = new NJFLib.Controls.CollapsibleSplitter();
             this.collapsibleSplitter1 = new NJFLib.Controls.CollapsibleSplitter();
             this.collapsibleSplitter4 = new NJFLib.Controls.CollapsibleSplitter();
@@ -103,43 +106,21 @@
             this.saveFileDialog.Title = "Specify file name";
             this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog_FileOk);
             // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column6.FillWeight = 45.45454F;
-            this.Column6.HeaderText = "";
-            this.Column6.Name = "Column6";
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column6.Text = "Remove";
-            this.Column6.UseColumnTextForButtonValue = true;
-            this.Column6.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 154.5455F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Restrictions";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Column5.HeaderText = "";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 21;
-            // 
             // dgvRestriction
             // 
             this.dgvRestriction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRestriction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRestriction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
+            this.Column11,
             this.dataGridViewTextBoxColumn1,
             this.Column6});
             this.dgvRestriction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRestriction.Location = new System.Drawing.Point(0, 0);
+            this.dgvRestriction.MultiSelect = false;
             this.dgvRestriction.Name = "dgvRestriction";
             this.dgvRestriction.RowTemplate.Height = 23;
-            this.dgvRestriction.Size = new System.Drawing.Size(741, 221);
+            this.dgvRestriction.Size = new System.Drawing.Size(746, 221);
             this.dgvRestriction.TabIndex = 2;
             this.dgvRestriction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRestriction_CellContentClick);
             this.dgvRestriction.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvRestriction_RowPostPaint);
@@ -445,7 +426,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(741, 221);
+            this.panel10.Size = new System.Drawing.Size(746, 221);
             this.panel10.TabIndex = 9;
             // 
             // cbSelectAllRestrictions
@@ -461,6 +442,8 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.btnMoveDownRestriction);
+            this.panel9.Controls.Add(this.btnMoveUpRestriction);
             this.panel9.Controls.Add(this.btnOpenRestrictions);
             this.panel9.Controls.Add(this.btnSaveRestrictions);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
@@ -560,6 +543,60 @@
             this.btnApplyRestrictions.UseVisualStyleBackColor = true;
             this.btnApplyRestrictions.Click += new System.EventHandler(this.btnApplyRestrictions_Click);
             // 
+            // btnMoveUpRestriction
+            // 
+            this.btnMoveUpRestriction.Location = new System.Drawing.Point(0, 50);
+            this.btnMoveUpRestriction.Name = "btnMoveUpRestriction";
+            this.btnMoveUpRestriction.Size = new System.Drawing.Size(148, 25);
+            this.btnMoveUpRestriction.TabIndex = 26;
+            this.btnMoveUpRestriction.Text = "Move up";
+            this.btnMoveUpRestriction.UseVisualStyleBackColor = true;
+            this.btnMoveUpRestriction.Click += new System.EventHandler(this.btnMoveUpRestriction_Click);
+            // 
+            // btnMoveDownRestriction
+            // 
+            this.btnMoveDownRestriction.Location = new System.Drawing.Point(0, 75);
+            this.btnMoveDownRestriction.Name = "btnMoveDownRestriction";
+            this.btnMoveDownRestriction.Size = new System.Drawing.Size(148, 25);
+            this.btnMoveDownRestriction.TabIndex = 27;
+            this.btnMoveDownRestriction.Text = "Move down";
+            this.btnMoveDownRestriction.UseVisualStyleBackColor = true;
+            this.btnMoveDownRestriction.Click += new System.EventHandler(this.btnMoveDownRestriction_Click);
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Column5.HeaderText = "";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 21;
+            // 
+            // Column11
+            // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Column11.HeaderText = "";
+            this.Column11.Items.AddRange(new object[] {
+            GlobalConsts.needToFilter,
+            GlobalConsts.needToContain});
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 38;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 154.5455F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Restrictions";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column6.FillWeight = 45.45454F;
+            this.Column6.HeaderText = "";
+            this.Column6.Name = "Column6";
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column6.Text = "Remove";
+            this.Column6.UseColumnTextForButtonValue = true;
+            this.Column6.Width = 50;
+            // 
             // collapsibleSplitter3
             // 
             this.collapsibleSplitter3.AnimationDelay = 20;
@@ -630,7 +667,7 @@
             this.collapsibleSplitter5.ControlToHide = this.panel9;
             this.collapsibleSplitter5.Dock = System.Windows.Forms.DockStyle.Right;
             this.collapsibleSplitter5.ExpandParentForm = false;
-            this.collapsibleSplitter5.Location = new System.Drawing.Point(741, 0);
+            this.collapsibleSplitter5.Location = new System.Drawing.Point(746, 0);
             this.collapsibleSplitter5.Name = "collapsibleSplitter5";
             this.collapsibleSplitter5.TabIndex = 8;
             this.collapsibleSplitter5.TabStop = false;
@@ -672,12 +709,10 @@
         #endregion
 
         SoftTestConfiguration sc;
+        UIProcessor uiProcessor;
 
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.DataGridViewButtonColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
         private System.Windows.Forms.DataGridView dgvRestriction;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridView dgvResult;
@@ -723,6 +758,12 @@
         private System.Windows.Forms.Button btnMoveDown;
         private System.Windows.Forms.Button btnMoveUp;
         private System.Windows.Forms.Button btnShowResultStatistics;
+        private System.Windows.Forms.Button btnMoveDownRestriction;
+        private System.Windows.Forms.Button btnMoveUpRestriction;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn Column6;
     }
 }
 

@@ -72,7 +72,7 @@ namespace TestRunPKG
             Serializer.CreateInstance().SerializeToXML(
                this,
                this.GetType(),
-               "sample.labrun.xml");
+               "RunInTestStudio.labrun.xml");
         }
     }
 

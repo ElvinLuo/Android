@@ -74,6 +74,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ConfigItem.cs" />
+    <Compile Include="GlobalConsts.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="SoftTestConfiguration.cs" />
     <Compile Include="RestrictionItem.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="TestRunSetting.Designer.cs">
       <DependentUpon>TestRunSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIProcessor.cs" />
     <EmbeddedResource Include="SoftTestDesigner.resx">
       <DependentUpon>SoftTestDesigner.cs</DependentUpon>
     </EmbeddedResource>

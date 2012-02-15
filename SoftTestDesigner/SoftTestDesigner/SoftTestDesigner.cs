@@ -35,18 +35,20 @@ namespace SoftTestDesigner
             dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
             dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
 
-            dgvRestriction.Rows.Add(true, "RatePlanContractType=1 AND TargetRatePlanContractType=1");
-            dgvRestriction.Rows.Add(true, "RatePlanContractType=2 AND TargetRatePlanContractType=2");
-            dgvRestriction.Rows.Add(true, "RatePlanContractType=3 AND TargetRatePlanContractType=3");
-            dgvRestriction.Rows.Add(true, "LAREnabled=True AND LARExtranetEnabled=False");
-            dgvRestriction.Rows.Add(true, "LAREnabled=False AND LARExtranetEnabled=True");
-            dgvRestriction.Rows.Add(true, "DOAEnabled=False AND LOSEnabled=True");
-            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND LOSEnabled=True");
-            dgvRestriction.Rows.Add(true, "PricingModel=OBP AND HotelARIEnabled=True");
-            dgvRestriction.Rows.Add(true, "PricingModel=PPP AND HotelARIEnabled=True");
-            dgvRestriction.Rows.Add(true, "HotelContractType=2 AND ARIEnabled=True");
-            dgvRestriction.Rows.Add(true, "EQCEnabled=True AND ARIEnabled=True");
-            dgvRestriction.Rows.Add(true, "HotelContractType=2 AND RatePlanTypeMask=16777216");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=1 AND TargetRatePlanContractType=1");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=2 AND TargetRatePlanContractType=2");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=3 AND TargetRatePlanContractType=3");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "LAREnabled=True AND LARExtranetEnabled=False");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "LAREnabled=False AND LARExtranetEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "DOAEnabled=False AND LOSEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "PricingModel=OBP AND LOSEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "PricingModel=OBP AND HotelARIEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "PricingModel=PPP AND HotelARIEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "HotelContractType=2 AND ARIEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "EQCEnabled=True AND ARIEnabled=True");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "HotelContractType=2 AND RatePlanTypeMask=16777216");
+
+            uiProcessor = UIProcessor.CreateInstance();
 
         }
 
@@ -66,39 +68,6 @@ namespace SoftTestDesigner
                 dgvRestriction[0, i].Value = ((CheckBox)dgvRestriction.Controls.Find("cbSelectAllRestrictions", true)[0]).Checked;
             }
             dgvRestriction.EndEdit();
-        }
-
-        private void AddRows(SoftTestConfiguration sc)
-        {
-            string[] headerRow = new string[sc.itemNames.Count + 1];
-            headerRow[0] = "Soft Test Name";
-
-            for (int i = 0; i < sc.itemNames.Count; i++)
-            { headerRow[i + 1] = sc.itemNames[i]; }
-
-            dgvResult.Rows.Add(headerRow);
-
-            for (int i = 0; i < sc.softTestNameList.Count; i++)
-            {
-                List<string> finalRow = new List<string>();
-                finalRow.Add(sc.softTestNameList.ElementAt(i));
-
-                foreach (string value in sc.valueResultList.ElementAt(i))
-                {
-                    finalRow.Add(value);
-                }
-
-                dgvResult.Rows.Add(finalRow.ToArray());
-            }
-        }
-
-        private void AddColumns(SoftTestConfiguration sc)
-        {
-            dgvResult.Columns.Add("Soft Test Name", "Soft Test Name");
-            foreach (string columnName in sc.itemNames)
-            {
-                dgvResult.Columns.Add(columnName, columnName);
-            }
         }
 
         private void btnSelectFolder_Click(object sender, EventArgs e)
@@ -155,39 +124,12 @@ namespace SoftTestDesigner
 
                     for (int j = 0; j < itemNameList.Count; j++)
                     {
-                        row[j + 1] = GetValue(itemNameList.ElementAt(j), softTest);
+                        row[j + 1] = uiProcessor.GetValue(itemNameList.ElementAt(j), softTest);
                     }
 
                     this.dgvResult.Rows.Add(row);
                 }
             }
-        }
-
-        private string GetValue(string itemName, SoftTest softTest)
-        {
-            string result = string.Empty;
-
-            foreach (Data data in softTest.testData)
-            {
-                if (data.dataName.ToLower().Equals(itemName.ToLower()))
-                {
-                    result = data.defaultValue;
-                    break;
-                }
-            }
-
-            return result;
-        }
-
-        private bool NeedToContinue(List<ConfigItem> items)
-        {
-            foreach (ConfigItem item in items)
-            {
-                if (!item.Checked())
-                    return true;
-            }
-
-            return false;
         }
 
         private void dgvRestriction_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -207,21 +149,6 @@ namespace SoftTestDesigner
                 e.RowIndex != -1)
             {
                 dgvConfigItem.Rows.RemoveAt(e.RowIndex);
-            }
-        }
-
-        private void EnableCell(DataGridViewCell dc, bool enabled)
-        {
-            dc.ReadOnly = !enabled;
-            if (enabled)
-            {
-                dc.Style.BackColor = dc.OwningColumn.DefaultCellStyle.BackColor;
-                dc.Style.ForeColor = dc.OwningColumn.DefaultCellStyle.ForeColor;
-            }
-            else
-            {
-                dc.Style.BackColor = Color.DarkGray;
-                dc.Style.ForeColor = Color.LightGray;
             }
         }
 
@@ -311,7 +238,7 @@ namespace SoftTestDesigner
                e.RowIndex != -1)
             {
                 bool flag = (bool)dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                EnableCell(dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
+                uiProcessor.EnableCell(dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
             }
         }
 
@@ -354,60 +281,13 @@ namespace SoftTestDesigner
                 (e.Control && e.KeyCode == Keys.Delete) ||
                 (e.Shift && e.KeyCode == Keys.Delete))
             {
-                CopyClipboard();
+                uiProcessor.CopyClipboard(dgvResult);
             }
             if ((e.Control && e.KeyCode == Keys.V) ||
                 (e.Control && e.KeyCode == Keys.Insert) ||
                 (e.Shift && e.KeyCode == Keys.Insert))
             {
-                PasteClipboard();
-            }
-        }
-
-        private void CopyClipboard()
-        {
-            DataObject d = dgvResult.GetClipboardContent();
-            Clipboard.SetDataObject(d);
-        }
-
-        private void PasteClipboard()
-        {
-            try
-            {
-                string[] sCells;
-                DataGridViewCell oCell;
-                string s = Clipboard.GetText();
-                string[] lines = s.Split('\n');
-                int iRow = dgvResult.CurrentCell.RowIndex;
-                int iCol = dgvResult.CurrentCell.ColumnIndex;
-
-                foreach (string line in lines)
-                {
-                    if (line.Length > 0)
-                    {
-                        if (iRow == dgvResult.RowCount - 1)
-                        { dgvResult.Rows.Add(1); }
-
-                        sCells = line.Split('\t');
-
-                        for (int i = 0; i < sCells.GetLength(0); ++i)
-                        {
-                            if (iCol + i == this.dgvResult.ColumnCount)
-                            { dgvResult.Columns.Add("NewColumn", "NewColumn"); }
-
-                            oCell = dgvResult[iCol + i, iRow];
-
-                            if (oCell.Value == null || oCell.Value.ToString() != sCells[i])
-                            { oCell.Value = Convert.ChangeType(sCells[i], oCell.ValueType); }
-                        }
-
-                        iRow++;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                throw new Exception("The data you pasted is in the wrong format for the cell");
+                uiProcessor.PasteClipboard(dgvResult);
             }
         }
 
@@ -476,63 +356,17 @@ namespace SoftTestDesigner
 
         private void btnGenerateCombination_Click(object sender, EventArgs e)
         {
-            GenerateCombination();
-        }
-
-        private void GenerateCombination()
-        {
-            sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
-            sc.GetResultWitoutRestrictions();
-            ReloadResultFromSoftTestConfiguration(sc);
+            uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult);
         }
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
         {
-            ApplyRestrictions();
-        }
-
-        private void ApplyRestrictions()
-        {
-            sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
-
-            for (int i = sc.indexResultList.Count - 1; i > -1; i--)
-            {
-                if (sc.IsFiltered(sc.indexResultList.ElementAt(i)))
-                {
-                    sc.indexResultList.RemoveAt(i);
-                    sc.valueResultList.RemoveAt(i);
-                    sc.softTestNameList.RemoveAt(i);
-                }
-            }
-
-            ReloadResultFromSoftTestConfiguration(sc);
+            uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult);
         }
 
         private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
         {
-            RemoveDuplicatedRows();
-        }
-
-        private void RemoveDuplicatedRows()
-        {
-            for (int i = sc.softTestNameList.Count - 1; i >= 0; i--)
-            {
-                if (sc.softTestNameList.IndexOf(sc.softTestNameList.ElementAt(i)) != i)
-                {
-                    sc.indexResultList.RemoveAt(i);
-                    sc.valueResultList.RemoveAt(i);
-                    sc.softTestNameList.RemoveAt(i);
-                }
-            }
-
-            ReloadResultFromSoftTestConfiguration(sc);
-        }
-
-        private void ReloadResultFromSoftTestConfiguration(SoftTestConfiguration sc)
-        {
-            dgvResult.Columns.Clear();
-            AddColumns(sc);
-            AddRows(sc);
+            uiProcessor.RemoveDuplicatedRows(sc, dgvResult);
         }
 
         private void btnOneClick_Click(object sender, EventArgs e)
@@ -543,11 +377,11 @@ namespace SoftTestDesigner
 
             do
             {
-                GenerateCombination();
-                RemoveDuplicatedRows();
-                ApplyRestrictions();
+                uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult);
+                uiProcessor.RemoveDuplicatedRows(sc, dgvResult);
+                uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult);
                 retryTimes++;
-            } while (retryTimes <= 5 && !GetResultStatistics(out result));
+            } while (retryTimes <= 5 && !uiProcessor.GetResultStatistics(out result, dgvResult, sc));
 
             EnableAll();
         }
@@ -566,7 +400,7 @@ namespace SoftTestDesigner
         private void btnShowResultStatistics_Click(object sender, EventArgs e)
         {
             Dictionary<string, Dictionary<string, int>> itemValueCountDictionary;
-            bool pass = GetResultStatistics(out itemValueCountDictionary);
+            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, dgvResult, sc);
 
             StringBuilder statistics = new StringBuilder();
             statistics.AppendLine("Pass: " + pass + "\n");
@@ -584,52 +418,24 @@ namespace SoftTestDesigner
             MessageBox.Show(statistics.ToString());
         }
 
-        private bool GetResultStatistics(out Dictionary<string, Dictionary<string, int>> itemValueCountDictionary)
+        private void btnMoveUp_Click(object sender, EventArgs e)
         {
-            string itemName, cellValue;
-            int columnCount = dgvResult.Rows[0].Cells.Count;
-            itemValueCountDictionary = new Dictionary<string, Dictionary<string, int>>();
+            uiProcessor.MoveUp(dgvConfigItem);
+        }
 
-            for (int columnIndex = 0; columnIndex < sc.allConfigItems.Length; columnIndex++)
-            {
-                itemName = sc.allConfigItems[columnIndex].item;
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            uiProcessor.MoveDown(dgvConfigItem);
+        }
 
-                if (!itemValueCountDictionary.ContainsKey(itemName))
-                { itemValueCountDictionary.Add(itemName, new Dictionary<string, int>()); }
+        private void btnMoveUpRestriction_Click(object sender, EventArgs e)
+        {
+            uiProcessor.MoveUp(dgvRestriction);
+        }
 
-                foreach (string value in sc.allConfigItems[columnIndex].values)
-                {
-                    itemValueCountDictionary[itemName].Add(value, 0);
-                }
-            }
-
-            for (int rowIndex = 1; rowIndex < dgvResult.Rows.Count - 1; rowIndex++)
-            {
-                for (int columnIndex = 1; columnIndex < columnCount; columnIndex++)
-                {
-                    itemName = dgvResult.Rows[0].Cells[columnIndex].Value.ToString().Trim();
-                    cellValue = dgvResult.Rows[rowIndex].Cells[columnIndex].Value.ToString().Trim();
-
-                    if (!itemValueCountDictionary.ContainsKey(itemName))
-                    { itemValueCountDictionary.Add(itemName, new Dictionary<string, int>()); }
-
-                    if (itemValueCountDictionary[itemName].ContainsKey(cellValue))
-                    {
-                        itemValueCountDictionary[itemName][cellValue] += 1;
-                    }
-                }
-            }
-
-            foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
-            {
-                foreach (KeyValuePair<string, int> innerPair in itemValueCountDictionary[pair.Key])
-                {
-                    if (innerPair.Value == 0)
-                        return false;
-                }
-            }
-
-            return true;
+        private void btnMoveDownRestriction_Click(object sender, EventArgs e)
+        {
+            uiProcessor.MoveDown(dgvRestriction);
         }
 
         private void DisableAll()
@@ -678,49 +484,6 @@ namespace SoftTestDesigner
             this.dgvConfigItem.Enabled = true;
             this.dgvRestriction.Enabled = true;
             this.dgvResult.Enabled = true;
-        }
-
-        private void btnMoveUp_Click(object sender, EventArgs e)
-        {
-            if (dgvConfigItem.SelectedCells.Count == 0) return;
-            int selectedIndex = dgvConfigItem.SelectedCells[0].RowIndex;
-            if (selectedIndex == 0) return;
-            int previousIndex = selectedIndex - 1;
-            DataGridViewRow previousRow = (DataGridViewRow)dgvConfigItem.Rows[previousIndex].Clone();
-            CopyDataGridViewRow(dgvConfigItem.Rows[previousIndex], previousRow);
-            CopyDataGridViewRow(dgvConfigItem.Rows[selectedIndex], dgvConfigItem.Rows[previousIndex]);
-            CopyDataGridViewRow(previousRow, dgvConfigItem.Rows[selectedIndex]);
-            dgvConfigItem.Rows[selectedIndex].Selected = false;
-            dgvConfigItem.Rows[previousIndex].Selected = true;
-        }
-
-        private void btnMoveDown_Click(object sender, EventArgs e)
-        {
-            if (dgvConfigItem.SelectedCells.Count == 0) return;
-            int selectedIndex = dgvConfigItem.SelectedCells[0].RowIndex;
-
-            if (selectedIndex == dgvConfigItem.Rows.Count - 1 ||
-                selectedIndex == dgvConfigItem.Rows.Count - 2)
-            { return; }
-
-            int nextIndex = selectedIndex + 1;
-            DataGridViewRow nextRow = (DataGridViewRow)dgvConfigItem.Rows[nextIndex].Clone();
-            CopyDataGridViewRow(dgvConfigItem.Rows[nextIndex], nextRow);
-            CopyDataGridViewRow(dgvConfigItem.Rows[selectedIndex], dgvConfigItem.Rows[nextIndex]);
-            CopyDataGridViewRow(nextRow, dgvConfigItem.Rows[selectedIndex]);
-            dgvConfigItem.Rows[selectedIndex].Selected = false;
-            dgvConfigItem.Rows[nextIndex].Selected = true;
-        }
-
-        private void CopyDataGridViewRow(DataGridViewRow source, DataGridViewRow target)
-        {
-            if (target.Cells.Count == source.Cells.Count)
-            {
-                for (int i = 0; i < source.Cells.Count; i++)
-                {
-                    target.Cells[i].Value = source.Cells[i].Value;
-                }
-            }
         }
 
     }
