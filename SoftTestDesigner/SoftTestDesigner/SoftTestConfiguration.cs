@@ -23,7 +23,9 @@ namespace SoftTestDesigner
         private ConfigItem[] fullConfigItems;
         private ConfigItem[] randomConfigItems;
         private List<RestrictionItem> restrictionItems;
-        private List<List<RestrictionItem>> restrictionRuleList;
+        public List<List<RestrictionItem>> restrictionRuleList;
+        public List<string> restrictionTypeList;
+        public List<bool> containResultList;
 
         public List<string> itemNames;
         public List<int[]> indexResultList;
@@ -99,6 +101,8 @@ namespace SoftTestDesigner
             List<RestrictionItem> rule;
             this.restrictionItems = new List<RestrictionItem>();
             this.restrictionRuleList = new List<List<RestrictionItem>>();
+            this.restrictionTypeList = new List<string>();
+            this.containResultList = new List<bool>();
 
             for (int rowIndex = 0; rowIndex < restrictionRows.Count - 1; rowIndex++)
             {
@@ -106,6 +110,9 @@ namespace SoftTestDesigner
                 if (!(bool)rrow.Cells[0].Value) continue;
 
                 if (rrow.Cells[2].Value == null) continue;
+
+                restrictionTypeList.Add(rrow.Cells[1].Value.ToString());
+                containResultList.Add(false);
 
                 int ruleItemCount = 0;
                 rule = new List<RestrictionItem>();
@@ -441,23 +448,50 @@ namespace SoftTestDesigner
         {
             bool filtered = false;
 
-            foreach (List<RestrictionItem> rule in this.restrictionRuleList)
+            for (int i = 0; i < this.restrictionRuleList.Count; i++)
             {
-                filtered = true;
+                if (restrictionTypeList.ElementAt(i).Equals(GlobalConsts.needToFilter))
+                {
+                    List<RestrictionItem> rule = this.restrictionRuleList.ElementAt(i);
+                    filtered = true;
+
+                    foreach (RestrictionItem ri in rule)
+                    {
+                        if (indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues ||
+                            ri.indexInConfigItemList > allConfigItems.Length - 1)
+                        {
+                            filtered = false;
+                            break;
+                        }
+                    }
+
+                    if (filtered) break;
+                }
+            }
+            return filtered;
+        }
+
+        public bool IsMatching(int index, int[] indexRow)
+        {
+            if (restrictionTypeList.ElementAt(index).Equals(GlobalConsts.needToContain))
+            {
+                List<RestrictionItem> rule = this.restrictionRuleList.ElementAt(index);
 
                 foreach (RestrictionItem ri in rule)
                 {
                     if (indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues ||
                         ri.indexInConfigItemList > allConfigItems.Length - 1)
                     {
-                        filtered = false;
-                        break;
+                        return false;
                     }
                 }
 
-                if (filtered) break;
+                return true;
             }
-            return filtered;
+            else
+            {
+                return true;
+            }
         }
 
         private bool PerformStep(int[] numbers)

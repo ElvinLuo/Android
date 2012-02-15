@@ -373,6 +373,7 @@ namespace SoftTestDesigner
         {
             DisableAll();
             int retryTimes = 0;
+            string output;
             Dictionary<string, Dictionary<string, int>> result = new Dictionary<string, Dictionary<string, int>>();
 
             do
@@ -381,7 +382,7 @@ namespace SoftTestDesigner
                 uiProcessor.RemoveDuplicatedRows(sc, dgvResult);
                 uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult);
                 retryTimes++;
-            } while (retryTimes <= 5 && !uiProcessor.GetResultStatistics(out result, dgvResult, sc));
+            } while (retryTimes <= 5 && !uiProcessor.GetResultStatistics(out result, out output, dgvResult, sc));
 
             EnableAll();
         }
@@ -399,11 +400,13 @@ namespace SoftTestDesigner
 
         private void btnShowResultStatistics_Click(object sender, EventArgs e)
         {
+            //sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
+            string output;
             Dictionary<string, Dictionary<string, int>> itemValueCountDictionary;
-            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, dgvResult, sc);
+            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, out output, dgvResult, sc);
 
             StringBuilder statistics = new StringBuilder();
-            statistics.AppendLine("Pass: " + pass + "\n");
+            statistics.AppendLine("Pass: " + pass + output);
 
             foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
             {

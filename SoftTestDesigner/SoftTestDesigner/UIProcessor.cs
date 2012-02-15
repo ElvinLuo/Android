@@ -127,9 +127,12 @@ namespace SoftTestDesigner
 
         public bool GetResultStatistics(
             out Dictionary<string, Dictionary<string, int>> itemValueCountDictionary,
+            out string output,
             DataGridView dgvResult,
             SoftTestConfiguration sc)
         {
+            output = null;
+            bool pass = true;
             string itemName, cellValue;
             int columnCount = dgvResult.Rows[0].Cells.Count;
             itemValueCountDictionary = new Dictionary<string, Dictionary<string, int>>();
@@ -164,16 +167,41 @@ namespace SoftTestDesigner
                 }
             }
 
+            for (int j = 0; j < sc.restrictionRuleList.Count; j++)
+            {
+                for (int i = 0; i < sc.indexResultList.Count; i++)
+                {
+                    if (sc.restrictionTypeList.ElementAt(j).Equals(GlobalConsts.needToContain))
+                    {
+                        if (sc.IsMatching(j, sc.indexResultList.ElementAt(i)))
+                        {
+                            sc.containResultList[j] = true;
+                        }
+                    }
+                }
+            }
+
+            for (int j = 0; j < sc.containResultList.Count; j++)
+            {
+                if (sc.restrictionTypeList.ElementAt(j).Equals(GlobalConsts.needToContain) &&
+                    !sc.containResultList.ElementAt(j))
+                {
+                    output += j + ",";
+                    pass = false;
+                }
+            }
+
             foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
             {
                 foreach (KeyValuePair<string, int> innerPair in itemValueCountDictionary[pair.Key])
                 {
                     if (innerPair.Value == 0)
-                        return false;
+                        pass = false;
+                    break;
                 }
             }
 
-            return true;
+            return pass;
         }
 
         public string GetValue(string itemName, SoftTest softTest)
