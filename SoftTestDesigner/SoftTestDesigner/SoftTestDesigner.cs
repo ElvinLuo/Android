@@ -680,6 +680,49 @@ namespace SoftTestDesigner
             this.dgvResult.Enabled = true;
         }
 
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (dgvConfigItem.SelectedCells.Count == 0) return;
+            int selectedIndex = dgvConfigItem.SelectedCells[0].RowIndex;
+            if (selectedIndex == 0) return;
+            int previousIndex = selectedIndex - 1;
+            DataGridViewRow previousRow = (DataGridViewRow)dgvConfigItem.Rows[previousIndex].Clone();
+            CopyDataGridViewRow(dgvConfigItem.Rows[previousIndex], previousRow);
+            CopyDataGridViewRow(dgvConfigItem.Rows[selectedIndex], dgvConfigItem.Rows[previousIndex]);
+            CopyDataGridViewRow(previousRow, dgvConfigItem.Rows[selectedIndex]);
+            dgvConfigItem.Rows[selectedIndex].Selected = false;
+            dgvConfigItem.Rows[previousIndex].Selected = true;
+        }
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (dgvConfigItem.SelectedCells.Count == 0) return;
+            int selectedIndex = dgvConfigItem.SelectedCells[0].RowIndex;
+
+            if (selectedIndex == dgvConfigItem.Rows.Count - 1 ||
+                selectedIndex == dgvConfigItem.Rows.Count - 2)
+            { return; }
+
+            int nextIndex = selectedIndex + 1;
+            DataGridViewRow nextRow = (DataGridViewRow)dgvConfigItem.Rows[nextIndex].Clone();
+            CopyDataGridViewRow(dgvConfigItem.Rows[nextIndex], nextRow);
+            CopyDataGridViewRow(dgvConfigItem.Rows[selectedIndex], dgvConfigItem.Rows[nextIndex]);
+            CopyDataGridViewRow(nextRow, dgvConfigItem.Rows[selectedIndex]);
+            dgvConfigItem.Rows[selectedIndex].Selected = false;
+            dgvConfigItem.Rows[nextIndex].Selected = true;
+        }
+
+        private void CopyDataGridViewRow(DataGridViewRow source, DataGridViewRow target)
+        {
+            if (target.Cells.Count == source.Cells.Count)
+            {
+                for (int i = 0; i < source.Cells.Count; i++)
+                {
+                    target.Cells[i].Value = source.Cells[i].Value;
+                }
+            }
+        }
+
     }
 
 }

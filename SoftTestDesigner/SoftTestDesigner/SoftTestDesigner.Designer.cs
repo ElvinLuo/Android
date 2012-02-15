@@ -55,29 +55,29 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.cbSelectAllConfigItems = new System.Windows.Forms.CheckBox();
-            this.collapsibleSplitter4 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnMoveDown = new System.Windows.Forms.Button();
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnSaveToFile = new System.Windows.Forms.Button();
             this.btnOpenConfigFile = new System.Windows.Forms.Button();
             this.btnCoveragesMultiplyBy10 = new System.Windows.Forms.Button();
-            this.collapsibleSplitter2 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.cbSelectAllRestrictions = new System.Windows.Forms.CheckBox();
-            this.collapsibleSplitter5 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnSaveRestrictions = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.collapsibleSplitter3 = new NJFLib.Controls.CollapsibleSplitter();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnShowResultStatistics = new System.Windows.Forms.Button();
             this.btnOneClick = new System.Windows.Forms.Button();
             this.btnRemoveDuplicatedRows = new System.Windows.Forms.Button();
             this.btnApplyRestrictions = new System.Windows.Forms.Button();
+            this.collapsibleSplitter3 = new NJFLib.Controls.CollapsibleSplitter();
             this.collapsibleSplitter1 = new NJFLib.Controls.CollapsibleSplitter();
-            this.btnShowResultStatistics = new System.Windows.Forms.Button();
+            this.collapsibleSplitter4 = new NJFLib.Controls.CollapsibleSplitter();
+            this.collapsibleSplitter2 = new NJFLib.Controls.CollapsibleSplitter();
+            this.collapsibleSplitter5 = new NJFLib.Controls.CollapsibleSplitter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRestriction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConfigItem)).BeginInit();
@@ -186,6 +186,7 @@
             this.Column8});
             this.dgvConfigItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvConfigItem.Location = new System.Drawing.Point(0, 0);
+            this.dgvConfigItem.MultiSelect = false;
             this.dgvConfigItem.Name = "dgvConfigItem";
             this.dgvConfigItem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvConfigItem.RowTemplate.Height = 23;
@@ -364,21 +365,6 @@
             this.cbSelectAllConfigItems.UseVisualStyleBackColor = false;
             this.cbSelectAllConfigItems.CheckedChanged += new System.EventHandler(this.cbSelectAllConfigItems_CheckedChanged);
             // 
-            // collapsibleSplitter4
-            // 
-            this.collapsibleSplitter4.AnimationDelay = 20;
-            this.collapsibleSplitter4.AnimationStep = 20;
-            this.collapsibleSplitter4.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
-            this.collapsibleSplitter4.ControlToHide = this.panel7;
-            this.collapsibleSplitter4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.collapsibleSplitter4.ExpandParentForm = false;
-            this.collapsibleSplitter4.Location = new System.Drawing.Point(741, 0);
-            this.collapsibleSplitter4.Name = "collapsibleSplitter4";
-            this.collapsibleSplitter4.TabIndex = 9;
-            this.collapsibleSplitter4.TabStop = false;
-            this.collapsibleSplitter4.UseAnimations = false;
-            this.collapsibleSplitter4.VisualStyle = NJFLib.Controls.VisualStyles.XP;
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.btnMoveDown);
@@ -400,6 +386,7 @@
             this.btnMoveDown.TabIndex = 4;
             this.btnMoveDown.Text = "Move down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // btnMoveUp
             // 
@@ -409,6 +396,7 @@
             this.btnMoveUp.TabIndex = 3;
             this.btnMoveUp.Text = "Move up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnSaveToFile
             // 
@@ -437,22 +425,6 @@
             this.btnCoveragesMultiplyBy10.Text = "Coverages X10";
             this.btnCoveragesMultiplyBy10.UseVisualStyleBackColor = true;
             this.btnCoveragesMultiplyBy10.Click += new System.EventHandler(this.btnCoveragesMultiplyBy10_Click);
-            // 
-            // collapsibleSplitter2
-            // 
-            this.collapsibleSplitter2.AnimationDelay = 20;
-            this.collapsibleSplitter2.AnimationStep = 20;
-            this.collapsibleSplitter2.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
-            this.collapsibleSplitter2.ControlToHide = this.panel3;
-            this.collapsibleSplitter2.Cursor = System.Windows.Forms.Cursors.HSplit;
-            this.collapsibleSplitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.collapsibleSplitter2.ExpandParentForm = false;
-            this.collapsibleSplitter2.Location = new System.Drawing.Point(0, 188);
-            this.collapsibleSplitter2.Name = "collapsibleSplitter2";
-            this.collapsibleSplitter2.TabIndex = 1;
-            this.collapsibleSplitter2.TabStop = false;
-            this.collapsibleSplitter2.UseAnimations = false;
-            this.collapsibleSplitter2.VisualStyle = NJFLib.Controls.VisualStyles.XP;
             // 
             // panel3
             // 
@@ -486,21 +458,6 @@
             this.cbSelectAllRestrictions.TabIndex = 7;
             this.cbSelectAllRestrictions.UseVisualStyleBackColor = false;
             this.cbSelectAllRestrictions.CheckedChanged += new System.EventHandler(this.cbSelectAllRestrictions_CheckedChanged);
-            // 
-            // collapsibleSplitter5
-            // 
-            this.collapsibleSplitter5.AnimationDelay = 20;
-            this.collapsibleSplitter5.AnimationStep = 20;
-            this.collapsibleSplitter5.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
-            this.collapsibleSplitter5.ControlToHide = this.panel9;
-            this.collapsibleSplitter5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.collapsibleSplitter5.ExpandParentForm = false;
-            this.collapsibleSplitter5.Location = new System.Drawing.Point(741, 0);
-            this.collapsibleSplitter5.Name = "collapsibleSplitter5";
-            this.collapsibleSplitter5.TabIndex = 8;
-            this.collapsibleSplitter5.TabStop = false;
-            this.collapsibleSplitter5.UseAnimations = false;
-            this.collapsibleSplitter5.VisualStyle = NJFLib.Controls.VisualStyles.XP;
             // 
             // panel9
             // 
@@ -544,21 +501,6 @@
             this.panel6.Size = new System.Drawing.Size(741, 281);
             this.panel6.TabIndex = 2;
             // 
-            // collapsibleSplitter3
-            // 
-            this.collapsibleSplitter3.AnimationDelay = 20;
-            this.collapsibleSplitter3.AnimationStep = 20;
-            this.collapsibleSplitter3.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedOuter;
-            this.collapsibleSplitter3.ControlToHide = this.panel5;
-            this.collapsibleSplitter3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.collapsibleSplitter3.ExpandParentForm = false;
-            this.collapsibleSplitter3.Location = new System.Drawing.Point(741, 0);
-            this.collapsibleSplitter3.Name = "collapsibleSplitter3";
-            this.collapsibleSplitter3.TabIndex = 1;
-            this.collapsibleSplitter3.TabStop = false;
-            this.collapsibleSplitter3.UseAnimations = false;
-            this.collapsibleSplitter3.VisualStyle = NJFLib.Controls.VisualStyles.XP;
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
@@ -577,6 +519,16 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(148, 281);
             this.panel5.TabIndex = 0;
+            // 
+            // btnShowResultStatistics
+            // 
+            this.btnShowResultStatistics.Location = new System.Drawing.Point(0, 100);
+            this.btnShowResultStatistics.Name = "btnShowResultStatistics";
+            this.btnShowResultStatistics.Size = new System.Drawing.Size(148, 25);
+            this.btnShowResultStatistics.TabIndex = 29;
+            this.btnShowResultStatistics.Text = "Show result statistics";
+            this.btnShowResultStatistics.UseVisualStyleBackColor = true;
+            this.btnShowResultStatistics.Click += new System.EventHandler(this.btnShowResultStatistics_Click);
             // 
             // btnOneClick
             // 
@@ -608,6 +560,21 @@
             this.btnApplyRestrictions.UseVisualStyleBackColor = true;
             this.btnApplyRestrictions.Click += new System.EventHandler(this.btnApplyRestrictions_Click);
             // 
+            // collapsibleSplitter3
+            // 
+            this.collapsibleSplitter3.AnimationDelay = 20;
+            this.collapsibleSplitter3.AnimationStep = 20;
+            this.collapsibleSplitter3.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.collapsibleSplitter3.ControlToHide = this.panel5;
+            this.collapsibleSplitter3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.collapsibleSplitter3.ExpandParentForm = false;
+            this.collapsibleSplitter3.Location = new System.Drawing.Point(741, 0);
+            this.collapsibleSplitter3.Name = "collapsibleSplitter3";
+            this.collapsibleSplitter3.TabIndex = 1;
+            this.collapsibleSplitter3.TabStop = false;
+            this.collapsibleSplitter3.UseAnimations = false;
+            this.collapsibleSplitter3.VisualStyle = NJFLib.Controls.VisualStyles.XP;
+            // 
             // collapsibleSplitter1
             // 
             this.collapsibleSplitter1.AnimationDelay = 20;
@@ -624,15 +591,51 @@
             this.collapsibleSplitter1.UseAnimations = false;
             this.collapsibleSplitter1.VisualStyle = NJFLib.Controls.VisualStyles.DoubleDots;
             // 
-            // btnShowResultStatistics
+            // collapsibleSplitter4
             // 
-            this.btnShowResultStatistics.Location = new System.Drawing.Point(0, 100);
-            this.btnShowResultStatistics.Name = "btnShowResultStatistics";
-            this.btnShowResultStatistics.Size = new System.Drawing.Size(148, 25);
-            this.btnShowResultStatistics.TabIndex = 29;
-            this.btnShowResultStatistics.Text = "Show result statistics";
-            this.btnShowResultStatistics.UseVisualStyleBackColor = true;
-            this.btnShowResultStatistics.Click += new System.EventHandler(this.btnShowResultStatistics_Click);
+            this.collapsibleSplitter4.AnimationDelay = 20;
+            this.collapsibleSplitter4.AnimationStep = 20;
+            this.collapsibleSplitter4.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
+            this.collapsibleSplitter4.ControlToHide = this.panel7;
+            this.collapsibleSplitter4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.collapsibleSplitter4.ExpandParentForm = false;
+            this.collapsibleSplitter4.Location = new System.Drawing.Point(741, 0);
+            this.collapsibleSplitter4.Name = "collapsibleSplitter4";
+            this.collapsibleSplitter4.TabIndex = 9;
+            this.collapsibleSplitter4.TabStop = false;
+            this.collapsibleSplitter4.UseAnimations = false;
+            this.collapsibleSplitter4.VisualStyle = NJFLib.Controls.VisualStyles.XP;
+            // 
+            // collapsibleSplitter2
+            // 
+            this.collapsibleSplitter2.AnimationDelay = 20;
+            this.collapsibleSplitter2.AnimationStep = 20;
+            this.collapsibleSplitter2.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
+            this.collapsibleSplitter2.ControlToHide = this.panel3;
+            this.collapsibleSplitter2.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.collapsibleSplitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.collapsibleSplitter2.ExpandParentForm = false;
+            this.collapsibleSplitter2.Location = new System.Drawing.Point(0, 188);
+            this.collapsibleSplitter2.Name = "collapsibleSplitter2";
+            this.collapsibleSplitter2.TabIndex = 1;
+            this.collapsibleSplitter2.TabStop = false;
+            this.collapsibleSplitter2.UseAnimations = false;
+            this.collapsibleSplitter2.VisualStyle = NJFLib.Controls.VisualStyles.XP;
+            // 
+            // collapsibleSplitter5
+            // 
+            this.collapsibleSplitter5.AnimationDelay = 20;
+            this.collapsibleSplitter5.AnimationStep = 20;
+            this.collapsibleSplitter5.BorderStyle3D = System.Windows.Forms.Border3DStyle.RaisedInner;
+            this.collapsibleSplitter5.ControlToHide = this.panel9;
+            this.collapsibleSplitter5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.collapsibleSplitter5.ExpandParentForm = false;
+            this.collapsibleSplitter5.Location = new System.Drawing.Point(741, 0);
+            this.collapsibleSplitter5.Name = "collapsibleSplitter5";
+            this.collapsibleSplitter5.TabIndex = 8;
+            this.collapsibleSplitter5.TabStop = false;
+            this.collapsibleSplitter5.UseAnimations = false;
+            this.collapsibleSplitter5.VisualStyle = NJFLib.Controls.VisualStyles.XP;
             // 
             // SoftTestDesigner
             // 
