@@ -35,9 +35,13 @@ namespace SoftTestDesigner
             dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
             dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
 
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "ARIEnabled=True");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=1 AND TargetRatePlanContractType=2");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=1 AND TargetRatePlanContractType=3");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=2 AND TargetRatePlanContractType=1");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=2 AND TargetRatePlanContractType=3");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=3 AND TargetRatePlanContractType=1");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=3 AND TargetRatePlanContractType=2");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=1 AND TargetRatePlanContractType=1");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=2 AND TargetRatePlanContractType=2");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=3 AND TargetRatePlanContractType=3");

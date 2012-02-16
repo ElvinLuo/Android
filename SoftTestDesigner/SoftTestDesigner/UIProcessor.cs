@@ -191,19 +191,22 @@ namespace SoftTestDesigner
                 }
             }
 
-            if (!pass)
+            if (pass)
+            {
+                foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
+                {
+                    foreach (KeyValuePair<string, int> innerPair in itemValueCountDictionary[pair.Key])
+                    {
+                        if (innerPair.Value == 0)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            else
             {
                 output = "Not contained: " + unContainedLines;
-            }
-
-            foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
-            {
-                foreach (KeyValuePair<string, int> innerPair in itemValueCountDictionary[pair.Key])
-                {
-                    if (innerPair.Value == 0)
-                        pass = false;
-                    break;
-                }
             }
 
             return pass;
