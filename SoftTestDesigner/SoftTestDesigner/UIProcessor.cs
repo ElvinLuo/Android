@@ -133,7 +133,7 @@ namespace SoftTestDesigner
         {
             output = null;
             bool pass = true;
-            string itemName, cellValue;
+            string itemName, cellValue, unContainedLines = null;
             int columnCount = dgvResult.Rows[0].Cells.Count;
             itemValueCountDictionary = new Dictionary<string, Dictionary<string, int>>();
 
@@ -186,9 +186,14 @@ namespace SoftTestDesigner
                 if (sc.restrictionTypeList.ElementAt(j).Equals(GlobalConsts.needToContain) &&
                     !sc.containResultList.ElementAt(j))
                 {
-                    output += j + ",";
+                    unContainedLines += j + ", ";
                     pass = false;
                 }
+            }
+
+            if (!pass)
+            {
+                output = "Not contained: " + unContainedLines;
             }
 
             foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)

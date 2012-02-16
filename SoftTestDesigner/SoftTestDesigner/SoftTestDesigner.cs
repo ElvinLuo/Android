@@ -35,6 +35,9 @@ namespace SoftTestDesigner
             dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
             dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
 
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=1 AND TargetRatePlanContractType=2");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=1 AND TargetRatePlanContractType=3");
+            dgvRestriction.Rows.Add(true, GlobalConsts.needToContain, "RatePlanContractType=3 AND TargetRatePlanContractType=1");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=1 AND TargetRatePlanContractType=1");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=2 AND TargetRatePlanContractType=2");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "RatePlanContractType=3 AND TargetRatePlanContractType=3");
@@ -406,7 +409,10 @@ namespace SoftTestDesigner
             bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, out output, dgvResult, sc);
 
             StringBuilder statistics = new StringBuilder();
-            statistics.AppendLine("Pass: " + pass + output);
+            statistics.AppendLine("Pass: " + pass + "\n");
+
+            if (output != null)
+            { statistics.AppendLine(output + "\n"); }
 
             foreach (KeyValuePair<string, Dictionary<string, int>> pair in itemValueCountDictionary)
             {
@@ -418,7 +424,7 @@ namespace SoftTestDesigner
                 statistics.AppendLine("\n");
             }
 
-            MessageBox.Show(statistics.ToString());
+            MessageBox.Show(statistics.ToString(), "Statistics");
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e)
@@ -462,7 +468,7 @@ namespace SoftTestDesigner
             this.btnShowResultStatistics.Enabled = false;
             this.dgvConfigItem.Enabled = false;
             this.dgvRestriction.Enabled = false;
-            this.dgvResult.Enabled = false;
+            //this.dgvResult.Enabled = false;
         }
 
         private void EnableAll()
@@ -486,7 +492,7 @@ namespace SoftTestDesigner
             this.btnShowResultStatistics.Enabled = true;
             this.dgvConfigItem.Enabled = true;
             this.dgvRestriction.Enabled = true;
-            this.dgvResult.Enabled = true;
+            //this.dgvResult.Enabled = true;
         }
 
     }
