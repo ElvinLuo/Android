@@ -121,12 +121,13 @@ namespace SoftTestDesigner
                 foreach (string ri in restrictionItems)
                 {
                     string[] nameValue;
-                    int indexInConfigItemList, indexInConfigValues;
+                    int indexInConfigItemList = 0, indexInConfigValues = 0;
 
                     if (ri.Contains("="))
                     {
                         ruleItemCount++;
                         nameValue = ri.Split('=');
+                        bool validItem = false;
                         for (int i = 0; i < configItemsCount; i++)
                         {
                             if (nameValue[0].ToLower().Equals(allConfigItems[i].item.ToLower()))
@@ -134,23 +135,30 @@ namespace SoftTestDesigner
                                 indexInConfigItemList = allConfigItems[i].priority;
                                 for (int j = 0; j < allConfigItems[i].values.Length; j++)
                                 {
-                                    if (!nameValue[1].ToLower().Equals(allConfigItems[i].values[j].ToLower()))
-                                    { continue; }
-
-                                    indexInConfigValues = j;
-                                    RestrictionItem restrictionItem = new RestrictionItem(indexInConfigItemList, indexInConfigValues);
-
-                                    if (!AlreadyExists<RestrictionItem>(this.restrictionItems, restrictionItem))
-                                    { this.restrictionItems.Add(restrictionItem); }
-
-                                    if (!AlreadyExists<RestrictionItem>(rule, restrictionItem))
-                                    { rule.Add(restrictionItem); }
+                                    if (nameValue[1].ToLower().Equals(allConfigItems[i].values[j].ToLower()))
+                                    {
+                                        indexInConfigValues = j;
+                                        validItem = true;
+                                    }
                                 }
                             }
                         }
+
+                        if (!validItem)
+                        {
+                            indexInConfigItemList = configItemsCount;
+                        }
+
+                        RestrictionItem restrictionItem = new RestrictionItem(indexInConfigItemList, indexInConfigValues);
+
+                        if (!AlreadyExists<RestrictionItem>(this.restrictionItems, restrictionItem))
+                        { this.restrictionItems.Add(restrictionItem); }
+
+                        if (!AlreadyExists<RestrictionItem>(rule, restrictionItem))
+                        { rule.Add(restrictionItem); }
                     }
                 }
-                if (rule.Count == ruleItemCount)
+                //if (rule.Count == ruleItemCount)
                 {
                     rule.Sort();
                     this.restrictionRuleList.Add(rule);
@@ -457,8 +465,8 @@ namespace SoftTestDesigner
 
                     foreach (RestrictionItem ri in rule)
                     {
-                        if (indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues ||
-                            ri.indexInConfigItemList > allConfigItems.Length - 1)
+                        if (ri.indexInConfigItemList > allConfigItems.Length - 1 ||
+                            indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues)
                         {
                             filtered = false;
                             break;
@@ -479,8 +487,8 @@ namespace SoftTestDesigner
 
                 foreach (RestrictionItem ri in rule)
                 {
-                    if (indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues ||
-                        ri.indexInConfigItemList > allConfigItems.Length - 1)
+                    if (ri.indexInConfigItemList > allConfigItems.Length - 1 ||
+                        indexRow[ri.indexInConfigItemList] != ri.indexInConfigValues)
                     {
                         return false;
                     }

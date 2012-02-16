@@ -186,7 +186,7 @@ namespace SoftTestDesigner
                 if (sc.restrictionTypeList.ElementAt(j).Equals(GlobalConsts.needToContain) &&
                     !sc.containResultList.ElementAt(j))
                 {
-                    unContainedLines += j + ", ";
+                    unContainedLines += j + 1 + ", ";
                     pass = false;
                 }
             }
