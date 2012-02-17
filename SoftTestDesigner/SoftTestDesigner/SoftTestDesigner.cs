@@ -26,11 +26,11 @@ namespace SoftTestDesigner
             dgvConfigItem.Rows.Add(true, "LAREnabled", "LAR_/NonLAR_", "True/False", true, "59/15");
             dgvConfigItem.Rows.Add(true, "LARExtranetEnabled", "/", "True/False", true, "69/16");
             dgvConfigItem.Rows.Add(false, "ExtranetState", "Lite_/Std_/Adv_/HIMS_", "1/2/3/", true, "10/20/70/100");
-            dgvConfigItem.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_/", "True/False/", true, "37/3/180");
+            dgvConfigItem.Rows.Add(true, "DOAEnabled", "DOA_/NonDOA_/", "True/False/", true, "9/11/180");
             dgvConfigItem.Rows.Add(true, "LOSEnabled", "LOS_/NonLOS_/", "True/False/", true, "18/10/180");
             dgvConfigItem.Rows.Add(true, "RatePlanActiveStatusTypeID", "Active_/Inactive_/", "2/3/", true, "6/11/180");
             dgvConfigItem.Rows.Add(true, "RatePlanTypeMask", "Standalone_/Package_/Corporate_/", "524288/16777216/8388608/", true, "19/15/13/170");
-            dgvConfigItem.Rows.Add(true, "ARIEnabled", "ARI_/NonARI_/", "True/False/", true, "21/3/160");
+            dgvConfigItem.Rows.Add(true, "ARIEnabled", "ARI_/NonARI_/", "True/False/", true, "21/9/160");
             dgvConfigItem.Rows.Add(false, "HotelARIEnabled", "HotelARI_/NonHotelARI_", "True/False", false, "1/7");
             dgvConfigItem.Rows.Add(true, "RatePlanContractType", "MerchantTo/AgencyTo/FlexTo", "1/2/3", false, "1/1/1");
             dgvConfigItem.Rows.Add(true, "TargetRatePlanContractType", "Merchant/Agency/Flex", "1/2/3", false, "1/1/1");
@@ -55,6 +55,7 @@ namespace SoftTestDesigner
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "EQCEnabled=True AND ARIEnabled=True");
             dgvRestriction.Rows.Add(true, GlobalConsts.needToFilter, "HotelContractType=2 AND RatePlanTypeMask=16777216");
 
+            btnOneClick.Focus();
             uiProcessor = UIProcessor.CreateInstance();
 
         }
@@ -363,17 +364,17 @@ namespace SoftTestDesigner
 
         private void btnGenerateCombination_Click(object sender, EventArgs e)
         {
-            uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult);
+            uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult, true);
         }
 
         private void btnApplyRestrictions_Click(object sender, EventArgs e)
         {
-            uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult);
+            uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult, true);
         }
 
         private void btnRemoveDuplicatedRows_Click(object sender, EventArgs e)
         {
-            uiProcessor.RemoveDuplicatedRows(sc, dgvResult);
+            uiProcessor.RemoveDuplicatedRows(sc, dgvResult, true);
         }
 
         private void btnOneClick_Click(object sender, EventArgs e)
@@ -385,11 +386,16 @@ namespace SoftTestDesigner
 
             do
             {
-                uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult);
-                uiProcessor.RemoveDuplicatedRows(sc, dgvResult);
-                uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult);
-                retryTimes++;
-            } while (retryTimes <= 5 && !uiProcessor.GetResultStatistics(out result, out output, dgvResult, sc));
+                uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult, false);
+                uiProcessor.RemoveDuplicatedRows(sc, dgvResult, false);
+                uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult, false);
+
+                if (uiProcessor.GetResultStatistics(out result, out output, dgvRestriction, dgvResult, sc))
+                { break; }
+            } while (++retryTimes <= 5);
+
+            dgvResult.Enabled = true;
+            uiProcessor.ReloadResultFromSoftTestConfiguration(sc, dgvResult);
 
             EnableAll();
         }
@@ -410,7 +416,7 @@ namespace SoftTestDesigner
             //sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
             string output;
             Dictionary<string, Dictionary<string, int>> itemValueCountDictionary;
-            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, out output, dgvResult, sc);
+            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, out output,dgvRestriction, dgvResult, sc);
 
             StringBuilder statistics = new StringBuilder();
             statistics.AppendLine("Pass: " + pass + "\n");
@@ -461,7 +467,9 @@ namespace SoftTestDesigner
             this.btnCreateLabrun.Enabled = false;
             this.btnGenerateCombination.Enabled = false;
             this.btnMoveDown.Enabled = false;
+            this.btnMoveDownRestriction.Enabled = false;
             this.btnMoveUp.Enabled = false;
+            this.btnMoveUpRestriction.Enabled = false;
             this.btnOneClick.Enabled = false;
             this.btnOpenConfigFile.Enabled = false;
             this.btnOpenRestrictions.Enabled = false;
@@ -472,7 +480,7 @@ namespace SoftTestDesigner
             this.btnShowResultStatistics.Enabled = false;
             this.dgvConfigItem.Enabled = false;
             this.dgvRestriction.Enabled = false;
-            //this.dgvResult.Enabled = false;
+            this.dgvResult.Enabled = false;
         }
 
         private void EnableAll()
@@ -485,7 +493,9 @@ namespace SoftTestDesigner
             this.btnCreateLabrun.Enabled = true;
             this.btnGenerateCombination.Enabled = true;
             this.btnMoveDown.Enabled = true;
+            this.btnMoveDownRestriction.Enabled = true;
             this.btnMoveUp.Enabled = true;
+            this.btnMoveUpRestriction.Enabled = true;
             this.btnOneClick.Enabled = true;
             this.btnOpenConfigFile.Enabled = true;
             this.btnOpenRestrictions.Enabled = true;
@@ -496,7 +506,7 @@ namespace SoftTestDesigner
             this.btnShowResultStatistics.Enabled = true;
             this.dgvConfigItem.Enabled = true;
             this.dgvRestriction.Enabled = true;
-            //this.dgvResult.Enabled = true;
+            this.dgvResult.Enabled = true;
         }
 
     }

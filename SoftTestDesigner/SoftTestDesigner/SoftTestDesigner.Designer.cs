@@ -31,6 +31,10 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.dgvRestriction = new System.Windows.Forms.DataGridView();
+            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.dgvConfigItem = new System.Windows.Forms.DataGridView();
@@ -77,10 +81,6 @@
             this.collapsibleSplitter4 = new NJFLib.Controls.CollapsibleSplitter();
             this.collapsibleSplitter2 = new NJFLib.Controls.CollapsibleSplitter();
             this.collapsibleSplitter5 = new NJFLib.Controls.CollapsibleSplitter();
-            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRestriction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConfigItem)).BeginInit();
@@ -124,6 +124,40 @@
             this.dgvRestriction.TabIndex = 2;
             this.dgvRestriction.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRestriction_CellContentClick);
             this.dgvRestriction.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvRestriction_RowPostPaint);
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Column5.HeaderText = "";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 21;
+            // 
+            // Column11
+            // 
+            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column11.HeaderText = "";
+            this.Column11.Items.AddRange(new object[] {
+            "Need to filter",
+            "Need to contain"});
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.FillWeight = 154.5455F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Restrictions";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column6.FillWeight = 45.45454F;
+            this.Column6.HeaderText = "";
+            this.Column6.Name = "Column6";
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column6.Text = "Remove";
+            this.Column6.UseColumnTextForButtonValue = true;
+            this.Column6.Width = 50;
             // 
             // Column10
             // 
@@ -538,7 +572,7 @@
             this.btnOneClick.Location = new System.Drawing.Point(0, 0);
             this.btnOneClick.Name = "btnOneClick";
             this.btnOneClick.Size = new System.Drawing.Size(148, 25);
-            this.btnOneClick.TabIndex = 28;
+            this.btnOneClick.TabIndex = 0;
             this.btnOneClick.Text = "One click to generate";
             this.btnOneClick.UseVisualStyleBackColor = true;
             this.btnOneClick.Click += new System.EventHandler(this.btnOneClick_Click);
@@ -640,42 +674,9 @@
             this.collapsibleSplitter5.UseAnimations = false;
             this.collapsibleSplitter5.VisualStyle = NJFLib.Controls.VisualStyles.XP;
             // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Column5.HeaderText = "";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 21;
-            // 
-            // Column11
-            // 
-            this.Column11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column11.HeaderText = "";
-            this.Column11.Items.AddRange(new object[] {
-            "Need to filter",
-            "Need to contain"});
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.FillWeight = 154.5455F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Restrictions";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column6.FillWeight = 45.45454F;
-            this.Column6.HeaderText = "";
-            this.Column6.Name = "Column6";
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column6.Text = "Remove";
-            this.Column6.UseColumnTextForButtonValue = true;
-            this.Column6.Width = 50;
-            // 
             // SoftTestDesigner
             // 
+            this.AcceptButton = this.btnOneClick;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 706);

@@ -65,7 +65,8 @@ namespace SoftTestDesigner
         public void ApplyRestrictions(
             SoftTestConfiguration sc,
             DataGridView dgvRestriction,
-            DataGridView dgvResult)
+            DataGridView dgvResult,
+            bool needReload)
         {
             sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
 
@@ -79,7 +80,10 @@ namespace SoftTestDesigner
                 }
             }
 
-            ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            if (needReload)
+            {
+                ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            }
         }
 
         public void CopyClipboard(DataGridView dgvResult)
@@ -118,16 +122,21 @@ namespace SoftTestDesigner
             out SoftTestConfiguration sc,
             DataGridView dgvConfigItem,
             DataGridView dgvRestriction,
-            DataGridView dgvResult)
+            DataGridView dgvResult,
+            bool needReload)
         {
             sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
             sc.GetResultWitoutRestrictions();
-            ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            if (needReload)
+            {
+                ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            }
         }
 
         public bool GetResultStatistics(
             out Dictionary<string, Dictionary<string, int>> itemValueCountDictionary,
             out string output,
+            DataGridView dgvRestriction,
             DataGridView dgvResult,
             SoftTestConfiguration sc)
         {
@@ -136,6 +145,11 @@ namespace SoftTestDesigner
             string itemName, cellValue, unContainedLines = null;
             int columnCount = dgvResult.Rows[0].Cells.Count;
             itemValueCountDictionary = new Dictionary<string, Dictionary<string, int>>();
+
+            if (sc.restrictionRuleList == null)
+            {
+                sc.LoadRestrictionFromDataGridView(dgvRestriction.Rows);
+            }
 
             for (int columnIndex = 0; columnIndex < sc.allConfigItems.Length; columnIndex++)
             {
@@ -319,7 +333,7 @@ namespace SoftTestDesigner
             AddRows(sc, dgvResult);
         }
 
-        public void RemoveDuplicatedRows(SoftTestConfiguration sc, DataGridView dgvResult)
+        public void RemoveDuplicatedRows(SoftTestConfiguration sc, DataGridView dgvResult, bool needReload)
         {
             for (int i = sc.softTestNameList.Count - 1; i >= 0; i--)
             {
@@ -331,7 +345,10 @@ namespace SoftTestDesigner
                 }
             }
 
-            ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            if (needReload)
+            {
+                ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            }
         }
 
     }

@@ -13,17 +13,19 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            DataTable table = new DataTable();
-            table.Columns.Add("c1");
-            table.Columns.Add("c2");
-            string[] rowString = new string[] { "PDP", "1" };
-            table.Rows.Add(rowString);
-            rowString = new string[] { "PDP", "2" };
-            table.Rows.Add(rowString);
-            rowString = new string[] { "PPP", "2" };
-            table.Rows.Add(rowString);
-            DataRow[] rows = table.Select("NOT c1='PDP' AND c2='2'");
+            string source = "~!@#$%^&()_+{}|:\"<>?`-=[]\\;',./";
+            char[] array = source.ToCharArray();
 
+            DataTable table = new DataTable();
+            //table.Columns.Add("c1");
+            //table.Columns.Add("c2");
+            //string[] rowString = new string[] { "PDP", "1" };
+            //table.Rows.Add(rowString);
+            //rowString = new string[] { "PDP", "2" };
+            //table.Rows.Add(rowString);
+            //rowString = new string[] { "PPP", "2" };
+            //table.Rows.Add(rowString);
+            //DataRow[] rows = table.Select("NOT c1='PDP' AND c2='2'");
 
             //List<string> stringList = new List<string> { "PDP1", "OBP2", "PDP1", "OBP2", "PDP1" };
 
