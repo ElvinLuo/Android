@@ -28,6 +28,7 @@ namespace SoftTestDesigner
                     this.tbTestTeam.Text,
                     this.tbCategory.Text,
                     this.tbRisktier.Text,
+                    this.cbOverrideMethod.Checked,
                     this.tbMethod.Text,
                     this.tbLOBMaskName.Text,
                     this.tbEnvironmentType.Text,
@@ -42,6 +43,23 @@ namespace SoftTestDesigner
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void SoftTestSetting_Load(object sender, EventArgs e)
+        {
+            this.tbMethod.Enabled = false;
+        }
+
+        private void cbOverrideMethod_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.cbOverrideMethod.Checked)
+            {
+                this.tbMethod.Enabled = true;
+            }
+            else
+            {
+                this.tbMethod.Enabled = false;
+            }
         }
     }
 }

@@ -35,7 +35,6 @@ namespace SoftTestDesigner
             this.tbCategory = new System.Windows.Forms.TextBox();
             this.lblRisktier = new System.Windows.Forms.Label();
             this.tbRisktier = new System.Windows.Forms.TextBox();
-            this.lblMethod = new System.Windows.Forms.Label();
             this.tbMethod = new System.Windows.Forms.TextBox();
             this.lblLOBMaskName = new System.Windows.Forms.Label();
             this.tbLOBMaskName = new System.Windows.Forms.TextBox();
@@ -43,117 +42,112 @@ namespace SoftTestDesigner
             this.tbEnvironmentType = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.cbOverrideMethod = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblTestTeam
             // 
             this.lblTestTeam.AutoSize = true;
-            this.lblTestTeam.Location = new System.Drawing.Point(65, 10);
+            this.lblTestTeam.Location = new System.Drawing.Point(74, 12);
             this.lblTestTeam.Name = "lblTestTeam";
-            this.lblTestTeam.Size = new System.Drawing.Size(54, 13);
+            this.lblTestTeam.Size = new System.Drawing.Size(65, 12);
             this.lblTestTeam.TabIndex = 0;
-            this.lblTestTeam.Text = "Test team";
+            this.lblTestTeam.Text = "Test team:";
+            this.lblTestTeam.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbTestTeam
             // 
-            this.tbTestTeam.Location = new System.Drawing.Point(121, 10);
+            this.tbTestTeam.Location = new System.Drawing.Point(139, 8);
             this.tbTestTeam.Name = "tbTestTeam";
-            this.tbTestTeam.Size = new System.Drawing.Size(339, 20);
+            this.tbTestTeam.Size = new System.Drawing.Size(526, 21);
             this.tbTestTeam.TabIndex = 1;
             this.tbTestTeam.Text = "Lodging Inventory Systems";
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(70, 33);
+            this.lblCategory.Location = new System.Drawing.Point(80, 33);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(49, 13);
+            this.lblCategory.Size = new System.Drawing.Size(59, 12);
             this.lblCategory.TabIndex = 2;
-            this.lblCategory.Text = "Category";
+            this.lblCategory.Text = "Category:";
+            this.lblCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbCategory
             // 
-            this.tbCategory.Location = new System.Drawing.Point(121, 33);
+            this.tbCategory.Location = new System.Drawing.Point(139, 29);
             this.tbCategory.Name = "tbCategory";
-            this.tbCategory.Size = new System.Drawing.Size(339, 20);
+            this.tbCategory.Size = new System.Drawing.Size(526, 21);
             this.tbCategory.TabIndex = 3;
             this.tbCategory.Text = "Regression";
             // 
             // lblRisktier
             // 
             this.lblRisktier.AutoSize = true;
-            this.lblRisktier.Location = new System.Drawing.Point(77, 55);
+            this.lblRisktier.Location = new System.Drawing.Point(80, 54);
             this.lblRisktier.Name = "lblRisktier";
-            this.lblRisktier.Size = new System.Drawing.Size(42, 13);
+            this.lblRisktier.Size = new System.Drawing.Size(59, 12);
             this.lblRisktier.TabIndex = 4;
-            this.lblRisktier.Text = "Risktier";
+            this.lblRisktier.Text = "Risktier:";
+            this.lblRisktier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbRisktier
             // 
-            this.tbRisktier.Location = new System.Drawing.Point(121, 55);
+            this.tbRisktier.Location = new System.Drawing.Point(139, 50);
             this.tbRisktier.Name = "tbRisktier";
-            this.tbRisktier.Size = new System.Drawing.Size(339, 20);
+            this.tbRisktier.Size = new System.Drawing.Size(526, 21);
             this.tbRisktier.TabIndex = 5;
             this.tbRisktier.Text = "2";
             // 
-            // lblMethod
-            // 
-            this.lblMethod.AutoSize = true;
-            this.lblMethod.Location = new System.Drawing.Point(76, 115);
-            this.lblMethod.Name = "lblMethod";
-            this.lblMethod.Size = new System.Drawing.Size(43, 13);
-            this.lblMethod.TabIndex = 6;
-            this.lblMethod.Text = "Method";
-            this.lblMethod.Visible = false;
-            // 
             // tbMethod
             // 
-            this.tbMethod.Location = new System.Drawing.Point(121, 115);
+            this.tbMethod.Location = new System.Drawing.Point(139, 113);
             this.tbMethod.Name = "tbMethod";
-            this.tbMethod.Size = new System.Drawing.Size(339, 20);
+            this.tbMethod.Size = new System.Drawing.Size(526, 21);
             this.tbMethod.TabIndex = 7;
             this.tbMethod.Text = "Expedia.Automation.Test.Hotels.BMC.SingleRatePlanConversionUI.CheckUI";
-            this.tbMethod.Visible = false;
             // 
             // lblLOBMaskName
             // 
             this.lblLOBMaskName.AutoSize = true;
-            this.lblLOBMaskName.Location = new System.Drawing.Point(36, 75);
+            this.lblLOBMaskName.Location = new System.Drawing.Point(56, 75);
             this.lblLOBMaskName.Name = "lblLOBMaskName";
-            this.lblLOBMaskName.Size = new System.Drawing.Size(83, 13);
+            this.lblLOBMaskName.Size = new System.Drawing.Size(83, 12);
             this.lblLOBMaskName.TabIndex = 8;
-            this.lblLOBMaskName.Text = "LOBMask name";
+            this.lblLOBMaskName.Text = "LOBMask name:";
+            this.lblLOBMaskName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbLOBMaskName
             // 
-            this.tbLOBMaskName.Location = new System.Drawing.Point(121, 75);
+            this.tbLOBMaskName.Location = new System.Drawing.Point(139, 71);
             this.tbLOBMaskName.Name = "tbLOBMaskName";
-            this.tbLOBMaskName.Size = new System.Drawing.Size(339, 20);
+            this.tbLOBMaskName.Size = new System.Drawing.Size(526, 21);
             this.tbLOBMaskName.TabIndex = 9;
             this.tbLOBMaskName.Text = "Hotel";
             // 
             // lblEnvironmentType
             // 
             this.lblEnvironmentType.AutoSize = true;
-            this.lblEnvironmentType.Location = new System.Drawing.Point(30, 95);
+            this.lblEnvironmentType.Location = new System.Drawing.Point(32, 96);
             this.lblEnvironmentType.Name = "lblEnvironmentType";
-            this.lblEnvironmentType.Size = new System.Drawing.Size(89, 13);
+            this.lblEnvironmentType.Size = new System.Drawing.Size(107, 12);
             this.lblEnvironmentType.TabIndex = 10;
-            this.lblEnvironmentType.Text = "Environment type";
+            this.lblEnvironmentType.Text = "Environment type:";
+            this.lblEnvironmentType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbEnvironmentType
             // 
-            this.tbEnvironmentType.Location = new System.Drawing.Point(121, 95);
+            this.tbEnvironmentType.Location = new System.Drawing.Point(139, 92);
             this.tbEnvironmentType.Name = "tbEnvironmentType";
-            this.tbEnvironmentType.Size = new System.Drawing.Size(339, 20);
+            this.tbEnvironmentType.Size = new System.Drawing.Size(526, 21);
             this.tbEnvironmentType.TabIndex = 11;
             this.tbEnvironmentType.Text = "Lab";
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(304, 155);
+            this.btnGenerate.Location = new System.Drawing.Point(509, 140);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 25);
+            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 12;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -161,19 +155,33 @@ namespace SoftTestDesigner
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(385, 155);
+            this.btnCancel.Location = new System.Drawing.Point(590, 140);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 25);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // cbOverrideMethod
+            // 
+            this.cbOverrideMethod.AutoSize = true;
+            this.cbOverrideMethod.Location = new System.Drawing.Point(16, 115);
+            this.cbOverrideMethod.Name = "cbOverrideMethod";
+            this.cbOverrideMethod.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbOverrideMethod.Size = new System.Drawing.Size(114, 16);
+            this.cbOverrideMethod.TabIndex = 14;
+            this.cbOverrideMethod.Text = "Override method";
+            this.cbOverrideMethod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbOverrideMethod.UseVisualStyleBackColor = true;
+            this.cbOverrideMethod.CheckedChanged += new System.EventHandler(this.cbOverrideMethod_CheckedChanged);
+            // 
             // SoftTestSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 186);
+            this.ClientSize = new System.Drawing.Size(677, 172);
+            this.Controls.Add(this.cbOverrideMethod);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.tbEnvironmentType);
@@ -181,7 +189,6 @@ namespace SoftTestDesigner
             this.Controls.Add(this.tbLOBMaskName);
             this.Controls.Add(this.lblLOBMaskName);
             this.Controls.Add(this.tbMethod);
-            this.Controls.Add(this.lblMethod);
             this.Controls.Add(this.tbRisktier);
             this.Controls.Add(this.lblRisktier);
             this.Controls.Add(this.tbCategory);
@@ -191,6 +198,7 @@ namespace SoftTestDesigner
             this.Name = "SoftTestSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SoftTestSetting";
+            this.Load += new System.EventHandler(this.SoftTestSetting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,7 +212,6 @@ namespace SoftTestDesigner
         private System.Windows.Forms.TextBox tbCategory;
         private System.Windows.Forms.Label lblRisktier;
         private System.Windows.Forms.TextBox tbRisktier;
-        private System.Windows.Forms.Label lblMethod;
         private System.Windows.Forms.TextBox tbMethod;
         private System.Windows.Forms.Label lblLOBMaskName;
         private System.Windows.Forms.TextBox tbLOBMaskName;
@@ -212,6 +219,7 @@ namespace SoftTestDesigner
         private System.Windows.Forms.TextBox tbEnvironmentType;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox cbOverrideMethod;
 
         private List<string> SoftTestNameList { get; set; }
         private List<string> ItemNameList { get; set; }

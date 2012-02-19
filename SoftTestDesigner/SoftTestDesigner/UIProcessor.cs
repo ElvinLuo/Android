@@ -9,6 +9,7 @@ namespace SoftTestDesigner
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
     using System.Windows.Forms;
     using SoftTestPKG;
@@ -242,6 +243,32 @@ namespace SoftTestDesigner
             return result;
         }
 
+        public void LoadGridFromFile(DataGridView dgvConfigItem, OpenFileDialog openFileDialog)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (StreamReader file = new StreamReader(openFileDialog.FileName))
+                    {
+                        string line;
+                        string[] cells;
+                        dgvConfigItem.Rows.Clear();
+
+                        while ((line = file.ReadLine()) != null)
+                        {
+                            cells = line.Split('\t');
+                            dgvConfigItem.Rows.Add(cells);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+        }
+
         public void MoveDown(DataGridView dgv)
         {
             if (dgv.SelectedCells.Count == 0) return;
@@ -348,6 +375,35 @@ namespace SoftTestDesigner
             if (needReload)
             {
                 ReloadResultFromSoftTestConfiguration(sc, dgvResult);
+            }
+        }
+
+        public void SaveGridToFile(DataGridView dgvConfigItem, SaveFileDialog saveFileDialog)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter file = new StreamWriter(saveFileDialog.FileName))
+                {
+                    string line = null, cellValue;
+                    DataGridViewRow row;
+
+                    for (int i = 0; i < dgvConfigItem.Rows.Count - 1; i++)
+                    {
+                        line = null;
+                        row = dgvConfigItem.Rows[i];
+
+                        for (int j = 0; j < row.Cells.Count - 1; j++)
+                        {
+                            cellValue =
+                                (row.Cells[j].Value == null) ?
+                                string.Empty : row.Cells[j].Value.ToString();
+
+                            line += cellValue + "\t";
+                        }
+
+                        file.WriteLine(line);
+                    }
+                }
             }
         }
 

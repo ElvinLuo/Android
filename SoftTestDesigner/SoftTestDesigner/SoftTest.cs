@@ -39,6 +39,7 @@ namespace SoftTestPKG
             string testTeam,
             string category,
             string risktier,
+            bool overrideMethod,
             string method,
             string lobmask,
             string environmentType,
@@ -104,7 +105,11 @@ namespace SoftTestPKG
             {
                 SoftTest existingSoftTest = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), filename) as SoftTest;
                 this.id = existingSoftTest.id;
-                this.invoke.method = existingSoftTest.invoke.method;
+
+                if (!overrideMethod)
+                {
+                    this.invoke.method = existingSoftTest.invoke.method;
+                }
             }
             else
             {

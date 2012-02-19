@@ -352,11 +352,6 @@ namespace SoftTestDesigner
             this.dgvResult.Columns.Add("", "");
         }
 
-        private void btnSaveRestrictions_Click(object sender, EventArgs e)
-        {
-            this.saveFileDialog.ShowDialog();
-        }
-
         private void saveFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string file = this.saveFileDialog.FileName;
@@ -416,7 +411,7 @@ namespace SoftTestDesigner
             //sc = new SoftTestConfiguration(dgvConfigItem.Rows, dgvRestriction.Rows);
             string output;
             Dictionary<string, Dictionary<string, int>> itemValueCountDictionary;
-            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, out output,dgvRestriction, dgvResult, sc);
+            bool pass = uiProcessor.GetResultStatistics(out itemValueCountDictionary, out output, dgvRestriction, dgvResult, sc);
 
             StringBuilder statistics = new StringBuilder();
             statistics.AppendLine("Pass: " + pass + "\n");
@@ -507,6 +502,26 @@ namespace SoftTestDesigner
             this.dgvConfigItem.Enabled = true;
             this.dgvRestriction.Enabled = true;
             this.dgvResult.Enabled = true;
+        }
+
+        private void btnSaveToFile_Click(object sender, EventArgs e)
+        {
+            uiProcessor.SaveGridToFile(dgvConfigItem, saveFileDialog);
+        }
+
+        private void btnOpenConfigFile_Click(object sender, EventArgs e)
+        {
+            uiProcessor.LoadGridFromFile(dgvConfigItem, openFileDialog);
+        }
+
+        private void btnSaveRestrictions_Click(object sender, EventArgs e)
+        {
+            uiProcessor.SaveGridToFile(dgvRestriction, saveFileDialog);
+        }
+
+        private void btnOpenRestrictions_Click(object sender, EventArgs e)
+        {
+            uiProcessor.LoadGridFromFile(dgvRestriction, openFileDialog);
         }
 
     }

@@ -46,93 +46,98 @@ namespace SoftTestDesigner
             // lblTestRunName
             // 
             this.lblTestRunName.AutoSize = true;
-            this.lblTestRunName.Location = new System.Drawing.Point(23, 14);
+            this.lblTestRunName.Location = new System.Drawing.Point(23, 13);
             this.lblTestRunName.Name = "lblTestRunName";
-            this.lblTestRunName.Size = new System.Drawing.Size(75, 13);
+            this.lblTestRunName.Size = new System.Drawing.Size(89, 12);
             this.lblTestRunName.TabIndex = 0;
-            this.lblTestRunName.Text = "Test run name";
+            this.lblTestRunName.Text = "Test run name:";
+            this.lblTestRunName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbTestRunName
             // 
-            this.tbTestRunName.Location = new System.Drawing.Point(98, 14);
+            this.tbTestRunName.Location = new System.Drawing.Point(112, 9);
             this.tbTestRunName.Name = "tbTestRunName";
-            this.tbTestRunName.Size = new System.Drawing.Size(436, 20);
+            this.tbTestRunName.Size = new System.Drawing.Size(562, 21);
             this.tbTestRunName.TabIndex = 1;
             this.tbTestRunName.Text = "ULP_CoreAdminPhase2_BulkEdit_LISQA8";
             // 
             // lblManagerName
             // 
             this.lblManagerName.AutoSize = true;
-            this.lblManagerName.Location = new System.Drawing.Point(20, 37);
+            this.lblManagerName.Location = new System.Drawing.Point(29, 34);
             this.lblManagerName.Name = "lblManagerName";
-            this.lblManagerName.Size = new System.Drawing.Size(78, 13);
+            this.lblManagerName.Size = new System.Drawing.Size(83, 12);
             this.lblManagerName.TabIndex = 2;
-            this.lblManagerName.Text = "Manager name";
+            this.lblManagerName.Text = "Manager name:";
+            this.lblManagerName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbManagerName
             // 
-            this.tbManagerName.Location = new System.Drawing.Point(98, 37);
+            this.tbManagerName.Location = new System.Drawing.Point(112, 30);
             this.tbManagerName.Name = "tbManagerName";
-            this.tbManagerName.Size = new System.Drawing.Size(436, 20);
+            this.tbManagerName.Size = new System.Drawing.Size(562, 21);
             this.tbManagerName.TabIndex = 3;
             this.tbManagerName.Text = "TFxIDXManager";
             // 
             // lblBranchName
             // 
             this.lblBranchName.AutoSize = true;
-            this.lblBranchName.Location = new System.Drawing.Point(28, 60);
+            this.lblBranchName.Location = new System.Drawing.Point(35, 55);
             this.lblBranchName.Name = "lblBranchName";
-            this.lblBranchName.Size = new System.Drawing.Size(70, 13);
+            this.lblBranchName.Size = new System.Drawing.Size(77, 12);
             this.lblBranchName.TabIndex = 4;
-            this.lblBranchName.Text = "Branch name";
+            this.lblBranchName.Text = "Branch name:";
+            this.lblBranchName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbBranchName
             // 
-            this.tbBranchName.Location = new System.Drawing.Point(98, 60);
+            this.tbBranchName.Location = new System.Drawing.Point(112, 51);
             this.tbBranchName.Name = "tbBranchName";
-            this.tbBranchName.Size = new System.Drawing.Size(436, 20);
+            this.tbBranchName.Size = new System.Drawing.Size(562, 21);
             this.tbBranchName.TabIndex = 5;
             this.tbBranchName.Text = "LFS000023";
             // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(56, 82);
+            this.lblVersion.Location = new System.Drawing.Point(59, 76);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(42, 13);
+            this.lblVersion.Size = new System.Drawing.Size(53, 12);
             this.lblVersion.TabIndex = 6;
-            this.lblVersion.Text = "Version";
+            this.lblVersion.Text = "Version:";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbVersion
             // 
-            this.tbVersion.Location = new System.Drawing.Point(98, 82);
+            this.tbVersion.Location = new System.Drawing.Point(112, 72);
             this.tbVersion.Name = "tbVersion";
-            this.tbVersion.Size = new System.Drawing.Size(436, 20);
+            this.tbVersion.Size = new System.Drawing.Size(562, 21);
             this.tbVersion.TabIndex = 7;
             this.tbVersion.Text = "2.0";
             // 
             // lblMethodName
             // 
             this.lblMethodName.AutoSize = true;
-            this.lblMethodName.Location = new System.Drawing.Point(26, 105);
+            this.lblMethodName.Location = new System.Drawing.Point(35, 97);
             this.lblMethodName.Name = "lblMethodName";
-            this.lblMethodName.Size = new System.Drawing.Size(72, 13);
+            this.lblMethodName.Size = new System.Drawing.Size(77, 12);
             this.lblMethodName.TabIndex = 8;
-            this.lblMethodName.Text = "Method name";
+            this.lblMethodName.Text = "Method name:";
+            this.lblMethodName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbMethodName
             // 
-            this.tbMethodName.Location = new System.Drawing.Point(98, 105);
+            this.tbMethodName.Location = new System.Drawing.Point(112, 93);
             this.tbMethodName.Name = "tbMethodName";
-            this.tbMethodName.Size = new System.Drawing.Size(436, 20);
+            this.tbMethodName.Size = new System.Drawing.Size(562, 21);
             this.tbMethodName.TabIndex = 9;
             this.tbMethodName.Text = "Expedia.Automation.Test.Hotels.BMC.SingleRatePlanConversionUI.CheckUI";
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(378, 132);
+            this.btnGenerate.Location = new System.Drawing.Point(518, 121);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 25);
+            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 10;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -140,9 +145,9 @@ namespace SoftTestDesigner
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(459, 132);
+            this.btnCancel.Location = new System.Drawing.Point(599, 121);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 25);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -150,9 +155,9 @@ namespace SoftTestDesigner
             // 
             // TestRunSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 169);
+            this.ClientSize = new System.Drawing.Size(686, 156);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.tbMethodName);

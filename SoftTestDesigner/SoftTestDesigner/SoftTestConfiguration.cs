@@ -53,11 +53,11 @@ namespace SoftTestDesigner
                 random = row.Cells[4].Value.ToString();
                 coverages = row.Cells[5].Value.ToString();
 
-                if ((bool)row.Cells[0].Value)
+                if (Convert.ToBoolean(row.Cells[0].Value))
                 {
                     ci = new ConfigItem(item, names, values, allConfigItemList.Count, random, coverages);
 
-                    if ((bool)row.Cells[4].Value)
+                    if (Convert.ToBoolean(row.Cells[4].Value))
                     {
                         randomConfigItemCount++;
                     }
