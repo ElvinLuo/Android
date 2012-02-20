@@ -245,7 +245,7 @@ namespace SoftTestDesigner
                e.RowIndex != dgvConfigItem.Rows.Count - 1 &&
                e.RowIndex != -1)
             {
-                bool flag = (bool)dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                bool flag = Convert.ToBoolean(dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
                 uiProcessor.EnableCell(dgvConfigItem.Rows[e.RowIndex].Cells[e.ColumnIndex + 1], flag);
             }
         }

@@ -161,7 +161,10 @@ namespace SoftTestDesigner
 
                 foreach (string value in sc.allConfigItems[columnIndex].values)
                 {
-                    itemValueCountDictionary[itemName].Add(value, 0);
+                    if (!itemValueCountDictionary[itemName].ContainsKey(value))
+                    {
+                        itemValueCountDictionary[itemName].Add(value, 0);
+                    }
                 }
             }
 
