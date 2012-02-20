@@ -387,16 +387,28 @@ namespace SoftTestDesigner
                     string line = null, cellValue;
                     DataGridViewRow row;
 
-                    for (int i = 0; i < dgvConfigItem.Rows.Count - 1; i++)
+                    for (int rowIndex = 0; rowIndex < dgvConfigItem.Rows.Count - 1; rowIndex++)
                     {
                         line = null;
-                        row = dgvConfigItem.Rows[i];
+                        row = dgvConfigItem.Rows[rowIndex];
 
-                        for (int j = 0; j < row.Cells.Count - 1; j++)
+                        for (int columnIndex = 0; columnIndex < row.Cells.Count - 1; columnIndex++)
                         {
                             cellValue =
-                                (row.Cells[j].Value == null) ?
-                                string.Empty : row.Cells[j].Value.ToString();
+                                (row.Cells[columnIndex].Value == null) ?
+                                string.Empty : row.Cells[columnIndex].Value.ToString();
+
+                            if (string.IsNullOrEmpty(cellValue))
+                            {
+                                if (dgvConfigItem.Columns[columnIndex].GetType() == typeof(DataGridViewCheckBoxColumn))
+                                {
+                                    cellValue = false.ToString();
+                                }
+                                else if (dgvConfigItem.Columns[columnIndex].GetType() == typeof(DataGridViewComboBoxColumn))
+                                {
+                                    cellValue = GlobalConsts.needToFilter;
+                                }
+                            }
 
                             line += cellValue + "\t";
                         }
