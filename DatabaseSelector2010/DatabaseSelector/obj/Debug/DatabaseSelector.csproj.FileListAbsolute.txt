@@ -50,8 +50,6 @@ D:\Projects\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.Connect
 D:\Projects\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.csproj.GenerateResource.Cache
 D:\Projects\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.dll
 D:\Projects\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.pdb
-C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.dll
-C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.pdb
 D:\Projects\DatabaseSelector\DatabaseSelector\bin\SQLEditors.dll
 D:\Projects\DatabaseSelector\DatabaseSelector\bin\Microsoft.SqlServerCe.Client.dll
 D:\Projects\DatabaseSelector\DatabaseSelector\bin\System.Data.SqlServerCe.dll
@@ -81,13 +79,15 @@ D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\SQLEditors.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\SqlWorkbench.Interfaces.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.BatchParser.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Interop.SHDocVw.dll
+C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.dll
+C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\Interop.SHDocVw.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.csproj.ResolveComReference.cache
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.CommandBar.resources
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.Options.resources
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.ServerInstanceSelector.resources
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\GenerateResource-ResGen.read.1.tlog
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResGen.read.1.tlog
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResGen.write.1.tlog
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.pdb
