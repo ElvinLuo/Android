@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication
 {
@@ -13,10 +14,10 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            string source = "~!@#$%^&()_+{}|:\"<>?`-=[]\\;',./";
-            char[] array = source.ToCharArray();
+            //string source = "~!@#$%^&()_+{}|:\"<>?`-=[]\\;',./";
+            //char[] array = source.ToCharArray();
 
-            DataTable table = new DataTable();
+            //DataTable table = new DataTable();
             //table.Columns.Add("c1");
             //table.Columns.Add("c2");
             //string[] rowString = new string[] { "PDP", "1" };
@@ -105,9 +106,9 @@ namespace WindowsFormsApplication
 
             //bool result = IsEquals(expected, actual);
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new BrowserControllerForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new BrowserControllerForm());
         }
 
         public class TestInstance

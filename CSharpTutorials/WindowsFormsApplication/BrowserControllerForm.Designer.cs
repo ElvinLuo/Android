@@ -29,97 +29,141 @@ namespace WindowsFormsApplication
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnStartBrowser = new System.Windows.Forms.Button();
-            this.pgbBrowser = new System.Windows.Forms.ProgressBar();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnStartBrowser = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pgbBrowser = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnStartBrowser
-            // 
-            this.btnStartBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartBrowser.Location = new System.Drawing.Point(13, 12);
-            this.btnStartBrowser.Name = "btnStartBrowser";
-            this.btnStartBrowser.Size = new System.Drawing.Size(75, 21);
-            this.btnStartBrowser.TabIndex = 3;
-            this.btnStartBrowser.Text = "Start";
-            this.btnStartBrowser.UseVisualStyleBackColor = true;
-            this.btnStartBrowser.Click += new System.EventHandler(this.btnStartBrowser_Click);
-            // 
-            // pgbBrowser
-            // 
-            this.pgbBrowser.Location = new System.Drawing.Point(95, 11);
-            this.pgbBrowser.MarqueeAnimationSpeed = 10;
-            this.pgbBrowser.Maximum = 9;
-            this.pgbBrowser.Name = "pgbBrowser";
-            this.pgbBrowser.Size = new System.Drawing.Size(195, 21);
-            this.pgbBrowser.Step = 1;
-            this.pgbBrowser.TabIndex = 1;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // textBox1
+            // panel1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 21);
-            this.textBox1.TabIndex = 2;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 299);
+            this.panel1.TabIndex = 14;
             // 
-            // button1
+            // splitContainer1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 21);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer1.Location = new System.Drawing.Point(200, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Lime;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.splitContainer1.Size = new System.Drawing.Size(200, 299);
+            this.splitContainer1.SplitterDistance = 206;
+            this.splitContainer1.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.btnStartBrowser);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.progressBar1);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.pgbBrowser);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(400, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(496, 299);
+            this.panel3.TabIndex = 18;
+            // 
+            // btnStartBrowser
+            // 
+            this.btnStartBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartBrowser.Location = new System.Drawing.Point(6, 53);
+            this.btnStartBrowser.Name = "btnStartBrowser";
+            this.btnStartBrowser.Size = new System.Drawing.Size(75, 21);
+            this.btnStartBrowser.TabIndex = 10;
+            this.btnStartBrowser.Text = "Start";
+            this.btnStartBrowser.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(95, 37);
+            this.button2.Location = new System.Drawing.Point(88, 78);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 21);
-            this.button2.TabIndex = 4;
+            this.button2.TabIndex = 11;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(95, 78);
+            this.progressBar1.Location = new System.Drawing.Point(88, 119);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(194, 23);
-            this.progressBar1.TabIndex = 5;
+            this.progressBar1.TabIndex = 12;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 78);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 21);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // pgbBrowser
+            // 
+            this.pgbBrowser.Location = new System.Drawing.Point(88, 52);
+            this.pgbBrowser.MarqueeAnimationSpeed = 10;
+            this.pgbBrowser.Maximum = 9;
+            this.pgbBrowser.Name = "pgbBrowser";
+            this.pgbBrowser.Size = new System.Drawing.Size(195, 21);
+            this.pgbBrowser.Step = 1;
+            this.pgbBrowser.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 88);
+            this.label1.Location = new System.Drawing.Point(6, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 13;
             this.label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(5, 99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(278, 21);
+            this.textBox1.TabIndex = 9;
             // 
             // BrowserControllerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 113);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.pgbBrowser);
-            this.Controls.Add(this.btnStartBrowser);
+            this.ClientSize = new System.Drawing.Size(896, 299);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.panel1);
             this.KeyPreview = true;
             this.Name = "BrowserControllerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -127,21 +171,27 @@ namespace WindowsFormsApplication
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BrowserControllerForm_FormClosed);
             this.Load += new System.EventHandler(this.BrowserControllerForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BrowserControllerForm_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnStartBrowser;
-        private System.Windows.Forms.ProgressBar pgbBrowser;
         InternetExplorer ie;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnStartBrowser;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar pgbBrowser;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
