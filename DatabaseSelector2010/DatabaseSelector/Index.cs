@@ -65,6 +65,8 @@ namespace DatabaseSelector
 
         public int previousSelectedGroup;
         public int currentSelectedGroup;
+        public int previousSelectedMyGroup;
+        public int currentSelectedMyGroup;
         public int previousSelectedServer;
         public int currentSelectedServer;
         public int previousSelectedDatabase;

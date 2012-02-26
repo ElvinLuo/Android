@@ -36,9 +36,11 @@ namespace DatabaseSelector
         public static readonly string reloadingDatabaseBanner = "Reloading databases of ";
 
         public static readonly string defaultGroupsFileName = "Groups.xml";
+        public static readonly string defaultMyGroupsFileName = "MyGroups.xml";
         public static readonly string defaultServersFileName = "Servers.xml";
         public static readonly string defaultDatabasesFileName = "Databases.xml";
         public static readonly string defaultGroupsFile = applicationFolder + defaultGroupsFileName;
+        public static readonly string defaultMyGroupsFile = applicationFolder + defaultMyGroupsFileName;
         public static readonly string defaultServersFile = applicationFolder + defaultServersFileName;
         public static readonly string defaultDatabasesFile = applicationFolder + defaultDatabasesFileName;
 

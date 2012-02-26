@@ -104,6 +104,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Index.cs" />
+    <Compile Include="MyGroupList.cs" />
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +195,7 @@
     <Content Include="dll\9.0.242.0\SqlWorkbench.Interfaces.dll" />
     <Content Include="Groups.xml" />
     <Content Include="Index.xml" />
+    <Content Include="MyGroups.xml" />
     <Content Include="Servers.xml" />
     <Content Include="WingatePortMappingsForRTT_PPE.txt" />
   </ItemGroup>

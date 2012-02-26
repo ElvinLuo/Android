@@ -31,11 +31,14 @@ namespace DatabaseSelector
             { btnReloadAll.Enabled = false; }
 
             groupList = GroupList.instance;
+            myGroupList = MyGroupList.instance;
             serverList = new ServerList();
             travelServer = new TravelServer();
 
             groupList.GetGroups();
+            myGroupList.GetGroups();
             ReloadGroupListView(tbGroupFilter.Text);
+            ReloadMyGroupListView();
         }
 
         void ServerInstanceSelector_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,6 +95,29 @@ namespace DatabaseSelector
                 lvGroups.Items[index.currentSelectedGroup].Selected = true;
             }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
+        }
+
+        private void ReloadMyGroupListView()
+        {
+            dgvMyGroups.Rows.Clear();
+
+            if (myGroupList.groups != null && myGroupList.groups.Count != 0)
+            {
+                for (int i = 0; i < myGroupList.groups.Count; i++)
+                {
+                    dgvMyGroups.Rows.Add(myGroupList.groups[i]);
+                }
+            }
+
+            if (dgvMyGroups.Rows.Count != 0)
+            {
+                if (index.currentSelectedMyGroup >= dgvMyGroups.Rows.Count)
+                { index.currentSelectedMyGroup = 0; }
+
+                myGroupList.selectedGroup =
+                    dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Value.ToString();
+                dgvMyGroups.Rows[index.currentSelectedMyGroup].Selected = true;
+            }
         }
 
         private void ReloadServerListView(string webServerFilter, string travelServerFilter)
@@ -373,6 +399,16 @@ namespace DatabaseSelector
                 serverList.GetServers();
                 ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
             }
+        }
+
+        private void dgvMyGroups_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            index.previousSelectedMyGroup = index.currentSelectedMyGroup;
+            index.currentSelectedMyGroup = e.RowIndex;
+            myGroupList.selectedGroup = dgvMyGroups.Rows[e.RowIndex].Cells[0].Value.ToString();
+            serverList.groupName = myGroupList.selectedGroup;
+            serverList.GetServers();
+            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
         }
 
         private void lvServers_SelectedIndexChanged(object sender, EventArgs e)
