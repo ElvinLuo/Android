@@ -62,6 +62,7 @@ namespace DatabaseSelector
             {
                 MyGroupList gl = Serializer.CreateInstance().DeserializeFromXML(this.GetType(), Global.defaultMyGroupsFileName) as MyGroupList;
                 groups = gl.groups;
+                groups.Sort();
                 selectedGroup = gl.selectedGroup;
                 updateDate = gl.updateDate;
             }

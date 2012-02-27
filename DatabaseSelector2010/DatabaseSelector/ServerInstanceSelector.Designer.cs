@@ -69,7 +69,6 @@ namespace DatabaseSelector
             this.lblGroupsUpdateDate = new System.Windows.Forms.Label();
             this.lblServersUpdateDate = new System.Windows.Forms.Label();
             this.lblDatabasesUpdateDate = new System.Windows.Forms.Label();
-            this.pgbReloadGroups = new System.Windows.Forms.ProgressBar();
             this.pgbReloadServers = new System.Windows.Forms.ProgressBar();
             this.pgbReloadDatabases = new System.Windows.Forms.ProgressBar();
             this.tbGroupFilter = new System.Windows.Forms.TextBox();
@@ -96,6 +95,7 @@ namespace DatabaseSelector
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.pgbReloadGroups = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -456,16 +456,6 @@ namespace DatabaseSelector
             this.lblDatabasesUpdateDate.TabIndex = 36;
             this.lblDatabasesUpdateDate.Text = "Updated at: ";
             // 
-            // pgbReloadGroups
-            // 
-            this.pgbReloadGroups.Location = new System.Drawing.Point(0, 0);
-            this.pgbReloadGroups.Maximum = 10000;
-            this.pgbReloadGroups.Name = "pgbReloadGroups";
-            this.pgbReloadGroups.Size = new System.Drawing.Size(202, 23);
-            this.pgbReloadGroups.Step = 1;
-            this.pgbReloadGroups.TabIndex = 37;
-            this.pgbReloadGroups.Visible = false;
-            // 
             // pgbReloadServers
             // 
             this.pgbReloadServers.Location = new System.Drawing.Point(0, 0);
@@ -584,10 +574,10 @@ namespace DatabaseSelector
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.pgbReloadGroups);
             this.splitContainer2.Panel1.Controls.Add(this.tbGroupFilter);
             this.splitContainer2.Panel1.Controls.Add(this.btnSaveGroups);
             this.splitContainer2.Panel1.Controls.Add(this.btnReloadGroups);
-            this.splitContainer2.Panel1.Controls.Add(this.pgbReloadGroups);
             this.splitContainer2.Panel1.Controls.Add(this.lblGroupsUpdateDate);
             // 
             // splitContainer2.Panel2
@@ -827,6 +817,16 @@ namespace DatabaseSelector
             this.splitContainer4.SplitterDistance = 61;
             this.splitContainer4.TabIndex = 49;
             // 
+            // pgbReloadGroups
+            // 
+            this.pgbReloadGroups.Location = new System.Drawing.Point(0, 0);
+            this.pgbReloadGroups.Maximum = 10000;
+            this.pgbReloadGroups.Name = "pgbReloadGroups";
+            this.pgbReloadGroups.Size = new System.Drawing.Size(202, 23);
+            this.pgbReloadGroups.Step = 1;
+            this.pgbReloadGroups.TabIndex = 41;
+            this.pgbReloadGroups.Visible = false;
+            // 
             // ServerInstanceSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,7 +928,6 @@ namespace DatabaseSelector
         private Label lblGroupsUpdateDate;
         private Label lblServersUpdateDate;
         private Label lblDatabasesUpdateDate;
-        private ProgressBar pgbReloadGroups;
         private ProgressBar pgbReloadServers;
         private ProgressBar pgbReloadDatabases;
         private TextBox tbGroupFilter;
@@ -963,6 +962,7 @@ namespace DatabaseSelector
         private DataGridView dgvAllGroups;
         private DataGridViewTextBoxColumn columnGroupNameInAllGroups;
         private DataGridViewLinkColumn Add;
+        private ProgressBar pgbReloadGroups;
 
     }
 }

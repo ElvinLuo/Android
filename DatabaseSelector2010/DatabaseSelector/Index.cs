@@ -63,6 +63,7 @@ namespace DatabaseSelector
 
         public bool automaticallyOpenEditer;
 
+        public int selectedTab;
         public int previousSelectedGroup;
         public int currentSelectedGroup;
         public int previousSelectedMyGroup;

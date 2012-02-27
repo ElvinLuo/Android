@@ -37,8 +37,9 @@ namespace DatabaseSelector
 
             groupList.GetGroups();
             myGroupList.GetGroups();
-            ReloadAllGroupDataGridView(tbGroupFilter.Text);
-            ReloadMyGroupDataGridView();
+
+            tcGroups.SelectedIndex = index.selectedTab;
+            ReloadTabControl();
         }
 
         void ServerInstanceSelector_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,6 +50,7 @@ namespace DatabaseSelector
             index.databaseFilter = tbDatabaseFilter.Text;
             index.automaticallyOpenEditer = cbAutoOpenEditer.Checked;
             index.SaveIndexToXml();
+            myGroupList.SaveListToXML();
         }
 
         private void ServerInstanceSelector_KeyUp(object sender, KeyEventArgs e)
@@ -68,13 +70,17 @@ namespace DatabaseSelector
 
         private void tcGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabControl tc = sender as TabControl;
+            index.selectedTab = (sender as TabControl).SelectedIndex;
+            ReloadTabControl();
+        }
 
-            if (tc.SelectedIndex == 0)
+        private void ReloadTabControl()
+        {
+            if (tcGroups.SelectedIndex == 0)
             {
                 ReloadAllGroupDataGridView(tbGroupFilter.Text);
             }
-            else if (tc.SelectedIndex == 1)
+            else if (tcGroups.SelectedIndex == 1)
             {
                 ReloadMyGroupDataGridView();
             }
@@ -82,6 +88,8 @@ namespace DatabaseSelector
 
         private void ReloadAllGroupDataGridView(string filter)
         {
+            this.dgvAllGroups.SelectionChanged -= new System.EventHandler(this.dgvAllGroups_SelectionChanged);
+
             dgvAllGroups.Rows.Clear();
 
             if (IsMatchingFilter(Global.defaultALLGroupName, filter))
@@ -110,19 +118,23 @@ namespace DatabaseSelector
                 dgvAllGroups.Rows.Add(Global.noGroupItemBanner);
             }
 
+            this.dgvAllGroups.SelectionChanged += new System.EventHandler(this.dgvAllGroups_SelectionChanged);
+
             if (dgvAllGroups.Rows.Count != 0)
             {
                 if (index.currentSelectedGroup >= dgvAllGroups.Rows.Count)
                 { index.currentSelectedGroup = 0; }
 
                 groupList.selectedGroup = dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Value.ToString();
-                dgvAllGroups.Rows[index.currentSelectedGroup].Selected = true;
+                dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Selected = true;
             }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
 
         private void ReloadMyGroupDataGridView()
         {
+            this.dgvMyGroups.SelectionChanged -= new System.EventHandler(this.dgvMyGroups_SelectionChanged);
+
             dgvMyGroups.Rows.Clear();
 
             if (myGroupList.groups != null && myGroupList.groups.Count != 0)
@@ -133,6 +145,8 @@ namespace DatabaseSelector
                 }
             }
 
+            this.dgvMyGroups.SelectionChanged += new System.EventHandler(this.dgvMyGroups_SelectionChanged);
+
             if (dgvMyGroups.Rows.Count != 0)
             {
                 if (index.currentSelectedMyGroup >= dgvMyGroups.Rows.Count)
@@ -140,7 +154,7 @@ namespace DatabaseSelector
 
                 myGroupList.selectedGroup =
                     dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Value.ToString();
-                dgvMyGroups.Rows[index.currentSelectedMyGroup].Selected = true;
+                dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Selected = true;
             }
         }
 
@@ -401,8 +415,6 @@ namespace DatabaseSelector
 
         private void dgvAllGroups_SelectionChanged(object sender, EventArgs e)
         {
-            dgvAllGroups.SelectionChanged -= new System.EventHandler(this.dgvAllGroups_SelectionChanged);
-
             if (dgvAllGroups.SelectedCells.Count == 1)
             {
                 int rowIndex = dgvAllGroups.SelectedCells[0].RowIndex;
@@ -414,13 +426,11 @@ namespace DatabaseSelector
                     index.currentSelectedGroup = rowIndex;
 
                     groupList.selectedGroup = dgvAllGroups.Rows[rowIndex].Cells[0].Value.ToString();
-
                     serverList.groupName = groupList.selectedGroup;
                     serverList.GetServers();
                     ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
                 }
-
-                if (columnIndex == 1)
+                else if (columnIndex == 1)
                 {
                     dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Selected = true;
                     string groupName = dgvAllGroups.Rows[rowIndex].Cells[0].Value.ToString();
@@ -428,41 +438,18 @@ namespace DatabaseSelector
                     if (myGroupList.FindGroup(groupName) == -1)
                     {
                         myGroupList.groups.Add(groupName);
+                        myGroupList.groups.Sort();
                     }
                 }
             }
-
-            dgvAllGroups.SelectionChanged += new System.EventHandler(this.dgvAllGroups_SelectionChanged);
         }
 
         private void dgvMyGroups_SelectionChanged(object sender, EventArgs e)
         {
-            dgvMyGroups.SelectionChanged -= new System.EventHandler(this.dgvMyGroups_SelectionChanged);
-
             if (dgvMyGroups.SelectedCells.Count == 1)
             {
                 int rowIndex = dgvMyGroups.SelectedCells[0].RowIndex;
                 int columnIndex = dgvMyGroups.SelectedCells[0].ColumnIndex;
-
-                if (columnIndex == 1)
-                {
-                    dgvMyGroups.Rows.RemoveAt(rowIndex);
-                    myGroupList.groups.RemoveAt(rowIndex);
-                    dgvMyGroups.SelectionChanged += new System.EventHandler(this.dgvMyGroups_SelectionChanged);
-
-                    if (index.currentSelectedMyGroup < dgvMyGroups.Rows.Count)
-                    {
-                        dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Selected = true;
-                    }
-                    else if (dgvMyGroups.Rows.Count > 0)
-                    {
-                        dgvMyGroups.Rows[0].Cells[0].Selected = true;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
 
                 if (columnIndex == 0)
                 {
@@ -474,10 +461,12 @@ namespace DatabaseSelector
                     serverList.GetServers();
                     ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
                 }
-
+                else if (columnIndex == 1)
+                {
+                    myGroupList.groups.RemoveAt(rowIndex);
+                    ReloadMyGroupDataGridView();
+                }
             }
-
-            dgvMyGroups.SelectionChanged += new System.EventHandler(this.dgvMyGroups_SelectionChanged);
         }
 
         private void lvServers_SelectedIndexChanged(object sender, EventArgs e)
@@ -614,6 +603,9 @@ namespace DatabaseSelector
 
         private void ConnectToServer()
         {
+            targetUsername = tbUserName.Text;
+            targetPassword = tbPassword.Text;
+
             try
             {
                 if (version == 2008)
