@@ -37,8 +37,8 @@ namespace DatabaseSelector
 
             groupList.GetGroups();
             myGroupList.GetGroups();
-            ReloadGroupListView(tbGroupFilter.Text);
-            ReloadMyGroupListView();
+            ReloadAllGroupDataGridView(tbGroupFilter.Text);
+            ReloadMyGroupDataGridView();
         }
 
         void ServerInstanceSelector_FormClosing(object sender, FormClosingEventArgs e)
@@ -66,38 +66,62 @@ namespace DatabaseSelector
             ut.Updated += new EventHandler(ut_Updated);
         }
 
-        private void ReloadGroupListView(string filter)
+        private void tcGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lvGroups.Items.Clear();
-            System.Windows.Forms.ListView.ListViewItemCollection lvicGroup = new ListView.ListViewItemCollection(lvGroups);
+            TabControl tc = sender as TabControl;
+
+            if (tc.SelectedIndex == 0)
+            {
+                ReloadAllGroupDataGridView(tbGroupFilter.Text);
+            }
+            else if (tc.SelectedIndex == 1)
+            {
+                ReloadMyGroupDataGridView();
+            }
+        }
+
+        private void ReloadAllGroupDataGridView(string filter)
+        {
+            dgvAllGroups.Rows.Clear();
+
             if (IsMatchingFilter(Global.defaultALLGroupName, filter))
-            { lvicGroup.Add(new ListViewItem(new string[] { Global.defaultALLGroupName })); }
+            {
+                dgvAllGroups.Rows.Add(Global.defaultALLGroupName);
+            }
+
             if (IsMatchingFilter(Global.defaultPPEGroupName, filter))
-            { lvicGroup.Add(new ListViewItem(new string[] { Global.defaultPPEGroupName })); }
+            {
+                dgvAllGroups.Rows.Add(Global.defaultPPEGroupName);
+            }
+
             if (groupList.groups != null && groupList.groups.Count != 0)
             {
                 for (int i = 0; i < groupList.groups.Count; i++)
                 {
                     if (IsMatchingFilter(groupList.groups[i], filter))
                     {
-                        ListViewItem lviDatabase = new ListViewItem(new string[] { groupList.groups[i] });
-                        lvicGroup.Add(lviDatabase);
+                        dgvAllGroups.Rows.Add(groupList.groups[i]);
                     }
                 }
             }
-            if (lvGroups.Items.Count == 0)
-            { lvicGroup.Add(new ListViewItem(new string[] { Global.noGroupItemBanner })); }
-            if (lvGroups.Items.Count != 0)
+
+            if (dgvAllGroups.Rows.Count == 0)
             {
-                if (index.currentSelectedGroup >= lvGroups.Items.Count)
+                dgvAllGroups.Rows.Add(Global.noGroupItemBanner);
+            }
+
+            if (dgvAllGroups.Rows.Count != 0)
+            {
+                if (index.currentSelectedGroup >= dgvAllGroups.Rows.Count)
                 { index.currentSelectedGroup = 0; }
-                groupList.selectedGroup = lvGroups.Items[index.currentSelectedGroup].SubItems[0].Text;
-                lvGroups.Items[index.currentSelectedGroup].Selected = true;
+
+                groupList.selectedGroup = dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Value.ToString();
+                dgvAllGroups.Rows[index.currentSelectedGroup].Selected = true;
             }
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
 
-        private void ReloadMyGroupListView()
+        private void ReloadMyGroupDataGridView()
         {
             dgvMyGroups.Rows.Clear();
 
@@ -290,7 +314,7 @@ namespace DatabaseSelector
             Button btn = sender as Button;
             if (trigger.Equals(Global.reloadGroupButtonName))
             {
-                ReloadGroupListView(tbGroupFilter.Text);
+                ReloadAllGroupDataGridView(tbGroupFilter.Text);
                 pgbReloadGroups.Visible = false;
             }
             else if (trigger.Equals(Global.reloadServerButtonName))
@@ -349,7 +373,7 @@ namespace DatabaseSelector
 
         private void tbGroupFilter_TextChanged(object sender, EventArgs e)
         {
-            ReloadGroupListView(tbGroupFilter.Text);
+            ReloadAllGroupDataGridView(tbGroupFilter.Text);
         }
 
         private void tbWebServerFilter_TextChanged(object sender, EventArgs e)
@@ -375,40 +399,85 @@ namespace DatabaseSelector
             tbDatabaseFilter.Text = Global.emptyString;
         }
 
-        private void lvGroups_SelectedIndexChanged(object sender, EventArgs e)
+        private void dgvAllGroups_SelectionChanged(object sender, EventArgs e)
         {
-            if (lvGroups.SelectedIndices.Count != 0)
+            dgvAllGroups.SelectionChanged -= new System.EventHandler(this.dgvAllGroups_SelectionChanged);
+
+            if (dgvAllGroups.SelectedCells.Count == 1)
             {
-                //Clear highlight color of original item
-                index.previousSelectedGroup = index.currentSelectedGroup;
-                index.currentSelectedGroup = lvGroups.SelectedIndices[0];
+                int rowIndex = dgvAllGroups.SelectedCells[0].RowIndex;
+                int columnIndex = dgvAllGroups.SelectedCells[0].ColumnIndex;
 
-                if (index.previousSelectedGroup != -1 && index.previousSelectedGroup < lvGroups.Items.Count)
+                if (columnIndex == 0)
                 {
-                    lvGroups.Items[index.previousSelectedGroup].BackColor = SystemColors.Window;
-                    lvGroups.Items[index.previousSelectedGroup].ForeColor = SystemColors.WindowText;
-                }
-                if (index.currentSelectedGroup != -1 && index.currentSelectedGroup < lvGroups.Items.Count)
-                {
-                    lvGroups.Items[index.currentSelectedGroup].BackColor = SystemColors.Highlight;
-                    lvGroups.Items[index.currentSelectedGroup].ForeColor = Color.White;
-                }
-                groupList.selectedGroup = lvGroups.Items[lvGroups.SelectedIndices[0]].SubItems[0].Text;
+                    index.previousSelectedGroup = index.currentSelectedGroup;
+                    index.currentSelectedGroup = rowIndex;
 
-                serverList.groupName = groupList.selectedGroup;
-                serverList.GetServers();
-                ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+                    groupList.selectedGroup = dgvAllGroups.Rows[rowIndex].Cells[0].Value.ToString();
+
+                    serverList.groupName = groupList.selectedGroup;
+                    serverList.GetServers();
+                    ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+                }
+
+                if (columnIndex == 1)
+                {
+                    dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Selected = true;
+                    string groupName = dgvAllGroups.Rows[rowIndex].Cells[0].Value.ToString();
+
+                    if (myGroupList.FindGroup(groupName) == -1)
+                    {
+                        myGroupList.groups.Add(groupName);
+                    }
+                }
             }
+
+            dgvAllGroups.SelectionChanged += new System.EventHandler(this.dgvAllGroups_SelectionChanged);
         }
 
-        private void dgvMyGroups_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvMyGroups_SelectionChanged(object sender, EventArgs e)
         {
-            index.previousSelectedMyGroup = index.currentSelectedMyGroup;
-            index.currentSelectedMyGroup = e.RowIndex;
-            myGroupList.selectedGroup = dgvMyGroups.Rows[e.RowIndex].Cells[0].Value.ToString();
-            serverList.groupName = myGroupList.selectedGroup;
-            serverList.GetServers();
-            ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+            dgvMyGroups.SelectionChanged -= new System.EventHandler(this.dgvMyGroups_SelectionChanged);
+
+            if (dgvMyGroups.SelectedCells.Count == 1)
+            {
+                int rowIndex = dgvMyGroups.SelectedCells[0].RowIndex;
+                int columnIndex = dgvMyGroups.SelectedCells[0].ColumnIndex;
+
+                if (columnIndex == 1)
+                {
+                    dgvMyGroups.Rows.RemoveAt(rowIndex);
+                    myGroupList.groups.RemoveAt(rowIndex);
+                    dgvMyGroups.SelectionChanged += new System.EventHandler(this.dgvMyGroups_SelectionChanged);
+
+                    if (index.currentSelectedMyGroup < dgvMyGroups.Rows.Count)
+                    {
+                        dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Selected = true;
+                    }
+                    else if (dgvMyGroups.Rows.Count > 0)
+                    {
+                        dgvMyGroups.Rows[0].Cells[0].Selected = true;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
+                if (columnIndex == 0)
+                {
+                    index.previousSelectedMyGroup = index.currentSelectedMyGroup;
+                    index.currentSelectedMyGroup = rowIndex;
+
+                    myGroupList.selectedGroup = dgvMyGroups.Rows[rowIndex].Cells[0].Value.ToString();
+                    serverList.groupName = myGroupList.selectedGroup;
+                    serverList.GetServers();
+                    ReloadServerListView(tbWebServerFilter.Text, tbTravelServerFilter.Text);
+                }
+
+            }
+
+            dgvMyGroups.SelectionChanged += new System.EventHandler(this.dgvMyGroups_SelectionChanged);
         }
 
         private void lvServers_SelectedIndexChanged(object sender, EventArgs e)
@@ -799,7 +868,8 @@ namespace DatabaseSelector
             btnClearAllSearchText.Enabled = false;
             btnConnect.Enabled = false;
 
-            lvGroups.Enabled = false;
+            dgvAllGroups.Enabled = false;
+            dgvMyGroups.Enabled = false;
             lvServers.Enabled = false;
             lvDatabases.Enabled = false;
         }
@@ -822,7 +892,8 @@ namespace DatabaseSelector
             btnClearAllSearchText.Enabled = true;
             btnConnect.Enabled = true;
 
-            lvGroups.Enabled = true;
+            dgvAllGroups.Enabled = true;
+            dgvMyGroups.Enabled = true;
             lvServers.Enabled = true;
             lvDatabases.Enabled = true;
         }

@@ -87,7 +87,7 @@ D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelec
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.CommandBar.resources
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.Options.resources
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.ServerInstanceSelector.resources
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\GenerateResource-ResGen.read.1.tlog
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\GenerateResource-ResGen.write.1.tlog
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResGen.read.1.tlog
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResGen.write.1.tlog
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.pdb
