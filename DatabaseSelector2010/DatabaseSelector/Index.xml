@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <groupFilter>qa</groupFilter>
-  <webServerFilter>801</webServerFilter>
-  <travelServerFilter>tvm</travelServerFilter>
-  <databaseFilter>lodginginventory</databaseFilter>
+  <groupFilter />
+  <webServerFilter />
+  <travelServerFilter />
+  <databaseFilter />
   <automaticallyOpenEditer>true</automaticallyOpenEditer>
-  <previousSelectedGroup>3</previousSelectedGroup>
-  <currentSelectedGroup>12</currentSelectedGroup>
+  <selectedTab>1</selectedTab>
+  <previousSelectedGroup>10</previousSelectedGroup>
+  <currentSelectedGroup>10</currentSelectedGroup>
+  <previousSelectedMyGroup>4</previousSelectedMyGroup>
+  <currentSelectedMyGroup>4</currentSelectedMyGroup>
   <previousSelectedServer>0</previousSelectedServer>
-  <currentSelectedServer>1</currentSelectedServer>
-  <previousSelectedDatabase>18</previousSelectedDatabase>
-  <currentSelectedDatabase>10</currentSelectedDatabase>
+  <currentSelectedServer>5</currentSelectedServer>
+  <previousSelectedDatabase>0</previousSelectedDatabase>
+  <currentSelectedDatabase>0</currentSelectedDatabase>
   <TEMCURL>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</TEMCURL>
   <XLSFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</XLSFile>
   <TXTFile>C:\Program Files (x86)\DatabaseSelectorSetup\WingatePortMappingsForRTT_PPE.txt</TXTFile>

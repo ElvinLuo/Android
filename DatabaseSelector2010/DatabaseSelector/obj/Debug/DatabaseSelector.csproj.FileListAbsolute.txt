@@ -72,15 +72,16 @@ D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.
 C:\Program Files\DatabaseSelectorSetup\DatabaseSelector.dll
 C:\Program Files\DatabaseSelectorSetup\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector\DatabaseSelector\obj\Debug\DatabaseSelector.Options.resources
+C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.dll
+C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\DatabaseSelector.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.SqlTools.VSIntegration.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\SQLEditors.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\SqlWorkbench.Interfaces.dll
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.GridControl.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.BatchParser.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Interop.SHDocVw.dll
-C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.dll
-C:\Program Files (x86)\DatabaseSelectorSetup\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\Interop.SHDocVw.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.csproj.ResolveComReference.cache

@@ -52,144 +52,144 @@
             // lbTEMC
             // 
             this.lbTEMC.AutoSize = true;
-            this.lbTEMC.Location = new System.Drawing.Point(141, 12);
+            this.lbTEMC.Location = new System.Drawing.Point(141, 11);
             this.lbTEMC.Name = "lbTEMC";
-            this.lbTEMC.Size = new System.Drawing.Size(65, 12);
+            this.lbTEMC.Size = new System.Drawing.Size(68, 13);
             this.lbTEMC.TabIndex = 14;
             this.lbTEMC.Text = "TEMC URL: ";
             // 
             // tbTEMC
             // 
-            this.tbTEMC.Location = new System.Drawing.Point(209, 6);
+            this.tbTEMC.Location = new System.Drawing.Point(209, 7);
             this.tbTEMC.Name = "tbTEMC";
-            this.tbTEMC.Size = new System.Drawing.Size(510, 21);
-            this.tbTEMC.TabIndex = 1;
+            this.tbTEMC.Size = new System.Drawing.Size(510, 20);
+            this.tbTEMC.TabIndex = 3;
             // 
             // lbTEMCDefault
             // 
             this.lbTEMCDefault.AutoSize = true;
             this.lbTEMCDefault.Location = new System.Drawing.Point(162, 30);
             this.lbTEMCDefault.Name = "lbTEMCDefault";
-            this.lbTEMCDefault.Size = new System.Drawing.Size(59, 12);
+            this.lbTEMCDefault.Size = new System.Drawing.Size(47, 13);
             this.lbTEMCDefault.TabIndex = 2;
             this.lbTEMCDefault.Text = "Default: ";
             // 
             // tbTEMCDefault
             // 
             this.tbTEMCDefault.Enabled = false;
-            this.tbTEMCDefault.Location = new System.Drawing.Point(209, 24);
+            this.tbTEMCDefault.Location = new System.Drawing.Point(209, 26);
             this.tbTEMCDefault.Name = "tbTEMCDefault";
-            this.tbTEMCDefault.Size = new System.Drawing.Size(510, 21);
-            this.tbTEMCDefault.TabIndex = 3;
+            this.tbTEMCDefault.Size = new System.Drawing.Size(510, 20);
+            this.tbTEMCDefault.TabIndex = 4;
             this.tbTEMCDefault.Text = "http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi";
             // 
             // lbPPEDSNList
             // 
             this.lbPPEDSNList.AutoSize = true;
-            this.lbPPEDSNList.Location = new System.Drawing.Point(109, 63);
+            this.lbPPEDSNList.Location = new System.Drawing.Point(109, 65);
             this.lbPPEDSNList.Name = "lbPPEDSNList";
-            this.lbPPEDSNList.Size = new System.Drawing.Size(113, 12);
+            this.lbPPEDSNList.Size = new System.Drawing.Size(100, 13);
             this.lbPPEDSNList.TabIndex = 4;
             this.lbPPEDSNList.Text = "PPE_DSN_List.xls: ";
             // 
             // lbPPEDSNListDefault
             // 
             this.lbPPEDSNListDefault.AutoSize = true;
-            this.lbPPEDSNListDefault.Location = new System.Drawing.Point(162, 81);
+            this.lbPPEDSNListDefault.Location = new System.Drawing.Point(162, 85);
             this.lbPPEDSNListDefault.Name = "lbPPEDSNListDefault";
-            this.lbPPEDSNListDefault.Size = new System.Drawing.Size(59, 12);
+            this.lbPPEDSNListDefault.Size = new System.Drawing.Size(47, 13);
             this.lbPPEDSNListDefault.TabIndex = 5;
             this.lbPPEDSNListDefault.Text = "Default: ";
             // 
             // lbPortMappings
             // 
             this.lbPortMappings.AutoSize = true;
-            this.lbPortMappings.Location = new System.Drawing.Point(13, 114);
+            this.lbPortMappings.Location = new System.Drawing.Point(13, 120);
             this.lbPortMappings.Name = "lbPortMappings";
-            this.lbPortMappings.Size = new System.Drawing.Size(215, 12);
+            this.lbPortMappings.Size = new System.Drawing.Size(196, 13);
             this.lbPortMappings.TabIndex = 6;
             this.lbPortMappings.Text = "WingatePortMappingsForRTT_PPE.txt: ";
             // 
             // lbPortMappingsDefault
             // 
             this.lbPortMappingsDefault.AutoSize = true;
-            this.lbPortMappingsDefault.Location = new System.Drawing.Point(162, 132);
+            this.lbPortMappingsDefault.Location = new System.Drawing.Point(162, 141);
             this.lbPortMappingsDefault.Name = "lbPortMappingsDefault";
-            this.lbPortMappingsDefault.Size = new System.Drawing.Size(59, 12);
+            this.lbPortMappingsDefault.Size = new System.Drawing.Size(47, 13);
             this.lbPortMappingsDefault.TabIndex = 7;
             this.lbPortMappingsDefault.Text = "Default: ";
             // 
             // tbPPEDSNListDefault
             // 
             this.tbPPEDSNListDefault.Enabled = false;
-            this.tbPPEDSNListDefault.Location = new System.Drawing.Point(209, 75);
+            this.tbPPEDSNListDefault.Location = new System.Drawing.Point(209, 81);
             this.tbPPEDSNListDefault.Name = "tbPPEDSNListDefault";
-            this.tbPPEDSNListDefault.Size = new System.Drawing.Size(510, 21);
-            this.tbPPEDSNListDefault.TabIndex = 8;
+            this.tbPPEDSNListDefault.Size = new System.Drawing.Size(510, 20);
+            this.tbPPEDSNListDefault.TabIndex = 6;
             this.tbPPEDSNListDefault.Text = "C:\\Program Files (x86)\\DatabaseSelectorSetup\\PPE_DSN_List.xls";
             // 
             // tbPortMappingsDefault
             // 
             this.tbPortMappingsDefault.Enabled = false;
-            this.tbPortMappingsDefault.Location = new System.Drawing.Point(209, 126);
+            this.tbPortMappingsDefault.Location = new System.Drawing.Point(209, 137);
             this.tbPortMappingsDefault.Name = "tbPortMappingsDefault";
-            this.tbPortMappingsDefault.Size = new System.Drawing.Size(510, 21);
-            this.tbPortMappingsDefault.TabIndex = 9;
+            this.tbPortMappingsDefault.Size = new System.Drawing.Size(510, 20);
+            this.tbPortMappingsDefault.TabIndex = 8;
             this.tbPortMappingsDefault.Text = "C:\\Program Files (x86)\\DatabaseSelectorSetup\\WingatePortMappingsForRTT_PPE.txt";
             // 
             // ofdXLS
             // 
-            this.ofdXLS.FileName = Global.defaultXLSFileName;
+            this.ofdXLS.FileName = "PPE_DSN_List.xls";
             this.ofdXLS.Filter = "Excel Files|*.xls";
             this.ofdXLS.Title = "Select PPE_DSN_List.xls";
             this.ofdXLS.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdXLS_FileOk);
             // 
             // ofdTXT
             // 
-            this.ofdTXT.FileName = Global.defaultTXTFileName;
+            this.ofdTXT.FileName = "WingatePortMappingsForRTT_PPE.txt";
             this.ofdTXT.Filter = "Text Files|*.txt";
             this.ofdTXT.Title = "Select WingatePortMappingsForRTT_PPE.txt";
             this.ofdTXT.FileOk += new System.ComponentModel.CancelEventHandler(this.ofdTXT_FileOk);
             // 
             // tbPPEDSNList
             // 
-            this.tbPPEDSNList.Location = new System.Drawing.Point(209, 56);
+            this.tbPPEDSNList.Location = new System.Drawing.Point(209, 61);
             this.tbPPEDSNList.Name = "tbPPEDSNList";
-            this.tbPPEDSNList.Size = new System.Drawing.Size(435, 21);
-            this.tbPPEDSNList.TabIndex = 10;
+            this.tbPPEDSNList.Size = new System.Drawing.Size(435, 20);
+            this.tbPPEDSNList.TabIndex = 5;
             // 
             // tbPortMappings
             // 
-            this.tbPortMappings.Location = new System.Drawing.Point(209, 107);
+            this.tbPortMappings.Location = new System.Drawing.Point(209, 116);
             this.tbPortMappings.Name = "tbPortMappings";
-            this.tbPortMappings.Size = new System.Drawing.Size(435, 21);
-            this.tbPortMappings.TabIndex = 11;
+            this.tbPortMappings.Size = new System.Drawing.Size(435, 20);
+            this.tbPortMappings.TabIndex = 7;
             // 
             // btnOpenXLS
             // 
-            this.btnOpenXLS.Location = new System.Drawing.Point(644, 54);
+            this.btnOpenXLS.Location = new System.Drawing.Point(644, 59);
             this.btnOpenXLS.Name = "btnOpenXLS";
-            this.btnOpenXLS.Size = new System.Drawing.Size(75, 21);
-            this.btnOpenXLS.TabIndex = 12;
+            this.btnOpenXLS.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenXLS.TabIndex = 9;
             this.btnOpenXLS.Text = "Browse...";
             this.btnOpenXLS.UseVisualStyleBackColor = true;
             this.btnOpenXLS.Click += new System.EventHandler(this.btnOpenXLS_Click);
             // 
             // btnOpenTXT
             // 
-            this.btnOpenTXT.Location = new System.Drawing.Point(644, 104);
+            this.btnOpenTXT.Location = new System.Drawing.Point(644, 113);
             this.btnOpenTXT.Name = "btnOpenTXT";
-            this.btnOpenTXT.Size = new System.Drawing.Size(75, 21);
-            this.btnOpenTXT.TabIndex = 13;
+            this.btnOpenTXT.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenTXT.TabIndex = 10;
             this.btnOpenTXT.Text = "Browse...";
             this.btnOpenTXT.UseVisualStyleBackColor = true;
             this.btnOpenTXT.Click += new System.EventHandler(this.btnOpenTXT_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(209, 158);
+            this.btnSave.Location = new System.Drawing.Point(209, 171);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 21);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -197,29 +197,32 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(284, 158);
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(284, 171);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 21);
-            this.btnCancel.TabIndex = 15;
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAllResetToDefault
             // 
-            this.btnAllResetToDefault.Location = new System.Drawing.Point(359, 158);
+            this.btnAllResetToDefault.Location = new System.Drawing.Point(359, 171);
             this.btnAllResetToDefault.Name = "btnAllResetToDefault";
-            this.btnAllResetToDefault.Size = new System.Drawing.Size(165, 21);
-            this.btnAllResetToDefault.TabIndex = 16;
+            this.btnAllResetToDefault.Size = new System.Drawing.Size(165, 23);
+            this.btnAllResetToDefault.TabIndex = 2;
             this.btnAllResetToDefault.Text = "Reset all to default values";
             this.btnAllResetToDefault.UseVisualStyleBackColor = true;
             this.btnAllResetToDefault.Click += new System.EventHandler(this.btnAllResetToDefault_Click);
             // 
             // Options
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AcceptButton = this.btnSave;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 183);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(723, 198);
             this.Controls.Add(this.btnAllResetToDefault);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);

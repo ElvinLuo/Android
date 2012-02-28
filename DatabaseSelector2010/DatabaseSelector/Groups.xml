@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GroupList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <selectedGroup>ALL</selectedGroup>
-  <updateDate>2011-11-01T01:08:54.9529851-07:00</updateDate>
+  <selectedGroup>LIS-QA3</selectedGroup>
+  <updateDate>2012-02-27T08:13:00.3314425-08:00</updateDate>
   <groups>
     <string>,DEFAULT</string>
-    <string>,EXPEDIABASE</string>
-    <string>,WEB</string>
     <string>ADS01</string>
     <string>AIR</string>
     <string>AIRSOA-PERF</string>
     <string>BGB</string>
     <string>BUILD</string>
+    <string>CCN001</string>
     <string>CCT</string>
     <string>CCT-OPM</string>
     <string>CCT-PMP02</string>
     <string>CCT-PMP03</string>
     <string>CCT-PMP04</string>
-    <string>CCT-UTIL02</string>
+    <string>CCT-VOYAGER-DEV-TRN</string>
+    <string>CCT-VOYAGER-DEV01</string>
+    <string>CCT-VOYAGER-DEV02</string>
+    <string>CCT-VOYAGER-MAUI1</string>
+    <string>CCT-VOYAGER-MAUI2</string>
+    <string>CCT-VOYAGER-MILAN1</string>
+    <string>CCT-VOYAGER-MILAN2</string>
+    <string>CCT-VOYAGER-QA01</string>
+    <string>CCT-VOYAGER-QA02</string>
+    <string>CCT-VOYAGER-QA04</string>
+    <string>CCTLATUTL02</string>
     <string>CHE-HF01</string>
     <string>CHE-RC01</string>
     <string>COVERITY</string>
@@ -33,6 +42,7 @@
     <string>CX10</string>
     <string>DAILY</string>
     <string>DBADEV</string>
+    <string>DEVGPT06</string>
     <string>DEVIPU</string>
     <string>EADW</string>
     <string>ES-PMP01</string>
@@ -40,20 +50,20 @@
     <string>ESENG02</string>
     <string>ESENGINTEGRATION</string>
     <string>ESTR06</string>
+    <string>ESTR09</string>
     <string>ESTR11</string>
     <string>ESTR12</string>
-    <string>ESTR13</string>
     <string>ESTR14</string>
     <string>ESTR15</string>
     <string>ESTR16</string>
     <string>ESTR17</string>
-    <string>ESTR18</string>
     <string>ESTR19</string>
     <string>ESTR21</string>
     <string>ESTR22</string>
     <string>ESTR23</string>
     <string>ESTR24</string>
     <string>ESTR25</string>
+    <string>ESTR26</string>
     <string>ESTR27</string>
     <string>ESTR28</string>
     <string>ESTR29</string>
@@ -65,14 +75,13 @@
     <string>ESTR36</string>
     <string>ESTR37</string>
     <string>ESTR38</string>
+    <string>ESTR39</string>
     <string>ESTR40</string>
     <string>ESTR41</string>
     <string>ESTR42</string>
     <string>ESTR43</string>
     <string>ESTR44</string>
-    <string>ESTR45</string>
     <string>ESTR46</string>
-    <string>ESTR47</string>
     <string>ESTR48</string>
     <string>ESTR49</string>
     <string>ESTR50</string>
@@ -85,8 +94,10 @@
     <string>ESTR57</string>
     <string>ESTR58</string>
     <string>ESTR62</string>
-    <string>ESTR63</string>
     <string>ESTR64</string>
+    <string>ESTR66</string>
+    <string>ESTR71</string>
+    <string>ESTR72</string>
     <string>EWE-AVAIL</string>
     <string>EWE-PERF-IPU</string>
     <string>EWE-PERF1</string>
@@ -113,6 +124,7 @@
     <string>INT-RIO</string>
     <string>INTEGRATION</string>
     <string>INTIPU</string>
+    <string>JENKINSSLAVE</string>
     <string>LAT-E2E</string>
     <string>LIS-ATL</string>
     <string>LIS-AVAIL</string>
@@ -143,8 +155,8 @@
     <string>LSS03</string>
     <string>LTY-PMP60</string>
     <string>LTY-PMP61</string>
-    <string>MAIN01</string>
     <string>MARCHSQLDB</string>
+    <string>MILWAUKEE</string>
     <string>MMFNT</string>
     <string>OMS-PERF02</string>
     <string>OMS-PMP30</string>
@@ -158,10 +170,6 @@
     <string>PMP50</string>
     <string>PMP56</string>
     <string>PMP57</string>
-    <string>PMPRE01</string>
-    <string>PMPRE02</string>
-    <string>POD3-HOTELINFOSITE-B</string>
-    <string>POD4-HOTELSOA-B</string>
     <string>RAP01</string>
     <string>ROEHF</string>
     <string>ROEPMP42</string>
@@ -184,7 +192,7 @@
     <string>STT04</string>
     <string>STTSTABLE</string>
     <string>STTSTRESS01</string>
-    <string>TEMPFARM</string>
+    <string>TRUNK</string>
     <string>VMWAREPOC</string>
   </groups>
 </GroupList>

@@ -68,6 +68,11 @@ namespace DatabaseSelector
             ut.Updated += new EventHandler(ut_Updated);
         }
 
+        private void ServerInstanceSelector_Activated(object sender, EventArgs e)
+        {
+            this.btnConnect.Focus();
+        }
+
         private void tcGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
             index.selectedTab = (sender as TabControl).SelectedIndex;
