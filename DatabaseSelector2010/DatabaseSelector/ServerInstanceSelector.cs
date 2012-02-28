@@ -865,10 +865,33 @@ namespace DatabaseSelector
             btnClearAllSearchText.Enabled = false;
             btnConnect.Enabled = false;
 
-            dgvAllGroups.Enabled = false;
-            dgvMyGroups.Enabled = false;
+            tbGroupFilter.Enabled = false;
+            tbWebServerFilter.Enabled = false;
+            tbTravelServerFilter.Enabled = false;
+            tbDatabaseFilter.Enabled = false;
+            cbConnectionType.Enabled = false;
+            cbAutoOpenEditer.Enabled = false;
+
+            tcGroups.Enabled = false;
+            DisableDataGridView(dgvAllGroups);
+            DisableDataGridView(dgvMyGroups);
             lvServers.Enabled = false;
             lvDatabases.Enabled = false;
+        }
+
+        private void DisableDataGridView(DataGridView dgv)
+        {
+            dgv.Enabled = false;
+
+            System.Windows.Forms.DataGridViewCellStyle disabledStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            disabledStyle.BackColor = System.Drawing.SystemColors.Control;
+            disabledStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            disabledStyle.ForeColor = System.Drawing.SystemColors.WindowText;
+            disabledStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            disabledStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+
+            dgv.DefaultCellStyle = disabledStyle;
+            dgv.BackgroundColor = SystemColors.Control;
         }
 
         private void EnableAllButtons()
@@ -889,10 +912,33 @@ namespace DatabaseSelector
             btnClearAllSearchText.Enabled = true;
             btnConnect.Enabled = true;
 
-            dgvAllGroups.Enabled = true;
-            dgvMyGroups.Enabled = true;
+            tbGroupFilter.Enabled = true;
+            tbWebServerFilter.Enabled = true;
+            tbTravelServerFilter.Enabled = true;
+            tbDatabaseFilter.Enabled = true;
+            cbConnectionType.Enabled = true;
+            cbAutoOpenEditer.Enabled = true;
+
+            tcGroups.Enabled = true;
+            EnableDataGridView(dgvAllGroups);
+            EnableDataGridView(dgvMyGroups);
             lvServers.Enabled = true;
             lvDatabases.Enabled = true;
+        }
+
+        private void EnableDataGridView(DataGridView dgv)
+        {
+            dgv.Enabled = true;
+
+            System.Windows.Forms.DataGridViewCellStyle enabledStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            enabledStyle.BackColor = System.Drawing.SystemColors.Window;
+            enabledStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            enabledStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            enabledStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            enabledStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+
+            dgv.DefaultCellStyle = enabledStyle;
+            dgv.BackgroundColor = SystemColors.Window;
         }
 
         private bool CanReloadAndSaveDatabaseList()
