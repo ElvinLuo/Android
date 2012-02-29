@@ -112,7 +112,7 @@ namespace DatabaseSelector
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(59, 189);
+            this.btnConnect.Location = new System.Drawing.Point(59, 184);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 9;
@@ -123,7 +123,7 @@ namespace DatabaseSelector
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(134, 189);
+            this.btnCancel.Location = new System.Drawing.Point(134, 184);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 10;
@@ -180,7 +180,7 @@ namespace DatabaseSelector
             // lblAuthentication
             // 
             this.lblAuthentication.AutoSize = true;
-            this.lblAuthentication.Location = new System.Drawing.Point(5, 112);
+            this.lblAuthentication.Location = new System.Drawing.Point(5, 107);
             this.lblAuthentication.Name = "lblAuthentication";
             this.lblAuthentication.Size = new System.Drawing.Size(78, 13);
             this.lblAuthentication.TabIndex = 200;
@@ -190,7 +190,7 @@ namespace DatabaseSelector
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(20, 133);
+            this.lblUserName.Location = new System.Drawing.Point(20, 128);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(63, 13);
             this.lblUserName.TabIndex = 200;
@@ -200,7 +200,7 @@ namespace DatabaseSelector
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(27, 153);
+            this.lblPassword.Location = new System.Drawing.Point(27, 148);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 200;
@@ -213,7 +213,7 @@ namespace DatabaseSelector
             this.cbConnectionType.Items.AddRange(new object[] {
             "Windows Authentication",
             "SQL Server Authentication"});
-            this.cbConnectionType.Location = new System.Drawing.Point(83, 108);
+            this.cbConnectionType.Location = new System.Drawing.Point(83, 103);
             this.cbConnectionType.Name = "cbConnectionType";
             this.cbConnectionType.Size = new System.Drawing.Size(201, 21);
             this.cbConnectionType.TabIndex = 5;
@@ -222,22 +222,23 @@ namespace DatabaseSelector
             // 
             // tbUserName
             // 
-            this.tbUserName.Location = new System.Drawing.Point(83, 129);
+            this.tbUserName.Location = new System.Drawing.Point(83, 124);
             this.tbUserName.Name = "tbUserName";
             this.tbUserName.Size = new System.Drawing.Size(201, 20);
             this.tbUserName.TabIndex = 6;
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(83, 149);
+            this.tbPassword.Location = new System.Drawing.Point(83, 144);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(201, 20);
             this.tbPassword.TabIndex = 7;
             // 
             // lblDatabase
             // 
             this.lblDatabase.AutoSize = true;
-            this.lblDatabase.Location = new System.Drawing.Point(27, 72);
+            this.lblDatabase.Location = new System.Drawing.Point(27, 67);
             this.lblDatabase.Name = "lblDatabase";
             this.lblDatabase.Size = new System.Drawing.Size(56, 13);
             this.lblDatabase.TabIndex = 200;
@@ -247,7 +248,7 @@ namespace DatabaseSelector
             // tbDatabase
             // 
             this.tbDatabase.Enabled = false;
-            this.tbDatabase.Location = new System.Drawing.Point(83, 68);
+            this.tbDatabase.Location = new System.Drawing.Point(83, 63);
             this.tbDatabase.Name = "tbDatabase";
             this.tbDatabase.Size = new System.Drawing.Size(201, 20);
             this.tbDatabase.TabIndex = 3;
@@ -255,7 +256,7 @@ namespace DatabaseSelector
             // lblInstance
             // 
             this.lblInstance.AutoSize = true;
-            this.lblInstance.Location = new System.Drawing.Point(32, 92);
+            this.lblInstance.Location = new System.Drawing.Point(32, 87);
             this.lblInstance.Name = "lblInstance";
             this.lblInstance.Size = new System.Drawing.Size(51, 13);
             this.lblInstance.TabIndex = 200;
@@ -265,7 +266,7 @@ namespace DatabaseSelector
             // tbInstance
             // 
             this.tbInstance.Enabled = false;
-            this.tbInstance.Location = new System.Drawing.Point(83, 88);
+            this.tbInstance.Location = new System.Drawing.Point(83, 83);
             this.tbInstance.Name = "tbInstance";
             this.tbInstance.Size = new System.Drawing.Size(201, 20);
             this.tbInstance.TabIndex = 4;
@@ -279,7 +280,7 @@ namespace DatabaseSelector
             this.lvServers.FullRowSelect = true;
             this.lvServers.Location = new System.Drawing.Point(0, 0);
             this.lvServers.Name = "lvServers";
-            this.lvServers.Size = new System.Drawing.Size(290, 160);
+            this.lvServers.Size = new System.Drawing.Size(290, 166);
             this.lvServers.TabIndex = 200;
             this.lvServers.TabStop = false;
             this.lvServers.Tag = "";
@@ -361,7 +362,7 @@ namespace DatabaseSelector
             // lblGroup
             // 
             this.lblGroup.AutoSize = true;
-            this.lblGroup.Location = new System.Drawing.Point(44, 12);
+            this.lblGroup.Location = new System.Drawing.Point(44, 7);
             this.lblGroup.Name = "lblGroup";
             this.lblGroup.Size = new System.Drawing.Size(39, 13);
             this.lblGroup.TabIndex = 200;
@@ -370,7 +371,7 @@ namespace DatabaseSelector
             // tbGroup
             // 
             this.tbGroup.Enabled = false;
-            this.tbGroup.Location = new System.Drawing.Point(83, 8);
+            this.tbGroup.Location = new System.Drawing.Point(83, 3);
             this.tbGroup.Name = "tbGroup";
             this.tbGroup.Size = new System.Drawing.Size(201, 20);
             this.tbGroup.TabIndex = 0;
@@ -378,7 +379,7 @@ namespace DatabaseSelector
             // lblWebServer
             // 
             this.lblWebServer.AutoSize = true;
-            this.lblWebServer.Location = new System.Drawing.Point(18, 32);
+            this.lblWebServer.Location = new System.Drawing.Point(18, 27);
             this.lblWebServer.Name = "lblWebServer";
             this.lblWebServer.Size = new System.Drawing.Size(65, 13);
             this.lblWebServer.TabIndex = 200;
@@ -387,7 +388,7 @@ namespace DatabaseSelector
             // tbWebServer
             // 
             this.tbWebServer.Enabled = false;
-            this.tbWebServer.Location = new System.Drawing.Point(83, 28);
+            this.tbWebServer.Location = new System.Drawing.Point(83, 23);
             this.tbWebServer.Name = "tbWebServer";
             this.tbWebServer.Size = new System.Drawing.Size(201, 20);
             this.tbWebServer.TabIndex = 1;
@@ -395,7 +396,7 @@ namespace DatabaseSelector
             // lblTravelServer
             // 
             this.lblTravelServer.AutoSize = true;
-            this.lblTravelServer.Location = new System.Drawing.Point(11, 52);
+            this.lblTravelServer.Location = new System.Drawing.Point(11, 47);
             this.lblTravelServer.Name = "lblTravelServer";
             this.lblTravelServer.Size = new System.Drawing.Size(72, 13);
             this.lblTravelServer.TabIndex = 200;
@@ -404,7 +405,7 @@ namespace DatabaseSelector
             // tbTravelServer
             // 
             this.tbTravelServer.Enabled = false;
-            this.tbTravelServer.Location = new System.Drawing.Point(83, 48);
+            this.tbTravelServer.Location = new System.Drawing.Point(83, 43);
             this.tbTravelServer.Name = "tbTravelServer";
             this.tbTravelServer.Size = new System.Drawing.Size(201, 20);
             this.tbTravelServer.TabIndex = 2;
@@ -503,7 +504,7 @@ namespace DatabaseSelector
             // cbAutoOpenEditer
             // 
             this.cbAutoOpenEditer.AutoSize = true;
-            this.cbAutoOpenEditer.Location = new System.Drawing.Point(63, 170);
+            this.cbAutoOpenEditer.Location = new System.Drawing.Point(63, 165);
             this.cbAutoOpenEditer.Name = "cbAutoOpenEditer";
             this.cbAutoOpenEditer.Size = new System.Drawing.Size(145, 17);
             this.cbAutoOpenEditer.TabIndex = 8;
@@ -523,7 +524,7 @@ namespace DatabaseSelector
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(209, 189);
+            this.btnOptions.Location = new System.Drawing.Point(209, 184);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(75, 23);
             this.btnOptions.TabIndex = 11;
@@ -731,7 +732,7 @@ namespace DatabaseSelector
             this.splitContainer2.Panel2.Controls.Add(this.tbUserName);
             this.splitContainer2.Panel2.Controls.Add(this.tbWebServer);
             this.splitContainer2.Size = new System.Drawing.Size(290, 384);
-            this.splitContainer2.SplitterDistance = 160;
+            this.splitContainer2.SplitterDistance = 166;
             this.splitContainer2.TabIndex = 200;
             this.splitContainer2.TabStop = false;
             // 

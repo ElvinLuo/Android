@@ -48,6 +48,9 @@ namespace DatabaseSelector
             index.webServerFilter = tbWebServerFilter.Text;
             index.travelServerFilter = tbTravelServerFilter.Text;
             index.databaseFilter = tbDatabaseFilter.Text;
+            index.connectionType = cbConnectionType.SelectedIndex;
+            index.username = tbUserName.Text;
+            index.password = tbPassword.Text;
             index.automaticallyOpenEditer = cbAutoOpenEditer.Checked;
             index.SaveIndexToXml();
             myGroupList.SaveListToXML();
@@ -61,6 +64,10 @@ namespace DatabaseSelector
 
         private void ServerInstanceSelector_Load(object sender, EventArgs e)
         {
+            cbConnectionType.SelectedIndex = index.connectionType;
+            tbUserName.Text = index.username;
+            tbPassword.Text = index.password;
+
             this.tbGroupFilter.TextChanged += new System.EventHandler(this.tbGroupFilter_TextChanged);
             this.tbWebServerFilter.TextChanged += new System.EventHandler(this.tbWebServerFilter_TextChanged);
             this.tbTravelServerFilter.TextChanged += new System.EventHandler(this.tbTravelServerFilter_TextChanged);
@@ -548,11 +555,18 @@ namespace DatabaseSelector
                 }
                 else
                 {
-                    cbConnectionType.SelectedIndex = 0;
-                    tbUserName.Enabled = false;
-                    tbPassword.Enabled = false;
-                    tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
-                    tbPassword.Text = Global.emptyString;
+                    if (cbConnectionType.SelectedIndex == 0)
+                    {
+                        tbUserName.Enabled = false;
+                        tbPassword.Enabled = false;
+                        tbUserName.Text = System.Environment.UserDomainName + "\\" + System.Environment.UserName;
+                        tbPassword.Text = Global.emptyString;
+                    }
+                    else
+                    {
+                        tbUserName.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[4].Text;
+                        tbPassword.Text = lvDatabases.Items[lvDatabases.SelectedIndices[0]].SubItems[5].Text;
+                    }
                 }
                 targetAuthentication = cbConnectionType.Text;
                 targetAuthenticationIndex = cbConnectionType.SelectedIndex;

@@ -165,6 +165,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2317725A377C47EB969DCF5459B62D05"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2689E9A6E67C4049AAFE41ED6732F9A6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -730,12 +736,6 @@
         "Entry"
         {
         "MsmKey" = "8:_A78E53E980784A6FA782D94C45448741"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AAFE863564F64E66874479D4F2BD3D26"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1610,7 +1610,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.21022   "
+                "FrameworkVersion" = "8:3.5.21022    "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -1904,6 +1904,26 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2317725A377C47EB969DCF5459B62D05"
+            {
+            "SourcePath" = "8:..\\DatabaseSelector\\Index.xml"
+            "TargetName" = "8:Index.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2689E9A6E67C4049AAFE41ED6732F9A6"
@@ -2643,26 +2663,6 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_00A96EE800424C7DB903F9B4732855B0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AAFE863564F64E66874479D4F2BD3D26"
-            {
-            "SourcePath" = "8:..\\DatabaseSelector\\Index.xml"
-            "TargetName" = "8:Index.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3487,7 +3487,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DatabaseSelectorSetup"
         "ProductCode" = "8:{08EB987A-71E1-4C66-8086-F2D60C4F3BEA}"
-        "PackageCode" = "8:{14B797D5-274B-4D5C-9856-EF0D7DF66D12}"
+        "PackageCode" = "8:{16FDCDBE-A8D0-49F0-8F76-220CFAA21B56}"
         "UpgradeCode" = "8:{3CA3E79D-A64B-4405-B0DD-A7E2F74E4E76}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

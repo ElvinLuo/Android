@@ -61,6 +61,9 @@ namespace DatabaseSelector
         public string travelServerFilter;
         public string databaseFilter;
 
+        public int connectionType;
+        public string username;
+        public string password;
         public bool automaticallyOpenEditer;
 
         public int selectedTab;
