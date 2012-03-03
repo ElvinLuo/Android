@@ -9,13 +9,13 @@
   <password />
   <automaticallyOpenEditer>true</automaticallyOpenEditer>
   <selectedTab>1</selectedTab>
-  <previousSelectedGroup>0</previousSelectedGroup>
+  <previousSelectedGroup>10</previousSelectedGroup>
   <currentSelectedGroup>10</currentSelectedGroup>
-  <previousSelectedMyGroup>2</previousSelectedMyGroup>
+  <previousSelectedMyGroup>5</previousSelectedMyGroup>
   <currentSelectedMyGroup>2</currentSelectedMyGroup>
-  <previousSelectedServer>1</previousSelectedServer>
-  <currentSelectedServer>1</currentSelectedServer>
-  <previousSelectedDatabase>0</previousSelectedDatabase>
+  <previousSelectedServer>0</previousSelectedServer>
+  <currentSelectedServer>2</currentSelectedServer>
+  <previousSelectedDatabase>8</previousSelectedDatabase>
   <currentSelectedDatabase>0</currentSelectedDatabase>
   <TEMCURL>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</TEMCURL>
   <XLSFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</XLSFile>

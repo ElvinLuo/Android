@@ -140,6 +140,7 @@ namespace DatabaseSelector
                 groupList.selectedGroup = dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Value.ToString();
                 dgvAllGroups.Rows[index.currentSelectedGroup].Cells[0].Selected = true;
             }
+
             lblGroupsUpdateDate.Text = "Updated at: " + groupList.updateDate;
         }
 
@@ -168,6 +169,8 @@ namespace DatabaseSelector
                     dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Value.ToString();
                 dgvMyGroups.Rows[index.currentSelectedMyGroup].Cells[0].Selected = true;
             }
+
+            lblGroupsUpdateDate.Text = "Updated at: " + myGroupList.updateDate;
         }
 
         private void ReloadServerListView(string webServerFilter, string travelServerFilter)
@@ -451,6 +454,7 @@ namespace DatabaseSelector
                     {
                         myGroupList.groups.Add(groupName);
                         myGroupList.groups.Sort();
+                        myGroupList.updateDate = DateTime.Now;
                     }
                 }
             }
@@ -476,6 +480,7 @@ namespace DatabaseSelector
                 else if (columnIndex == 1)
                 {
                     myGroupList.groups.RemoveAt(rowIndex);
+                    myGroupList.updateDate = DateTime.Now;
                     ReloadMyGroupDataGridView();
                 }
             }
