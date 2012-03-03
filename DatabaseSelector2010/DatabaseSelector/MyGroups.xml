@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MyGroupList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <selectedGroup>PPE</selectedGroup>
+  <selectedGroup>LIS-QA3</selectedGroup>
   <updateDate>2011-11-01T01:08:54.9529851-07:00</updateDate>
   <groups>
-    <string>CHE-RC01</string>
     <string>INTEGRATION</string>
+    <string>INT-MILAN</string>
     <string>LIS-QA3</string>
     <string>LIS-QA4</string>
     <string>PPE</string>

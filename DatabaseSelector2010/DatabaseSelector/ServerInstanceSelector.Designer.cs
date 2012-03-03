@@ -563,11 +563,15 @@ namespace DatabaseSelector
             // 
             // tcGroups
             // 
+            this.tcGroups.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tcGroups.Controls.Add(this.tpAllGroups);
             this.tcGroups.Controls.Add(this.tpMyGroups);
             this.tcGroups.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcGroups.Location = new System.Drawing.Point(0, 0);
+            this.tcGroups.Margin = new System.Windows.Forms.Padding(0);
+            this.tcGroups.Multiline = true;
             this.tcGroups.Name = "tcGroups";
+            this.tcGroups.Padding = new System.Drawing.Point(0, 0);
             this.tcGroups.SelectedIndex = 0;
             this.tcGroups.Size = new System.Drawing.Size(202, 384);
             this.tcGroups.TabIndex = 200;
@@ -577,10 +581,10 @@ namespace DatabaseSelector
             // tpAllGroups
             // 
             this.tpAllGroups.Controls.Add(this.dgvAllGroups);
-            this.tpAllGroups.Location = new System.Drawing.Point(4, 22);
+            this.tpAllGroups.Location = new System.Drawing.Point(4, 25);
             this.tpAllGroups.Name = "tpAllGroups";
             this.tpAllGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAllGroups.Size = new System.Drawing.Size(194, 358);
+            this.tpAllGroups.Size = new System.Drawing.Size(194, 355);
             this.tpAllGroups.TabIndex = 200;
             this.tpAllGroups.Text = "All groups";
             this.tpAllGroups.UseVisualStyleBackColor = true;
@@ -592,7 +596,7 @@ namespace DatabaseSelector
             this.dgvAllGroups.AllowUserToResizeColumns = false;
             this.dgvAllGroups.AllowUserToResizeRows = false;
             this.dgvAllGroups.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvAllGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvAllGroups.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAllGroups.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvAllGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllGroups.ColumnHeadersVisible = false;
@@ -602,16 +606,19 @@ namespace DatabaseSelector
             this.dgvAllGroups.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAllGroups.GridColor = System.Drawing.SystemColors.Window;
             this.dgvAllGroups.Location = new System.Drawing.Point(3, 3);
+            this.dgvAllGroups.Margin = new System.Windows.Forms.Padding(0);
             this.dgvAllGroups.MultiSelect = false;
             this.dgvAllGroups.Name = "dgvAllGroups";
             this.dgvAllGroups.ReadOnly = true;
             this.dgvAllGroups.RowHeadersVisible = false;
             this.dgvAllGroups.RowTemplate.Height = 14;
+            this.dgvAllGroups.RowTemplate.ReadOnly = true;
+            this.dgvAllGroups.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAllGroups.ShowCellErrors = false;
             this.dgvAllGroups.ShowCellToolTips = false;
             this.dgvAllGroups.ShowEditingIcon = false;
             this.dgvAllGroups.ShowRowErrors = false;
-            this.dgvAllGroups.Size = new System.Drawing.Size(188, 352);
+            this.dgvAllGroups.Size = new System.Drawing.Size(188, 349);
             this.dgvAllGroups.TabIndex = 200;
             this.dgvAllGroups.TabStop = false;
             this.dgvAllGroups.SelectionChanged += new System.EventHandler(this.dgvAllGroups_SelectionChanged);
@@ -638,10 +645,10 @@ namespace DatabaseSelector
             // tpMyGroups
             // 
             this.tpMyGroups.Controls.Add(this.dgvMyGroups);
-            this.tpMyGroups.Location = new System.Drawing.Point(4, 22);
+            this.tpMyGroups.Location = new System.Drawing.Point(4, 25);
             this.tpMyGroups.Name = "tpMyGroups";
             this.tpMyGroups.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMyGroups.Size = new System.Drawing.Size(194, 358);
+            this.tpMyGroups.Size = new System.Drawing.Size(194, 355);
             this.tpMyGroups.TabIndex = 200;
             this.tpMyGroups.Text = "My groups";
             this.tpMyGroups.UseVisualStyleBackColor = true;
@@ -652,7 +659,7 @@ namespace DatabaseSelector
             this.dgvMyGroups.AllowUserToDeleteRows = false;
             this.dgvMyGroups.AllowUserToResizeColumns = false;
             this.dgvMyGroups.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvMyGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvMyGroups.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvMyGroups.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvMyGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMyGroups.ColumnHeadersVisible = false;
@@ -662,16 +669,19 @@ namespace DatabaseSelector
             this.dgvMyGroups.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMyGroups.GridColor = System.Drawing.SystemColors.Window;
             this.dgvMyGroups.Location = new System.Drawing.Point(3, 3);
+            this.dgvMyGroups.Margin = new System.Windows.Forms.Padding(0);
             this.dgvMyGroups.MultiSelect = false;
             this.dgvMyGroups.Name = "dgvMyGroups";
             this.dgvMyGroups.ReadOnly = true;
             this.dgvMyGroups.RowHeadersVisible = false;
             this.dgvMyGroups.RowTemplate.Height = 14;
+            this.dgvMyGroups.RowTemplate.ReadOnly = true;
+            this.dgvMyGroups.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMyGroups.ShowCellErrors = false;
             this.dgvMyGroups.ShowCellToolTips = false;
             this.dgvMyGroups.ShowEditingIcon = false;
             this.dgvMyGroups.ShowRowErrors = false;
-            this.dgvMyGroups.Size = new System.Drawing.Size(188, 352);
+            this.dgvMyGroups.Size = new System.Drawing.Size(188, 349);
             this.dgvMyGroups.TabIndex = 200;
             this.dgvMyGroups.TabStop = false;
             this.dgvMyGroups.SelectionChanged += new System.EventHandler(this.dgvMyGroups_SelectionChanged);

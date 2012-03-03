@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GroupList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <selectedGroup>LIS-QA3</selectedGroup>
-  <updateDate>2012-02-27T08:13:00.3314425-08:00</updateDate>
+  <updateDate>2012-03-01T18:24:16.8389779-08:00</updateDate>
   <groups>
     <string>,DEFAULT</string>
     <string>ADS01</string>
@@ -149,6 +149,7 @@
     <string>LIS-RC</string>
     <string>LIS-STR1</string>
     <string>LIS-STR2</string>
+    <string>LIS-STRESS</string>
     <string>LOYALTY01</string>
     <string>LSS-CERT</string>
     <string>LSS-MONTREAL</string>

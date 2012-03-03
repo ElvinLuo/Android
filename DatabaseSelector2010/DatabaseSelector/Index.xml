@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <groupFilter />
+  <groupFilter>QA</groupFilter>
   <webServerFilter>02</webServerFilter>
   <travelServerFilter>02</travelServerFilter>
   <databaseFilter>LodgingInventoryTx</databaseFilter>
@@ -9,13 +9,13 @@
   <password />
   <automaticallyOpenEditer>true</automaticallyOpenEditer>
   <selectedTab>1</selectedTab>
-  <previousSelectedGroup>10</previousSelectedGroup>
-  <currentSelectedGroup>1</currentSelectedGroup>
+  <previousSelectedGroup>0</previousSelectedGroup>
+  <currentSelectedGroup>10</currentSelectedGroup>
   <previousSelectedMyGroup>2</previousSelectedMyGroup>
   <currentSelectedMyGroup>2</currentSelectedMyGroup>
-  <previousSelectedServer>0</previousSelectedServer>
-  <currentSelectedServer>0</currentSelectedServer>
-  <previousSelectedDatabase>1</previousSelectedDatabase>
+  <previousSelectedServer>1</previousSelectedServer>
+  <currentSelectedServer>1</currentSelectedServer>
+  <previousSelectedDatabase>0</previousSelectedDatabase>
   <currentSelectedDatabase>0</currentSelectedDatabase>
   <TEMCURL>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</TEMCURL>
   <XLSFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</XLSFile>
