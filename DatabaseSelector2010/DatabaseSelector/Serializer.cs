@@ -29,16 +29,21 @@ namespace DatabaseSelector
                 if (applicationFolder == null)
                 {
                     string result = Global.emptyString;
-                    RegistryKey dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.ClassesRoot, System.Environment.MachineName).OpenSubKey("DatabaseSelector.Connect\\CLSID");
+                    RegistryKey dllKey =
+                        RegistryKey.OpenRemoteBaseKey(RegistryHive.ClassesRoot, System.Environment.MachineName).OpenSubKey("DatabaseSelector.Connect\\CLSID");
                     result = dllKey.GetValue(Global.emptyString).ToString();
 
                     dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.ClassesRoot, System.Environment.MachineName).OpenSubKey("\\Wow6432Node\\CLSID");
+
                     if (dllKey == null)
                         dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, System.Environment.MachineName).OpenSubKey("SOFTWARE\\Classes\\CLSID");
+
                     if (dllKey == null)
                         dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.CurrentUser, System.Environment.MachineName).OpenSubKey("SOFTWARE\\Classes\\CLSID");
+
                     if (dllKey == null)
                         dllKey = RegistryKey.OpenRemoteBaseKey(RegistryHive.ClassesRoot, System.Environment.MachineName).OpenSubKey("CLSID");
+
                     foreach (string element in dllKey.GetSubKeyNames())
                     {
                         if (element.Equals(result))
