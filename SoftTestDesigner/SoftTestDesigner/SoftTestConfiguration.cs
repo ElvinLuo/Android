@@ -107,7 +107,7 @@ namespace SoftTestDesigner
             for (int rowIndex = 0; rowIndex < restrictionRows.Count - 1; rowIndex++)
             {
                 DataGridViewRow rrow = restrictionRows[rowIndex];
-                if (!(bool)rrow.Cells[0].Value) continue;
+                if (!Convert.ToBoolean(rrow.Cells[0].Value)) continue;
 
                 if (rrow.Cells[2].Value == null) continue;
 

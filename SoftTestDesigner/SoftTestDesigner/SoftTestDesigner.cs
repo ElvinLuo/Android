@@ -382,8 +382,8 @@ namespace SoftTestDesigner
             do
             {
                 uiProcessor.GenerateCombination(out sc, dgvConfigItem, dgvRestriction, dgvResult, false);
-                uiProcessor.RemoveDuplicatedRows(sc, dgvResult, false);
                 uiProcessor.ApplyRestrictions(sc, dgvRestriction, dgvResult, false);
+                uiProcessor.RemoveDuplicatedRows(sc, dgvResult, false);
 
                 if (uiProcessor.GetResultStatistics(out result, out output, dgvRestriction, dgvResult, sc))
                 { break; }
