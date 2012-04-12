@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
 using System.Reflection;
 
 namespace WindowsFormsApplication
@@ -20,14 +19,47 @@ namespace WindowsFormsApplication
             name.LastName = "Luo";
 
             Person p = new Person();
-            p.Name = name;
             p.Age = 0;
-            p.SetObjectProperty(p, "Name.FirstName", "New name");
-            p.SetObjectProperty(p, "Name.LastName", "New last");
-            p.SetObjectProperty(p, "Age", 10);
+            SetObjectProperty(p, "Age", 10);
+            SetObjectProperty(p, "Name", name);
+            SetObjectProperty(p, "Name.FirstName", "New first name");
+            SetObjectProperty(p, "Name.LastName", "New last name");
         }
 
+        public static bool SetObjectProperty(object obj, string propertyName, object propertyValue)
+        {
+            string[] propertyNodes = propertyName.Split('.');
+            int length = propertyNodes.Length;
 
+            for (int i = 0; i < length; i++)
+            {
+                if (obj == null) return false;
+
+                bool isMatched = false;
+                PropertyInfo[] properties =
+                    obj.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Instance);
+
+                foreach (PropertyInfo property in properties)
+                {
+                    if (property.Name == propertyNodes[i])
+                    {
+                        if (i == length - 1)
+                        {
+                            property.SetValue(obj, propertyValue, null);
+                            return true;
+                        }
+
+                        isMatched = true;
+                        obj = property.GetValue(obj, null);
+                        break;
+                    }
+                }
+
+                if (!isMatched) return false;
+            }
+
+            return false;
+        }
 
         public static void CommentedCode()
         {
@@ -263,43 +295,6 @@ namespace WindowsFormsApplication
     {
         public Name Name { get; set; }
         public int Age { get; set; }
-
-        public bool SetObjectProperty(
-            object obj,
-            string propertyName,
-            object propertyValue)
-        {
-            string[] nodes = propertyName.Split('.');
-            int length = nodes.Length;
-
-            for (int i = 0; i < length; i++)
-            {
-                obj = GetProperty(obj, nodes, i, propertyValue, i == length - 1);
-            }
-
-            return true;
-        }
-
-        public object GetProperty(object obj, string[] propertyNames, int level, object propertyValue, bool change)
-        {
-            PropertyInfo[] properties = obj.GetType().GetProperties(BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (PropertyInfo property in properties)
-            {
-                if (property.Name == propertyNames[level])
-                {
-                    if (change)
-                    {
-                        property.SetValue(obj, propertyValue, null);
-                    }
-
-                    return property.GetValue(obj, null);
-                }
-            }
-
-            return null;
-        }
-
     }
 
     public class Name
