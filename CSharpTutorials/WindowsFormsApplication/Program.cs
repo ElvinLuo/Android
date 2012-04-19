@@ -14,16 +14,28 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            Name name = new Name();
-            name.FirstName = "Elvin";
-            name.LastName = "Luo";
+            int count = 0, all = 0;
+            DateTime begin, end;
+            begin = DateTime.Now;
 
-            Person p = new Person();
-            p.Age = 0;
-            SetObjectProperty(p, "Age", 10);
-            SetObjectProperty(p, "Name", name);
-            SetObjectProperty(p, "Name.FirstName", "New first name");
-            SetObjectProperty(p, "Name.LastName", "New last name");
+            for (int i = 0; i < 1000; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    for (int k = 0; k < 100; k++)
+                    {
+                        all++;
+
+                        if (k == j && j == i)
+                        {
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            end = DateTime.Now;
+            DateTime.Compare(begin, end);
         }
 
         public static bool SetObjectProperty(object obj, string propertyName, object propertyValue)
@@ -63,6 +75,16 @@ namespace WindowsFormsApplication
 
         public static void CommentedCode()
         {
+            Name name = new Name();
+            name.FirstName = "Elvin";
+            name.LastName = "Luo";
+
+            Person p = new Person();
+            p.Age = 0;
+            SetObjectProperty(p, "Age", 10);
+            SetObjectProperty(p, "Name", name);
+            SetObjectProperty(p, "Name.FirstName", "New first name");
+            SetObjectProperty(p, "Name.LastName", "New last name");
             //int Expedia = 0x00080000;
             //int ExpediaCorporate = 0x00800000;
             //int ExpediaPackage = 0x01000000;
