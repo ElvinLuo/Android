@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication
 {
@@ -14,28 +15,8 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            int count = 0, all = 0;
-            DateTime begin, end;
-            begin = DateTime.Now;
-
-            for (int i = 0; i < 1000; i++)
-            {
-                for (int j = 0; j < 100; j++)
-                {
-                    for (int k = 0; k < 100; k++)
-                    {
-                        all++;
-
-                        if (k == j && j == i)
-                        {
-                            count++;
-                        }
-                    }
-                }
-            }
-
-            end = DateTime.Now;
-            DateTime.Compare(begin, end);
+            BrowserControllerForm form = new BrowserControllerForm();
+            Application.Run(form);
         }
 
         public static bool SetObjectProperty(object obj, string propertyName, object propertyValue)
