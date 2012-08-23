@@ -165,14 +165,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_353EEBF33176018B0D5EF7F3093A29BA"
-        "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
+        "MsmKey" = "8:_32D1D6B5DD6D4429BC0DE64021F506B2"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_35B489E353D44D71A5D1485D9083625A"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_353EEBF33176018B0D5EF7F3093A29BA"
+        "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -227,6 +227,12 @@
         {
         "MsmKey" = "8:_378270313715B5A37C0479A2F712E610"
         "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3803CB526EC849A7BE4FE07C6AA791DC"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -453,12 +459,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_62EBA0B041734074968A8F08F2D98185"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6AD5E503D71D542DD22F2E08F3EF147C"
         "OwnerKey" = "8:_3C46DF1ABF08413FD7CB5E077E0DE8F8"
         "MsmSig" = "8:_UNDEFINED"
@@ -467,6 +467,12 @@
         {
         "MsmKey" = "8:_6AD5E503D71D542DD22F2E08F3EF147C"
         "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6C237AE6691043A59AE1B4E5386B10CF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -485,12 +491,6 @@
         {
         "MsmKey" = "8:_6E96263B7A31F2E905E900EAE10AB0B7"
         "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_703A4CD32B2740D2B52F07B0CA947A92"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -593,18 +593,6 @@
         {
         "MsmKey" = "8:_8BF8CA5C1FBE15B09E6671AF7004A3A1"
         "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8DBF5AD55E314952917B42B47C4E07EA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_90BF7058E200497BA55A0209024BFF3D"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -957,6 +945,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D0FF4110B85744A280D8D0F8A14120B3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D12C9E11C7E5AFA360D7ED6880C054FE"
         "OwnerKey" = "8:_101099A0309F4A5B842AB43435190B52"
         "MsmSig" = "8:_UNDEFINED"
@@ -1198,6 +1192,12 @@
         "Entry"
         {
         "MsmKey" = "8:_FA03C9F2392E4CDF94753BDEE754A7B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FA9839824F684111B92C9A707938B1F7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1610,7 +1610,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.21022         "
+                "FrameworkVersion" = "8:3.5.21022          "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -1917,6 +1917,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32D1D6B5DD6D4429BC0DE64021F506B2"
+            {
+            "SourcePath" = "8:..\\DatabaseSelector\\Servers.xml"
+            "TargetName" = "8:Servers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_353EEBF33176018B0D5EF7F3093A29BA"
             {
             "AssemblyRegister" = "3:1"
@@ -1946,26 +1966,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35B489E353D44D71A5D1485D9083625A"
-            {
-            "SourcePath" = "8:..\\DatabaseSelector\\Groups.xml"
-            "TargetName" = "8:Groups.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_374ECDE38BB4E6D8FA3160BF15081981"
@@ -2028,6 +2028,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3803CB526EC849A7BE4FE07C6AA791DC"
+            {
+            "SourcePath" = "8:..\\DatabaseSelector\\Index.xml"
+            "TargetName" = "8:Index.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3C46DF1ABF08413FD7CB5E077E0DE8F8"
@@ -2298,26 +2318,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62EBA0B041734074968A8F08F2D98185"
-            {
-            "SourcePath" = "8:..\\DatabaseSelector\\Servers.xml"
-            "TargetName" = "8:Servers.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6AD5E503D71D542DD22F2E08F3EF147C"
             {
             "AssemblyRegister" = "3:1"
@@ -2349,6 +2349,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6C237AE6691043A59AE1B4E5386B10CF"
+            {
+            "SourcePath" = "8:..\\DatabaseSelector\\MyGroups.xml"
+            "TargetName" = "8:MyGroups.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6E96263B7A31F2E905E900EAE10AB0B7"
             {
             "AssemblyRegister" = "3:1"
@@ -2378,26 +2398,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_703A4CD32B2740D2B52F07B0CA947A92"
-            {
-            "SourcePath" = "8:..\\DatabaseSelector\\MyGroups.xml"
-            "TargetName" = "8:MyGroups.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7727BA65A973C8DE70096CC9EEF4FAEF"
@@ -2511,46 +2511,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8DBF5AD55E314952917B42B47C4E07EA"
-            {
-            "SourcePath" = "8:..\\DatabaseSelector\\Databases.xml"
-            "TargetName" = "8:Databases.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_90BF7058E200497BA55A0209024BFF3D"
-            {
-            "SourcePath" = "8:..\\DatabaseSelector\\Index.xml"
-            "TargetName" = "8:Index.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9B271FAADE58387C15A5D1D8139045DC"
@@ -3058,6 +3018,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D0FF4110B85744A280D8D0F8A14120B3"
+            {
+            "SourcePath" = "8:..\\DatabaseSelector\\Groups.xml"
+            "TargetName" = "8:Groups.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D12C9E11C7E5AFA360D7ED6880C054FE"
             {
             "AssemblyRegister" = "3:1"
@@ -3377,6 +3357,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FA9839824F684111B92C9A707938B1F7"
+            {
+            "SourcePath" = "8:..\\DatabaseSelector\\Databases.xml"
+            "TargetName" = "8:Databases.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_6333BB2C89CF4A1E9851697BEE53AD5F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FD6A3342E80D14D2189EB075BC4972A4"
             {
             "AssemblyRegister" = "3:1"
@@ -3487,7 +3487,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DatabaseSelectorSetup"
         "ProductCode" = "8:{08EB987A-71E1-4C66-8086-F2D60C4F3BEA}"
-        "PackageCode" = "8:{16FDCDBE-A8D0-49F0-8F76-220CFAA21B56}"
+        "PackageCode" = "8:{8EEC809C-E145-47E8-83D8-14D3B79F7BB0}"
         "UpgradeCode" = "8:{3CA3E79D-A64B-4405-B0DD-A7E2F74E4E76}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Index xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <groupFilter>QA</groupFilter>
-  <webServerFilter>02</webServerFilter>
+  <groupFilter />
+  <webServerFilter />
   <travelServerFilter>02</travelServerFilter>
-  <databaseFilter>LodgingInventoryTx</databaseFilter>
+  <databaseFilter>trans</databaseFilter>
   <connectionType>0</connectionType>
   <username>SEA\v-elluo</username>
   <password />
   <automaticallyOpenEditer>true</automaticallyOpenEditer>
   <selectedTab>1</selectedTab>
-  <previousSelectedGroup>10</previousSelectedGroup>
-  <currentSelectedGroup>10</currentSelectedGroup>
-  <previousSelectedMyGroup>5</previousSelectedMyGroup>
-  <currentSelectedMyGroup>2</currentSelectedMyGroup>
-  <previousSelectedServer>0</previousSelectedServer>
-  <currentSelectedServer>2</currentSelectedServer>
-  <previousSelectedDatabase>8</previousSelectedDatabase>
+  <previousSelectedGroup>150</previousSelectedGroup>
+  <currentSelectedGroup>150</currentSelectedGroup>
+  <previousSelectedMyGroup>4</previousSelectedMyGroup>
+  <currentSelectedMyGroup>4</currentSelectedMyGroup>
+  <previousSelectedServer>2</previousSelectedServer>
+  <currentSelectedServer>3</currentSelectedServer>
+  <previousSelectedDatabase>1</previousSelectedDatabase>
   <currentSelectedDatabase>0</currentSelectedDatabase>
   <TEMCURL>http://bdtools.sb.karmalab.net/envstatus/envstatus.cgi</TEMCURL>
   <XLSFile>C:\Program Files (x86)\DatabaseSelectorSetup\PPE_DSN_List.xls</XLSFile>

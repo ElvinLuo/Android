@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GroupList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <selectedGroup>LIS-QA3</selectedGroup>
-  <updateDate>2012-03-01T18:24:16.8389779-08:00</updateDate>
+  <selectedGroup>PPE</selectedGroup>
+  <updateDate>2012-06-20T22:51:35.7118139-07:00</updateDate>
   <groups>
     <string>,DEFAULT</string>
     <string>ADS01</string>
@@ -11,6 +11,8 @@
     <string>BUILD</string>
     <string>CCN001</string>
     <string>CCT</string>
+    <string>CCT-AVAIL</string>
+    <string>CCT-LAT-UTL02</string>
     <string>CCT-OPM</string>
     <string>CCT-PMP02</string>
     <string>CCT-PMP03</string>
@@ -25,7 +27,6 @@
     <string>CCT-VOYAGER-QA01</string>
     <string>CCT-VOYAGER-QA02</string>
     <string>CCT-VOYAGER-QA04</string>
-    <string>CCTLATUTL02</string>
     <string>CHE-HF01</string>
     <string>CHE-RC01</string>
     <string>COVERITY</string>
@@ -49,12 +50,12 @@
     <string>ESENG01</string>
     <string>ESENG02</string>
     <string>ESENGINTEGRATION</string>
+    <string>ESTR-PMP60</string>
     <string>ESTR06</string>
     <string>ESTR09</string>
     <string>ESTR11</string>
     <string>ESTR12</string>
     <string>ESTR14</string>
-    <string>ESTR15</string>
     <string>ESTR16</string>
     <string>ESTR17</string>
     <string>ESTR19</string>
@@ -93,18 +94,24 @@
     <string>ESTR56</string>
     <string>ESTR57</string>
     <string>ESTR58</string>
-    <string>ESTR62</string>
+    <string>ESTR60</string>
+    <string>ESTR63</string>
     <string>ESTR64</string>
     <string>ESTR66</string>
+    <string>ESTR68</string>
+    <string>ESTR69</string>
     <string>ESTR71</string>
     <string>ESTR72</string>
     <string>EWE-AVAIL</string>
+    <string>EWE-CONMAN001</string>
+    <string>EWE-CONMAN002</string>
     <string>EWE-PERF-IPU</string>
     <string>EWE-PERF1</string>
     <string>EWE-PERF2</string>
     <string>EWE-PERF3</string>
     <string>EWE-PERF4</string>
     <string>EWE-PERF5</string>
+    <string>EWETRUNK-STUBBED</string>
     <string>EWS-FNT</string>
     <string>EWS-PMP01</string>
     <string>EWS-PMP02</string>
@@ -138,6 +145,8 @@
     <string>LIS-QA12</string>
     <string>LIS-QA13</string>
     <string>LIS-QA14</string>
+    <string>LIS-QA15</string>
+    <string>LIS-QA16</string>
     <string>LIS-QA2</string>
     <string>LIS-QA3</string>
     <string>LIS-QA4</string>
@@ -147,6 +156,7 @@
     <string>LIS-QA8</string>
     <string>LIS-QA9</string>
     <string>LIS-RC</string>
+    <string>LIS-RC01</string>
     <string>LIS-STR1</string>
     <string>LIS-STR2</string>
     <string>LIS-STRESS</string>
@@ -167,11 +177,11 @@
     <string>ONEHSTR01</string>
     <string>PERF-APP</string>
     <string>PERF-FTIPU</string>
+    <string>PERF-IPU</string>
     <string>PMP03</string>
     <string>PMP50</string>
     <string>PMP56</string>
     <string>PMP57</string>
-    <string>RAP01</string>
     <string>ROEHF</string>
     <string>ROEPMP42</string>
     <string>ROEPMP43</string>

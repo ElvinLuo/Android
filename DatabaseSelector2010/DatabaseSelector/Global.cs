@@ -11,6 +11,7 @@ namespace DatabaseSelector
     {
         #region Fileds & Properties
         public static readonly string applicationFolder = Serializer.CreateInstance().applicationFolder;
+        public static readonly string logFile = "log.txt";
         public static readonly string emptyString = "";
 
         public static readonly string defaultALLGroupName = "ALL";
@@ -55,6 +56,18 @@ namespace DatabaseSelector
         public static readonly string dllFolderFor90 = applicationFolder + "dll/9.0.242.0/";
         public static readonly string dllFolderFor100 = applicationFolder + "dll/10.0.0.0/";
         #endregion
+
+        public static void WriteLog(string lines)
+        {
+            try
+            {
+                File.AppendAllText(applicationFolder + logFile, DateTime.Now + "\n" + lines);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+        }
 
         public static void SetProgressBarText(ProgressBar target, string text)
         {

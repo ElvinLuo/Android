@@ -200,6 +200,7 @@
     <Content Include="WingatePortMappingsForRTT_PPE.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="LocalMachine100.reg" />
     <None Include="LocalMachine90.reg" />
     <None Include="PPE_DSN_List.xls" />

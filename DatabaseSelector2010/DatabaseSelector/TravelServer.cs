@@ -80,7 +80,9 @@ namespace DatabaseSelector
                 }
             }
             catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
+            {
+                Global.WriteLog(exception.StackTrace);
+            }
         }
 
         public void GetDatabasesFromRegistryAndChangeProgressBar(ProgressBar pgb)
@@ -139,7 +141,9 @@ namespace DatabaseSelector
                 }
             }
             catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
+            {
+                Global.WriteLog(exception.StackTrace);
+            }
             finally
             {
                 updateDate = DateTime.Now;

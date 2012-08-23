@@ -697,7 +697,9 @@ namespace DatabaseSelector
                 SelectAndExpandDatabasesNode();
             }
             catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
+            {
+                Global.WriteLog(exception.StackTrace);
+            }
             finally
             { this.Close(); }
         }
@@ -869,7 +871,9 @@ namespace DatabaseSelector
                 }
             }
             catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
+            {
+                Global.WriteLog(exception.StackTrace);
+            }
         }
 
         private void DisableAllButtons()

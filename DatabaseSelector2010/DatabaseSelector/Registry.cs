@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using Microsoft.Win32;
 using mshtml;
 using SHDocVw;
@@ -105,7 +104,9 @@ namespace DatabaseSelector
                     expDsnKey.Close();
             }
             catch (Exception exception)
-            { Console.WriteLine(exception.Message); }
+            {
+                Global.WriteLog(exception.StackTrace);
+            }
         }
     }
 }
