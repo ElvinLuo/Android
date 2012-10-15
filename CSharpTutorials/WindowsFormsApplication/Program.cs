@@ -15,8 +15,19 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            BrowserControllerForm form = new BrowserControllerForm();
-            Application.Run(form);
+            const byte Sunday = 0x01;
+            const byte Monday = 0x02;
+            const byte Tuesday = 0x04;
+            const byte Wednesday = 0x08;
+            const byte Thursday = 0x10;
+            const byte Friday = 0x20;
+            const byte Saturday = 0x40;
+            const byte All = 0x7f;
+
+            Console.WriteLine(Sunday + Monday);
+
+            //BrowserControllerForm form = new BrowserControllerForm();
+            //Application.Run(form);
         }
 
         public static bool SetObjectProperty(object obj, string propertyName, object propertyValue)
