@@ -111,14 +111,24 @@ namespace TestRunPKG
             SoftTest = new SoftTest(softTestNameArray[i], i, testConfigNameList, testConfigValueArray, methodModule);
 
             Configs = new List<Var>();
-            Configs.Add(new Var("eap", "0"));
-            Configs.Add(new Var("flags", "4"));
-            Configs.Add(new Var("langid", "1033"));
-            Configs.Add(new Var("servername", "CHELLIWEBQA301"));
-            Configs.Add(new Var("tpid", "20001"));
-            Configs.Add(new Var("utilsite", "10.184.16.200"));
-            Configs.Add(new Var("himssite", "10.184.17.234"));
-            Configs.Add(new Var("site", "10.184.17.234"));
+
+            for (int idx = 0; idx < testConfigNameList.Count; idx++)
+            {
+                if (string.IsNullOrEmpty(testConfigNameList[idx]) ||
+                    string.IsNullOrEmpty(testConfigValueArray[idx]))
+                { continue; }
+
+                Configs.Add(new Var(testConfigNameList[idx], testConfigValueArray[idx]));
+            }
+
+            if (!softTestNameArray.Contains("eap")) Configs.Add(new Var("eap", "0"));
+            if (!softTestNameArray.Contains("flags")) Configs.Add(new Var("flags", "4"));
+            if (!softTestNameArray.Contains("langid")) Configs.Add(new Var("langid", "1033"));
+            if (!softTestNameArray.Contains("servername")) Configs.Add(new Var("servername", "CHELLIWEBQA301"));
+            if (!softTestNameArray.Contains("tpid")) Configs.Add(new Var("tpid", "20001"));
+            if (!softTestNameArray.Contains("utilsite")) Configs.Add(new Var("utilsite", "10.184.16.200"));
+            if (!softTestNameArray.Contains("himssite")) Configs.Add(new Var("himssite", "10.184.17.234"));
+            if (!softTestNameArray.Contains("site")) Configs.Add(new Var("site", "10.184.17.234"));
         }
     }
 
@@ -154,18 +164,18 @@ namespace TestRunPKG
         {
             this.name = softTestName;
             this.id = id.ToString();
-            TestConfig testConfig;
+            //TestConfig testConfig;
             TestConfigs = new List<TestConfig>();
 
-            for (int i = 0; i < testConfigNameList.Count; i++)
-            {
-                if (string.IsNullOrEmpty(testConfigNameList[i]) ||
-                    string.IsNullOrEmpty(testConfigValueArray[i]))
-                { continue; }
+            //for (int i = 0; i < testConfigNameList.Count; i++)
+            //{
+            //    if (string.IsNullOrEmpty(testConfigNameList[i]) ||
+            //        string.IsNullOrEmpty(testConfigValueArray[i]))
+            //    { continue; }
 
-                testConfig = new TestConfig(testConfigNameList[i], testConfigValueArray[i]);
-                TestConfigs.Add(testConfig);
-            }
+            //    testConfig = new TestConfig(testConfigNameList[i], testConfigValueArray[i]);
+            //    TestConfigs.Add(testConfig);
+            //}
 
             Methods = new List<Method>();
             Methods.Add(new Method("HotelTest.dll", methodModule));
