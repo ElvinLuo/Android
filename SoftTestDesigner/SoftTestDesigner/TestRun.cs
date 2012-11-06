@@ -59,7 +59,7 @@ namespace TestRunPKG
                 { continue; }
 
                 Assignment assignment = new Assignment(
-                    i,
+                    i + 1,
                     softTestNameList,
                     testConfigNameList,
                     testConfigValueList.ElementAt(i),
@@ -108,7 +108,7 @@ namespace TestRunPKG
         {
             this.id = i.ToString();
             this.Disabled = false.ToString();
-            SoftTest = new SoftTest(softTestNameArray[i], i, testConfigNameList, testConfigValueArray, methodModule);
+            SoftTest = new SoftTest(softTestNameArray[i - 1], i, testConfigNameList, testConfigValueArray, methodModule);
 
             Configs = new List<Var>();
 
