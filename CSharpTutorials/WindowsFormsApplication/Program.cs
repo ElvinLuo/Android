@@ -7,6 +7,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication
 {
+    public class MyList
+    {
+        public int age;
+
+        public MyList(int age)
+        {
+            this.age = age;
+        }
+    }
+
     static class Program
     {
         /// <summary>
@@ -15,16 +25,24 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            const byte Sunday = 0x01;
-            const byte Monday = 0x02;
-            const byte Tuesday = 0x04;
-            const byte Wednesday = 0x08;
-            const byte Thursday = 0x10;
-            const byte Friday = 0x20;
-            const byte Saturday = 0x40;
-            const byte All = 0x7f;
+            List<MyList> list = new List<MyList>
+            { 
+                new MyList(0),
+                new MyList(1)
+            };
+            IEnumerable<MyList> r1 = list.Where(m => m.age == 1);
+            IEnumerable<MyList> r2 = list.Where(m => m.age == 2);
 
-            Console.WriteLine(Sunday + Monday);
+            //const byte Sunday = 0x01;
+            //const byte Monday = 0x02;
+            //const byte Tuesday = 0x04;
+            //const byte Wednesday = 0x08;
+            //const byte Thursday = 0x10;
+            //const byte Friday = 0x20;
+            //const byte Saturday = 0x40;
+            //const byte All = 0x7f;
+
+            //Console.WriteLine(Sunday + Monday);
 
             //BrowserControllerForm form = new BrowserControllerForm();
             //Application.Run(form);
