@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>dll\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,13 @@
     <Compile Include="BrowserControllerForm.Designer.cs">
       <DependentUpon>BrowserControllerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comparison\ComparisonMethod.cs" />
+    <Compile Include="Comparison\DataTableObjectComparer.cs" />
+    <Compile Include="Comparison\DataTableObjectListComparer.cs" />
+    <Compile Include="Comparison\MessageComparer.cs" />
+    <Compile Include="Database\DatabaseOperator.cs" />
+    <Compile Include="File\FileReader.cs" />
+    <Compile Include="Objects\RatePlanGetSchema.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BrowserControllerForm.resx">

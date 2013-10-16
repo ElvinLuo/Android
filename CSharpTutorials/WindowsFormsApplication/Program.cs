@@ -1,609 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Xml.Serialization;
+using Expedia.Automation.ExpSOATemplates.Hotels.APM.Schemas.RatePlanGet;
+using WindowsFormsApplication.File;
 
 namespace WindowsFormsApplication
 {
-    public delegate bool IsEqualDelegate(object left, object right);
-
-    public class DataTableObjectListComparer<T>
-    {
-        private List<T> initialList;
-        private List<T> expectedList;
-        private List<T> actualList;
-        private PropertyInfo[] properties;
-        private PropertyInfo[] primaryKeys;
-        private PropertyInfo[] ignoringProperties;
-        private Dictionary<PropertyInfo, IsEqualDelegate> propertyDelegate;
-
-        private bool? isEqual = null;
-        private string header;
-        private StringBuilder informationMessage;
-        private StringBuilder warningMessage;
-        private StringBuilder errorMessage;
-
-        public DataTableObjectListComparer(List<T> initialList, List<T> expectedList, List<T> actualList)
-            : this(initialList, expectedList, actualList, null, null, null)
-        {
-        }
-
-        public DataTableObjectListComparer(
-            List<T> initialList,
-            List<T> expectedList,
-            List<T> actualList,
-            PropertyInfo[] primaryKeys,
-            PropertyInfo[] ignoringProperties,
-            Dictionary<PropertyInfo, IsEqualDelegate> propertyDelegate)
-        {
-            this.initialList = initialList;
-            this.expectedList = expectedList;
-            this.actualList = actualList;
-            this.properties = typeof(T).GetProperties();
-            this.primaryKeys = primaryKeys;
-            this.ignoringProperties = ignoringProperties;
-            this.propertyDelegate = propertyDelegate;
-
-            this.informationMessage = new StringBuilder();
-            this.warningMessage = new StringBuilder();
-            this.errorMessage = new StringBuilder();
-
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("Comparing list of DataTableObject");
-            stringBuilder.AppendLine(GetProperty());
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine("Initial list:");
-            stringBuilder.AppendLine(GetValue(initialList));
-            stringBuilder.AppendLine("Expected list:");
-            stringBuilder.AppendLine(GetValue(expectedList));
-            stringBuilder.AppendLine("Actual list:");
-            stringBuilder.AppendLine(GetValue(actualList));
-            header = stringBuilder.ToString();
-        }
-
-        private bool Matching(T left, T right)
-        {
-            if (left == null || right == null)
-            {
-                return false;
-            }
-
-            foreach (PropertyInfo property in primaryKeys)
-            {
-                object leftValue = property.GetValue(left, null) ?? "Null";
-                object rightValue = property.GetValue(right, null) ?? "Null";
-
-                if (leftValue.ToString() != rightValue.ToString())
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private void FindMathingItem(
-            List<T> leftList,
-            List<T> rightList,
-            List<T> matchingList,
-            List<T> mismatchingList)
-        {
-            foreach (T left in leftList)
-            {
-                IEnumerable<T> foundItems = rightList.Where(i => Matching(i, left));
-                int foundCount = foundItems.Count();
-
-                if (foundCount == 1)
-                {
-                    matchingList.Add(left);
-                }
-                else
-                {
-                    mismatchingList.Add(left);
-                }
-            }
-        }
-
-        public bool Compare()
-        {
-            isEqual = true;
-            List<T> expectedObjectNeedToCompare = new List<T>();
-            List<T> actualObjectNeedToCompare = new List<T>();
-            List<T> mismatchingExpectedObjectList = new List<T>();
-            List<T> mismatchingActualObjectList = new List<T>();
-
-            FindMathingItem(actualList, expectedList, actualObjectNeedToCompare, mismatchingActualObjectList);
-            FindMathingItem(expectedList, actualList, expectedObjectNeedToCompare, mismatchingExpectedObjectList);
-
-            if (mismatchingExpectedObjectList.Count() != 0)
-            {
-                isEqual = false;
-                errorMessage.AppendLine();
-                errorMessage.AppendLine("Below rows cannot be found in database.");
-                mismatchingExpectedObjectList.ForEach(i => errorMessage.AppendLine(GetValue(i)));
-            }
-
-            if (mismatchingActualObjectList.Count() != 0)
-            {
-                isEqual = false;
-                errorMessage.AppendLine();
-                errorMessage.AppendLine("Below rows should not be added to database.");
-                mismatchingActualObjectList.ForEach(i => errorMessage.AppendLine(GetValue(i)));
-            }
-
-            foreach (T expected in expectedObjectNeedToCompare)
-            {
-                DataTableObjectComparer<T> objectComparer;
-                IEnumerable<T> foundInInitialList = initialList.Where(i => Matching(i, expected));
-                T actual = actualObjectNeedToCompare.First(i => Matching(i, expected));
-
-                if (foundInInitialList.Count() == 1)
-                {
-                    objectComparer = new DataTableObjectComparer<T>(
-                        foundInInitialList.First(),
-                        expected,
-                        actual,
-                        ignoringProperties,
-                        propertyDelegate);
-                }
-                else
-                {
-                    objectComparer = new DataTableObjectComparer<T>(
-                        expected,
-                        actual,
-                        ignoringProperties,
-                        propertyDelegate);
-                }
-
-                bool isObjectEqual = objectComparer.Compare();
-                string objectFinalMessage = "\r\n" + objectComparer.GetFinalMessage();
-                if (isObjectEqual)
-                {
-                    if (objectComparer.GetWarningMessage().Length != 0)
-                    {
-                        warningMessage.AppendLine(objectFinalMessage);
-                    }
-                }
-                else
-                {
-                    isEqual = false;
-                    errorMessage.AppendLine(objectFinalMessage);
-                }
-            }
-
-            return isEqual.Value;
-        }
-
-        public string GetFinalMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            StringBuilder stringBuilder = new StringBuilder(header);
-            if (isEqual.Value)
-            {
-                if (warningMessage.Length == 0)
-                {
-                    stringBuilder.AppendLine("The actual object list is equal to the expected.");
-                }
-                else
-                {
-                    stringBuilder.AppendLine("The actual object list is equal to the expected, please notice the warning(s).");
-                    stringBuilder.AppendLine(warningMessage.ToString());
-                }
-            }
-            else
-            {
-                stringBuilder.AppendLine("The actual object list is not equal to the expected.");
-                stringBuilder.AppendLine(errorMessage.ToString());
-            }
-
-            return stringBuilder.ToString();
-        }
-
-        public string GetInformationMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            return informationMessage.ToString();
-        }
-
-        public string GetWarningMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            return warningMessage.ToString();
-        }
-
-        public string GetErrorMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            return errorMessage.ToString();
-        }
-
-        private string GetProperty()
-        {
-            StringBuilder message = new StringBuilder();
-            properties.ToList().ForEach(i => message.Append(string.Format("{0}\t", i.Name)));
-            return message.ToString();
-        }
-
-        private string GetValue(T dataTableObject)
-        {
-            if (dataTableObject == null)
-            {
-                return "The object is null.";
-            }
-
-            StringBuilder message = new StringBuilder();
-            foreach (PropertyInfo property in properties)
-            {
-                object value = property.GetValue(dataTableObject, null) ?? "Null";
-                message.Append(string.Format("{0}\t", value));
-            }
-            return message.ToString();
-        }
-
-        private string GetValue(List<T> objList)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            objList.ForEach(obj => stringBuilder.AppendLine(GetValue(obj)));
-            return stringBuilder.ToString();
-        }
-    }
-
-    public class DataTableObjectComparer<T>
-    {
-        private readonly T initial;
-        private readonly T expected;
-        private readonly T actual;
-        private readonly PropertyInfo[] properties;
-        private readonly PropertyInfo[] ignoringProperties;
-        private readonly Dictionary<PropertyInfo, IsEqualDelegate> propertyDelegate;
-
-        private bool? isEqual = null;
-        private string header;
-        private StringBuilder informationMessage;
-        private StringBuilder warningMessage;
-        private StringBuilder errorMessage;
-
-        public DataTableObjectComparer(T expected, T actual)
-            : this(expected, actual, null, null)
-        {
-        }
-
-        public DataTableObjectComparer(T initial, T expected, T actual)
-            : this(initial, expected, actual, null, null)
-        {
-        }
-
-        public DataTableObjectComparer(
-            T expected,
-            T actual,
-            PropertyInfo[] ignoringProperties,
-            Dictionary<PropertyInfo, IsEqualDelegate> propertyDelegate)
-        {
-            this.expected = expected;
-            this.actual = actual;
-            this.properties = typeof(T).GetProperties();
-            this.ignoringProperties = ignoringProperties;
-            this.propertyDelegate = propertyDelegate;
-
-            Init();
-        }
-
-        public DataTableObjectComparer(
-            T initial,
-            T expected,
-            T actual,
-            PropertyInfo[] ignoringProperties,
-            Dictionary<PropertyInfo, IsEqualDelegate> propertyDelegate)
-        {
-            this.initial = initial;
-            this.expected = expected;
-            this.actual = actual;
-            this.properties = typeof(T).GetProperties();
-            this.ignoringProperties = ignoringProperties;
-            this.propertyDelegate = propertyDelegate;
-
-            Init();
-        }
-
-        private void Init()
-        {
-            this.informationMessage = new StringBuilder();
-            this.warningMessage = new StringBuilder();
-            this.errorMessage = new StringBuilder();
-
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("Comparing single DataTableObject");
-            stringBuilder.AppendLine(GetProperty());
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine("Initial: " + GetValue(initial));
-            stringBuilder.AppendLine("Expected: " + GetValue(expected));
-            stringBuilder.AppendLine("Actual: " + GetValue(actual));
-            stringBuilder.AppendLine();
-            header = stringBuilder.ToString();
-        }
-
-        public bool Compare()
-        {
-            isEqual = true;
-
-            if (expected == null && actual != null)
-            {
-                isEqual = false;
-                errorMessage.AppendLine("The actual value is not null while the expected is null.");
-            }
-            else if (expected != null && actual == null)
-            {
-                isEqual = false;
-                errorMessage.AppendLine("The actual value is null while the expected is not null.");
-            }
-            else if (expected == null && actual == null)
-            {
-                isEqual = true;
-                warningMessage.AppendLine("The actual value is null as expected.");
-            }
-            else
-            {
-                string propertyMessage = null;
-
-                foreach (PropertyInfo property in properties)
-                {
-                    object initialPropertyValue =
-                        initial == null ?
-                        "Null" : property.GetValue(initial, null) ?? "Null";
-                    object expectedPropertyValue = property.GetValue(expected, null) ?? "Null";
-                    object actualPropertyValue = property.GetValue(actual, null) ?? "Null";
-
-                    if (actualPropertyValue.ToString() == expectedPropertyValue.ToString())
-                    {
-                        propertyMessage = string.Format("{0} is correct.", property.Name);
-                        LogPropertyInformation(
-                            propertyMessage,
-                            initialPropertyValue,
-                            expectedPropertyValue,
-                            actualPropertyValue);
-                    }
-                    else
-                    {
-                        if (propertyDelegate != null && propertyDelegate.ContainsKey(property))
-                        {
-                            if (propertyDelegate[property](expectedPropertyValue, actualPropertyValue))
-                            {
-                                propertyMessage = string.Format(
-                                    "{0} is correct using customized comparison method.",
-                                    property.Name);
-                                LogPropertyWarning(
-                                    propertyMessage,
-                                    initialPropertyValue,
-                                    expectedPropertyValue,
-                                    actualPropertyValue);
-                            }
-                            else
-                            {
-                                isEqual = false;
-                                propertyMessage = string.Format(
-                                    "{0} is incorrect using customized comparison method.",
-                                    property.Name);
-                                LogPropertyError(
-                                    propertyMessage,
-                                    initialPropertyValue,
-                                    expectedPropertyValue,
-                                    actualPropertyValue);
-                            }
-                        }
-                        else
-                        {
-                            if (ignoringProperties != null && ignoringProperties.Contains(property))
-                            {
-                                propertyMessage = string.Format("Comparison of {0} is ignored.", property.Name);
-                                LogPropertyWarning(
-                                    propertyMessage,
-                                    initialPropertyValue,
-                                    expectedPropertyValue,
-                                    actualPropertyValue);
-                            }
-                            else
-                            {
-                                isEqual = false;
-                                propertyMessage = string.Format("{0} is incorrect.", property.Name);
-                                LogPropertyError(
-                                    propertyMessage,
-                                    initialPropertyValue,
-                                    expectedPropertyValue,
-                                    actualPropertyValue);
-                            }
-                        }
-                    }
-                }
-            }
-            return isEqual.Value;
-        }
-
-        public string GetFinalMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            StringBuilder stringBuilder = new StringBuilder(header);
-            if (isEqual.Value)
-            {
-                if (warningMessage.Length == 0)
-                {
-                    stringBuilder.AppendLine("The actual value of the object is equal to the expected.");
-                }
-                else
-                {
-                    stringBuilder.AppendLine("The actual value of the object is equal to the expected, please notice the warning(s).");
-                    stringBuilder.AppendLine(warningMessage.ToString());
-                }
-            }
-            else
-            {
-                stringBuilder.AppendLine("The actual value of the object is not equal to the expected.");
-                stringBuilder.AppendLine(errorMessage.ToString());
-            }
-            return stringBuilder.ToString();
-        }
-
-        public string GetInformationMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            return informationMessage.ToString();
-        }
-
-        public string GetWarningMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            return warningMessage.ToString();
-        }
-
-        public string GetErrorMessage()
-        {
-            if (!isEqual.HasValue)
-            {
-                return "Comparison is not performed, please call Compare() method of DataTableObjectComparer instance first.";
-            }
-
-            return errorMessage.ToString();
-        }
-
-        private void LogPropertyInformation(
-            string header,
-            object initialPropertyValue,
-            object expectedPropertyValue,
-            object actualPropertyValue)
-        {
-            LogProperty(
-                header,
-                initialPropertyValue,
-                expectedPropertyValue,
-                actualPropertyValue,
-                informationMessage);
-        }
-
-        private void LogPropertyWarning(
-            string header,
-            object initialPropertyValue,
-            object expectedPropertyValue,
-            object actualPropertyValue)
-        {
-            LogPropertyInformation(
-                header,
-                initialPropertyValue,
-                expectedPropertyValue,
-                actualPropertyValue);
-            LogProperty(
-                header,
-                initialPropertyValue,
-                expectedPropertyValue,
-                actualPropertyValue,
-                warningMessage);
-        }
-
-        private void LogPropertyError(
-            string header,
-            object initialPropertyValue,
-            object expectedPropertyValue,
-            object actualPropertyValue)
-        {
-            LogPropertyInformation(
-                header,
-                initialPropertyValue,
-                expectedPropertyValue,
-                actualPropertyValue);
-            LogProperty(
-                header,
-                initialPropertyValue,
-                expectedPropertyValue,
-                actualPropertyValue,
-                errorMessage);
-        }
-
-        private void LogProperty(
-            string header,
-            object initialPropertyValue,
-            object expectedPropertyValue,
-            object actualPropertyValue,
-            StringBuilder message)
-        {
-            message.AppendLine();
-            message.AppendLine(header);
-            message.AppendLine("Initial: " + initialPropertyValue);
-            message.AppendLine("Expected: " + expectedPropertyValue);
-            message.AppendLine("Actual: " + actualPropertyValue);
-        }
-
-        private string GetProperty()
-        {
-            StringBuilder message = new StringBuilder();
-            properties.ToList().ForEach(i => message.Append(string.Format("{0}\t", i.Name)));
-            return message.ToString();
-        }
-
-        private string GetValue(T dataTableObject)
-        {
-            if (dataTableObject == null)
-            {
-                return "The object is null.";
-            }
-
-            StringBuilder message = new StringBuilder();
-            foreach (PropertyInfo property in properties)
-            {
-                object value = property.GetValue(dataTableObject, null) ?? "Null";
-                message.Append(string.Format("{0}\t", value));
-            }
-            return message.ToString();
-        }
-    }
-
-    public class ComparisonMethod
-    {
-        public static bool CompareUpdateDate(object left, object right)
-        {
-            DateTime leftValue = System.Convert.ToDateTime(left.ToString());
-            DateTime rightValue = System.Convert.ToDateTime(right.ToString());
-
-            if (leftValue <= rightValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-
     static class Program
     {
         /// <summary>
@@ -612,128 +22,30 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            PropertyInfo[] primaryKeys = new PropertyInfo[]
-            {
-                typeof(RatePlan_NoIdent).GetProperty("RatePlanID")
-            };
-
-            PropertyInfo[] ignoringProperties = new PropertyInfo[]
-            {
-                typeof(RatePlan_NoIdent).GetProperty("RatePlanCodeSupplier"),
-                typeof(RatePlan_NoIdent).GetProperty("PersonCntIncluded"),
-                typeof(RatePlan_NoIdent).GetProperty("ManageOnExtranetBool")
-            };
-
-            Dictionary<PropertyInfo, IsEqualDelegate> propertyDelegate;
-            propertyDelegate = new Dictionary<PropertyInfo, IsEqualDelegate>();
-            PropertyInfo property = typeof(RatePlan_NoIdent).GetProperty("UpdateDate");
-            propertyDelegate[property] = ComparisonMethod.CompareUpdateDate;
-
-            DataTableObjectComparer<RatePlan_NoIdent> objectComparer = new DataTableObjectComparer<RatePlan_NoIdent>(
-                    TestData.testObjectComparisonSuccess1[0],
-                    TestData.testObjectComparisonSuccess1[1],
-                    TestData.testObjectComparisonSuccess1[2],
-                    ignoringProperties,
-                    propertyDelegate);
-            bool isEqual = objectComparer.Compare();
-            if (isEqual)
-            {
-                System.Diagnostics.Debug.WriteLine("Pass");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Fail");
-            }
-            System.Diagnostics.Debug.WriteLine(objectComparer.GetFinalMessage());
-
-            objectComparer = new DataTableObjectComparer<RatePlan_NoIdent>(
-                    TestData.testObjectComparisonSuccess2[0],
-                    TestData.testObjectComparisonSuccess2[1],
-                    TestData.testObjectComparisonSuccess2[2],
-                    ignoringProperties,
-                    propertyDelegate);
-            isEqual = objectComparer.Compare();
-            if (isEqual)
-            {
-                System.Diagnostics.Debug.WriteLine("Pass");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Fail");
-            }
-            System.Diagnostics.Debug.WriteLine(objectComparer.GetFinalMessage());
-
-            objectComparer = new DataTableObjectComparer<RatePlan_NoIdent>(
-                    TestData.testObjectComparisonWithError[0],
-                    TestData.testObjectComparisonWithError[1],
-                    TestData.testObjectComparisonWithError[2],
-                    ignoringProperties,
-                    propertyDelegate);
-            isEqual = objectComparer.Compare();
-            if (isEqual)
-            {
-                System.Diagnostics.Debug.WriteLine("Pass");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Fail");
-            }
-            System.Diagnostics.Debug.WriteLine(objectComparer.GetFinalMessage());
-
-            objectComparer = new DataTableObjectComparer<RatePlan_NoIdent>(
-                    TestData.testObjectComparisonWithWarning[0],
-                    TestData.testObjectComparisonWithWarning[1],
-                    TestData.testObjectComparisonWithWarning[2],
-                    ignoringProperties,
-                    propertyDelegate);
-            isEqual = objectComparer.Compare();
-            if (isEqual)
-            {
-                System.Diagnostics.Debug.WriteLine("Pass");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Fail");
-            }
-            System.Diagnostics.Debug.WriteLine(objectComparer.GetFinalMessage());
-
-            objectComparer = new DataTableObjectComparer<RatePlan_NoIdent>(
-                    null,
-                    null,
-                    TestData.testObjectComparisonWithWarningError[2],
-                    ignoringProperties,
-                    propertyDelegate);
-            isEqual = objectComparer.Compare();
-            if (isEqual)
-            {
-                System.Diagnostics.Debug.WriteLine("Pass");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Fail");
-            }
-            System.Diagnostics.Debug.WriteLine(objectComparer.GetFinalMessage());
-
-            DataTableObjectListComparer<RatePlan_NoIdent> objectListComparer = new DataTableObjectListComparer<RatePlan_NoIdent>(
-                    TestData.testObjectListComparisonInitial,
-                    TestData.testObjectListComparisonExpected,
-                    TestData.testObjectListComparisonActual,
-                    primaryKeys,
-                    ignoringProperties,
-                    propertyDelegate);
-            isEqual = objectListComparer.Compare();
-            if (isEqual)
-            {
-                System.Diagnostics.Debug.WriteLine("Pass");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Fail");
-            }
-            System.Diagnostics.Debug.WriteLine(objectListComparer.GetFinalMessage());
+            decimal d = 0.538457359285744m;
+            decimal rounded = decimal.Round(d, 4, MidpointRounding.AwayFromZero);
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+            dict[1] = null;
+            dict[2] = "";
         }
 
         #region
+
+        public static string GetFirstGuidString(string input)
+        {
+            string guidPattern = @"([a-z0-9]{8}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{4}[-][a-z0-9]{12})";
+            Match match = Regex.Match(input, guidPattern);
+            return match.Success ? match.Groups[0].Value : string.Empty;
+        }
+
+        public static IEnumerable<IRowContext> GenerateRowContext()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                DataTable dt = new DataTable();
+                yield return new RowContext<IDataTable>(dt, i, i);
+            }
+        }
 
         public struct DayOfWeekMask
         {
@@ -761,13 +73,21 @@ namespace WindowsFormsApplication
 
         public static T CloneValue<T>(T origin)
         {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            MemoryStream memoryStream = new MemoryStream();
-            binaryFormatter.Serialize(memoryStream, origin);
-            memoryStream.Seek(0, SeekOrigin.Begin);
-            T result = (T)binaryFormatter.Deserialize(memoryStream);
-            memoryStream.Close();
-            return result;
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using (MemoryStream stream = new MemoryStream())
+            {
+                serializer.Serialize(stream, origin);
+                stream.Seek(0, SeekOrigin.Begin);
+                return (T)serializer.Deserialize(stream);
+            }
+
+            //BinaryFormatter binaryFormatter = new BinaryFormatter();
+            //MemoryStream memoryStream = new MemoryStream();
+            //binaryFormatter.Serialize(memoryStream, origin);
+            //memoryStream.Seek(0, SeekOrigin.Begin);
+            //T result = (T)binaryFormatter.Deserialize(memoryStream);
+            //memoryStream.Close();
+            //return result;
         }
 
         public static void CopyValue(object origin, object target)
@@ -827,6 +147,114 @@ namespace WindowsFormsApplication
 
         public static void CommentedCode()
         {
+            //string table = "RateRuleSiteType";
+            //string folder = @"C:\Documents and Settings\v-elluo\Desktop\";
+            //FileReader fileReader = new FileReader();
+            //List<string> columns = fileReader.ReadFile(string.Format("{0}{1}Columns.txt", folder, table));
+            //List<string> codeLines = fileReader.ReadFile(string.Format("{0}{1}.txt", folder, table));
+            //SqlConnection myConnection = new SqlConnection(
+            //    "Data Source=lodginginventorytx1.db.LISQA3.sb.karmalab.net,1433;Initial Catalog=LodgingInventoryMaster;Integrated Security=SSPI");
+
+            //try
+            //{
+            //    SqlDataReader myReader = null;
+            //    StringBuilder output = new StringBuilder();
+            //    foreach (string column in columns)
+            //    {
+            //        StringBuilder values = new StringBuilder();
+            //        myConnection.Open();
+            //        string select = string.Format(
+            //            "SELECT * FROM (SELECT DISTINCT CAST({0} AS VARCHAR(MAX)) AS VALUE FROM dbo.{1} WITH (NOLOCK)) AS T ORDER BY T.VALUE",
+            //            column,
+            //            table);
+            //        SqlCommand myCommand = new SqlCommand(select, myConnection);
+            //        myReader = myCommand.ExecuteReader();
+            //        int count = 0;
+            //        while (myReader.Read())
+            //        {
+            //            count++;
+            //            values.Append(string.Format("{0}, ", myReader["VALUE"]));
+            //            if (count > 10) break;
+            //        }
+            //        myConnection.Close();
+
+            //        string outputLine = column;
+            //        for (int i = 0; i < codeLines.Count; i++)
+            //        {
+            //            string line = codeLines.ElementAt(i);
+            //            if (line.Contains(column))
+            //            {
+            //                int index;
+            //                if (line.Contains(",") || line.Contains(";"))
+            //                {
+            //                    index = line.IndexOf("=");
+            //                    if (index > 0)
+            //                    {
+            //                        outputLine = string.Format("{0}\t{1}\t{2}", column, values.ToString(), line.Substring(index + 2));
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    string targetLine = line;
+            //                    if (i + 2 < codeLines.Count)
+            //                    {
+            //                        targetLine = codeLines.ElementAt(i + 1).Trim() + codeLines.ElementAt(i + 2).Trim();
+            //                    }
+            //                    index = targetLine.IndexOf(":");
+            //                    outputLine = string.Format("{0}\t{1}\t{2}", column, values.ToString(), targetLine);
+            //                    i += 2;
+            //                }
+            //            }
+            //        }
+            //        output.AppendLine(outputLine);
+            //    }
+
+            //    string final = table + "\r\n\r\n" + output.ToString();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.ToString());
+            //}
+            //finally
+            //{
+            //    myConnection.Close();
+            //}
+            FileReader reader = new FileReader();
+            List<string> lines = reader.ReadFile("C:\\Documents and Settings\\v-elluo\\Desktop\\Expected.txt");
+            List<string> actual = reader.ReadFile("C:\\Documents and Settings\\v-elluo\\Desktop\\Actual.txt");
+
+            string prefix = "Expedia.Automation.Test.Hotels.APM.RatePlanUpdate.Negative.RatePlanUpdateNegativeTest.";
+            List<string> expected = new List<string>();
+            foreach (string line in lines)
+            {
+                if (line.Contains(prefix))
+                {
+                    int index = line.IndexOf(prefix);
+                    string methodName =
+                        line.Substring(index + prefix.Length, line.Length - index - prefix.Length - 2);
+                    expected.Add(methodName);
+                }
+            }
+
+            StringBuilder message = new StringBuilder();
+            message.AppendLine("Below methods in LRM should be deleted:");
+            foreach (string method in actual)
+            {
+                if (!expected.Contains(method))
+                {
+                    message.AppendLine(method);
+                }
+            }
+
+            message.AppendLine();
+            message.AppendLine("Below methods should be added to LRM:");
+            foreach (string method in expected)
+            {
+                if (!actual.Contains(method))
+                {
+                    message.AppendLine(method);
+                }
+            }
             List<int> dayOfWeekMaskList = new List<int>()
             {
                 //DayOfWeekMask.Monday,
@@ -1022,62 +450,62 @@ namespace WindowsFormsApplication
 
         private static void MergeTables()
         {
-            DataTable table1 = new DataTable("Items");
+            //DataTable table1 = new DataTable("Items");
 
-            // Add columns
-            DataColumn idColumn = new DataColumn("id", typeof(System.Int32));
-            DataColumn itemColumn = new DataColumn("item", typeof(System.Int32));
-            table1.Columns.Add(idColumn);
-            table1.Columns.Add(itemColumn);
+            //// Add columns
+            //DataColumn idColumn = new DataColumn("id", typeof(System.Int32));
+            //DataColumn itemColumn = new DataColumn("item", typeof(System.Int32));
+            //table1.Columns.Add(idColumn);
+            //table1.Columns.Add(itemColumn);
 
-            // Set the primary key column.
-            table1.PrimaryKey = new DataColumn[] { idColumn };
+            //// Set the primary key column.
+            //table1.PrimaryKey = new DataColumn[] { idColumn };
 
-            // Add RowChanged event handler for the table.
-            table1.RowChanged += new System.Data.DataRowChangeEventHandler(Row_Changed);
+            //// Add RowChanged event handler for the table.
+            //table1.RowChanged += new System.Data.DataRowChangeEventHandler(Row_Changed);
 
-            // Add ten rows.
-            DataRow row;
-            for (int i = 0; i <= 9; i++)
-            {
-                row = table1.NewRow();
-                row["id"] = i;
-                row["item"] = i;
-                table1.Rows.Add(row);
-            }
+            //// Add ten rows.
+            //DataRow row;
+            //for (int i = 0; i <= 9; i++)
+            //{
+            //    row = table1.NewRow();
+            //    row["id"] = i;
+            //    row["item"] = i;
+            //    table1.Rows.Add(row);
+            //}
 
-            // Accept changes.
-            table1.AcceptChanges();
-            PrintValues(table1, "Original values");
+            //// Accept changes.
+            //table1.AcceptChanges();
+            //PrintValues(table1, "Original values");
 
-            // Create a second DataTable identical to the first.
-            DataTable table2 = table1.Clone();
+            //// Create a second DataTable identical to the first.
+            //DataTable table2 = table1.Clone();
 
-            // Add column to the second column, so that the 
-            // schemas no longer match.
+            //// Add column to the second column, so that the 
+            //// schemas no longer match.
 
-            // Add three rows. Note that the id column can't be the 
-            // same as existing rows in the original table.
-            row = table2.NewRow();
-            row["id"] = 14;
-            row["item"] = 774;
-            table2.Rows.Add(row);
+            //// Add three rows. Note that the id column can't be the 
+            //// same as existing rows in the original table.
+            //row = table2.NewRow();
+            //row["id"] = 14;
+            //row["item"] = 774;
+            //table2.Rows.Add(row);
 
-            row = table2.NewRow();
-            row["id"] = 12;
-            row["item"] = 555;
-            table2.Rows.Add(row);
+            //row = table2.NewRow();
+            //row["id"] = 12;
+            //row["item"] = 555;
+            //table2.Rows.Add(row);
 
-            row = table2.NewRow();
-            row["id"] = 13;
-            row["item"] = 665;
-            table2.Rows.Add(row);
+            //row = table2.NewRow();
+            //row["id"] = 13;
+            //row["item"] = 665;
+            //table2.Rows.Add(row);
 
-            // Merge table2 into the table1.
-            DataRow[] dr = table1.Select("id > 3 and item < 8");
-            System.Diagnostics.Debug.WriteLine("Merging");
-            table1.Merge(table2, false, MissingSchemaAction.Add);
-            PrintValues(table1, "Merged With table1, schema added");
+            //// Merge table2 into the table1.
+            //DataRow[] dr = table1.Select("id > 3 and item < 8");
+            //System.Diagnostics.Debug.WriteLine("Merging");
+            //table1.Merge(table2, false, MissingSchemaAction.Add);
+            //PrintValues(table1, "Merged With table1, schema added");
         }
 
         private static void Row_Changed(object sender, DataRowChangeEventArgs e)
@@ -1089,14 +517,14 @@ namespace WindowsFormsApplication
         {
             // Display the values in the supplied DataTable:
             System.Diagnostics.Debug.WriteLine(label);
-            foreach (DataRow row in table.Rows)
-            {
-                foreach (DataColumn col in table.Columns)
-                {
-                    Console.Write("\t " + row[col].ToString());
-                }
-                System.Diagnostics.Debug.WriteLine("");
-            }
+            //foreach (DataRow row in table.Rows)
+            //{
+            //    foreach (DataColumn col in table.Columns)
+            //    {
+            //        Console.Write("\t " + row[col].ToString());
+            //    }
+            //    System.Diagnostics.Debug.WriteLine("");
+            //}
         }
 
         static bool IsEquals(Dictionary<string, string> actual, Dictionary<string, string> expected)
@@ -1338,17 +766,6 @@ namespace WindowsFormsApplication
         {
             new RatePlan_NoIdent()
             {
-                RatePlanID = 1,
-                RatePlanTypeID = 1,
-                ActiveStatusTypeID = 1,
-                RatePlanCodeSupplier = "initial rate plan 1",
-                PersonCntIncluded = 1,
-                ManageOnExtranetBool = true,
-                UpdateTUID = 100,
-                UpdateDate = Convert.ToDateTime("2/28/2013 17:27:07")
-            },
-            new RatePlan_NoIdent()
-            {
                 RatePlanID = 2,
                 RatePlanTypeID = 2,
                 ActiveStatusTypeID = 2,
@@ -1357,6 +774,17 @@ namespace WindowsFormsApplication
                 ManageOnExtranetBool = false,
                 UpdateTUID = 200,
                 UpdateDate = Convert.ToDateTime("2/28/2013 18:28:08")
+            },
+            new RatePlan_NoIdent()
+            {
+                RatePlanID = 1,
+                RatePlanTypeID = 1,
+                ActiveStatusTypeID = 1,
+                RatePlanCodeSupplier = "initial rate plan 1",
+                PersonCntIncluded = 1,
+                ManageOnExtranetBool = true,
+                UpdateTUID = 100,
+                UpdateDate = Convert.ToDateTime("2/28/2013 17:27:07")
             },
             new RatePlan_NoIdent()
             {
@@ -1478,4 +906,49 @@ namespace WindowsFormsApplication
         }
     }
 
+    public class RowContext<TTable> : IRowContext
+    where TTable : IDataTable
+    {
+        public TTable Table { get; set; }
+        public int Index { get; set; }
+        public int RowCount { get; set; }
+        public int StartingIndex { get; private set; }
+
+        public int RemainingUncheckedRowsCount
+        {
+            get { return (Index >= StartingIndex) ? (RowCount - Index + StartingIndex) : (StartingIndex - Index); }
+        }
+
+        public RowContext(TTable table, int index, int startingIndex)
+        {
+            Table = table;
+            Index = index;
+            RowCount = table.Count;
+            StartingIndex = startingIndex;
+        }
+
+        public int GetIndex(int offset)
+        {
+            return (Index + offset) % RowCount;
+        }
+    }
+
+    public interface IRowContext
+    {
+        int Index { get; }
+        int GetIndex(int offset);
+        int RemainingUncheckedRowsCount { get; }
+        int RowCount { get; }
+        int StartingIndex { get; }
+    }
+
+    public class DataTable : IDataTable
+    {
+        public int Count { get { return 0; } }
+    }
+
+    public interface IDataTable
+    {
+        int Count { get; }
+    }
 }
