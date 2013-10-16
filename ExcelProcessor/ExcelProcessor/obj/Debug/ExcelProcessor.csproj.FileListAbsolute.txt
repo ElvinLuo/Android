@@ -1,0 +1,13 @@
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\bin\Debug\ExcelProcessor.exe.config
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\bin\Debug\ExcelProcessor.exe
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\bin\Debug\ExcelProcessor.pdb
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\MainWindow.baml
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\MainWindow.g.cs
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\App.g.cs
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor_MarkupCompile.cache
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor.g.resources
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor.Properties.Resources.resources
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor.csproj.GenerateResource.Cache
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor.exe
+D:\Projects\GitHub\ExcelProcessor\ExcelProcessor\obj\Debug\ExcelProcessor.pdb
