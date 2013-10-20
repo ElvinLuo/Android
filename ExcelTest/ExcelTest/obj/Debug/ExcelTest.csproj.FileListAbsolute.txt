@@ -1,0 +1,8 @@
+D:\Projects\GitHub\ExcelTest\ExcelTest\bin\Debug\ExcelTest.exe
+D:\Projects\GitHub\ExcelTest\ExcelTest\bin\Debug\ExcelTest.pdb
+D:\Projects\GitHub\ExcelTest\ExcelTest\obj\Debug\ExcelTest.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\ExcelTest\ExcelTest\obj\Debug\ExcelTest.FormMain.resources
+D:\Projects\GitHub\ExcelTest\ExcelTest\obj\Debug\ExcelTest.Properties.Resources.resources
+D:\Projects\GitHub\ExcelTest\ExcelTest\obj\Debug\ExcelTest.csproj.GenerateResource.Cache
+D:\Projects\GitHub\ExcelTest\ExcelTest\obj\Debug\ExcelTest.exe
+D:\Projects\GitHub\ExcelTest\ExcelTest\obj\Debug\ExcelTest.pdb
