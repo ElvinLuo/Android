@@ -78,18 +78,15 @@ D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\DatabaseSelector.dl
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\DatabaseSelector.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\DatabaseSelector.pdb
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.SqlTools.VSIntegration.dll
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\SQLEditors.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\SqlWorkbench.Interfaces.dll
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.GridControl.dll
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Microsoft.SqlServer.BatchParser.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\bin\Interop.SHDocVw.dll
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\Interop.SHDocVw.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.csproj.ResolveComReference.cache
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.CommandBar.resources
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.Options.resources
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.ServerInstanceSelector.resources
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResGen.read.1.tlog
-D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\ResGen.write.1.tlog
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.dll
 D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.pdb
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\DatabaseSelector2010\DatabaseSelector\obj\Debug\DatabaseSelector.csproj.GenerateResource.Cache
+C:\Program Files (x86)\DatabaseSelector\DatabaseSelector.dll.config
