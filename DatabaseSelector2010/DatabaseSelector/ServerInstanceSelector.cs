@@ -867,7 +867,7 @@ namespace DatabaseSelector
                 }
                 else if (version == 2005)
                 {
-                    ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
+                    //ScriptFactory.Instance.CreateNewScript(strFullPath, connection, sqlConnection);
                 }
             }
             catch (Exception exception)
