@@ -1,19 +1,69 @@
-﻿using System;
+﻿using Expedia.Automation.ExpSOATemplates.Hotels.APM.Schemas.RatePlanGet;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 using System.Xml.Serialization;
-using Expedia.Automation.ExpSOATemplates.Hotels.APM.Schemas.RatePlanGet;
 using WindowsFormsApplication.File;
 
 namespace WindowsFormsApplication
 {
+    public class TestReport
+    {
+        public TestRunResult TestRunTotals_DailyProjects { get; set; }
+        public TestRunResult TestRunTotals_CurrentProjects { get; set; }
+        public List<TestRunResult> TestRunResults { get; set; }
+
+        public TestReport()
+        {
+            TestRunTotals_DailyProjects = new TestRunResult();
+            TestRunTotals_CurrentProjects = new TestRunResult();
+            TestRunResults = new List<TestRunResult>();
+        }
+
+        public class TestRunResult
+        {
+            public string TrxFileName { get; set; }
+            public int PassCount { get; set; }
+            public int HighPriorityFailCount { get; set; }
+            public int FailCount { get; set; }
+            public int SkipCount { get; set; }
+            public string Notes { get; set; }
+            public List<TestMethodResult> TestMethodResults { get; set; }
+
+            public TestRunResult()
+            {
+                TestMethodResults = new List<TestMethodResult>();
+            }
+
+            public int GetTotalTests() { return PassCount + FailCount + SkipCount; }
+            public int GetPercentPass()
+            {
+                if (PassCount == 0) return 0;
+
+                return (PassCount * 100) / GetTotalTests();
+            }
+        }
+
+        public class TestMethodResult
+        {
+            public string TestMethodClass { get; set; }
+            public string TestMethodName { get; set; }
+            public string TestRowName { get; set; }
+            public string TestOutcome { get; set; }
+            public string TestPriority { get; set; }
+            public string TestFailureReason { get; set; }
+        }
+    }
+
     static class Program
     {
         /// <summary>
@@ -22,11 +72,34 @@ namespace WindowsFormsApplication
         [STAThread]
         static void Main()
         {
-            decimal d = 0.538457359285744m;
-            decimal rounded = decimal.Round(d, 4, MidpointRounding.AwayFromZero);
-            Dictionary<int, string> dict = new Dictionary<int, string>();
-            dict[1] = null;
-            dict[2] = "";
+            var time = FromUnixTime(1418515200000);
+            var sec = ToUnixTime(time);
+        }
+
+        public static DateTime FromUnixTime(double unixTime)
+        {
+            return new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(System.Convert.ToDouble(unixTime));
+        }
+
+        public static long ToUnixTime(DateTime date)
+        {
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return System.Convert.ToInt64((date - epoch).TotalMilliseconds);
+        }
+
+        private static bool Validate(string uri)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                client.Credentials = new System.Net.NetworkCredential("DeployItLIS", "d3pl0yLi$");
+                client.DownloadString(uri);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #region

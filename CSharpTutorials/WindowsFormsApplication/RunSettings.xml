@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<runSettings>
+  <add key="CancelPolicyAddV1Port" value="8080"/>
+  <add key="CancelPolicyGetV1Port" value="8090" />
+</runSettings>
