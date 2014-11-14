@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.expedia.lux:LUXDataModels:pLUXMain.main-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/lux/LUXDataModels/pLUXMain.main-SNAPSHOT/LUXDataModels-pLUXMain.main-20141112.190800-436.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/lux/LUXDataModels/pLUXMain.main-SNAPSHOT/LUXDataModels-pLUXMain.main-20141112.190800-436-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/lux/LUXDataModels/pLUXMain.main-SNAPSHOT/LUXDataModels-pLUXMain.main-20141112.190800-436-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.expedia.www.configure.activation:feature-activation:0.0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/www/configure/activation/feature-activation/0.0.2-SNAPSHOT/feature-activation-0.0.2-20140513.002316-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/www/configure/activation/feature-activation/0.0.2-SNAPSHOT/feature-activation-0.0.2-20140513.002316-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/www/configure/activation/feature-activation/0.0.2-SNAPSHOT/feature-activation-0.0.2-20140513.002316-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.expedia.lux:LUXExternalMessages:pLUXMain.main-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/lux/LUXExternalMessages/pLUXMain.main-SNAPSHOT/LUXExternalMessages-pLUXMain.main-20141112.191024-425.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/lux/LUXExternalMessages/pLUXMain.main-SNAPSHOT/LUXExternalMessages-pLUXMain.main-20141112.191024-425-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/expedia/lux/LUXExternalMessages/pLUXMain.main-SNAPSHOT/LUXExternalMessages-pLUXMain.main-20141112.191024-425-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
