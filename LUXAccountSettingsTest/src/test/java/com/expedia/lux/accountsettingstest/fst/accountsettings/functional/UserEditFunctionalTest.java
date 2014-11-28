@@ -1,7 +1,8 @@
-package com.expedia.lux.accountsettingstest.fst;
+package com.expedia.lux.accountsettingstest.fst.accountsettings.functional;
 
+import com.expedia.lux.accountsettingstest.common.pages.LoginPage;
+import com.expedia.lux.accountsettingstest.common.pages.UserEditPage;
 import com.expedia.lux.accountsettingstest.common.utils.ExcelReader;
-import com.expedia.lux.accountsettingstest.common.utils.PageSetter;
 import com.expedia.lux.accountsettingstest.core.SingleDriverBaseTest;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -46,23 +47,29 @@ public class UserEditFunctionalTest extends SingleDriverBaseTest {
 
     @Test
     public void testUserEditPage() {
+
+//        Database db = new MySQL(new MySQLSettingsImpl("myUsername", "myPassword", "myDb"));
+//        MappingSession.registerDatabase(db);
+//        Model.fetchAll(Traveler.class);
+
+        UserEditPage userEditPage;
         WebDriver driver = getDriver();
         driver.get("https://lux.expediapartnercentral.com.lisqa7.sb.karmalab.net:8443/PartnerCentral/AccountSettings.html");
 
-        if (driver.getTitle().contains("Expedia PartnerCentral - Sign In")) {
-
-            WebElement emailControl = driver.findElement(By.id("emailControl"));
-            emailControl.sendKeys("admin");
-
-            WebElement passwordControl = driver.findElement(By.id("passwordControl"));
-            passwordControl.sendKeys("mttpower");
-
-            WebElement signInButton = driver.findElement(By.id("signInButton"));
-            signInButton.click();
+        if (driver.getTitle().contains("Log In") || driver.getTitle().contains("Sign In")) {
+            LoginPage loginPage = new LoginPage(driver);
+            userEditPage = loginPage.login("admin", "mttpower");
+        } else {
+            userEditPage = new UserEditPage(driver);
         }
 
-        new PageSetter(driver).SetValue(idValueMap);
+        userEditPage.FirstNameInput.clear();
+        userEditPage.FirstNameInput.sendKeys("TestFirstName");
 
+        userEditPage.LastNameInput.clear();
+        userEditPage.LastNameInput.sendKeys("TestLastName");
+
+        userEditPage.logOut();
     }
 
     @Test
